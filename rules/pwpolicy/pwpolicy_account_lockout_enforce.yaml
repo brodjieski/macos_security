@@ -36,7 +36,7 @@ references:
     - 6.2
 odv:
   hint: Number of failed attempts.
-  default: 3
+  recommended: 3
   stig: 3
   cis_lvl1: 5
   cis_lvl2: 5

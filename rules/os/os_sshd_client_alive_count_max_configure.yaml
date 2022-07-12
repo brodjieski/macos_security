@@ -30,7 +30,7 @@ references:
   - 3.13.9
 odv:
   hint: Number of seconds.
-  default: 0
+  recommended: 0
   stig: 0
 tags:
 - 800-53r5_moderate

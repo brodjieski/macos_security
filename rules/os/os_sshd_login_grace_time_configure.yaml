@@ -30,7 +30,7 @@ references:
   - 3.13.9
 odv:
   hint: Number of seconds.
-  default: 30
+  recommended: 30
   stig: 30
 tags:
 - stig

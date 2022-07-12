@@ -44,7 +44,7 @@ references:
     - 4.7
 odv:
   hint: Number of days.
-  default: 60
+  recommended: 60
   stig: 60
 tags:
 - 800-171

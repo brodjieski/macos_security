@@ -32,7 +32,7 @@ references:
   - 3.13.9
 odv:
   hint: Number of seconds.
-  default: 900
+  recommended: 900
 tags:
 - 800-53r5_moderate
 - 800-53r5_high

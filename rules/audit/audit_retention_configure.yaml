@@ -36,7 +36,7 @@ references:
     - 8.1
 odv:
   hint: See man audit_control for possible values.
-  default: 7d
+  recommended: 7d
   stig: 7d
   cis_lvl1: 60d or 1G
   cis_lvl2: 60d or 1G

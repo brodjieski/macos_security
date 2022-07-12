@@ -13,6 +13,7 @@ import os
 import pprint
 from optparse import OptionParser
 import logging
+import platform
 
 # import mscp modules
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
@@ -25,9 +26,21 @@ def main():
 
     # Platform values
     parser.add_option("-v", action="count", dest='verbosity', default=1, help="Enable verbose logging, add additonal 'v' to increase level")
+
+    # Supplied benchmark
+    parser.add_option("-b", action="store", dest='benchmark', default="recommended", help="Use the organization defined values from the supplied benchmark, defaults to recommended values")
+
+    # Supplied OS
+    parser.add_option("-o", action="store", dest='os', default="", help="Build the compliance info for the specified OS version, defaults to currently running OS")
       
     # Process command line
     (options, args) = parser.parse_args()
+
+    if not options.os:
+        v, _, _ = platform.mac_ver()
+        macos = v.split(".")[0]
+    else:
+        macos = options.os
 
     # Pull in the yaml functions
     _yaml = mscp.Yaml()
@@ -59,14 +72,10 @@ def main():
     logging.debug("\n".join(["**** CUSTOM RULESET ****", pprint.pformat(custom_ruleset, indent=1, sort_dicts=False), "**** CUSTOM RULESET ****"]))
 
     # merge original and custom rules for entire list in db
-    rule_list = _yaml.compileRules(ruleset, custom_ruleset)
+    rule_list = _yaml.compileRules(ruleset, custom_ruleset, options.benchmark, macos)
 
     ### rule_list now contains the full library of rules including custom rule files found
     ### begin additional processing below, within main()
-
-    for rule in rule_list:
-        if rule['id'] == "sysprefs_screensaver_timeout_enforce":
-            print(rule['title'])
 
 if __name__ == "__main__":
     main()
