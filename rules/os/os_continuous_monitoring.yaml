@@ -1,5 +1,5 @@
 id: os_continuous_monitoring
-title: "Configure Automated Flaw Remediation"
+title: Configure Automated Flaw Remediation
 discussion: |
   The macOS system _MUST_ be configured to determine the state of system components with regard to flaw remediation.
 check: |
@@ -7,26 +7,44 @@ check: |
 fix: |
   This requirement is a permanent finding and cannot be fixed. An appropriate mitigation for the system must be implemented, but this finding cannot be considered fixed.
 references:
-  cce:
-    - CCE-90914-3
+  cce: |-
+    $OS_VALUE
   cci:
-    - CCI-001233
+  - CCI-001233
   800-53r5:
-    - SI-2(2)
+  - SI-2(2)
   800-53r4:
-    - SI-2(2)
+  - SI-2(2)
   srg:
-    - N/A
-  disa_stig:
-    - N/A
-macOS:
-  - "12.0"
+  - N/A
+  disa_stig: |-
+    $OS_VALUE
 tags:
-  - cnssi-1253
-  - 800-53r5_moderate
-  - 800-53r5_high
-  - 800-53r4_moderate
-  - 800-53r4_high
-  - permanent 
+- cnssi-1253
+- 800-53r5_moderate
+- 800-53r5_high
+- 800-53r4_moderate
+- 800-53r4_high
+- permanent
 mobileconfig: false
 mobileconfig_info:
+OS_specifics:
+  macOS:
+    '12':
+      references:
+        cce:
+        - CCE-90914-3
+        disa_stig:
+        - N/A
+    '11':
+      references:
+        cce:
+        - CCE-85304-4
+        disa_stig:
+        - APPL-11-000015
+    '10.15':
+      references:
+        cce:
+        - CCE-84892-9
+        disa_stig:
+        - N/A

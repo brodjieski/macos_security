@@ -1,31 +1,47 @@
 id: os_isolate_security_functions
-title: "Configure the System to Separate User and System Functionality"
-discussion: |
-  The information system _IS_ configured to isolate security functions from non-security functions. 
-  
-  link:https://support.apple.com/guide/security/welcome/web[]
+title: Configure the System to Separate User and System Functionality
+discussion: "The information system _IS_ configured to isolate security functions\
+  \ from non-security functions. \n\nlink:https://support.apple.com/guide/security/welcome/web[]\n"
 check: |
   The technology supports this requirement and cannot be configured to be out of compliance. The technology inherently meets this requirement.
 fix: |
   The technology inherently meets this requirement. No fix is required.
 references:
-  cce:
-    - CCE-90940-8
+  cce: |-
+    $OS_VALUE
   cci:
-    - CCI-001084
+  - CCI-001084
   800-53r5:
-    - SC-3
+  - SC-3
   800-53r4:
-    - SC-3
-  disa_stig:
-    - N/A
+  - SC-3
+  disa_stig: |-
+    $OS_VALUE
   srg:
-    - N/A
-macOS:
-  - "12.0"
+  - N/A
 tags:
-  - 800-53r5_high
-  - 800-53r4_high
-  - inherent
+- 800-53r5_high
+- 800-53r4_high
+- inherent
 mobileconfig: false
 mobileconfig_info:
+OS_specifics:
+  macOS:
+    '12':
+      references:
+        cce:
+        - CCE-90940-8
+        disa_stig:
+        - N/A
+    '11':
+      references:
+        cce:
+        - CCE-85330-9
+        disa_stig:
+        - N/A
+    '10.15':
+      references:
+        cce:
+        - CCE-84876-2
+        disa_stig:
+        - N/A

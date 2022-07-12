@@ -1,5 +1,5 @@
 id: sysprefs_bluetooth_menu_enable
-title: "Enable Bluetooth Menu"
+title: Enable Bluetooth Menu
 discussion: |
   The bluetooth menu _MUST_ be enabled.
 check: |
@@ -12,33 +12,45 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - CCE-91124-8
-  cci: 
-    - N/A
+  cce: |-
+    $OS_VALUE
+  cci:
+  - N/A
   800-53r5:
-    - N/A
-  800-53r4: 
-    - N/A
+  - N/A
+  800-53r4:
+  - N/A
   srg:
-    - N/A
-  disa_stig: 
-    - N/A
+  - N/A
+  disa_stig: |-
+    $OS_VALUE
   800-171r2:
-    - N/A
+  - N/A
   cis:
     benchmark:
-      - 2.1.2 (level 1)
+    - 2.1.2 (level 1)
     controls v8:
-      - 4.8
-      - 13.9  
-macOS:
-  - "12.0"
+    - 4.8
+    - 13.9
 tags:
-  - cis_lvl1
-  - cis_lvl2
-  - cisv8
+- cis_lvl1
+- cis_lvl2
+- cisv8
 mobileconfig: true
 mobileconfig_info:
   com.apple.controlcenter:
     Bluetooth: 18
+OS_specifics:
+  macOS:
+    '12':
+      references:
+        cce:
+        - CCE-91124-8
+        disa_stig:
+        - N/A
+    '11':
+      references:
+        cce:
+        - CCE-85521-3
+        disa_stig:
+        - N/A

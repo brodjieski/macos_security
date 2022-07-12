@@ -1,10 +1,10 @@
 id: os_secure_enclave
-title: "Protected Storage for Cryptographic Keys"
+title: Protected Storage for Cryptographic Keys
 discussion: |
   A system _IS_ configured to provide protected storage for cryptographic keys either by hardware protected key store or an organizationally defined safeguard.
-  
+
   Macs with Apple Silicon or T2 processors provide protected storage for cryptographic keys via the secure enclave.
-  
+
   link:https://support.apple.com/guide/security/secure-enclave-sec59b0b31ff/1/web/1[]
 
   NOTE: This will only return a proper result on a T2 or Apple Silicon Macs.
@@ -12,24 +12,41 @@ check: |
   /usr/sbin/ioreg -w 0 -c AppleSEPManager | /usr/bin/grep -q 'AppleSEPManager'; /bin/echo $?
 result:
   integer: 0
-fix: |
-  The hardware does not support the requirement. 
+fix: "The hardware does not support the requirement. \n"
 references:
-  cce:
-    - CCE-90997-8
+  cce: |-
+    $OS_VALUE
   cci:
-    - N/A
+  - N/A
   800-53r5:
-    - SC-28(3)
+  - SC-28(3)
   800-53r4:
-    - N/A
-  disa_stig:
-    - N/A
+  - N/A
+  disa_stig: |-
+    $OS_VALUE
   srg:
-    - N/A
-macOS:
-  - "12.0"
+  - N/A
 tags:
-  - inherent
+- inherent
 mobileconfig: false
 mobileconfig_info:
+OS_specifics:
+  macOS:
+    '12':
+      references:
+        cce:
+        - CCE-90997-8
+        disa_stig:
+        - N/A
+    '11':
+      references:
+        cce:
+        - CCE-85471-1
+        disa_stig:
+        - N/A
+    '10.15':
+      references:
+        cce:
+        - CCE-84941-4
+        disa_stig:
+        - N/A

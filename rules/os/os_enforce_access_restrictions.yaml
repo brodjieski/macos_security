@@ -1,33 +1,49 @@
 id: os_enforce_access_restrictions
-title: "Enforce Access Restrictions"
-discussion: |
-  The information system _IS_ configured to enforce access restrictions and support auditing of the enforcement actions.
-  
-  The inherent configuration of a macOS provides users with the ability to set their own permission settings to control who can view and alter files on the computer. 
-
-  link:https://support.apple.com/guide/mac-help/change-permissions-for-files-folders-or-disks-mchlp1203/mac[]
+title: Enforce Access Restrictions
+discussion: "The information system _IS_ configured to enforce access restrictions\
+  \ and support auditing of the enforcement actions.\n\nThe inherent configuration\
+  \ of a macOS provides users with the ability to set their own permission settings\
+  \ to control who can view and alter files on the computer. \n\nlink:https://support.apple.com/guide/mac-help/change-permissions-for-files-folders-or-disks-mchlp1203/mac[]\n"
 check: |
   The technology supports this requirement and cannot be configured to be out of compliance. The technology inherently meets this requirement.
 fix: |
   The technology inherently meets this requirement. No fix is required.
 references:
-  cce:
-    - CCE-90917-6
+  cce: |-
+    $OS_VALUE
   cci:
-    - CCI-001813
+  - CCI-001813
   800-53r5:
-    - CM-5(1)
+  - CM-5(1)
   800-53r4:
-    - CM-5(1)
-  disa_stig:
-    - N/A
+  - CM-5(1)
+  disa_stig: |-
+    $OS_VALUE
   srg:
-    - N/A
-macOS:
-  - "12.0"
+  - N/A
 tags:
-  - 800-53r5_high
-  - 800-53r4_high
-  - inherent
+- 800-53r5_high
+- 800-53r4_high
+- inherent
 mobileconfig: false
 mobileconfig_info:
+OS_specifics:
+  macOS:
+    '12':
+      references:
+        cce:
+        - CCE-90917-6
+        disa_stig:
+        - N/A
+    '11':
+      references:
+        cce:
+        - CCE-85306-9
+        disa_stig:
+        - N/A
+    '10.15':
+      references:
+        cce:
+        - CCE-84854-9
+        disa_stig:
+        - N/A

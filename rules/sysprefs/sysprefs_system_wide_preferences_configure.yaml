@@ -1,9 +1,10 @@
 id: sysprefs_system_wide_preferences_configure
-title: "Require Administrator Password to Modify System-Wide Preferences"
-discussion: |
-  The system _MUST_ be configured to require an administrator password in order to modify the system-wide preferences in System Preferences. 
-
-  Some Preference Panes in System Preferences contain settings that affect the entire system. Requiring a password to unlock these system-wide settings reduces the risk of a non-authorized user modifying system configurations.
+title: Require Administrator Password to Modify System-Wide Preferences
+discussion: "The system _MUST_ be configured to require an administrator password\
+  \ in order to modify the system-wide preferences in System Preferences. \n\nSome\
+  \ Preference Panes in System Preferences contain settings that affect the entire\
+  \ system. Requiring a password to unlock these system-wide settings reduces the\
+  \ risk of a non-authorized user modifying system configurations.\n"
 check: |
   /usr/bin/security authorizationdb read system.preferences 2> /dev/null |  /usr/bin/grep -A 1 "<key>shared</key>" | /usr/bin/grep -c "<false/>"
 result:
@@ -16,39 +17,57 @@ fix: |
   /usr/bin/security authorizationdb write system.preferences < /tmp/system.preferences.plist
   ----
 references:
-  cce:
-    - CCE-91079-4
+  cce: |-
+    $OS_VALUE
   800-53r5:
-    - AC-6
-    - AC-6(2)
-    - AC-6(1)
+  - AC-6
+  - AC-6(2)
+  - AC-6(1)
   800-53r4:
-    - AC-6
-    - AC-6(1)
-    - AC-6(2)
-  disa_stig:
-    - APPL-12-002069
+  - AC-6
+  - AC-6(1)
+  - AC-6(2)
+  disa_stig: |-
+    $OS_VALUE
   800-171r2:
-    - 3.1.5
-    - 3.1.6
+  - 3.1.5
+  - 3.1.6
   cis:
     benchmark:
-      - 5.10 (level 1)
+    - 5.10 (level 1)
     controls v8:
-      - 4.1
-macOS:
-  - "12.0"
+    - 4.1
 tags:
-  - 800-53r5_moderate 
-  - 800-53r5_high 
-  - 800-53r4_moderate 
-  - 800-53r4_high 
-  - 800-171 
-  - cnssi-1253
-  - cis_lvl1
-  - cis_lvl2
-  - cisv8
-  - stig
-severity: "medium"
+- 800-53r5_moderate
+- 800-53r5_high
+- 800-53r4_moderate
+- 800-53r4_high
+- 800-171
+- cnssi-1253
+- cis_lvl1
+- cis_lvl2
+- cisv8
+- stig
+severity: medium
 mobileconfig: false
 mobileconfig_info:
+OS_specifics:
+  macOS:
+    '12':
+      references:
+        cce:
+        - CCE-91079-4
+        disa_stig:
+        - APPL-12-002069
+    '11':
+      references:
+        cce:
+        - CCE-85389-5
+        disa_stig:
+        - APPL-11-002069
+    '10.15':
+      references:
+        cce:
+        - CCE-84937-2
+        disa_stig:
+        - AOSX-15-002069

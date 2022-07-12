@@ -1,37 +1,56 @@
 id: os_nonlocal_maintenance
-title: "Configure the System for Nonlocal Maintenance"
-discussion: |
-  Nonlocal maintenance and diagnostic activities are those activities conducted by individuals communicating through a network, either an external network or an internal network.  
+title: Configure the System for Nonlocal Maintenance
+discussion: "Nonlocal maintenance and diagnostic activities are those activities conducted\
+  \ by individuals communicating through a network, either an external network or\
+  \ an internal network.  \n"
 check: |
   This requirement is NA for this technology.
 fix: |
   The requirement is NA. No fix is required.
 references:
-  cce:
-    - CCE-90958-0
+  cce: |-
+    $OS_VALUE
   cci:
-    - N/A
+  - N/A
   800-53r5:
-    - MA-4
+  - MA-4
   800-53r4:
-    - MA-4
+  - MA-4
   800-171r2:
-    - 3.7.5
-  disa_stig:
-    - N/A
+  - 3.7.5
+  disa_stig: |-
+    $OS_VALUE
   srg:
-    - N/A
-macOS:
-  - "12.0"
+  - N/A
 tags:
-  - 800-53r5_low
-  - 800-53r5_moderate
-  - 800-53r5_high
-  - 800-53r4_low
-  - 800-53r4_moderate
-  - 800-53r4_high
-  - 800-171
-  - cnssi-1253
-  - n_a
+- 800-53r5_low
+- 800-53r5_moderate
+- 800-53r5_high
+- 800-53r4_low
+- 800-53r4_moderate
+- 800-53r4_high
+- 800-171
+- cnssi-1253
+- n_a
 mobileconfig: false
 mobileconfig_info:
+OS_specifics:
+  macOS:
+    '12':
+      references:
+        cce:
+        - CCE-90958-0
+        disa_stig:
+        - N/A
+    '11':
+      references:
+        cce:
+        - CCE-85458-8
+        disa_stig:
+        - N/A
+    '10.15':
+      references:
+        cce:
+        - CCE-84915-8
+        disa_stig:
+        - N/A

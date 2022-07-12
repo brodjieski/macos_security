@@ -1,5 +1,5 @@
 id: sysprefs_internet_accounts_prefpane_hide
-title: "Hide the Internet Accounts System Preference Pane"
+title: Hide the Internet Accounts System Preference Pane
 discussion: |
   The Internet Accounts System Preference pane _MUST_ be hidden to prevent the addition of unauthorized internet accounts.
 
@@ -14,31 +14,43 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - CCE-91130-5
-  cci: 
-    - CCI-001774
-    - CCI-000381
+  cce: |-
+    $OS_VALUE
+  cci:
+  - CCI-001774
+  - CCI-000381
   800-53r5:
-    - CM-7(5)
-    - AC-20
-  800-53r4: 
-    - AC-20
-    - CM-7(5)
-  srg: 
-    - SRG-OS-000095-GPOS-00049
-    - SRG-OS-000370-GPOS-00155
-  disa_stig: 
-    - APPL-12-002032
+  - CM-7(5)
+  - AC-20
+  800-53r4:
+  - AC-20
+  - CM-7(5)
+  srg:
+  - SRG-OS-000095-GPOS-00049
+  - SRG-OS-000370-GPOS-00155
+  disa_stig: |-
+    $OS_VALUE
   800-171r2:
-    - 3.1.20
-macOS:
-  - "12.0"
+  - 3.1.20
 tags:
-  - stig
-severity: "medium"
+- stig
+severity: medium
 mobileconfig: true
 mobileconfig_info:
   com.apple.systempreferences:
-    HiddenPreferencePanes: 
-      - com.apple.preferences.internetaccounts
+    HiddenPreferencePanes:
+    - com.apple.preferences.internetaccounts
+OS_specifics:
+  macOS:
+    '12':
+      references:
+        cce:
+        - CCE-91130-5
+        disa_stig:
+        - APPL-12-002032
+    '11':
+      references:
+        cce:
+        - CCE-85487-7
+        disa_stig:
+        - APPL-11-002032

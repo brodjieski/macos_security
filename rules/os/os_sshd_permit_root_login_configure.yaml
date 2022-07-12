@@ -1,11 +1,11 @@
 id: os_sshd_permit_root_login_configure
-title: "Disable Root Login for SSH"
-discussion: |
-  If SSH is enabled to assure individual accountability and prevent unauthorized access, logging in as root via SSH _MUST_ be disabled. 
-  
-  The macOS system MUST  require individuals to be authenticated with an individual authenticator prior to using a group authenticator, and administrator users _MUST_ never log in directly as root. 
-  
-  NOTE: /etc/ssh/sshd_config will be automatically modified to its original state following any update or major upgrade to the operating system.
+title: Disable Root Login for SSH
+discussion: "If SSH is enabled to assure individual accountability and prevent unauthorized\
+  \ access, logging in as root via SSH _MUST_ be disabled. \n\nThe macOS system MUST\
+  \  require individuals to be authenticated with an individual authenticator prior\
+  \ to using a group authenticator, and administrator users _MUST_ never log in directly\
+  \ as root. \n\nNOTE: /etc/ssh/sshd_config will be automatically modified to its\
+  \ original state following any update or major upgrade to the operating system.\n"
 check: |
   /usr/bin/grep -c "^PermitRootLogin no" /etc/ssh/sshd_config
 result:
@@ -16,24 +16,42 @@ fix: |
   /usr/bin/sed -i.bak 's/^[\#]*PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config; /bin/launchctl kickstart -k system/com.openssh.sshd
   ----
 references:
-  cce:
-    - CCE-91013-3
-  cci: 
-    - CCI-000770
+  cce: |-
+    $OS_VALUE
+  cci:
+  - CCI-000770
   800-53r5:
-    - IA-2(5)
-  800-53r4: 
-    - IA-2(5)
+  - IA-2(5)
+  800-53r4:
+  - IA-2(5)
   srg:
-    - SRG-OS-000109-GPOS-00056
-  disa_stig:
-    - APPL-12-001100
-macOS:
-  - "12.0"
+  - SRG-OS-000109-GPOS-00056
+  disa_stig: |-
+    $OS_VALUE
 tags:
-  - 800-53r5_high 
-  - 800-53r4_high 
-  - stig
-severity: "medium"
+- 800-53r5_high
+- 800-53r4_high
+- stig
+severity: medium
 mobileconfig: false
 mobileconfig_info:
+OS_specifics:
+  macOS:
+    '12':
+      references:
+        cce:
+        - CCE-91013-3
+        disa_stig:
+        - APPL-12-001100
+    '11':
+      references:
+        cce:
+        - CCE-85385-3
+        disa_stig:
+        - APPL-11-001100
+    '10.15':
+      references:
+        cce:
+        - CCE-84798-8
+        disa_stig:
+        - AOSX-15-001100

@@ -1,40 +1,50 @@
 id: sysprefs_siri_prefpane_hide
-title: "Hide the System Preference Pane for Siri"
-discussion: |
-  The system preference pane for Siri _MUST_ be hidden.
-
-  HIding the system preference pane prevents the users from configuring Siri. 
-check: |
-  /usr/bin/profiles -P -o stdout | /usr/bin/grep -c 'com.apple.preference.speech' | /usr/bin/awk '{ if ($1 >= 2) {print "1"} else {print "0"}}' 
+title: Hide the System Preference Pane for Siri
+discussion: "The system preference pane for Siri _MUST_ be hidden.\n\nHIding the system\
+  \ preference pane prevents the users from configuring Siri. \n"
+check: "/usr/bin/profiles -P -o stdout | /usr/bin/grep -c 'com.apple.preferences.speech'\
+  \ | /usr/bin/awk '{ if ($1 >= 2) {print \"1\"} else {print \"0\"}}' \n"
 result:
   integer: 1
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - CCE-91137-0
-  cci: 
-    - CCI-001774
-    - CCI-000381
+  cce: |-
+    $OS_VALUE
+  cci:
+  - CCI-001774
+  - CCI-000381
   800-53r5:
-    - CM-7
-    - CM-7(5)
-  800-53r4: 
-    - CM-7
-    - CM-7(5)
-  srg: 
-    - SRG-OS-000095-GPOS-00049
-  disa_stig: 
-    - APPL-12-002053
+  - CM-7
+  - CM-7(5)
+  800-53r4:
+  - CM-7
+  - CM-7(5)
+  srg:
+  - SRG-OS-000095-GPOS-00049
+  disa_stig: |-
+    $OS_VALUE
   800-171r2:
-    - N/A
-macOS:
-  - "12.0"
+  - N/A
 tags:
-  - stig
-severity: "medium"
+- stig
+severity: medium
 mobileconfig: true
 mobileconfig_info:
   com.apple.systempreferences:
-    HiddenPreferencePanes: 
-      - com.apple.preference.speech
+    HiddenPreferencePanes:
+    - com.apple.preferences.speech
+OS_specifics:
+  macOS:
+    '12':
+      references:
+        cce:
+        - CCE-91137-0
+        disa_stig:
+        - APPL-12-002053
+    '11':
+      references:
+        cce:
+        - CCE-85491-9
+        disa_stig:
+        - APPL-11-002053

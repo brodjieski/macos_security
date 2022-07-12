@@ -1,5 +1,5 @@
 id: os_limit_auditable_events
-title: "Only allow authorized users to select auditable events"
+title: Only allow authorized users to select auditable events
 discussion: |
   Without the capability to restrict which roles and individuals can select which events are audited, unauthorized personnel may be able to prevent the auditing of critical events. Misconfigured audits may degrade the system's performance by overwhelming the audit log. Misconfigured audits may also make it more difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
 check: |
@@ -7,21 +7,39 @@ check: |
 fix: |
   The technology inherently meets this requirement. No fix is required.
 references:
-  cce:
-    - CCE-90941-6
+  cce: |-
+    $OS_VALUE
   cci:
-    - CCI-000171
+  - CCI-000171
   800-53r5:
-    - N/A
+  - N/A
   800-53r4:
-    - N/A
-  disa_stig:
-    - N/A
+  - N/A
+  disa_stig: |-
+    $OS_VALUE
   srg:
-    - N/A
-macOS:
-  - "12.0"
+  - N/A
 tags:
-  - inherent
+- inherent
 mobileconfig: false
 mobileconfig_info:
+OS_specifics:
+  macOS:
+    '12':
+      references:
+        cce:
+        - CCE-90941-6
+        disa_stig:
+        - N/A
+    '11':
+      references:
+        cce:
+        - CCE-85331-7
+        disa_stig:
+        - N/A
+    '10.15':
+      references:
+        cce:
+        - CCE-84861-4
+        disa_stig:
+        - N/A

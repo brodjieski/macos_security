@@ -1,5 +1,5 @@
 id: icloud_bookmarks_disable
-title: "Disable iCloud Bookmarks"
+title: Disable iCloud Bookmarks
 discussion: |
   The macOS built-in Safari.app bookmark synchronization via the iCloud service _MUST_ be disabled.
 
@@ -10,56 +10,74 @@ check: |
   .objectForKey('allowCloudBookmarks').js
   EOS
 result:
-  string: "false"
+  string: 'false'
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - CCE-90887-1
+  cce: |-
+    $OS_VALUE
   cci:
-    - CCI-000381
-    - CCI-001774
+  - CCI-000381
+  - CCI-001774
   800-53r5:
-    - AC-20
-    - AC-20(1)
-    - CM-7
-    - CM-7(1)
-    - SC-7(10)    
+  - AC-20
+  - AC-20(1)
+  - CM-7
+  - CM-7(1)
+  - SC-7(10)
   800-53r4:
-    - CM-7
-    - CM-7(1)
-    - AC-20
-    - AC-20(1)
+  - CM-7
+  - CM-7(1)
+  - AC-20
+  - AC-20(1)
   srg:
-    - SRG-OS-000095-GPOS-00049
-    - SRG-OS-000370-GPOS-00155
-  disa_stig:
-    - APPL-12-002042
+  - SRG-OS-000095-GPOS-00049
+  - SRG-OS-000370-GPOS-00155
+  disa_stig: |-
+    $OS_VALUE
   800-171r2:
-    - 3.1.20
-    - 3.4.6
+  - 3.1.20
+  - 3.4.6
   cis:
     benchmark:
-      - N/A
+    - N/A
     controls v8:
-      - 4.1
-      - 4.8
-      - 15.3
-macOS:
-  - "12.0"
+    - 4.1
+    - 4.8
+    - 15.3
 tags:
-  - 800-53r5_low 
-  - 800-53r5_moderate 
-  - 800-53r5_high 
-  - 800-53r4_low 
-  - 800-53r4_moderate 
-  - 800-53r4_high 
-  - 800-171 
-  - cnssi-1253
-  - cisv8
-  - stig
-severity: "medium"
+- 800-53r5_low
+- 800-53r5_moderate
+- 800-53r5_high
+- 800-53r4_low
+- 800-53r4_moderate
+- 800-53r4_high
+- 800-171
+- cnssi-1253
+- cisv8
+- stig
+severity: medium
 mobileconfig: true
 mobileconfig_info:
   com.apple.applicationaccess:
     allowCloudBookmarks: false
+OS_specifics:
+  macOS:
+    '12':
+      references:
+        cce:
+        - CCE-90887-1
+        disa_stig:
+        - APPL-12-002042
+    '11':
+      references:
+        cce:
+        - CCE-85284-8
+        disa_stig:
+        - APPL-11-002042
+    '10.15':
+      references:
+        cce:
+        - CCE-84732-7
+        disa_stig:
+        - AOSX-15-002042

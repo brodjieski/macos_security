@@ -1,5 +1,5 @@
 id: os_privacy_principle_minimization
-title: "Implement the Privacy Principle of Minimization"
+title: Implement the Privacy Principle of Minimization
 discussion: |
   Implement the privacy principle of minimization using organization-defined processes.
 
@@ -9,24 +9,42 @@ check: |
 fix: |
   The requirement is NA. No fix is required.
 references:
-  cce:
-    - CCE-90980-4
+  cce: |-
+    $OS_VALUE
   cci:
-    - N/A
+  - N/A
   800-53r5:
-    - SA-8(33)
+  - SA-8(33)
   800-53r4:
-    - N/A
+  - N/A
   800-171r2:
-    - N/A
-  disa_stig:
-    - N/A
+  - N/A
+  disa_stig: |-
+    $OS_VALUE
   srg:
-    - N/A
-macOS:
-  - "12.0"
+  - N/A
 tags:
-  - 800-53r5_privacy
-  - n_a
+- 800-53r5_privacy
+- n_a
 mobileconfig: false
 mobileconfig_info:
+OS_specifics:
+  macOS:
+    '12':
+      references:
+        cce:
+        - CCE-90980-4
+        disa_stig:
+        - N/A
+    '11':
+      references:
+        cce:
+        - CCE-85479-4
+        disa_stig:
+        - N/A
+    '10.15':
+      references:
+        cce:
+        - CCE-84949-7
+        disa_stig:
+        - N/A

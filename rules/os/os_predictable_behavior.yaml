@@ -1,5 +1,5 @@
 id: os_predictable_behavior
-title: "Must behave in predictable and documented manner"
+title: Must behave in predictable and documented manner
 discussion: |
   The information system behaves in a predictable and documented manner that reflects organizational and system objectives when invalid inputs are received.
 check: |
@@ -7,21 +7,39 @@ check: |
 fix: |
   The technology inherently meets this requirement. No fix is required.
 references:
-  cce:
-    - CCE-90976-2
+  cce: |-
+    $OS_VALUE
   cci:
-    - CCI-002754
+  - CCI-002754
   800-53r5:
-    - SI-10(3)
+  - SI-10(3)
   800-53r4:
-    - SI-10(3)
-  disa_stig:
-    - N/A
+  - SI-10(3)
+  disa_stig: |-
+    $OS_VALUE
   srg:
-    - N/A
-macOS:
-  - "12.0"
+  - N/A
 tags:
-  - inherent
+- inherent
 mobileconfig: false
 mobileconfig_info:
+OS_specifics:
+  macOS:
+    '12':
+      references:
+        cce:
+        - CCE-90976-2
+        disa_stig:
+        - N/A
+    '11':
+      references:
+        cce:
+        - CCE-85358-0
+        disa_stig:
+        - N/A
+    '10.15':
+      references:
+        cce:
+        - CCE-84871-3
+        disa_stig:
+        - N/A

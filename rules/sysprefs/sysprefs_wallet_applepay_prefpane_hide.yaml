@@ -1,9 +1,8 @@
 id: sysprefs_wallet_applepay_prefpane_hide
-title: "Hide the System Preference Pane for Wallet and Apple Pay"
-discussion: |
-  The system preference pane for Wallet and Apple Pay _MUST_ be hidden.
-
-  Hiding the system preference pane prevents the users from configuring Wallet and Apple Pay. 
+title: Hide the System Preference Pane for Wallet and Apple Pay
+discussion: "The system preference pane for Wallet and Apple Pay _MUST_ be hidden.\n\
+  \nHiding the system preference pane prevents the users from configuring Wallet and\
+  \ Apple Pay. \n"
 check: |
   /usr/bin/profiles -P -o stdout | /usr/bin/grep -c 'com.apple.preferences.wallet' | /usr/bin/awk '{ if ($1 >= 1) {print "1"} else {print "0"}}'
 result:
@@ -11,30 +10,42 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - CCE-91148-7
-  cci: 
-    - CCI-001774
-    - CCI-000381
+  cce: |-
+    $OS_VALUE
+  cci:
+  - CCI-001774
+  - CCI-000381
   800-53r5:
-    - CM-7
-    - CM-7(5)
-  800-53r4: 
-    - CM-7
-    - CM-7(5)
-  srg: 
-    - SRG-OS-000095-GPOS-00049
-  disa_stig: 
-    - APPL-12-002052
+  - CM-7
+  - CM-7(5)
+  800-53r4:
+  - CM-7
+  - CM-7(5)
+  srg:
+  - SRG-OS-000095-GPOS-00049
+  disa_stig: |-
+    $OS_VALUE
   800-171r2:
-    - N/A
-macOS:
-  - "12.0"
+  - N/A
 tags:
-  - stig
-severity: "medium"
+- stig
+severity: medium
 mobileconfig: true
 mobileconfig_info:
   com.apple.systempreferences:
-    HiddenPreferencePanes: 
-      - com.apple.preferences.wallet
+    HiddenPreferencePanes:
+    - com.apple.preferences.wallet
+OS_specifics:
+  macOS:
+    '12':
+      references:
+        cce:
+        - CCE-91148-7
+        disa_stig:
+        - APPL-12-002052
+    '11':
+      references:
+        cce:
+        - CCE-85486-9
+        disa_stig:
+        - APPL-11-002052

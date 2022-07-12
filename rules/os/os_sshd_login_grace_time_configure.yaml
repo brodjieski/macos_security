@@ -1,41 +1,59 @@
 id: os_sshd_login_grace_time_configure
-title: "Set Login Grace Time to $ODV"
+title: Set Login Grace Time to $ODV
 discussion: |
   If SSHD is enabled then it _MUST_ be configured to wait only $ODV seconds before timing out logon attempts.
 
   NOTE: /etc/ssh/sshd_config will be automatically modified to its original state following any update or major upgrade to the operating system.
 check: |
-  /usr/bin/grep -c "^LoginGraceTime $ODV" /etc/ssh/sshd_config
+  /usr/bin/grep -c "^LoginGraceTime 30" /etc/ssh/sshd_config
 result:
   integer: 1
 fix: |
   [source,bash]
   ----
-  /usr/bin/sed -i.bak 's/.*LoginGraceTime.*/LoginGraceTime $ODV/' /etc/ssh/sshd_config; /bin/launchctl kickstart -k system/com.openssh.sshd
+  /usr/bin/sed -i.bak 's/.*LoginGraceTime.*/LoginGraceTime 30/' /etc/ssh/sshd_config; /bin/launchctl kickstart -k system/com.openssh.sshd
   ----
 references:
-  cce:
-    - CCE-91012-5
-  cci: 
-    - CCI-001133
+  cce: |-
+    $OS_VALUE
+  cci:
+  - CCI-001133
   800-53r5:
-    - SC-10
-  800-53r4: 
-    - SC-10
+  - SC-10
+  800-53r4:
+  - SC-10
   srg:
-    - SRG-OS-000163-GPOS-00072
-  disa_stig:
-    - APPL-12-000053
+  - SRG-OS-000163-GPOS-00072
+  disa_stig: |-
+    $OS_VALUE
   800-171r2:
-    - 3.13.9
-macOS:
-  - "12.0"
+  - 3.13.9
 odv:
-  hint: "Number of seconds."
-  recommended: 30
+  hint: Number of seconds.
+  default: 30
   stig: 30
 tags:
-  - stig
-severity: "medium"
+- stig
+severity: medium
 mobileconfig: false
 mobileconfig_info:
+OS_specifics:
+  macOS:
+    '12':
+      references:
+        cce:
+        - CCE-91012-5
+        disa_stig:
+        - APPL-12-000053
+    '11':
+      references:
+        cce:
+        - CCE-85384-6
+        disa_stig:
+        - APPL-11-000053
+    '10.15':
+      references:
+        cce:
+        - CCE-84796-2
+        disa_stig:
+        - AOSX-15-000053

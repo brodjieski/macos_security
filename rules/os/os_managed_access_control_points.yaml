@@ -1,5 +1,5 @@
 id: os_managed_access_control_points
-title: "Managed Access Control Points"
+title: Managed Access Control Points
 discussion: |
   Route remote accesses through authorized and managed network access control points.
 
@@ -9,25 +9,43 @@ check: |
 fix: |
   The requirement is NA. No fix is required.
 references:
-  cce:
-    - CCE-90948-1
+  cce: |-
+    $OS_VALUE
   cci:
-    - N/A
+  - N/A
   800-53r5:
-    - AC-17(3)
+  - AC-17(3)
   800-53r4:
-    - N/A
+  - N/A
   800-171r2:
-    - N/A
-  disa_stig:
-    - N/A
+  - N/A
+  disa_stig: |-
+    $OS_VALUE
   srg:
-    - N/A
-macOS:
-  - "12.0"
+  - N/A
 tags:
-  - 800-53r5_moderate
-  - 800-53r5_high
-  - n_a
+- 800-53r5_moderate
+- 800-53r5_high
+- n_a
 mobileconfig: false
 mobileconfig_info:
+OS_specifics:
+  macOS:
+    '12':
+      references:
+        cce:
+        - CCE-90948-1
+        disa_stig:
+        - N/A
+    '11':
+      references:
+        cce:
+        - CCE-85477-8
+        disa_stig:
+        - N/A
+    '10.15':
+      references:
+        cce:
+        - CCE-84946-3
+        disa_stig:
+        - N/A

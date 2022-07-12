@@ -1,5 +1,5 @@
 id: os_privacy_setup_prompt_disable
-title: "Disable Privacy Setup Services During Setup Assistant"
+title: Disable Privacy Setup Services During Setup Assistant
 discussion: |
   The prompt for Privacy Setup services during Setup Assistant _MUST_ be disabled.
 
@@ -10,37 +10,55 @@ check: |
   .objectForKey('SkipPrivacySetup').js
   EOS
 result:
-  string: "true"
+  string: 'true'
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - CCE-90981-2
+  cce: |-
+    $OS_VALUE
   cci:
-    - CCI-000381
+  - CCI-000381
   800-53r5:
-    - CM-7
-    - CM-7(1)
-  800-53r4: 
-    - CM-7
-    - CM-7(1)
+  - CM-7
+  - CM-7(1)
+  800-53r4:
+  - CM-7
+  - CM-7(1)
   srg:
-    - SRG-OS-000095-GPOS-00049
-  disa_stig: 
-    - APPL-12-002036
+  - SRG-OS-000095-GPOS-00049
+  disa_stig: |-
+    $OS_VALUE
   cis:
     benchmark:
-      - N/A
+    - N/A
     controls v8:
-      - 4.1
-      - 4.8
-macOS:
-  - "12.0"
+    - 4.1
+    - 4.8
 tags:
-  - cisv8
-  - stig
-severity: "medium"
+- cisv8
+- stig
+severity: medium
 mobileconfig: true
 mobileconfig_info:
   com.apple.SetupAssistant.managed:
     SkipPrivacySetup: true
+OS_specifics:
+  macOS:
+    '12':
+      references:
+        cce:
+        - CCE-90981-2
+        disa_stig:
+        - APPL-12-002036
+    '11':
+      references:
+        cce:
+        - CCE-85362-2
+        disa_stig:
+        - APPL-11-002036
+    '10.15':
+      references:
+        cce:
+        - CCE-84781-4
+        disa_stig:
+        - AOSX-15-002036

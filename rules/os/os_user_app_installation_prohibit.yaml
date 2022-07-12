@@ -1,9 +1,11 @@
 id: os_user_app_installation_prohibit
-title: "Prohibit User Installation of Software into /Users/"
-discussion: |
-  Users _MUST_ not be allowed to install software into /Users/. 
-  
-  Allowing regular users to install software, without explicit privileges, presents the risk of untested and potentially malicious software being installed on the system. Explicit privileges (escalated or administrative privileges) provide the regular user with explicit capabilities and control that exceeds the rights of a regular user.
+title: Prohibit User Installation of Software into /Users/
+discussion: "Users _MUST_ not be allowed to install software into /Users/. \n\nAllowing\
+  \ regular users to install software, without explicit privileges, presents the risk\
+  \ of untested and potentially malicious software being installed on the system.\
+  \ Explicit privileges (escalated or administrative privileges) provide the regular\
+  \ user with explicit capabilities and control that exceeds the rights of a regular\
+  \ user.\n"
 check: |
   /usr/bin/osascript -l JavaScript << EOS
   function run() {
@@ -20,30 +22,48 @@ check: |
     }
   EOS
 result:
-  string: "true"
+  string: 'true'
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - CCE-91023-2
+  cce: |-
+    $OS_VALUE
   cci:
-    - CCI-001812
+  - CCI-001812
   800-53r5:
-    - CM-11(2)
+  - CM-11(2)
   800-53r4:
-    - CM-11(2)
+  - CM-11(2)
   srg:
-    - N/A
-  disa_stig:
-    - N/A
-macOS:
-  - "12.0"
+  - N/A
+  disa_stig: |-
+    $OS_VALUE
 tags:
-  - none
-severity: "medium"
+- none
+severity: medium
 mobileconfig: true
 mobileconfig_info:
   com.apple.applicationaccess.new:
     familyControlsEnabled: true
-    pathBlackList: 
-      - "/Users/"
+    pathBlackList:
+    - /Users/
+OS_specifics:
+  macOS:
+    '12':
+      references:
+        cce:
+        - CCE-91023-2
+        disa_stig:
+        - N/A
+    '11':
+      references:
+        cce:
+        - CCE-85396-0
+        disa_stig:
+        - APPL-11-002067
+    '10.15':
+      references:
+        cce:
+        - CCE-84805-1
+        disa_stig:
+        - AOSX-15-002067

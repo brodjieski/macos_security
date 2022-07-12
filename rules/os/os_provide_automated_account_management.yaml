@@ -1,36 +1,54 @@
 id: os_provide_automated_account_management
-title: "Employ Automated Mechanisms for Account Management Functions"
+title: Employ Automated Mechanisms for Account Management Functions
 discussion: |
   The organization should employ automated mechanisms to support the management of information system accounts.
 
   The use of automated mechanisms prevents against human error and provide a faster and more efficient means of relaying time-sensitive information and account management.
-  
+
   To employ automated mechanisms for account management functions, many operating systems can be integrated with an enterprise-level directory service that meets or exceeds this requirement.
 check: |
   The technology does not support this requirement. This is an applicable-does not meet finding.
 fix: |
   This requirement is a permanent finding and cannot be fixed. An appropriate mitigation for the system must be implemented, but this finding cannot be considered fixed.
 references:
-  cce:
-    - CCE-90984-6
+  cce: |-
+    $OS_VALUE
   cci:
-    - CCI-000015
+  - CCI-000015
   800-53r5:
-    - AC-2(1)
+  - AC-2(1)
   800-53r4:
-    - AC-2(1)
-  disa_stig:
-    - N/A
+  - AC-2(1)
+  disa_stig: |-
+    $OS_VALUE
   srg:
-    - N/A
-macOS:
-  - "12.0"
+  - N/A
 tags:
-  - 800-53r5_moderate
-  - 800-53r5_high
-  - 800-53r4_moderate
-  - 800-53r4_high
-  - cnssi-1253
-  - permanent
+- 800-53r5_moderate
+- 800-53r5_high
+- 800-53r4_moderate
+- 800-53r4_high
+- cnssi-1253
+- permanent
 mobileconfig: false
 mobileconfig_info:
+OS_specifics:
+  macOS:
+    '12':
+      references:
+        cce:
+        - CCE-90984-6
+        disa_stig:
+        - N/A
+    '11':
+      references:
+        cce:
+        - CCE-85364-8
+        disa_stig:
+        - N/A
+    '10.15':
+      references:
+        cce:
+        - CCE-84899-4
+        disa_stig:
+        - N/A

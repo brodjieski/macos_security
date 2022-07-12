@@ -1,5 +1,5 @@
 id: os_sshd_key_exchange_algorithm_configure
-title: "Configure SSHD to Use Secure Key Exchange Algorithms"
+title: Configure SSHD to Use Secure Key Exchange Algorithms
 discussion: |
   Unapproved mechanisms for authentication to the cryptographic module are not verified, and therefore cannot be relied upon to provide confidentiality or integrity, resulting in the compromise of DoD data.
 
@@ -20,44 +20,62 @@ fix: |
   /usr/bin/grep -q '^KexAlgorithms' /etc/ssh/sshd_config && /usr/bin/sed -i.bak 's/.*KexAlgorithms.*/KexAlgorithms diffie-hellman-group-exchange-sha256/' /etc/ssh/sshd_config || /bin/echo 'KexAlgorithms diffie-hellman-group-exchange-sha256' >> /etc/ssh/sshd_config; /bin/launchctl kickstart -k system/com.openssh.sshd
   ----
 references:
-  cce:
-    - CCE-91011-7
-  cci: 
-    - CCI-000803
-    - CCI-000068
-    - CCI-000087
-    - CCI-003123
-    - CCI-002890
+  cce: |-
+    $OS_VALUE
+  cci:
+  - CCI-000803
+  - CCI-000068
+  - CCI-000087
+  - CCI-003123
+  - CCI-002890
   800-53r5:
-    - AC-17(2)
-    - IA-7
-    - MA-4(6)
-  800-53r4: 
-    - IA-7
-    - AC-17(2)
-    - MA-4(6)
+  - AC-17(2)
+  - IA-7
+  - MA-4(6)
+  800-53r4:
+  - IA-7
+  - AC-17(2)
+  - MA-4(6)
   srg:
-    - SRG-OS-000033-GPOS-00014
-    - SRG-OS-000120-GPOS-00061
-    - SRG-OS-000125-GPOS-00065
-    - SRG-OS-000250-GPOS-00093
-    - SRG-OS-000393-GPOS-00173
-    - SRG-OS-000394-GPOS-00174
-  disa_stig:
-    - APPL-12-000056
+  - SRG-OS-000033-GPOS-00014
+  - SRG-OS-000120-GPOS-00061
+  - SRG-OS-000125-GPOS-00065
+  - SRG-OS-000250-GPOS-00093
+  - SRG-OS-000393-GPOS-00173
+  - SRG-OS-000394-GPOS-00174
+  disa_stig: |-
+    $OS_VALUE
   800-171r2:
-    - N/A
-macOS:
-  - "12.0"
+  - N/A
 tags:
-  - 800-53r5_low 
-  - 800-53r5_moderate 
-  - 800-53r5_high 
-  - 800-53r4_low 
-  - 800-53r4_moderate 
-  - 800-53r4_high
-  - cnssi-1253
-  - stig
-severity: "medium"
+- 800-53r5_low
+- 800-53r5_moderate
+- 800-53r5_high
+- 800-53r4_low
+- 800-53r4_moderate
+- 800-53r4_high
+- cnssi-1253
+- stig
+severity: medium
 mobileconfig: false
 mobileconfig_info:
+OS_specifics:
+  macOS:
+    '12':
+      references:
+        cce:
+        - CCE-91011-7
+        disa_stig:
+        - APPL-12-000056
+    '11':
+      references:
+        cce:
+        - CCE-85472-9
+        disa_stig:
+        - APPL-11-000056
+    '10.15':
+      references:
+        cce:
+        - CCE-84935-6
+        disa_stig:
+        - AOSX-15-000056

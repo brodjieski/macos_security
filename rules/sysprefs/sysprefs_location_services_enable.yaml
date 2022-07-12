@@ -1,7 +1,6 @@
 id: sysprefs_location_services_enable
-title: "Enable Location Services"
-discussion: |
-  Location Services _MUST_ be enabled.   
+title: Enable Location Services
+discussion: "Location Services _MUST_ be enabled.   \n"
 check: |
   /usr/bin/defaults read /var/db/locationd/Library/Preferences/ByHost/com.apple.locationd.plist LocationServicesEnabled
 result:
@@ -12,30 +11,42 @@ fix: |
   /usr/bin/defaults write /var/db/locationd/Library/Preferences/ByHost/com.apple.locationd LocationServicesEnabled -bool true; /bin/launchctl kickstart -k system/com.apple.locationd
   ----
 references:
-  cce:
-    - CCE-91132-1
-  cci: 
-    - N/A
+  cce: |-
+    $OS_VALUE
+  cci:
+  - N/A
   800-53r5:
-    - N/A    
-  800-53r4: 
-    - N/A
+  - N/A
+  800-53r4:
+  - N/A
   srg:
-    - N/A
-  disa_stig: 
-    - N/A
+  - N/A
+  disa_stig: |-
+    $OS_VALUE
   800-171r2:
-    - N/A
+  - N/A
   cis:
-    benchmark: 
-      - 2.5.3 (level 2)
-    controls v8: 
-      - 4.1
-      - 4.8
-macOS:
-  - "12.0"
+    benchmark:
+    - 2.5.3 (level 2)
+    controls v8:
+    - 4.1
+    - 4.8
 tags:
-  - cis_lvl2
-  - cisv8
+- cis_lvl2
+- cisv8
 mobileconfig: false
 mobileconfig_info:
+OS_specifics:
+  macOS:
+    '12':
+      references:
+        cce:
+        - CCE-91132-1
+        disa_stig:
+        - N/A
+    '11':
+      references:
+        cce:
+        - CCE-85527-0
+        disa_stig:
+        - N/A

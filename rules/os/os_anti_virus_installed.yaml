@@ -1,5 +1,5 @@
 id: os_anti_virus_installed
-title: "Must Use an Approved Antivirus Program"
+title: Must Use an Approved Antivirus Program
 discussion: |
   An approved antivirus product _MUST_ be installed and configured to run.
 
@@ -14,22 +14,40 @@ fix: |
   /bin/launchctl enable system/com.apple.mrt
   ----
 references:
-  cce:
-    - CCE-90900-2
-  cci: 
-    - CCI-000366
+  cce: |-
+    $OS_VALUE
+  cci:
+  - CCI-000366
   800-53r5:
-    - N/A
-  800-53r4: 
-    - SI-2
+  - N/A
+  800-53r4:
+  - SI-2
   srg:
-    - SRG-OS-000480-GPOS-00227
-  disa_stig:
-    - APPL-12-002070
-macOS:
-  - "12.0"
+  - SRG-OS-000480-GPOS-00227
+  disa_stig: |-
+    $OS_VALUE
 tags:
-  - stig
-severity: "high"
+- stig
+severity: high
 mobileconfig: false
 mobileconfig_info:
+OS_specifics:
+  macOS:
+    '12':
+      references:
+        cce:
+        - CCE-90900-2
+        disa_stig:
+        - APPL-12-002070
+    '11':
+      references:
+        cce:
+        - CCE-85501-5
+        disa_stig:
+        - APPL-11-002070
+    '10.15':
+      references:
+        cce:
+        - CCE-84894-5
+        disa_stig:
+        - AOSX-15-002070

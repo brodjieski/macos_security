@@ -1,14 +1,18 @@
 id: sysprefs_wifi_disable
-title: "Disable Wi-Fi Interface"
-discussion: |
-  The macOS system must be configured with Wi-Fi support software disabled if not connected to an authorized trusted network. 
-
-  Allowing devices and users to connect to or from the system without first authenticating them allows untrusted access and can lead to a compromise or attack. Since wireless communications can be intercepted  it is necessary to use encryption to protect the confidentiality of information in transit.Wireless technologies include  for example  microwave  packet radio (UHF/VHF)  802.11x  and Bluetooth. Wireless networks use authentication protocols (e.g.  EAP/TLS  PEAP)  which provide credential protection and mutual authentication.
-
-  NOTE: If the system requires Wi-Fi to connect to an authorized network, this is not applicable.
+title: Disable Wi-Fi Interface
+discussion: "The macOS system must be configured with Wi-Fi support software disabled\
+  \ if not connected to an authorized trusted network. \n\nAllowing devices and users\
+  \ to connect to or from the system without first authenticating them allows untrusted\
+  \ access and can lead to a compromise or attack. Since wireless communications can\
+  \ be intercepted  it is necessary to use encryption to protect the confidentiality\
+  \ of information in transit.Wireless technologies include  for example  microwave\
+  \  packet radio (UHF/VHF)  802.11x  and Bluetooth. Wireless networks use authentication\
+  \ protocols (e.g.  EAP/TLS  PEAP)  which provide credential protection and mutual\
+  \ authentication.\n\nNOTE: If the system requires Wi-Fi to connect to an authorized\
+  \ network, this is not applicable.\n"
 check: |
   /usr/sbin/networksetup -listallnetworkservices | /usr/bin/grep -c "*Wi-Fi"
-result: 
+result:
   integer: 1
 fix: |
   To disable Wi-Fi on a macOS system, run the following command.
@@ -17,43 +21,61 @@ fix: |
   /usr/sbin/networksetup -setnetworkserviceenabled "Wi-Fi" off
   ----
 references:
-  cce:
-    - CCE-91084-4
+  cce: |-
+    $OS_VALUE
   cci:
-    - N/A
+  - N/A
   800-53r5:
-    - AC-4
-    - AC-18
-    - AC-18(1)
-    - AC-18(3)
-  800-53r4: 
-    - AC-4
-    - AC-18(1)
-    - AC-18(3)
-  disa_stig:
-    - N/A
+  - AC-4
+  - AC-18
+  - AC-18(1)
+  - AC-18(3)
+  800-53r4:
+  - AC-4
+  - AC-18(1)
+  - AC-18(3)
+  disa_stig: |-
+    $OS_VALUE
   srg:
-    - N/A
+  - N/A
   800-171r2:
-    - N/A
+  - N/A
   cis:
     benchmark:
-      - N/A
+    - N/A
     controls v8:
-      - 4.2
-      - 12.6
-macOS:
-  - "12.0"
+    - 4.2
+    - 12.6
 tags:
-  - manual 
-  - cnssi-1253 
-  - 800-53r4_low 
-  - 800-53r4_moderate 
-  - 800-53r4_high 
-  - 800-53r5_low 
-  - 800-53r5_moderate 
-  - 800-53r5_high
-  - cisv8
-severity: "medium"
+- manual
+- cnssi-1253
+- 800-53r4_low
+- 800-53r4_moderate
+- 800-53r4_high
+- 800-53r5_low
+- 800-53r5_moderate
+- 800-53r5_high
+- cisv8
+severity: medium
 mobileconfig: false
 mobileconfig_info:
+OS_specifics:
+  macOS:
+    '12':
+      references:
+        cce:
+        - CCE-91084-4
+        disa_stig:
+        - N/A
+    '11':
+      references:
+        cce:
+        - CCE-85473-7
+        disa_stig:
+        - APPL-11-000008
+    '10.15':
+      references:
+        cce:
+        - CCE-84938-0
+        disa_stig:
+        - AOSX-15-000008

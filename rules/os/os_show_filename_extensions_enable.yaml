@@ -1,16 +1,10 @@
 id: os_show_filename_extensions_enable
-title: "Enable Show All Filename Extensions"
-discussion: |
-  Show all filename extensions _MUST_ be enabled in the Finder.
-  
-  [NOTE] 
-  ====
-  The check and fix are for the currently logged in user. To get the currently logged in user, run the following.
-  [source,bash]
-  ----
-  CURRENT_USER=$( /usr/sbin/scutil <<< "show State:/Users/ConsoleUser" | /usr/bin/awk '/Name :/ && ! /loginwindow/ { print $3 }' )
-  ----
-  ====
+title: Enable Show All Filename Extensions
+discussion: "Show all filename extensions _MUST_ be enabled in the Finder.\n\n[NOTE]\
+  \ \n====\nThe check and fix are for the currently logged in user. To get the currently\
+  \ logged in user, run the following.\n[source,bash]\n----\nCURRENT_USER=$( scutil\
+  \ <<< \"show State:/Users/ConsoleUser\" | awk '/Name :/ && ! /loginwindow/ { print\
+  \ $3 }' )\n----\n====\n"
 check: |
   /usr/bin/sudo -u "$CURRENT_USER" /usr/bin/defaults read .GlobalPreferences AppleShowAllExtensions 2>/dev/null
 result:
@@ -21,30 +15,42 @@ fix: |
   /usr/bin/sudo -u "$CURRENT_USER" /usr/bin/defaults write /Users/"$CURRENT_USER"/Library/Preferences/.GlobalPreferences AppleShowAllExtensions -bool true
   ----
 references:
-  cce:
-    - CCE-91112-3
+  cce: |-
+    $OS_VALUE
   cci:
-    - N/A
+  - N/A
   800-53r5:
-    - N/A
+  - N/A
   800-53r4:
-    - N/A
+  - N/A
   srg:
-    - N/A
-  disa_stig:
-    - N/A
+  - N/A
+  disa_stig: |-
+    $OS_VALUE
   800-171r2:
-    - N/A
+  - N/A
   cis:
     benchmark:
-      - 6.2 (level 1)
+    - 6.2 (level 1)
     controls v8:
-      - 2.3
-macOS:
-  - "12.0"
+    - 2.3
 tags:
-  - cis_lvl1
-  - cis_lvl2
-  - cisv8
+- cis_lvl1
+- cis_lvl2
+- cisv8
 mobileconfig: false
 mobileconfig_info:
+OS_specifics:
+  macOS:
+    '12':
+      references:
+        cce:
+        - CCE-91112-3
+        disa_stig:
+        - N/A
+    '11':
+      references:
+        cce:
+        - CCE-85511-4
+        disa_stig:
+        - N/A

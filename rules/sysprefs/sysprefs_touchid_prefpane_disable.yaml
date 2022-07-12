@@ -1,9 +1,7 @@
 id: sysprefs_touchid_prefpane_disable
-title: "Disable the System Preference Pane for Touch ID"
-discussion: |
-  The system preference pane for Touch ID _MUST_ be disabled.
-
-  Disabling the system preference pane prevents the users from configuring Touch ID. 
+title: Disable the System Preference Pane for Touch ID
+discussion: "The system preference pane for Touch ID _MUST_ be disabled.\n\nDisabling\
+  \ the system preference pane prevents the users from configuring Touch ID. \n"
 check: |
   /usr/bin/profiles -P -o stdout | /usr/bin/grep -c 'com.apple.preferences.password' | /usr/bin/awk '{ if ($1 >= 2) {print "1"} else {print "0"}}'
 result:
@@ -11,30 +9,42 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - CCE-91144-6
-  cci: 
-    - CCI-001774
-    - CCI-000381
+  cce: |-
+    $OS_VALUE
+  cci:
+  - CCI-001774
+  - CCI-000381
   800-53r5:
-    - CM-7
-    - CM-7(5)
-  800-53r4: 
-    - CM-7
-    - CM-7(5)
-  srg: 
-    - SRG-OS-000095-GPOS-00049
-  disa_stig: 
-    - APPL-12-002051
+  - CM-7
+  - CM-7(5)
+  800-53r4:
+  - CM-7
+  - CM-7(5)
+  srg:
+  - SRG-OS-000095-GPOS-00049
+  disa_stig: |-
+    $OS_VALUE
   800-171r2:
-    - N/A
-macOS:
-  - "12.0"
+  - N/A
 tags:
-  - stig
-severity: "medium"
+- stig
+severity: medium
 mobileconfig: true
 mobileconfig_info:
   com.apple.systempreferences:
-    DisabledPreferencePanes: 
-      - com.apple.preferences.password
+    DisabledPreferencePanes:
+    - com.apple.preferences.password
+OS_specifics:
+  macOS:
+    '12':
+      references:
+        cce:
+        - CCE-91144-6
+        disa_stig:
+        - APPL-12-002051
+    '11':
+      references:
+        cce:
+        - CCE-85488-5
+        disa_stig:
+        - APPL-11-002051

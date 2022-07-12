@@ -1,5 +1,5 @@
 id: os_time_server_enabled
-title: "Enable Time Synchronization Daemon"
+title: Enable Time Synchronization Daemon
 discussion: |
   The macOS time synchronization daemon (timed) _MUST_ be enabled for proper time synchronization to an authorized time server.
 
@@ -14,40 +14,58 @@ fix: |
   /bin/launchctl load -w /System/Library/LaunchDaemons/com.apple.timed.plist
   ----
 references:
-  cce:
-    - CCE-91019-0
-  cci: 
-    - CCI-001891
-    - CCI-002046
+  cce: |-
+    $OS_VALUE
+  cci:
+  - CCI-001891
+  - CCI-002046
   800-53r5:
-    - AU-12(1)
-    - SC-45(1)
-  800-53r4: 
-    - AU-8(1)
+  - AU-12(1)
+  - SC-45(1)
+  800-53r4:
+  - AU-8(1)
   srg:
-    - SRG-OS-000355-GPOS-00143
-    - SRG-OS-000356-GPOS-00144
-  disa_stig:
-    - APPL-12-000014
+  - SRG-OS-000355-GPOS-00143
+  - SRG-OS-000356-GPOS-00144
+  disa_stig: |-
+    $OS_VALUE
   800-171r2:
-    - 3.3.7
+  - 3.3.7
   cis:
     benchmark:
-      - N/A
+    - N/A
     controls v8:
-      - 8.4
-macOS:
-  - "12.0"
+    - 8.4
 tags:
-  - 800-171 
-  - cnssi-1253 
-  - 800-53r5_low 
-  - 800-53r5_moderate 
-  - 800-53r5_high 
-  - 800-53r4_moderate 
-  - 800-53r4_high
-  - cisv8
-  - stig
-severity: "medium"
+- 800-171
+- cnssi-1253
+- 800-53r5_low
+- 800-53r5_moderate
+- 800-53r5_high
+- 800-53r4_moderate
+- 800-53r4_high
+- cisv8
+- stig
+severity: medium
 mobileconfig: false
 mobileconfig_info:
+OS_specifics:
+  macOS:
+    '12':
+      references:
+        cce:
+        - CCE-91019-0
+        disa_stig:
+        - APPL-12-000014
+    '11':
+      references:
+        cce:
+        - CCE-85392-9
+        disa_stig:
+        - APPL-11-000014
+    '10.15':
+      references:
+        cce:
+        - CCE-84801-0
+        disa_stig:
+        - AOSX-15-000014

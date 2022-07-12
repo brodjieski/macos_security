@@ -1,31 +1,54 @@
 id: os_limit_dos_attacks
-title: "Limit Impact of Denial of Service Attacks"
-discussion: |
-  The macOS should be configured to limit the impact of Denial of Service (DoS) attacks. 
-
-  DoS attacks leave authorized users unable to access information systems, devices, or other network resources due to the actions of a malicious cyber threat actor. When this occurs, the organization must operate at degraded capacity; often resulting in an inability to accomplish its mission. 
-
-  To limit the impact of DoS attacks, organizations may choose to employ increased capacity and service redundancy, which has the potential to reduce systems' susceptibility to some DoS attacks. Managing excess capacity may include, for example, establishing selected usage priorities, quotas, or partitioning. Many operating systems can be integrated with enterprise-level firewalls and networking equipment that meet or exceed this requirement.
+title: Limit Impact of Denial of Service Attacks
+discussion: "The macOS should be configured to limit the impact of Denial of Service\
+  \ (DoS) attacks. \n\nDoS attacks leave authorized users unable to access information\
+  \ systems, devices, or other network resources due to the actions of a malicious\
+  \ cyber threat actor. When this occurs, the organization must operate at degraded\
+  \ capacity; often resulting in an inability to accomplish its mission. \n\nTo limit\
+  \ the impact of DoS attacks, organizations may choose to employ increased capacity\
+  \ and service redundancy, which has the potential to reduce systems' susceptibility\
+  \ to some DoS attacks. Managing excess capacity may include, for example, establishing\
+  \ selected usage priorities, quotas, or partitioning. Many operating systems can\
+  \ be integrated with enterprise-level firewalls and networking equipment that meet\
+  \ or exceed this requirement.\n"
 check: |
   The technology does not support this requirement. This is an applicable-does not meet finding.
 fix: |
   This requirement is a permanent finding and cannot be fixed. An appropriate mitigation for the system must be implemented, but this finding cannot be considered fixed.
 references:
-  cce:
-    - CCE-90942-4
+  cce: |-
+    $OS_VALUE
   cci:
-    - CCI-001095
+  - CCI-001095
   800-53r5:
-    - SC-5(2)
+  - SC-5(2)
   800-53r4:
-    - SC-5(2)
-  disa_stig:
-    - N/A
+  - SC-5(2)
+  disa_stig: |-
+    $OS_VALUE
   srg:
-    - N/A
-macOS:
-  - "12.0"
+  - N/A
 tags:
-  - permanent
+- permanent
 mobileconfig: false
 mobileconfig_info:
+OS_specifics:
+  macOS:
+    '12':
+      references:
+        cce:
+        - CCE-90942-4
+        disa_stig:
+        - N/A
+    '11':
+      references:
+        cce:
+        - CCE-85332-5
+        disa_stig:
+        - N/A
+    '10.15':
+      references:
+        cce:
+        - CCE-84904-2
+        disa_stig:
+        - N/A

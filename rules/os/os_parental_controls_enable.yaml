@@ -1,52 +1,70 @@
 id: os_parental_controls_enable
-title: "Enable Parental Controls"
-discussion: |
-  Parental Controls _MUST_ be enabled. 
-  
-  Control of program execution is a mechanism used to prevent program execution of unauthorized programs, which is critical to maintaining a secure system baseline.
-
-  Parental Controls on the macOS consist of many different payloads, which are set individually depending on the type of control required. Enabling parental controls allows for further configuration of these restrictions.
+title: Enable Parental Controls
+discussion: "Parental Controls _MUST_ be enabled. \n\nControl of program execution\
+  \ is a mechanism used to prevent program execution of unauthorized programs, which\
+  \ is critical to maintaining a secure system baseline.\n\nParental Controls on the\
+  \ macOS consist of many different payloads, which are set individually depending\
+  \ on the type of control required. Enabling parental controls allows for further\
+  \ configuration of these restrictions.\n"
 check: |
   /usr/bin/osascript -l JavaScript << EOS
   $.NSUserDefaults.alloc.initWithSuiteName('com.apple.applicationaccess.new')\
   .objectForKey('familyControlsEnabled').js
   EOS
 result:
-  string: "true"
+  string: 'true'
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - CCE-90966-3
-  cci: 
-    - CCI-001812
-    - CCI-001764
+  cce: |-
+    $OS_VALUE
+  cci:
+  - CCI-001812
+  - CCI-001764
   800-53r5:
-    - CM-7(2)
-  800-53r4: 
-    - CM-7(2)
+  - CM-7(2)
+  800-53r4:
+  - CM-7(2)
   srg:
-    - N/A
-  disa_stig:
-    - N/A
+  - N/A
+  disa_stig: |-
+    $OS_VALUE
   800-171r2:
-    - 3.4.7
+  - 3.4.7
   cis:
     benchmark:
-      - N/A
+    - N/A
     controls v8:
-      - 4.8
-macOS:
-  - "12.0"
+    - 4.8
 tags:
-  - 800-53r5_moderate
-  - 800-53r5_high
-  - 800-53r4_moderate
-  - 800-53r4_high
-  - 800-171
-  - cnssi-1253
-  - cisv8
+- 800-53r5_moderate
+- 800-53r5_high
+- 800-53r4_moderate
+- 800-53r4_high
+- 800-171
+- cnssi-1253
+- cisv8
 mobileconfig: true
 mobileconfig_info:
   com.apple.applicationaccess.new:
     familyControlsEnabled: true
+OS_specifics:
+  macOS:
+    '12':
+      references:
+        cce:
+        - CCE-90966-3
+        disa_stig:
+        - N/A
+    '11':
+      references:
+        cce:
+        - CCE-85350-7
+        disa_stig:
+        - N/A
+    '10.15':
+      references:
+        cce:
+        - CCE-84773-1
+        disa_stig:
+        - N/A

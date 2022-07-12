@@ -1,61 +1,64 @@
 id: os_ssh_server_alive_interval_configure
-title: "Configure SSH ServerAliveInterval option set to $ODV"
-discussion: |
-  SSH _MUST_ be configured with an Active Server Alive Maximum Count set to $ODV. 
-  
-  Setting the Active Server Alive Maximum Count to $ODV will log users out after a $ODV seconds interval of inactivity.
-
-  NOTE: /etc/ssh/ssh_config will be automatically modified to its original state following any update or major upgrade to the operating system.
+title: Configure SSH ServerAliveInterval option set to $ODV
+discussion: "SSH _MUST_ be configured with an Active Server Alive Maximum Count set\
+  \ to $ODV. \n\nSetting the Active Server Alive Maximum Count to $ODV (seconds) will\
+  \ log users out after an organization defined value interval of inactivity.\n\n\
+  NOTE: /etc/ssh/ssh_config will be automatically modified to its original state following\
+  \ any update or major upgrade to the operating system.\n"
 check: |
-  ret="pass"
-  for u in $(/usr/bin/dscl . -list /Users UniqueID | /usr/bin/awk '$2 > 500 {print $1}'); do
-    sshCheck=$(/usr/bin/sudo -u $u /usr/bin/ssh -G . | /usr/bin/grep -c "^serveraliveinterval $ODV")
-    if [[ "$sshCheck" == "0" ]]; then
-      ret="fail"
-      break
-    fi
-  done
-  /bin/echo $ret
+  /usr/bin/awk '/^ServerAliveInterval/{print $2}' /etc/ssh/ssh_config
 result:
-  string: pass
+  integer: $ODV
 fix: |
   [source,bash]
   ----
-  for u in $(/usr/bin/dscl . -list /Users UniqueID | /usr/bin/awk '$2 > 500 {print $1}'); do 
-    config=$(/usr/bin/sudo -u $u /usr/bin/ssh -Gv . 2>&1 | /usr/bin/awk '/Reading configuration data/ {print $NF}'| /usr/bin/tr -d '\r')
-    configarray=( ${(f)config} )
-    for c in $configarray; do
-      /usr/bin/sudo -u $u /usr/bin/grep -q '^ServerAliveInterval' "$c" && /usr/bin/sed -i '' 's/.*ServerAliveInterval.*/ServerAliveInterval $ODV/' "$c" || /bin/echo 'ServerAliveInterval $ODV' >> "$c"
-    done
-  done
+  /usr/bin/grep -q '^ServerAliveInterval' /etc/ssh/ssh_config && /usr/bin/sed -i.bak  's/.*ServerAliveInterval.*/ServerAliveInterval $ODV/' /etc/ssh/ssh_config || /bin/echo 'ServerAliveInterval $ODV' >> /etc/ssh/ssh_config
   ----
 references:
-  cce:
-    - CCE-91006-7
-  cci: 
-    - N/A
+  cce: |-
+    $OS_VALUE
+  cci:
+  - N/A
   800-53r5:
-    - SC-10
-    - AC-12
-  800-53r4: 
-    - SC-10
+  - SC-10
+  - AC-12
+  800-53r4:
+  - SC-10
   srg:
-    - N/A
-  disa_stig:
-    - N/A
+  - N/A
+  disa_stig: |-
+    $OS_VALUE
   800-171r2:
-    - 3.13.9
-macOS:
-  - "12.0"
+  - 3.13.9
 odv:
-  hint: "Number of seconds."
-  recommended: 900
+  hint: Number of seconds.
+  default: 900
 tags:
-  - 800-53r5_moderate
-  - 800-53r5_high
-  - 800-53r4_moderate
-  - 800-53r4_high
-  - 800-171
-  - cnssi-1253
+- 800-53r5_moderate
+- 800-53r5_high
+- 800-53r4_moderate
+- 800-53r4_high
+- 800-171
+- cnssi-1253
 mobileconfig: false
 mobileconfig_info:
+OS_specifics:
+  macOS:
+    '12':
+      references:
+        cce:
+        - CCE-91006-7
+        disa_stig:
+        - N/A
+    '11':
+      references:
+        cce:
+        - CCE-85381-2
+        disa_stig:
+        - N/A
+    '10.15':
+      references:
+        cce:
+        - CCE-84919-0
+        disa_stig:
+        - N/A

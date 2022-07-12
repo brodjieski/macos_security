@@ -1,5 +1,5 @@
 id: sysprefs_softwareupdate_current
-title: "Ensure Software Update is Updated and Current"
+title: Ensure Software Update is Updated and Current
 discussion: |
   Make sure Software Update is updated and current.
 
@@ -21,32 +21,44 @@ fix: |
   ----
   NOTE - This will apply to the whole system
 references:
-  cce:
-    - CCE-91141-2
-  cci: 
-    - N/A
+  cce: |-
+    $OS_VALUE
+  cci:
+  - N/A
   800-53r5:
-    - N/A
+  - N/A
   800-53r4:
-    - N/A
+  - N/A
   srg:
-    - N/A
-  disa_stig: 
-    - N/A
+  - N/A
+  disa_stig: |-
+    $OS_VALUE
   800-171r2:
-    - N/A
+  - N/A
   cis:
     benchmark:
-      - 1.1 (level 1)
+    - 1.1 (level 1)
     controls v8:
-      - 7.3
-      - 7.4
-macOS:
-  - "12.0"
+    - 7.3
+    - 7.4
 tags:
-  - cis_lvl1
-  - cis_lvl2
-  - cisv8
-severity: "medium"
+- cis_lvl1
+- cis_lvl2
+- cisv8
+severity: medium
 mobileconfig: false
 mobileconfig_info:
+OS_specifics:
+  macOS:
+    '12':
+      references:
+        cce:
+        - CCE-91141-2
+        disa_stig:
+        - N/A
+    '11':
+      references:
+        cce:
+        - CCE-85534-6
+        disa_stig:
+        - N/A

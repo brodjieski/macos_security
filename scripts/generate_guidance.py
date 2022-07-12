@@ -927,7 +927,7 @@ ObjC.unwrap($.NSUserDefaults.alloc.initWithSuiteName('org.{baseline_name}.audit'
 EOS
 )
 
-{rule_yaml['id']}_audit_score=$($plb -c "print {rule_yaml['id']}:finding" $audit_plist)
+{rule_yaml['id'].replace('-', '_')}_audit_score=$($plb -c "print {rule_yaml['id']}:finding" $audit_plist)
 if [[ ! $exempt == "1" ]] || [[ -z $exempt ]];then
     if [[ ${rule_yaml['id']}_audit_score == "true" ]]; then
         ask '{rule_yaml['id']} - Run the command(s)-> {quotify(get_fix_code(rule_yaml['fix']).strip())} ' N

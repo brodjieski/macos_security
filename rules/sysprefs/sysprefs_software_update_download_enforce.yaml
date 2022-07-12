@@ -1,5 +1,5 @@
 id: sysprefs_software_update_download_enforce
-title: "Enforce Software Update Downloads Updates Automatically"
+title: Enforce Software Update Downloads Updates Automatically
 discussion: |
   Software Update _MUST_ be configured to enforce automatic downloads of updates is enabled.
 check: |
@@ -8,37 +8,49 @@ check: |
   .objectForKey('AutomaticDownload').js
   EOS
 result:
-  string: "true"
+  string: 'true'
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - CCE-91139-6
-  cci: 
-    - N/A
+  cce: |-
+    $OS_VALUE
+  cci:
+  - N/A
   800-53r5:
-    - N/A
+  - N/A
   800-53r4:
-    - N/A
+  - N/A
   srg:
-    - N/A
-  disa_stig:
-    - N/A
+  - N/A
+  disa_stig: |-
+    $OS_VALUE
   800-171r2:
-    - N/A
+  - N/A
   cis:
     benchmark:
-      - 1.3 (level 1)
+    - 1.3 (level 1)
     controls v8:
-      - 7.3
-      - 7.4
-macOS:
-  - "12.0"
+    - 7.3
+    - 7.4
 tags:
-  - cis_lvl1
-  - cis_lvl2
-  - cisv8
+- cis_lvl1
+- cis_lvl2
+- cisv8
 mobileconfig: true
 mobileconfig_info:
   com.apple.SoftwareUpdate:
     AutomaticDownload: true
+OS_specifics:
+  macOS:
+    '12':
+      references:
+        cce:
+        - CCE-91139-6
+        disa_stig:
+        - N/A
+    '11':
+      references:
+        cce:
+        - CCE-85532-0
+        disa_stig:
+        - N/A

@@ -1,14 +1,12 @@
 id: sysprefs_automatic_logout_enforce
-title: "Enforce Auto Logout After 24 Hours of Inactivity"
-discussion: |
-  Auto logout _MUST_ be configured to automatically terminate a user session and log out the after 86400 seconds (24 hours) of inactivity. 
-
-  NOTE:The maximum that macOS can be configured for autologoff is 86400 seconds (24 hours).
-
-  [IMPORTANT]
-  ====
-  The 24-hour automatic logout may cause disruptions to an organization's workflow and/or loss of data. Information System Security Officers (ISSOs) are advised to first fully weigh the potential risks posed to their organization before opting to disable the 24-hour automatic logout setting.
-  ====
+title: Enforce Auto Logout After 24 Hours of Inactivity
+discussion: "Auto logout _MUST_ be configured to automatically terminate a user session\
+  \ and log out the after 86400 seconds (24 hours) of inactivity. \n\nNOTE:The maximum\
+  \ that macOS can be configured for autologoff is 86400 seconds (24 hours).\n\n[IMPORTANT]\n\
+  ====\nThe 24-hour automatic logout may cause disruptions to an organization's workflow\
+  \ and/or loss of data. Information System Security Officers (ISSOs) are advised\
+  \ to first fully weigh the potential risks posed to their organization before opting\
+  \ to disable the 24-hour automatic logout setting.\n====\n"
 check: |
   /usr/bin/osascript -l JavaScript << EOS
   $.NSUserDefaults.alloc.initWithSuiteName('.GlobalPreferences')\
@@ -19,33 +17,49 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - CCE-91047-1
+  cce: |-
+    $OS_VALUE
   cci:
-    - CCI-002361
+  - CCI-002361
   800-53r5:
-    - AC-12
-    - AC-2(5)
+  - AC-12
+  - AC-2(5)
   800-53r4:
-    - AC-12
-  disa_stig:
-    - N/A
+  - AC-12
+  disa_stig: |-
+    $OS_VALUE
   srg:
-    - N/A
+  - N/A
   800-171r2:
-    - 3.1.11
-macOS:
-  - "12.0"
+  - 3.1.11
 tags:
-  - 800-53r5_moderate
-  - 800-53r5_high
-  - 800-53r4_moderate
-  - 800-53r4_high
-  - 800-171
-  - cnssi-1253
+- 800-53r5_moderate
+- 800-53r5_high
+- 800-53r4_moderate
+- 800-53r4_high
+- 800-171
+- cnssi-1253
 mobileconfig: true
 mobileconfig_info:
   .GlobalPreferences:
     com.apple.autologout.AutoLogOutDelay: 86400
-    
-
+OS_specifics:
+  macOS:
+    '12':
+      references:
+        cce:
+        - CCE-91047-1
+        disa_stig:
+        - N/A
+    '11':
+      references:
+        cce:
+        - CCE-85424-0
+        disa_stig:
+        - N/A
+    '10.15':
+      references:
+        cce:
+        - CCE-84870-5
+        disa_stig:
+        - N/A

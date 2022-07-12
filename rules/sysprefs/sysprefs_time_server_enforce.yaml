@@ -1,5 +1,5 @@
 id: sysprefs_time_server_enforce
-title: "Enable macOS Time Synchronization Daemon (timed)"
+title: Enable macOS Time Synchronization Daemon (timed)
 discussion: |
   The timed service _MUST_ be enabled on all networked systems and configured to set time automatically from the approved time server.
 
@@ -10,50 +10,67 @@ check: |
   .objectForKey('TMAutomaticTimeOnlyEnabled').js
   EOS
 result:
-  string: "true"
+  string: 'true'
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - CCE-91081-0
-  cci: 
-    - CCI-001891
-    - CCI-002046
+  cce: |-
+    $OS_VALUE
+  cci:
+  - CCI-001891
+  - CCI-002046
   800-53r5:
-    - AU-12(1)
-    - SC-45(1)
-  800-53r4: 
-    - AU-8(1)
+  - AU-12(1)
+  - SC-45(1)
+  800-53r4:
+  - AU-8(1)
   srg:
-    - SRG-OS-000355-GPOS-00143
-    - SRG-OS-000356-GPOS-00144
-  disa_stig:
-    - APPL-12-000014
+  - SRG-OS-000355-GPOS-00143
+  - SRG-OS-000356-GPOS-00144
+  disa_stig: |-
+    $OS_VALUE
   800-171r2:
-    - 3.3.7
+  - 3.3.7
   cis:
     benchmark:
-      - 2.2.1 (level 1)
+    - 2.2.1 (level 1)
     controls v8:
-      - 8.4
-macOS:
-  - "12.0"
+    - 8.4
 tags:
-  - 800-171 
-  - cnssi-1253 
-  - 800-53r5_low 
-  - 800-53r5_moderate 
-  - 800-53r5_high 
-  - 800-53r4_moderate 
-  - 800-53r4_high
-  - cis_lvl1
-  - cis_lvl2
-  - cisv8
-  - stig
-severity: "medium"
+- 800-171
+- cnssi-1253
+- 800-53r5_low
+- 800-53r5_moderate
+- 800-53r5_high
+- 800-53r4_moderate
+- 800-53r4_high
+- cis_lvl1
+- cis_lvl2
+- cisv8
+- stig
+severity: medium
 mobileconfig: true
 mobileconfig_info:
   com.apple.ManagedClient.preferences:
     com.apple.timed:
       TMAutomaticTimeOnlyEnabled: true
-
+OS_specifics:
+  macOS:
+    '12':
+      references:
+        cce:
+        - CCE-91081-0
+        disa_stig:
+        - APPL-12-000014
+    '11':
+      references:
+        cce:
+        - CCE-85449-7
+        disa_stig:
+        - APPL-11-000014
+    '10.15':
+      references:
+        cce:
+        - CCE-84847-3
+        disa_stig:
+        - AOSX-15-000014

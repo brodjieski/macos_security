@@ -1,15 +1,10 @@
 id: sysprefs_bluetooth_unpaired_disable
-title: "Disable Bluetooth When No Devices are Paired"
-discussion: |
-  Bluetooth _MUST_ be disabled when no devices are paired. 
-check: |
-  isPaired=$(/usr/sbin/system_profiler SPBluetoothDataType 2>/dev/null | /usr/bin/grep -c 'Connected: Yes')
-  if [[ "$isPaired" = "0" ]]; then 
-      powerState=$(/usr/sbin/system_profiler SPBluetoothDataType 2>/dev/null | /usr/bin/grep -c 'State: On')
-      /bin/echo "$powerState"
-  else
-      /bin/echo "0"
-  fi
+title: Disable Bluetooth When No Devices are Paired
+discussion: "Bluetooth _MUST_ be disabled when no devices are paired. \n"
+check: "isPaired=$(/usr/sbin/system_profiler SPBluetoothDataType 2>/dev/null | /usr/bin/grep\
+  \ -c 'Connected: Yes')\nif [[ \"$isPaired\" = \"0\" ]]; then \n    powerState=$(/usr/sbin/system_profiler\
+  \ SPBluetoothDataType 2>/dev/null | /usr/bin/grep -c 'State: On')\n    /bin/echo\
+  \ \"$powerState\"\nelse\n    /bin/echo \"0\"\nfi\n"
 result:
   integer: 0
 fix: |
@@ -19,35 +14,47 @@ fix: |
   /usr/bin/killall -HUP bluetoothd
   ----
 references:
-  cce:
-    - CCE-91126-3
-  cci: 
-    - N/A
+  cce: |-
+    $OS_VALUE
+  cci:
+  - N/A
   800-53r5:
-    - AC-18
-    - SC-8
-    - AC-18(3)
-  800-53r4: 
-    - AC-18(3)
-    - SC-8
+  - AC-18
+  - SC-8
+  - AC-18(3)
+  800-53r4:
+  - AC-18(3)
+  - SC-8
   srg:
-    - N/A
-  disa_stig: 
-    - N/A
+  - N/A
+  disa_stig: |-
+    $OS_VALUE
   800-171r2:
-    - N/A
+  - N/A
   cis:
     benchmark:
-      - 2.1.1 (level 1)
+    - 2.1.1 (level 1)
     controls v8:
-      - 4.8
-      - 12.6
-      - 13.9
-macOS:
-  - "12.0"
+    - 4.8
+    - 12.6
+    - 13.9
 tags:
-  - cis_lvl1
-  - cis_lvl2
-  - cisv8
+- cis_lvl1
+- cis_lvl2
+- cisv8
 mobileconfig: false
 mobileconfig_info:
+OS_specifics:
+  macOS:
+    '12':
+      references:
+        cce:
+        - CCE-91126-3
+        disa_stig:
+        - N/A
+    '11':
+      references:
+        cce:
+        - CCE-85522-1
+        disa_stig:
+        - N/A

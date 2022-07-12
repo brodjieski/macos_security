@@ -1,45 +1,61 @@
 id: os_implement_cryptography
-title: "Configure the System to Implement Approved Cryptography to Protect Information"
-discussion: |
-  The information system _IS_ configured to implement approved cryptography to protect information. 
-
-  Use of weak or untested encryption algorithms undermines the purposes of utilizing encryption to protect data. The operating system must implement cryptographic modules that adhere to the higher standards that have been tested, validated, and approved by the federal government. 
-
-  macOS Big Sur has been submitted to the National Institute of Standards and Technology (NIST) and is in review for the cryptographic module for FIPS 140-3 validation.
-
-  link:https://csrc.nist.gov/Projects/cryptographic-module-validation-program/modules-in-process/Modules-In-Process-List[]
-  
-  link:https://support.apple.com/en-us/HT201159[]
+title: Configure the System to Implement Approved Cryptography to Protect Information
+discussion: "The information system _IS_ configured to implement approved cryptography\
+  \ to protect information. \n\nUse of weak or untested encryption algorithms undermines\
+  \ the purposes of utilizing encryption to protect data. The operating system must\
+  \ implement cryptographic modules that adhere to the higher standards that have\
+  \ been tested, validated, and approved by the federal government. \n\nmacOS Big\
+  \ Sur has been submitted to the National Institute of Standards and Technology (NIST)\
+  \ and is in review for the cryptographic module for FIPS 140-3 validation.\n\nlink:https://csrc.nist.gov/Projects/cryptographic-module-validation-program/modules-in-process/Modules-In-Process-List[]\n\
+  \nlink:https://support.apple.com/en-us/HT201159[]\n"
 check: |
   The technology supports this requirement and cannot be configured to be out of compliance. The technology inherently meets this requirement using FIPS Validated Cryptographic Modules.
 fix: |
   The technology inherently meets this requirement. No fix is required.
 references:
-  cce:
-    - CCE-90935-8
+  cce: |-
+    $OS_VALUE
   cci:
-    - CCI-002450
+  - CCI-002450
   800-53r5:
-    - SC-13
+  - SC-13
   800-53r4:
-    - SC-13
-  disa_stig:
-    - N/A
+  - SC-13
+  disa_stig: |-
+    $OS_VALUE
   srg:
-    - N/A
+  - N/A
   800-171r2:
-    - 3.13.11
-macOS:
-  - "12.0"
+  - 3.13.11
 tags:
-  - 800-53r5_low
-  - 800-53r5_moderate
-  - 800-53r5_high
-  - 800-53r4_low
-  - 800-53r4_moderate
-  - 800-53r4_high
-  - 800-171
-  - cnssi-1253
-  - inherent
+- 800-53r5_low
+- 800-53r5_moderate
+- 800-53r5_high
+- 800-53r4_low
+- 800-53r4_moderate
+- 800-53r4_high
+- 800-171
+- cnssi-1253
+- inherent
 mobileconfig: false
 mobileconfig_info:
+OS_specifics:
+  macOS:
+    '12':
+      references:
+        cce:
+        - CCE-90935-8
+        disa_stig:
+        - N/A
+    '11':
+      references:
+        cce:
+        - CCE-85326-7
+        disa_stig:
+        - N/A
+    '10.15':
+      references:
+        cce:
+        - CCE-84867-1
+        disa_stig:
+        - N/A
