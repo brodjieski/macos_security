@@ -20,6 +20,13 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 import mscp
 
 def main():
+    """ rule_list is available for processing here.  rule_list is a list of dict containing appliciable rules based on OS """
+    
+    # Output the list of rule IDs
+    for rule in rule_list:
+        print(rule['id'])
+
+if __name__ == "__main__":
     # Configure command line arguments
     _usage = "usage: %prog [options]"
     parser = OptionParser(_usage)
@@ -75,13 +82,8 @@ def main():
     rule_list = _yaml.compileRules(ruleset, custom_ruleset, options.benchmark, macos)
 
     ### rule_list now contains the full library of rules including custom rule files found
-    ### begin additional processing below, within main()
-
-if __name__ == "__main__":
+    ### ODV values are included
+    ### OS specific details are included
+    ### begin processing within main() above
+    
     main()
-    
-
-    
-
-    
-
