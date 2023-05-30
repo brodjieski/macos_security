@@ -23,8 +23,15 @@ def main():
     """ rule_list is available for processing here.  rule_list is a list of dict containing appliciable rules based on OS """
     
     # Output the list of rule IDs
-    for rule in rule_list:
-        print(rule['id'])
+    for id, rule in ruleset.items():
+        try:
+            #check for latest OS
+            os_specs = rule["OS_specifics"]['macOS'][macos]
+            _yaml.add_new_OS(rule, os_specs, "13")
+        except KeyError:
+            logging.info(f"Rule {rule['id']} has no specifics for macOS {macos}, not adding")
+            pass
+        pprint.pprint(rule)
 
 if __name__ == "__main__":
     # Configure command line arguments
@@ -79,7 +86,7 @@ if __name__ == "__main__":
     logging.debug("\n".join(["**** CUSTOM RULESET ****", pprint.pformat(custom_ruleset, indent=1, sort_dicts=False), "**** CUSTOM RULESET ****"]))
 
     # merge original and custom rules for entire list in db
-    rule_list = _yaml.compileRules(ruleset, custom_ruleset, options.benchmark, macos)
+    #rule_list = _yaml.compileRules(ruleset, custom_ruleset, options.benchmark, macos)
 
     ### rule_list now contains the full library of rules including custom rule files found
     ### ODV values are included

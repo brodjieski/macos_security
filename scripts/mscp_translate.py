@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-# Title         : MSCP_TEMPLATE.py
-# Description   : Basic template that loads the rule database and sets up data for processing
+# Title         : MSCP_translate.py
+# Description   : Takes the set of rules from MSCP and translates using API
 # Author        : Dan Brodjieski <brodjieski@gmail.com>
 # Date          : 
 # Version       : 1.0
@@ -11,6 +11,8 @@ import sys
 import os.path
 import os
 import pprint
+import translators as ts
+import translators.server as tss
 from optparse import OptionParser
 import logging
 import platform
@@ -21,10 +23,19 @@ import mscp
 
 def main():
     """ rule_list is available for processing here.  rule_list is a list of dict containing appliciable rules based on OS """
-    
+    _repo_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    build_path = os.path.join(_repo_path, "build", "rules")
+
     # Output the list of rule IDs
-    for rule in rule_list:
-        pprint.pprint(rule)
+    for id, rule in ruleset.items():
+        print(f"Translating rule: {id}")
+        if id.startswith("audit"):
+            translated_rule = {}
+            translated_rule['title'] = tss.google(rule["title"], from_language="en", to_language="de")
+            translated_rule['discussion'] = tss.google(rule['discussion'], from_language='en', to_language='de')
+
+            _yaml.exportToYaml(rule['id'], translated_rule, build_path)
+    
 
 if __name__ == "__main__":
     # Configure command line arguments

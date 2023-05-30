@@ -144,3 +144,80 @@ class Yaml:
                 pass
         
         return True
+    
+    def add_new_OS(self, rule, os_specs, newos, copy_stig):
+        if copy_stig == "Y":
+            stig = os_specs['references']['disa_stig']
+        else:
+            stig = []
+        _specifics = { "references" :
+        { "cce": [],
+        "disa_stig": stig
+        }
+        }
+
+        logging.info(f"Adding specifics for macOS {newos} for {rule['id']}")
+        rule["OS_specifics"]['macOS'][newos] = _specifics
+        return
+    
+    def exportToYaml(self, name, record, outdir, nameispath=False):
+        """Accept a name, record, and directory and safe properly formated YAML to it."""
+        if not os.path.exists(outdir):
+            os.makedirs(outdir)
+        if nameispath:
+            _outfile = name
+        else:
+            _outfile = os.path.join(outdir, name + '.yaml')
+        
+        with open(_outfile, "w") as f:
+            f.write("---\n")
+            f.write(self.toYamlString(record, 0))
+            f.write("\n")
+        return
+    
+    def toYamlString(self, obj_part, depth):
+        """Returns a customized formatted YAML string of object passed into it, 
+        a depth value is used to format element shifting."""
+        if type(obj_part) is dict:
+            _retval = ""
+            for key, val in obj_part.items():
+                if type(val) is dict:
+                    if val == {}:
+                        _retval = "{}{}{}: {{}}\n".format(_retval, " "*depth, key)
+                    else:
+                        _retval = "{}{}{}:\n{}".format(_retval, " "*depth, key, self.toYamlString(val, depth+2))
+                elif type(val) is list:
+                    #print(val)
+                    _retval = "{}{}{}:{}".format(_retval, " "*depth, key, self.toYamlString(val, depth+2))
+                else:
+                    _retval = "{}{}{}:{}".format(_retval, " "*depth, key, self.toYamlString(val, depth+2))
+            return _retval
+        if type(obj_part) is list or type(obj_part) is tuple:
+            if list(obj_part) == []:
+                return " []\n"
+            _retval = "\n"
+            for element in list(obj_part):
+                #print("{} {}".format(element, type(element)))
+                if type(element) is dict:
+                    _retval = "{}{}-{}".format(_retval, " "*(depth-2), self.toYamlString(element, depth+2))
+                else:
+                    _retval = "{}{}-{}".format(_retval, " "*depth, self.toYamlString(element, depth+2))
+            return _retval
+        if type(obj_part) is bool:
+            if obj_part:
+                return " |-\n{}True\n".format(" "*depth)
+            else:
+                return " |-\n{}False\n".format(" "*depth)
+
+        if type(obj_part) is str or type(obj_part) is int or type(obj_part) is float:
+            if str(obj_part) == "":
+                return " \"\"\n"
+            else:
+                _split = str(obj_part).strip().split("\n")
+                _indent = []
+                for _s in _split:
+                    _indent.append("{}{}".format(" "*depth, _s))
+                return " |-\n{}\n".format("\n".join(_indent))
+        else:
+            print("could not process {} type {}".format(obj_part, type(obj_part)))
+            return ""
