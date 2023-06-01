@@ -1,0 +1,50 @@
+id: os_power_nap_enable
+title: Enable Power Nap
+discussion: "Power Nap _MUST_ be enabled.\n\nNOTE: Power nap can interfere with USB power and may cause devices such as smartcards to stop functioning until a reboot. \n\nThe following Macs support Power Nap:\n\n* MacBook (Early 2015 and later)\n* MacBook Air (Late 2010 and later)\n* MacBook Pro (all models with Retina display)\n* Mac mini (Late 2012 and later)\n* iMac (Late 2012 and later)\n* Mac Pro (Late 2013 and later)\n"
+check: |
+  /usr/bin/pmset -g custom | /usr/bin/awk '/powernap/ { sum+=$2 } END {print sum}'
+result:
+  integer: 1
+fix: |
+  [source,bash]
+  ----
+  /usr/bin/pmset -a powernap 1
+  ----
+references:
+  cce:
+    - $OS_VALUE
+  cci:
+    - N/A
+  800-53r5:
+    - N/A
+  800-53r4:
+    - N/A
+  disa_stig:
+    - $OS_VALUE
+  srg:
+    - $OS_VALUE
+  800-171r2:
+    - N/A
+  cis:
+    benchmark:
+      - $OS_VALUE
+    controls v8:
+      - $OS_VALUE
+tags:
+  - none
+mobileconfig: false
+mobileconfig_info: null
+os_specifics:
+  '13.0':
+    references:
+      cce:
+        - CCE-91849-0
+      disa_stig:
+        - N/A
+      srg:
+        - N/A
+      cis:
+        benchmark:
+          - N/A
+        controls v8:
+          - N/A

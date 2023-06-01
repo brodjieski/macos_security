@@ -1,13 +1,6 @@
 id: sysprefs_media_sharing_disabled
 title: Disable Media Sharing
-discussion: "Media sharing _MUST_ be disabled.\n\nWhen Media Sharing is enabled, the\
-  \ computer starts a network listening service that shares the contents of the user's\
-  \ music collection with other users in the same subnet. \n\nThe information system\
-  \ _MUST_ be configured to provide only essential capabilities. Disabling Media Sharing\
-  \ helps prevent the unauthorized connection of devices and the unauthorized transfer\
-  \ of information. Disabling Media Sharing mitigates this risk.\n\nNOTE: The Media\
-  \ Sharing preference panel will still allow \"Home Sharing\" and \"Share media with\
-  \ guests\" to be checked but the service will not be enabled.\n"
+discussion: "Media sharing _MUST_ be disabled.\n\nWhen Media Sharing is enabled, the computer starts a network listening service that shares the contents of the user's music collection with other users in the same subnet. \n\nThe information system _MUST_ be configured to provide only essential capabilities. Disabling Media Sharing helps prevent the unauthorized connection of devices and the unauthorized transfer of information. Disabling Media Sharing mitigates this risk.\n\nNOTE: The Media Sharing preference panel will still allow \"Home Sharing\" and \"Share media with guests\" to be checked but the service will not be enabled.\n"
 check: |
   /usr/bin/osascript -l JavaScript << EOS
   function run() {
@@ -29,61 +22,69 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce: |-
-    $OS_VALUE
+  cce:
+    - $OS_VALUE
   800-53r5:
-  - AC-3
-  - AC-17
+    - AC-3
+    - AC-17
   800-53r4:
-  - AC-3
+    - AC-3
   srg:
-  - N/A
-  disa_stig: |-
-    $OS_VALUE
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
   cci:
-  - N/A
+    - N/A
   800-171r2:
-  - 3.1.1
-  - 3.1.2
+    - 3.1.1
+    - 3.1.2
   cis:
     benchmark:
-    - 2.4.12 (level 2)
+      - $OS_VALUE
     controls v8:
-    - 4.1
-    - 4.8
+      - $OS_VALUE
 tags:
-- 800-53r5_low
-- 800-53r5_moderate
-- 800-53r5_high
-- 800-53r4_low
-- 800-53r4_moderate
-- 800-53r4_high
-- 800-171
-- cis_lvl2
-- cisv8
+  - 800-53r5_low
+  - 800-53r5_moderate
+  - 800-53r5_high
+  - 800-53r4_low
+  - 800-53r4_moderate
+  - 800-53r4_high
+  - 800-171
+  - cisv8
+  - cis_lvl2
 mobileconfig: true
 mobileconfig_info:
   com.apple.preferences.sharing.SharingPrefsExtension:
     homeSharingUIStatus: 0
     legacySharingUIStatus: 0
     mediaSharingUIStatus: 0
-OS_specifics:
-  macOS:
-    '12':
-      references:
-        cce:
-        - CCE-91066-1
-        disa_stig:
-        - N/A
-    '11':
-      references:
-        cce:
+os_specifics:
+  '11.0':
+    references:
+      cce:
         - CCE-85436-4
-        disa_stig:
+      disa_stig:
         - N/A
-    '10.15':
-      references:
-        cce:
-        - CCE-84771-5
-        disa_stig:
+      srg:
+        - SRG-OS-000480-GPOS-00227
+      cis:
+        benchmark:
+          - 2.4.12 (level 2)
+        controls v8:
+          - 4.1
+          - 4.8
+  '12.0':
+    references:
+      cce:
+        - CCE-91066-1
+      disa_stig:
         - N/A
+      srg:
+        - N/A
+      cis:
+        benchmark:
+          - 2.4.12 (level 2)
+        controls v8:
+          - 4.1
+          - 4.8

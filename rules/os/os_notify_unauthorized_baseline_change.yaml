@@ -1,54 +1,49 @@
 id: os_notify_unauthorized_baseline_change
 title: Configure the System to Notify upon Baseline Configuration Changes
-discussion: "The macOS should be configured to automatically notify system administrators,\
-  \ Information System Security Officers (ISSOs), and (IMOs) when baseline configurations\
-  \ are modified.\n\nUnauthorized changes to the baseline configuration could make\
-  \ the system vulnerable to various attacks or allow unauthorized access to the operating\
-  \ system. Changes to operating system configurations can have unintended side effects,\
-  \ some of which may  present security threats. Detecting such changes and providing\
-  \ an automated response can help avoid unintended, negative consequences that could\
-  \ ultimately affect the state of the operating system. \n\nTo enable notifications\
-  \ and audit logging of changes made to baseline configurations, many operating systems\
-  \ can be integrated with enterprise-level auditing mechanisms that meet or exceed\
-  \ this requirement. \n"
+discussion: "The macOS should be configured to automatically notify system administrators, Information System Security Officers (ISSOs), and (IMOs) when baseline configurations are modified.\n\nUnauthorized changes to the baseline configuration could make the system vulnerable to various attacks or allow unauthorized access to the operating system. Changes to operating system configurations can have unintended side effects, some of which may  present security threats. Detecting such changes and providing an automated response can help avoid unintended, negative consequences that could ultimately affect the state of the operating system. \n\nTo enable notifications and audit logging of changes made to baseline configurations, many operating systems can be integrated with enterprise-level auditing mechanisms that meet or exceed this requirement. \n"
 check: |
   The technology does not support this requirement. This is an applicable-does not meet finding.
 fix: |
   This requirement is a permanent finding and cannot be fixed. An appropriate mitigation for the system must be implemented, but this finding cannot be considered fixed.
 references:
-  cce: |-
-    $OS_VALUE
+  cce:
+    - $OS_VALUE
   cci:
-  - CCI-001744
+    - CCI-001744
   800-53r5:
-  - CM-3(5)
+    - CM-3(5)
   800-53r4:
-  - CM-3(5)
-  disa_stig: |-
-    $OS_VALUE
+    - CM-3(5)
+  disa_stig:
+    - $OS_VALUE
   srg:
-  - N/A
+    - $OS_VALUE
 tags:
-- permanent
+  - permanent
 mobileconfig: false
-mobileconfig_info:
-OS_specifics:
-  macOS:
-    '12':
-      references:
-        cce:
-        - CCE-90964-8
-        disa_stig:
-        - N/A
-    '11':
-      references:
-        cce:
+mobileconfig_info: null
+os_specifics:
+  '11.0':
+    references:
+      cce:
         - CCE-85348-1
-        disa_stig:
+      disa_stig:
         - N/A
-    '10.15':
-      references:
-        cce:
-        - CCE-84911-7
-        disa_stig:
+      srg:
+        - SRG-OS-000363-GPOS-00150
+  '12.0':
+    references:
+      cce:
+        - CCE-90964-8
+      disa_stig:
+        - N/A
+      srg:
+        - N/A
+  '13.0':
+    references:
+      cce:
+        - CCE-91835-9
+      disa_stig:
+        - N/A
+      srg:
         - N/A

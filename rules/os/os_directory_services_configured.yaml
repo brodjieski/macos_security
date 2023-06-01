@@ -1,58 +1,78 @@
 id: os_directory_services_configured
 title: Integrate System into a Directory Services Infrastructure
-discussion: "The macOS system _MUST_ be integrated into a directory services infrastructure.\
-  \ \n\nA directory service infrastructure enables centralized user and rights management,\
-  \ as well as centralized control over computer and user configurations. Integrating\
-  \ the macOS systems used throughout an organization into a directory services infrastructure\
-  \ ensures more administrator oversight and security than allowing distinct user\
-  \ account databases to exist on each separate system.\n"
-check: |
-  /usr/bin/dscl localhost -list . | /usr/bin/grep -qvE '(Contact|Search|Local|^$)'; /bin/echo $?
+discussion: "The macOS system _MUST_ be integrated into a directory services infrastructure. \n\nA directory service infrastructure enables centralized user and rights management, as well as centralized control over computer and user configurations. Integrating the macOS systems used throughout an organization into a directory services infrastructure ensures more administrator oversight and security than allowing distinct user account databases to exist on each separate system.\n"
+check: $OS_VALUE
 result:
   integer: 0
 fix: |
   Integrate the system into an existing directory services infrastructure.
 references:
-  cce: |-
-    $OS_VALUE
+  cce:
+    - $OS_VALUE
   cci:
-  - CCI-000366
+    - CCI-000366
   800-53r5:
-  - N/A
+    - N/A
   800-53r4:
-  - N/A
+    - CM-6(b)
   srg:
-  - SRG-OS-000480-GPOS-00227
-  disa_stig: |-
-    $OS_VALUE
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
   cis:
     benchmark:
-    - N/A
+      - $OS_VALUE
     controls v8:
-    - 6.7
+      - $OS_VALUE
 tags:
-- cisv8
-- stig
+  - stig
+  - cisv8
 severity: high
-mobileconfig:
-mobileconfig_info:
-OS_specifics:
-  macOS:
-    '12':
-      references:
-        cce:
-        - CCE-91087-7
-        disa_stig:
-        - APPL-12-000016
-    '11':
-      references:
-        cce:
+mobileconfig: false
+mobileconfig_info: null
+os_specifics:
+  11.0:
+    references:
+      cce:
         - CCE-85494-3
-        disa_stig:
+      disa_stig:
         - APPL-11-000016
-    '10.15':
-      references:
-        cce:
-        - CCE-84951-3
-        disa_stig:
-        - AOSX-15-000016
+      srg:
+        - SRG-OS-000480-GPOS-00227
+      cis:
+        benchmark:
+          - N/A
+        controls v8:
+          - 6.7
+    check: |
+      /usr/bin/dscl localhost -list . | /usr/bin/grep -vE '(Contact|Search|Local|^$)'; /bin/echo $?
+  '12.0':
+    references:
+      cce:
+        - CCE-91087-7
+      disa_stig:
+        - APPL-12-000016
+      srg:
+        - SRG-OS-000480-GPOS-00227
+      cis:
+        benchmark:
+          - N/A
+        controls v8:
+          - 6.7
+    check: |
+      /usr/bin/dscl localhost -list . | /usr/bin/grep -qvE '(Contact|Search|Local|^$)'; /bin/echo $?
+  '13.0':
+    references:
+      cce:
+        - CCE-91778-1
+      disa_stig:
+        - N/A
+      srg:
+        - N/A
+      cis:
+        benchmark:
+          - N/A
+        controls v8:
+          - 6.7
+    check: |
+      /usr/bin/dscl localhost -list . | /usr/bin/grep -qvE '(Contact|Search|Local|^$)'; /bin/echo $?

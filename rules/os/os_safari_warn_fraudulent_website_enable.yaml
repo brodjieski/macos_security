@@ -1,0 +1,64 @@
+id: os_safari_warn_fraudulent_website_enable
+title: Ensure Warn When Visiting A Fradulent Website in Safari Is Enabled
+discussion: "Warn when visiting a fraudulent website _MUST_ be enabled in Safari. \n"
+check: |
+  /usr/bin/profiles -P -o stdout | /usr/bin/grep -c 'WarnAboutFraudulentWebsites = 1' | /usr/bin/awk '{ if ($1 >= 1) {print "1"} else {print "0"}}'
+result:
+  integer: 1
+fix: |
+  This is implemented by a Configuration Profile.
+references:
+  cce:
+    - $OS_VALUE
+  cci:
+    - N/A
+  800-53r5:
+    - N/A
+  800-53r4:
+    - N/A
+  disa_stig:
+    - $OS_VALUE
+  srg:
+    - $OS_VALUE
+  cis:
+    benchmark:
+      - $OS_VALUE
+    controls v8:
+      - $OS_VALUE
+tags:
+  - cis_lvl1
+  - cis_lvl2
+  - cisv8
+mobileconfig: true
+mobileconfig_info:
+  com.apple.Safari:
+    WarnAboutFraudulentWebsites: true
+os_specifics:
+  '12.0':
+    references:
+      cce:
+        - N/A
+      disa_stig:
+        - N/A
+      srg:
+        - N/A
+      cis:
+        benchmark:
+          - 7.2.4 (level 1)
+        controls v8:
+          - 9.1
+          - 9.3
+  '13.0':
+    references:
+      cce:
+        - CCE-92005-8
+      disa_stig:
+        - N/A
+      srg:
+        - N/A
+      cis:
+        benchmark:
+          - 6.3.3 (level 1)
+        controls v8:
+          - 9.1
+          - 9.3

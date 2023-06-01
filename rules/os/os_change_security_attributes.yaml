@@ -1,48 +1,49 @@
 id: os_change_security_attributes
 title: Allow Administrators to Modify Security Settings and System Attributes
-discussion: "The information system _IS_ configured to allow administrators to modify\
-  \ security settings and system attributes. \n\nThe macOS is a UNIX 03-compliant\
-  \ operating system, which allows administrators of the system to change security\
-  \ settings and system attributes, including those which are kept within preference\
-  \ panes that are locked for standard users. . \n\nlink:https://support.apple.com/guide/mac-help/change-permissions-for-files-folders-or-disks-mchlp1203/mac[]\n"
+discussion: "The information system _IS_ configured to allow administrators to modify security settings and system attributes. \n\nThe macOS is a UNIX 03-compliant operating system, which allows administrators of the system to change security settings and system attributes, including those which are kept within preference panes that are locked for standard users. . \n\nlink:https://support.apple.com/guide/mac-help/change-permissions-for-files-folders-or-disks-mchlp1203/mac[]\n"
 check: |
   The technology supports this requirement and cannot be configured to be out of compliance. The technology inherently meets this requirement.
 fix: |
   The technology inherently meets this requirement. No fix is required.
 references:
-  cce: |-
-    $OS_VALUE
+  cce:
+    - $OS_VALUE
   cci:
-  - CCI-002165
+    - CCI-002165
   800-53r5:
-  - AC-3(4)
+    - AC-3(4)
   800-53r4:
-  - AC-3(4)
-  disa_stig: |-
-    $OS_VALUE
+    - AC-3(4)
+  disa_stig:
+    - $OS_VALUE
   srg:
-  - N/A
+    - $OS_VALUE
 tags:
-- inherent
+  - inherent
 mobileconfig: false
-mobileconfig_info:
-OS_specifics:
-  macOS:
-    '12':
-      references:
-        cce:
-        - CCE-90912-7
-        disa_stig:
-        - N/A
-    '11':
-      references:
-        cce:
+mobileconfig_info: null
+os_specifics:
+  '11.0':
+    references:
+      cce:
         - CCE-85303-6
-        disa_stig:
+      disa_stig:
         - N/A
-    '10.15':
-      references:
-        cce:
-        - CCE-84882-0
-        disa_stig:
+      srg:
+        - SRG-OS-000312-GPOS-00124
+  '12.0':
+    references:
+      cce:
+        - CCE-90912-7
+      disa_stig:
+        - N/A
+      srg:
+        - N/A
+  '13.0':
+    references:
+      cce:
+        - CCE-91773-2
+      disa_stig:
+        - N/A
+      srg:
         - N/A

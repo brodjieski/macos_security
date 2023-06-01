@@ -1,75 +1,87 @@
 id: pwpolicy_account_lockout_timeout_enforce
 title: Set Account Lockout Time to $ODV Minutes
-discussion: "The macOS _MUST_ be configured to enforce a lockout time period of at\
-  \ least $ODV minutes when the maximum number of failed logon attempts is reached.\n\
-  \nThis rule protects against malicious users attempting to gain access to the system\
-  \ via brute-force hacking methods. \n"
-check: |
-  /usr/bin/osascript -l JavaScript << EOS
-  $.NSUserDefaults.alloc.initWithSuiteName('com.apple.mobiledevice.passwordpolicy')\
-  .objectForKey('minutesUntilFailedLoginReset').js
-  EOS
+discussion: "The macOS _MUST_ be configured to enforce a lockout time period of at least $ODV minutes when the maximum number of failed logon attempts is reached.\n\nThis rule protects against malicious users attempting to gain access to the system via brute-force hacking methods. \n"
+check: "/usr/bin/pwpolicy -getaccountpolicies 2> /dev/null | /usr/bin/tail +2 | /usr/bin/xmllint --xpath '//dict/key[text()=\"autoEnableInSeconds\"]/following-sibling::integer[1]/text()' - | /usr/bin/awk '{ if ($1/60 >= $ODV ) {print \"yes\"} else {print \"no\"}}' \n"
 result:
-  integer: $ODV
+  string: 'yes'
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce: |-
-    $OS_VALUE
+  cce:
+    - $OS_VALUE
   cci:
-  - CCI-002238
+    - CCI-002238
   800-53r5:
-  - AC-7
+    - AC-7
   800-53r4:
-  - AC-7
+    - AC-7
   srg:
-  - SRG-OS-000329-GPOS-00128
-  disa_stig: |-
-    $OS_VALUE
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
   800-171r2:
-  - 3.1.8
+    - 3.1.8
   cis:
     benchmark:
-    - N/A
+      - $OS_VALUE
     controls v8:
-    - 4.1
+      - $OS_VALUE
 odv:
   hint: Number of minutes.
   recommended: 15
   stig: 15
 tags:
-- 800-171
-- cnssi-1253
-- 800-53r4_low
-- 800-53r4_moderate
-- 800-53r4_high
-- 800-53r5_low
-- 800-53r5_moderate
-- 800-53r5_high
-- cisv8
-- stig
-\severity: medium
+  - 800-171
+  - 800-53r4_low
+  - 800-53r4_moderate
+  - 800-53r4_high
+  - 800-53r5_low
+  - 800-53r5_moderate
+  - 800-53r5_high
+  - stig
+  - cisv8
+severity: medium
 mobileconfig: true
 mobileconfig_info:
   com.apple.mobiledevice.passwordpolicy:
     minutesUntilFailedLoginReset: $ODV
-OS_specifics:
-  macOS:
-    '12':
-      references:
-        cce:
-        - CCE-91030-7
-        disa_stig:
-        - APPL-12-000022
-    '11':
-      references:
-        cce:
+os_specifics:
+  '11.0':
+    references:
+      cce:
         - CCE-85403-4
-        disa_stig:
+      disa_stig:
         - APPL-11-000022
-    '10.15':
-      references:
-        cce:
-        - CCE-84810-1
-        disa_stig:
-        - AOSX-15-000021
+      srg:
+        - SRG-OS-000329-GPOS-00128
+      cis:
+        benchmark:
+          - N/A
+        controls v8:
+          - 4.1
+  '12.0':
+    references:
+      cce:
+        - CCE-91030-7
+      disa_stig:
+        - APPL-12-000022
+      srg:
+        - SRG-OS-000329-GPOS-00128
+      cis:
+        benchmark:
+          - N/A
+        controls v8:
+          - 4.1
+  '13.0':
+    references:
+      cce:
+        - CCE-91916-7
+      disa_stig:
+        - N/A
+      srg:
+        - N/A
+      cis:
+        benchmark:
+          - N/A
+        controls v8:
+          - 4.1

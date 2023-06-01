@@ -1,0 +1,67 @@
+id: system_settings_internet_accounts_disable
+title: Disable the Internet Accounts System Preference Pane
+discussion: |
+  The Internet Accounts System Setting _MUST_ be disabled to prevent the addition of unauthorized internet accounts.
+
+  [IMPORTANT]
+  ====
+  Some organizations may allow the use and configuration of the built-in Mail.app, Calendar.app, and Contacts.app for organizational communication. Information System Security Officers (ISSOs) may make the risk-based decision not to disable the Internet Accounts System Preference pane to avoid losing this functionality, but they are advised to first fully weigh the potential risks posed to their organization.
+  ====
+check: |
+  /usr/bin/profiles show -output stdout-xml | /usr/bin/xmllint --xpath '//key[text()="DisabledSystemSettings"]/following-sibling::*[1]' - | /usr/bin/grep -c com.apple.Internet-Accounts-Settings.extension
+result:
+  integer: 1
+fix: |
+  This is implemented by a Configuration Profile.
+references:
+  cce:
+    - $OS_VALUE
+  cci:
+    - N/A
+  800-53r5:
+    - CM-7(5)
+    - AC-20
+  800-53r4:
+    - AC-20
+    - CM-7(5)
+  srg:
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
+  800-171r2:
+    - 3.1.20
+  cis:
+    benchmark:
+      - $OS_VALUE
+    controls v8:
+      - $OS_VALUE
+tags:
+  - 800-53r5_low
+  - 800-53r4_low
+  - 800-53r4_moderate
+  - 800-53r4_high
+  - 800-53r5_moderate
+  - 800-53r5_high
+  - 800-171
+  - cisv8
+severity: medium
+mobileconfig: true
+mobileconfig_info:
+  com.apple.systempreferences:
+    DisabledSystemSettings:
+      - com.apple.Internet-Accounts-Settings.extension
+os_specifics:
+  '13.0':
+    references:
+      cce:
+        - CCE-91938-1
+      disa_stig:
+        - N/A
+      srg:
+        - N/A
+      cis:
+        benchmark:
+          - N/A
+        controls v8:
+          - 4.8
+          - 15.2

@@ -1,54 +1,50 @@
 id: audit_enforce_dual_auth
 title: Enforce Dual Authorization for Movement and Deletion of Audit Information
-discussion: "All bulk manipulation of audit information should be authorized via automatic\
-  \ processes, and any manual manipulation of audit information should require dual\
-  \ authorization. In addition, dual authorization mechanisms should require the approval\
-  \ of two authorized individuals before being executed.\n\nAn authorized user may\
-  \ intentionally or accidentally move or delete audit records without those specific\
-  \ actions being authorized, which would result in the loss of information that could,\
-  \ in the future, be critical for forensic investigation.\n\nTo enforce dual authorization\
-  \ before audit information can be moved or deleted, many operating systems can be\
-  \ integrated with enterprise-level auditing mechanisms that meet or exceed this\
-  \ requirement. \n"
+discussion: "All bulk manipulation of audit information should be authorized via automatic processes, and any manual manipulation of audit information should require dual authorization. In addition, dual authorization mechanisms should require the approval of two authorized individuals before being executed.\n\nAn authorized user may intentionally or accidentally move or delete audit records without those specific actions being authorized, which would result in the loss of information that could, in the future, be critical for forensic investigation.\n\nTo enforce dual authorization before audit information can be moved or deleted, many operating systems can be integrated with enterprise-level auditing mechanisms that meet or exceed this requirement. \n"
 check: |
   The technology does not support this requirement. This is an applicable-does not meet finding.
 fix: |
   This requirement is a permanent finding and cannot be fixed. An appropriate mitigation for the system must be implemented, but this finding cannot be considered fixed.
 references:
-  cce: |-
-    $OS_VALUE
+  cce:
+    - $OS_VALUE
   cci:
-  - CCI-000366
-  - CCI-001896
+    - CCI-000366
+    - CCI-001896
   800-53r5:
-  - AU-9(5)
+    - AU-9(5)
   800-53r4:
-  - AU-9(5)
-  disa_stig: |-
-    $OS_VALUE
+    - AU-9(5)
+  disa_stig:
+    - $OS_VALUE
   srg:
-  - N/A
+    - $OS_VALUE
 tags:
-- permanent
+  - permanent
 mobileconfig: false
-mobileconfig_info:
-OS_specifics:
-  macOS:
-    '12':
-      references:
-        cce:
-        - CCE-90856-6
-        disa_stig:
-        - N/A
-    '11':
-      references:
-        cce:
+mobileconfig_info: null
+os_specifics:
+  '11.0':
+    references:
+      cce:
         - CCE-85256-6
-        disa_stig:
+      disa_stig:
         - N/A
-    '10.15':
-      references:
-        cce:
-        - CCE-84906-7
-        disa_stig:
+      srg:
+        - SRG-OS-000360-GPOS-00147
+  '12.0':
+    references:
+      cce:
+        - CCE-90856-6
+      disa_stig:
+        - N/A
+      srg:
+        - N/A
+  '13.0':
+    references:
+      cce:
+        - CCE-91710-4
+      disa_stig:
+        - N/A
+      srg:
         - N/A

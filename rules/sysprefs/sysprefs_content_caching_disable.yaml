@@ -1,9 +1,6 @@
 id: sysprefs_content_caching_disable
 title: Disable Content Caching Service
-discussion: "Content caching _MUST_ be disabled. \n\nContent caching is a macOS service\
-  \ that helps reduce Internet data usage and speed up software installation on Mac\
-  \ computers. It is not recommended for devices furnished to employees to act as\
-  \ a caching server. \n"
+discussion: "Content caching _MUST_ be disabled. \n\nContent caching is a macOS service that helps reduce Internet data usage and speed up software installation on Mac computers. It is not recommended for devices furnished to employees to act as a caching server. \n"
 check: |
   /usr/bin/osascript -l JavaScript << EOS
   $.NSUserDefaults.alloc.initWithSuiteName('com.apple.applicationaccess')\
@@ -14,60 +11,66 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce: |-
-    $OS_VALUE
+  cce:
+    - $OS_VALUE
   cci:
-  - N/A
+    - N/A
   800-53r5:
-  - CM-7
-  - CM-7(1)
+    - CM-7
+    - CM-7(1)
   800-53r4:
-  - CM-7
-  - CM-7(1)
+    - CM-7
+    - CM-7(1)
   srg:
-  - N/A
-  disa_stig: |-
-    $OS_VALUE
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
   800-171r2:
-  - 3.4.6
+    - 3.4.6
   cis:
     benchmark:
-    - 2.4.10 (level 2)
+      - $OS_VALUE
     controls v8:
-    - 4.1
-    - 4.8
+      - $OS_VALUE
 tags:
-- 800-53r5_low
-- 800-53r5_moderate
-- 800-53r5_high
-- 800-53r4_low
-- 800-53r4_moderate
-- 800-53r4_high
-- 800-171
-- cnssi-1253
-- cis_lvl2
-- cisv8
+  - 800-53r5_low
+  - 800-53r5_moderate
+  - 800-53r5_high
+  - 800-53r4_low
+  - 800-53r4_moderate
+  - 800-53r4_high
+  - 800-171
+  - cisv8
+  - cis_lvl2
 mobileconfig: true
 mobileconfig_info:
   com.apple.applicationaccess:
     allowContentCaching: false
-OS_specifics:
-  macOS:
-    '12':
-      references:
-        cce:
-        - CCE-91050-5
-        disa_stig:
-        - N/A
-    '11':
-      references:
-        cce:
+os_specifics:
+  '11.0':
+    references:
+      cce:
         - CCE-85422-4
-        disa_stig:
+      disa_stig:
         - N/A
-    '10.15':
-      references:
-        cce:
-        - CCE-84828-3
-        disa_stig:
+      srg:
         - N/A
+      cis:
+        benchmark:
+          - 2.4.10 (level 2)
+        controls v8:
+          - 4.1
+          - 4.8
+  '12.0':
+    references:
+      cce:
+        - CCE-91050-5
+      disa_stig:
+        - N/A
+      srg:
+        - N/A
+      cis:
+        benchmark:
+          - 2.4.10 (level 2)
+        controls v8:
+          - 4.8

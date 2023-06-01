@@ -14,44 +14,49 @@ fix: |
   /usr/sbin/chown root:wheel $(/usr/bin/stat -f '%Su:%Sg:%N' $(/usr/bin/grep -e '^>' /etc/asl.conf /etc/asl/* | /usr/bin/awk '{ print $2 }') 2> /dev/null | /usr/bin/awk '!/^root:wheel:/{print $1}' | /usr/bin/awk -F":" '!/^root:wheel:/{print $3}')
   ----
 references:
-  cce: |-
-    $OS_VALUE
+  cce:
+    - $OS_VALUE
   cci:
-  - CCI-001314
+    - CCI-001314
   800-53r5:
-  - SI-11
+    - SI-11
   800-53r4:
-  - SI-11
+    - SI-11
   srg:
-  - SRG-OS-000206-GPOS-00084
-  disa_stig: |-
-    $OS_VALUE
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
   800-171r2:
-  - N/A
+    - N/A
 tags:
-- 800-53r5_moderate
-- 800-53r5_high
-- stig
+  - 800-53r5_moderate
+  - 800-53r5_high
+  - stig
 severity: medium
 mobileconfig: false
-mobileconfig_info:
-OS_specifics:
-  macOS:
-    '12':
-      references:
-        cce:
-        - CCE-90904-4
-        disa_stig:
-        - APPL-12-004001
-    '11':
-      references:
-        cce:
+mobileconfig_info: null
+os_specifics:
+  '11.0':
+    references:
+      cce:
         - CCE-85463-8
-        disa_stig:
+      disa_stig:
         - APPL-11-004001
-    '10.15':
-      references:
-        cce:
-        - CCE-84928-1
-        disa_stig:
-        - AOSX-15-004001
+      srg:
+        - SRG-OS-000206-GPOS-00084
+  '12.0':
+    references:
+      cce:
+        - CCE-90904-4
+      disa_stig:
+        - APPL-12-004001
+      srg:
+        - SRG-OS-000206-GPOS-00084
+  '13.0':
+    references:
+      cce:
+        - CCE-91759-1
+      disa_stig:
+        - N/A
+      srg:
+        - N/A

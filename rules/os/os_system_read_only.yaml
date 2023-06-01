@@ -8,48 +8,52 @@ check: |
   /usr/sbin/system_profiler SPStorageDataType | /usr/bin/awk '/Mount Point: \/$/{x=NR+2}(NR==x){print $2}'
 result:
   string: 'No'
-fix: "NOTE: To remount the System volume as Read Only, rebooting the computer will\
-  \ mount it as Read Only. \n"
+fix: "NOTE: To remount the System volume as Read Only, rebooting the computer will mount it as Read Only. \n"
 references:
-  cce: |-
-    $OS_VALUE
+  cce:
+    - $OS_VALUE
   cci:
-  - N/A
+    - N/A
   800-53r5:
-  - SC-34
-  - MA-4(1)
-  - SI-7
+    - SC-34
+    - MA-4(1)
+    - SI-7
   800-53r4:
-  - SC-34
-  - SI-7
+    - SC-34
+    - SI-7
   srg:
-  - N/A
-  disa_stig: |-
-    $OS_VALUE
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
 tags:
-- 800-53r5_moderate
-- 800-53r5_high
-- 800-53r4_moderate
-- 800-53r4_high
+  - 800-53r5_moderate
+  - 800-53r5_high
+  - 800-53r4_moderate
+  - 800-53r4_high
 mobileconfig: false
-mobileconfig_info:
-OS_specifics:
-  macOS:
-    '12':
-      references:
-        cce:
-        - CCE-91016-6
-        disa_stig:
-        - N/A
-    '11':
-      references:
-        cce:
+mobileconfig_info: null
+os_specifics:
+  '11.0':
+    references:
+      cce:
         - CCE-85388-7
-        disa_stig:
+      disa_stig:
         - N/A
-    '10.15':
-      references:
-        cce:
-        - CCE-84851-5
-        disa_stig:
+      srg:
+        - N/A
+  '12.0':
+    references:
+      cce:
+        - CCE-91016-6
+      disa_stig:
+        - N/A
+      srg:
+        - N/A
+  '13.0':
+    references:
+      cce:
+        - CCE-91898-7
+      disa_stig:
+        - N/A
+      srg:
         - N/A

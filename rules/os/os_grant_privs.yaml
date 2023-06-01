@@ -1,47 +1,49 @@
 id: os_grant_privs
 title: Allow Administrators to Promote Other Users to Administrator Status
-discussion: "The information system _IS_ configured to allow current administrators\
-  \ to promote standard users to administrator user status. \n\nThe macOS is a UNIX\
-  \ 03-compliant operating system which allows administrators of the system to grant\
-  \ privileges to other users.\n\nlink:https://support.apple.com/guide/mac-help/set-up-other-users-on-your-mac-mtusr001/mac[]\n"
+discussion: "The information system _IS_ configured to allow current administrators to promote standard users to administrator user status. \n\nThe macOS is a UNIX 03-compliant operating system which allows administrators of the system to grant privileges to other users.\n\nlink:https://support.apple.com/guide/mac-help/set-up-other-users-on-your-mac-mtusr001/mac[]\n"
 check: |
   The technology supports this requirement and cannot be configured to be out of compliance. The technology inherently meets this requirement.
 fix: |
   The technology inherently meets this requirement. No fix is required.
 references:
-  cce: |-
-    $OS_VALUE
+  cce:
+    - $OS_VALUE
   cci:
-  - CCI-002165
+    - CCI-002165
   800-53r5:
-  - AC-3(4)
+    - AC-3(4)
   800-53r4:
-  - AC-3(4)
-  disa_stig: |-
-    $OS_VALUE
+    - AC-3(4)
+  disa_stig:
+    - $OS_VALUE
   srg:
-  - N/A
+    - $OS_VALUE
 tags:
-- inherent
+  - inherent
 mobileconfig: false
-mobileconfig_info:
-OS_specifics:
-  macOS:
-    '12':
-      references:
-        cce:
-        - CCE-90928-3
-        disa_stig:
-        - N/A
-    '11':
-      references:
-        cce:
+mobileconfig_info: null
+os_specifics:
+  '11.0':
+    references:
+      cce:
         - CCE-85317-6
-        disa_stig:
+      disa_stig:
         - N/A
-    '10.15':
-      references:
-        cce:
-        - CCE-84878-8
-        disa_stig:
+      srg:
+        - SRG-OS-000312-GPOS-00123
+  '12.0':
+    references:
+      cce:
+        - CCE-90928-3
+      disa_stig:
+        - N/A
+      srg:
+        - N/A
+  '13.0':
+    references:
+      cce:
+        - CCE-91795-5
+      disa_stig:
+        - N/A
+      srg:
         - N/A

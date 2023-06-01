@@ -7,85 +7,121 @@ discussion: |
   ====
   Some organizations allow the use of the built-in Calendar.app for organizational communication. Information System Security Officers (ISSOs) may make the risk-based decision not to disable the macOS built-in Mail.app to avoid losing this functionality, but they are advised to first fully weigh the potential risks posed to their organization.
   ====
-check: |
-  /usr/bin/osascript -l JavaScript << EOS
-  function run() {
-    let pref1 = ObjC.unwrap($.NSUserDefaults.alloc.initWithSuiteName('com.apple.applicationaccess.new')\
-    .objectForKey('familyControlsEnabled'))
-    let pathlist = $.NSUserDefaults.alloc.initWithSuiteName('com.apple.applicationaccess.new')\
-    .objectForKey('pathBlackList').js
-    for ( let app in pathlist ) {
-        if ( ObjC.unwrap(pathlist[app]) == "/Applications/Calendar.app" && pref1 == true ){
-            return("true")
-        }
-    }
-    return("false")
-    }
-  EOS
+
+  [IMPORTANT]
+  ====
+  Apple has deprecated the use of link:https://github.com/apple/device-management/blob/eb51fb0cb9626cac4717858556912c257a734ce0/mdm/profiles/com.apple.applicationaccess.new.yaml#L67-L70[application restriction controls], using these controls may not work as expected. Third party software may be required to fulfill the compliance requirements.
+  ====
+check: $OS_VALUE
 result:
-  string: 'false'
+  integer: 1
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce: |-
-    $OS_VALUE
+  cce:
+    - $OS_VALUE
   cci:
-  - CCI-000381
+    - CCI-000381
   800-53r5:
-  - AC-20
-  - CM-7
-  - CM-7(1)
+    - AC-20
+    - CM-7
+    - CM-7(1)
   800-53r4:
-  - CM-7
-  - CM-7(1)
-  - AC-20
+    - CM-7
+    - CM-7(1)
+    - AC-20
   srg:
-  - N/A
-  disa_stig: |-
-    $OS_VALUE
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
   800-171r2:
-  - 3.1.20
-  - 3.4.6
+    - 3.1.20
+    - 3.4.6
   cis:
     benchmark:
-    - N/A
+      - $OS_VALUE
     controls v8:
-    - 4.1
-    - 4.8
+      - $OS_VALUE
 tags:
-- 800-53r5_low
-- 800-53r5_moderate
-- 800-53r5_high
-- 800-53r4_low
-- 800-53r4_moderate
-- 800-53r4_high
-- 800-171
-- cnssi-1253
-- cisv8
+  - stig
 severity: medium
 mobileconfig: true
 mobileconfig_info:
   com.apple.applicationaccess.new:
     familyControlsEnabled: true
     pathBlackList:
-    - /Applications/Calendar.app
-OS_specifics:
-  macOS:
-    '12':
-      references:
-        cce:
-        - CCE-90909-3
-        disa_stig:
-        - N/A
-    '11':
-      references:
-        cce:
+      - /Applications/Calendar.app
+os_specifics:
+  '11.0':
+    references:
+      cce:
         - CCE-85300-2
-        disa_stig:
+      disa_stig:
         - APPL-11-002023
-    '10.15':
-      references:
-        cce:
-        - CCE-84750-9
-        disa_stig:
-        - AOSX-15-002023
+      srg:
+        - SRG-OS-000095-GPOS-00049
+      cis:
+        benchmark:
+          - N/A
+        controls v8:
+          - 4.1
+          - 4.8
+    check: /usr/bin/profiles -P -o stdout | /usr/bin/grep -A 20 familyControlsEnabled | /usr/bin/grep -c "/Applications/Calendar.app"
+  '12.0':
+    references:
+      cce:
+        - CCE-90909-3
+      disa_stig:
+        - N/A
+      srg:
+        - N/A
+      cis:
+        benchmark:
+          - N/A
+        controls v8:
+          - 4.1
+          - 4.8
+    check: |
+      /usr/bin/osascript -l JavaScript << EOS
+      function run() {
+        let pref1 = ObjC.unwrap($.NSUserDefaults.alloc.initWithSuiteName('com.apple.applicationaccess.new')\
+        .objectForKey('familyControlsEnabled'))
+        let pathlist = $.NSUserDefaults.alloc.initWithSuiteName('com.apple.applicationaccess.new')\
+        .objectForKey('pathBlackList').js
+        for ( let app in pathlist ) {
+            if ( ObjC.unwrap(pathlist[app]) == "/Applications/Calendar.app" && pref1 == true ){
+                return("true")
+            }
+        }
+        return("false")
+        }
+      EOS
+  '13.0':
+    references:
+      cce:
+        - CCE-91769-0
+      disa_stig:
+        - N/A
+      srg:
+        - N/A
+      cis:
+        benchmark:
+          - N/A
+        controls v8:
+          - 4.1
+          - 4.8
+    check: |
+      /usr/bin/osascript -l JavaScript << EOS
+      function run() {
+        let pref1 = ObjC.unwrap($.NSUserDefaults.alloc.initWithSuiteName('com.apple.applicationaccess.new')\
+        .objectForKey('familyControlsEnabled'))
+        let pathlist = $.NSUserDefaults.alloc.initWithSuiteName('com.apple.applicationaccess.new')\
+        .objectForKey('pathBlackList').js
+        for ( let app in pathlist ) {
+            if ( ObjC.unwrap(pathlist[app]) == "/Applications/Calendar.app" && pref1 == true ){
+                return("true")
+            }
+        }
+        return("false")
+        }
+      EOS

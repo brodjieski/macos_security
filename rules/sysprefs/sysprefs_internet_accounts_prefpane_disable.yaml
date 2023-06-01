@@ -7,65 +7,74 @@ discussion: |
   ====
   Some organizations may allow the use and configuration of the built-in Mail.app, Calendar.app, and Contacts.app for organizational communication. Information System Security Officers (ISSOs) may make the risk-based decision not to disable the Internet Accounts System Preference pane to avoid losing this functionality, but they are advised to first fully weigh the potential risks posed to their organization.
   ====
-check: "/usr/bin/profiles -P -o stdout | /usr/bin/grep -c 'com.apple.preferences.internetaccounts'\
-  \ | /usr/bin/awk '{ if ($1 >= 2) {print \"1\"} else {print \"0\"}}' \n"
+check: |
+  /usr/bin/profiles show -output stdout-xml | /usr/bin/xmllint --xpath '//key[text()="DisabledPreferencePanes"]/following-sibling::*[1]' - | /usr/bin/grep -c com.apple.preferences.internetaccounts
 result:
   integer: 1
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce: |-
-    $OS_VALUE
+  cce:
+    - $OS_VALUE
   cci:
-  - CCI-001774
-  - CCI-000381
+    - CCI-001774
+    - CCI-000381
   800-53r5:
-  - CM-7(5)
-  - AC-20
+    - CM-7(5)
+    - AC-20
   800-53r4:
-  - AC-20
-  - CM-7(5)
+    - AC-20
+    - CM-7(5)
   srg:
-  - SRG-OS-000370-GPOS-00155
-  - SRG-OS-000095-GPOS-00049
-  disa_stig: |-
-    $OS_VALUE
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
   800-171r2:
-  - 3.1.20
-  cis:
-    benchmark:
+    - 3.1.20
+cis:
+  benchmark:
     - N/A
-    controls v8:
+  controls v8:
     - 4.8
     - 15.2
 tags:
-- 800-53r5_low
-- 800-53r4_low
-- 800-53r4_moderate
-- 800-53r4_high
-- 800-53r5_moderate
-- 800-53r5_high
-- 800-171
-- cnssi-1253
-- cisv8
-- stig
+  - 800-53r5_low
+  - 800-53r4_low
+  - 800-53r4_moderate
+  - 800-53r4_high
+  - 800-53r5_moderate
+  - 800-53r5_high
+  - 800-171
+  - stig
+  - cisv8
 severity: medium
 mobileconfig: true
 mobileconfig_info:
   com.apple.systempreferences:
     DisabledPreferencePanes:
-    - com.apple.preferences.internetaccounts
-OS_specifics:
-  macOS:
-    '12':
-      references:
-        cce:
-        - CCE-90938-2
-        disa_stig:
-        - APPL-12-002032
-    '11':
-      references:
-        cce:
+      - com.apple.preferences.internetaccounts
+os_specifics:
+  '11.0':
+    references:
+      cce:
         - CCE-85328-3
-        disa_stig:
+      disa_stig:
         - APPL-11-002032
+      srg:
+        - SRG-OS-000095-GPOS-00049
+        - SRG-OS-000370-GPOS-00155
+  '12.0':
+    references:
+      cce:
+        - CCE-90938-2
+      disa_stig:
+        - APPL-12-002032
+      srg:
+        - SRG-OS-000370-GPOS-00155
+        - SRG-OS-000095-GPOS-00049
+      cis:
+        benchmark:
+          - N/A
+        controls v8:
+          - 4.8
+          - 15.2

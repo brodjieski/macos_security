@@ -4,50 +4,73 @@ discussion: |
   An approved antivirus product _MUST_ be installed and configured to run.
 
   Malicious software can establish a base on individual desktops and servers. Employing an automated mechanism to detect this type of software will aid in elimination of the software from the operating system.'
-check: |
-  /bin/launchctl print-disabled system | /usr/bin/grep -c '"com.apple.mrt" => false'
+check: $OS_VALUE
 result:
   integer: 1
-fix: |
-  [source,bash]
-  ----
-  /bin/launchctl enable system/com.apple.mrt
-  ----
+fix: $OS_VALUE
 references:
-  cce: |-
-    $OS_VALUE
+  cce:
+    - $OS_VALUE
   cci:
-  - CCI-000366
+    - CCI-000366
   800-53r5:
-  - N/A
+    - N/A
   800-53r4:
-  - SI-2
+    - SI-2
   srg:
-  - SRG-OS-000480-GPOS-00227
-  disa_stig: |-
-    $OS_VALUE
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
 tags:
-- stig
+  - stig
 severity: high
 mobileconfig: false
-mobileconfig_info:
-OS_specifics:
-  macOS:
-    '12':
-      references:
-        cce:
-        - CCE-90900-2
-        disa_stig:
-        - APPL-12-002070
-    '11':
-      references:
-        cce:
+mobileconfig_info: null
+os_specifics:
+  '11.0':
+    references:
+      cce:
         - CCE-85501-5
-        disa_stig:
+      disa_stig:
         - APPL-11-002070
-    '10.15':
-      references:
-        cce:
-        - CCE-84894-5
-        disa_stig:
-        - AOSX-15-002070
+      srg:
+        - SRG-OS-000480-GPOS-00227
+    check: |
+      /bin/launchctl print-disabled system | /usr/bin/grep -c '"com.apple.mrt" => false'
+    fix: |
+      [source,bash]
+      ----
+      /bin/launchctl enable system/com.apple.mrt
+      ----
+  '12.0':
+    references:
+      cce:
+        - CCE-90900-2
+      disa_stig:
+        - APPL-12-002070
+      srg:
+        - SRG-OS-000480-GPOS-00227
+    check: |
+      /bin/launchctl list | /usr/bin/grep -cE "(com.apple.XprotectFramework.PluginService$|com.apple.XProtect.daemon.scan$)"
+    fix: |
+      [source,bash]
+      ----
+      /bin/launchctl load -w /Library/Apple/System/Library/LaunchDaemons/com.apple.XProtect.daemon.scan.plist
+      /bin/launchctl load -w /Library/Apple/System/Library/LaunchDaemons/com.apple.XprotectFramework.PluginService.plist
+      ----
+  '13.0':
+    references:
+      cce:
+        - CCE-91756-7
+      disa_stig:
+        - N/A
+      srg:
+        - N/A
+    check: |
+      /bin/launchctl list | /usr/bin/grep -cE "(com.apple.XprotectFramework.PluginService$|com.apple.XProtect.daemon.scan$)"
+    fix: |
+      [source,bash]
+      ----
+      /bin/launchctl load -w /Library/Apple/System/Library/LaunchDaemons/com.apple.XProtect.daemon.scan.plist
+      /bin/launchctl load -w /Library/Apple/System/Library/LaunchDaemons/com.apple.XprotectFramework.PluginService.plist
+      ----

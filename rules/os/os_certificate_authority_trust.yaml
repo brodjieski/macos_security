@@ -9,45 +9,52 @@ result:
 fix: |
   Obtain the approved certificates from the appropriate authority and install them to the System Keychain.
 references:
-  cce: |-
-    $OS_VALUE
+  cce:
+    - $OS_VALUE
   cci:
-  - CCI-000185
-  - CCI-002450
+    - CCI-000185
+    - CCI-002450
   800-53r5:
-  - SC-17
+    - SC-17
   800-53r4:
-  - SC-17
-  disa_stig: |-
-    $OS_VALUE
+    - SC-17
+  disa_stig:
+    - $OS_VALUE
+  srg:
+    - $OS_VALUE
 tags:
-- 800-53r5_moderate
-- 800-53r5_high
-- 800-53r4_moderate
-- 800-53r4_high
-- cnssi-1253
-- manual
-- stig
+  - 800-53r5_moderate
+  - 800-53r5_high
+  - 800-53r4_moderate
+  - 800-53r4_high
+  - stig
+  - manual
 severity: high
 mobileconfig: false
-mobileconfig_info:
-OS_specifics:
-  macOS:
-    '12':
-      references:
-        cce:
-        - CCE-90911-9
-        disa_stig:
-        - APPL-12-003001
-    '11':
-      references:
-        cce:
+mobileconfig_info: null
+os_specifics:
+  '11.0':
+    references:
+      cce:
         - CCE-85302-8
-        disa_stig:
+      disa_stig:
         - APPL-11-003001
-    '10.15':
-      references:
-        cce:
-        - CCE-85302-8
-        disa_stig:
-        - AOSX-15-003001
+      srg:
+        - SRG-OS-000066-GPOS-00034
+        - SRG-OS-000478-GPOS-00223
+  '12.0':
+    references:
+      cce:
+        - CCE-90911-9
+      disa_stig:
+        - APPL-12-003001
+      srg:
+        - None
+  '13.0':
+    references:
+      cce:
+        - CCE-91772-4
+      disa_stig:
+        - N/A
+      srg:
+        - None

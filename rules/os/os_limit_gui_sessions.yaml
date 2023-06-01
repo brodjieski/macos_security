@@ -1,54 +1,51 @@
 id: os_limit_gui_sessions
 title: Limit Concurrent GUI Sessions to 10 for all Accounts
-discussion: "The information system _IS_ configured to limit the number of concurrent\
-  \ graphical user interface (GUI) sessions to a maximum of ten for all users. \n\n\
-  Operating system management includes the ability to control the number of users\
-  \ and user sessions that utilize an operating system. Limiting the number of allowed\
-  \ users and sessions per user helps reduce the risks related to Denial-of-Service\
-  \ (DoS) attacks. This requirement addresses concurrent sessions for information\
-  \ system accounts and does not address concurrent sessions by single users via multiple\
-  \ system accounts. The maximum number of concurrent sessions should be defined based\
-  \ upon mission needs and the operational environment for each system.\n"
+discussion: "The information system _IS_ configured to limit the number of concurrent graphical user interface (GUI) sessions to a maximum of ten for all users. \n\nOperating system management includes the ability to control the number of users and user sessions that utilize an operating system. Limiting the number of allowed users and sessions per user helps reduce the risks related to Denial-of-Service (DoS) attacks. This requirement addresses concurrent sessions for information system accounts and does not address concurrent sessions by single users via multiple system accounts. The maximum number of concurrent sessions should be defined based upon mission needs and the operational environment for each system.\n"
 check: |
   The technology supports this requirement and cannot be configured to be out of compliance. The technology inherently meets this requirement.
 fix: |
   The technology inherently meets this requirement. No fix is required.
 references:
-  cce: |-
-    $OS_VALUE
+  cce:
+    - $OS_VALUE
   cci:
-  - CCI-000054
+    - CCI-000054
   800-53r5:
-  - AC-10
+    - AC-10
   800-53r4:
-  - AC-10
-  disa_stig: |-
-    $OS_VALUE
+    - AC-10
+  disa_stig:
+    - $OS_VALUE
   srg:
-  - N/A
+    - $OS_VALUE
 tags:
-- 800-53r5_high
-- 800-53r4_high
-- inherent
+  - 800-53r5_high
+  - 800-53r4_high
+  - inherent
 mobileconfig: false
-mobileconfig_info:
-OS_specifics:
-  macOS:
-    '12':
-      references:
-        cce:
-        - CCE-90943-2
-        disa_stig:
-        - N/A
-    '11':
-      references:
-        cce:
+mobileconfig_info: null
+os_specifics:
+  '11.0':
+    references:
+      cce:
         - CCE-85333-3
-        disa_stig:
+      disa_stig:
         - N/A
-    '10.15':
-      references:
-        cce:
-        - CCE-84855-6
-        disa_stig:
+      srg:
+        - SRG-OS-000027-GPOS-00008
+  '12.0':
+    references:
+      cce:
+        - CCE-90943-2
+      disa_stig:
+        - N/A
+      srg:
+        - N/A
+  '13.0':
+    references:
+      cce:
+        - CCE-91813-6
+      disa_stig:
+        - N/A
+      srg:
         - N/A

@@ -1,9 +1,6 @@
 id: sysprefs_diagnostics_reports_disable
 title: Disable Sending Diagnostic and Usage Data to Apple
-discussion: "The ability to submit diagnostic data to Apple _MUST_ be disabled.\n\n\
-  The information system _MUST_ be configured to provide only essential capabilities.\
-  \ Disabling the submission of diagnostic and usage information will mitigate the\
-  \ risk of unwanted data being sent to Apple. \n"
+discussion: "The ability to submit diagnostic data to Apple _MUST_ be disabled.\n\nThe information system _MUST_ be configured to provide only essential capabilities. Disabling the submission of diagnostic and usage information will mitigate the risk of unwanted data being sent to Apple. \n"
 check: |
   /usr/bin/osascript -l JavaScript << EOS
   function run() {
@@ -23,41 +20,39 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce: |-
-    $OS_VALUE
+  cce:
+    - $OS_VALUE
   cci:
-  - CCI-000382
+    - CCI-000382
   800-53r5:
-  - SI-11
-  - AC-20
-  - SC-7(10)
+    - SI-11
+    - AC-20
+    - SC-7(10)
   800-53r4:
-  - AC-20
-  - SI-11
+    - AC-20
+    - SI-11
   srg:
-  - SRG-OS-000096-GPOS-00050
-  disa_stig: |-
-    $OS_VALUE
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
   800-171r2:
-  - 3.1.20
+    - 3.1.20
   cis:
     benchmark:
-    - 2.5.5 (level 2)
+      - $OS_VALUE
     controls v8:
-    - 4.1
-    - 4.8
+      - $OS_VALUE
 tags:
-- 800-53r5_low
-- 800-53r4_low
-- 800-53r4_moderate
-- 800-53r4_high
-- 800-53r5_moderate
-- 800-53r5_high
-- 800-171
-- cnssi-1253
-- cis_lvl2
-- cisv8
-- stig
+  - 800-53r5_low
+  - 800-53r4_low
+  - 800-53r4_moderate
+  - 800-53r4_high
+  - 800-53r5_moderate
+  - 800-53r5_high
+  - 800-171
+  - stig
+  - cisv8
+  - cis_lvl2
 severity: medium
 mobileconfig: true
 mobileconfig_info:
@@ -65,23 +60,32 @@ mobileconfig_info:
     AutoSubmit: false
   com.apple.applicationaccess:
     allowDiagnosticSubmission: false
-OS_specifics:
-  macOS:
-    '12':
-      references:
-        cce:
-        - CCE-91052-1
-        disa_stig:
-        - APPL-12-002021
-    '11':
-      references:
-        cce:
+os_specifics:
+  '11.0':
+    references:
+      cce:
         - CCE-85423-2
-        disa_stig:
+      disa_stig:
         - APPL-11-002021
-    '10.15':
-      references:
-        cce:
-        - CCE-84829-1
-        disa_stig:
-        - AOSX-15-002021
+      srg:
+        - SRG-OS-000096-GPOS-00050
+      cis:
+        benchmark:
+          - 2.5.5 (level 2)
+        controls v8:
+          - 4.1
+          - 4.8
+  '12.0':
+    references:
+      cce:
+        - CCE-91052-1
+      disa_stig:
+        - APPL-12-002021
+      srg:
+        - SRG-OS-000096-GPOS-00050
+      cis:
+        benchmark:
+          - 2.5.5 (level 2)
+        controls v8:
+          - 4.1
+          - 4.8

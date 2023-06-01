@@ -14,28 +14,27 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce: |-
-    $OS_VALUE
+  cce:
+    - $OS_VALUE
   cci:
-  - CCI-001891
-  - CCI-002046
+    - CCI-001891
+    - CCI-002046
   800-53r5:
-  - AU-12(1)
-  - SC-45(1)
+    - AU-12(1)
+    - SC-45(1)
   800-53r4:
-  - AU-8(1)
+    - AU-8(1)
   srg:
-  - SRG-OS-000355-GPOS-00143
-  - SRG-OS-000356-GPOS-00144
-  disa_stig: |-
-    $OS_VALUE
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
   800-171r2:
-  - 3.3.7
+    - 3.3.7
   cis:
     benchmark:
-    - 2.2.1 (level 1)
+      - $OS_VALUE
     controls v8:
-    - 8.4
+      - $OS_VALUE
 odv:
   hint: Name of timeserver(s) separated by commas.
   recommended: time-a.nist.gov,time-b.nist.gov
@@ -43,39 +42,47 @@ odv:
   cis_lvl1: time.apple.com
   cis_lvl2: time.apple.com
 tags:
-- 800-171
-- cnssi-1253
-- 800-53r5_low
-- 800-53r5_moderate
-- 800-53r5_high
-- 800-53r4_moderate
-- 800-53r4_high
-- cis_lvl1
-- cis_lvl2
-- cisv8
-- stig
+  - 800-171
+  - 800-53r5_low
+  - 800-53r5_moderate
+  - 800-53r5_high
+  - 800-53r4_moderate
+  - 800-53r4_high
+  - stig
+  - cis_lvl1
+  - cis_lvl2
+  - cisv8
 severity: medium
 mobileconfig: true
 mobileconfig_info:
   com.apple.MCX:
     timeServer: $ODV
-OS_specifics:
-  macOS:
-    '12':
-      references:
-        cce:
-        - CCE-91080-2
-        disa_stig:
-        - APPL-12-000014
-    '11':
-      references:
-        cce:
+os_specifics:
+  '11.0':
+    references:
+      cce:
         - CCE-85448-9
-        disa_stig:
+      disa_stig:
         - APPL-11-000014
-    '10.15':
-      references:
-        cce:
-        - CCE-84846-5
-        disa_stig:
-        - AOSX-15-000014
+      srg:
+        - SRG-OS-000355-GPOS-00143
+        - SRG-OS-000356-GPOS-00144
+      cis:
+        benchmark:
+          - 2.2.1 (level 1)
+        controls v8:
+          - 8.4
+  '12.0':
+    references:
+      cce:
+        - CCE-91080-2
+      disa_stig:
+        - APPL-12-000014
+      srg:
+        - SRG-OS-000355-GPOS-00143
+        - SRG-OS-000356-GPOS-00144
+      cis:
+        benchmark:
+          - 2.2.1 (level 1)
+        controls v8:
+          - 8.4

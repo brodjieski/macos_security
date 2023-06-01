@@ -1,65 +1,61 @@
 id: sysprefs_gatekeeper_override_disallow
 title: Configure Gatekeeper to Disallow End User Override
-discussion: "Gatekeeper _MUST_ be configured with a configuration profile to prevent\
-  \ normal users from overriding its settings. \n\nIf users are allowed to disable\
-  \ Gatekeeper or set it to a less restrictive setting, malware could be introduced\
-  \ into the system. \n"
-check: |
-  /usr/bin/osascript -l JavaScript << EOS
-  $.NSUserDefaults.alloc.initWithSuiteName('com.apple.systempolicy.managed')\
-  .objectForKey('DisableOverride').js
-  EOS
+discussion: "Gatekeeper _MUST_ be configured with a configuration profile to prevent normal users from overriding its settings. \n\nIf users are allowed to disable Gatekeeper or set it to a less restrictive setting, malware could be introduced into the system. \n"
+check: $OS_VALUE
 result:
-  string: 'true'
+  integer: 1
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce: |-
-    $OS_VALUE
+  cce:
+    - $OS_VALUE
   cci:
-  - CCI-000366
+    - N/A
   800-53r5:
-  - CM-5
-  - SI-7(15)
+    - CM-5
+    - SI-7(15)
   800-53r4:
-  - CM-5
-  - SI-7(15)
+    - CM-5
+    - SI-7(15)
   srg:
-  - N/A
-  disa_stig: |-
-    $OS_VALUE
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
   800-171r2:
-  - 3.4.5
+    - 3.4.5
 tags:
-- 800-53r5_low
-- 800-53r5_moderate
-- 800-53r5_high
-- 800-53r4_moderate
-- 800-53r4_high
-- 800-171
-- cnssi-1253
+  - 800-53r5_low
+  - 800-53r5_moderate
+  - 800-53r5_high
+  - 800-53r4_moderate
+  - 800-53r4_high
+  - 800-171
 severity: medium
 mobileconfig: true
 mobileconfig_info:
   com.apple.systempolicy.managed:
     DisableOverride: true
-OS_specifics:
-  macOS:
-    '12':
-      references:
-        cce:
-        - CCE-91058-8
-        disa_stig:
-        - N/A
-    '11':
-      references:
-        cce:
+os_specifics:
+  '11.0':
+    references:
+      cce:
         - CCE-85430-7
-        disa_stig:
+      disa_stig:
         - N/A
-    '10.15':
-      references:
-        cce:
-        - CCE-84835-8
-        disa_stig:
-        - AOSX-15-002061
+      srg:
+        - N/A
+    check: |
+      /usr/bin/profiles -P -o stdout | /usr/bin/grep -c 'DisableOverride = 1' | /usr/bin/awk '{ if ($1 >= 1) {print "1"} else {print "0"}}'
+  '12.0':
+    references:
+      cce:
+        - CCE-91058-8
+      disa_stig:
+        - N/A
+      srg:
+        - N/A
+    check: |
+      /usr/bin/osascript -l JavaScript << EOS
+      $.NSUserDefaults.alloc.initWithSuiteName('com.apple.systempolicy.managed')\
+      .objectForKey('DisableOverride').js
+      EOS

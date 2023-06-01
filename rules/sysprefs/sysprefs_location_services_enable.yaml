@@ -11,42 +11,56 @@ fix: |
   /usr/bin/defaults write /var/db/locationd/Library/Preferences/ByHost/com.apple.locationd LocationServicesEnabled -bool true; /bin/launchctl kickstart -k system/com.apple.locationd
   ----
 references:
-  cce: |-
-    $OS_VALUE
-  cci:
-  - N/A
+  cce:
+    - $OS_VALUE
   800-53r5:
-  - N/A
+    - N/A
   800-53r4:
-  - N/A
+    - N/A
   srg:
-  - N/A
-  disa_stig: |-
-    $OS_VALUE
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
   800-171r2:
-  - N/A
+    - N/A
   cis:
     benchmark:
-    - 2.5.3 (level 2)
+      - $OS_VALUE
     controls v8:
-    - 4.1
-    - 4.8
+      - $OS_VALUE
+  cci:
+    - None
 tags:
-- cis_lvl2
-- cisv8
+  - cis_lvl2
+  - cisv8
 mobileconfig: false
-mobileconfig_info:
-OS_specifics:
-  macOS:
-    '12':
-      references:
-        cce:
-        - CCE-91132-1
-        disa_stig:
-        - N/A
-    '11':
-      references:
-        cce:
+mobileconfig_info: null
+os_specifics:
+  '11.0':
+    references:
+      cce:
         - CCE-85527-0
-        disa_stig:
+      disa_stig:
         - N/A
+      srg:
+        - N/A
+      cis:
+        benchmark:
+          - 2.5.3 (level 2)
+        controls v8:
+          - 4.1
+          - 4.8
+  '12.0':
+    references:
+      cce:
+        - CCE-91132-1
+      disa_stig:
+        - N/A
+      srg:
+        - N/A
+      cis:
+        benchmark:
+          - 2.5.3 (level 2)
+        controls v8:
+          - 4.1
+          - 4.8

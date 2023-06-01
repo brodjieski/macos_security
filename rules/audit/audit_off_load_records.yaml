@@ -1,55 +1,70 @@
 id: audit_off_load_records
 title: Off-Load Audit Records
-discussion: "Audit records should be off-loaded onto a different system or media from\
-  \ the system being audited.\n\nInformation stored in only one location is vulnerable\
-  \ to accidental or incidental deletion or alteration. Off-loading is a common process\
-  \ in information systems with limited audit storage capacity. \n\nTo secure audit\
-  \ records by off-loading, many operating systems can be integrated with enterprise-level\
-  \ auditing mechanisms that meet or exceed this requirement. \n"
+discussion: "Audit records should be off-loaded onto a different system or media from the system being audited.\n\nInformation stored in only one location is vulnerable to accidental or incidental deletion or alteration. Off-loading is a common process in information systems with limited audit storage capacity. \n\nTo secure audit records by off-loading, many operating systems can be integrated with enterprise-level auditing mechanisms that meet or exceed this requirement. \n"
 check: |
   The technology does not support this requirement. This is an applicable-does not meet finding.
 fix: |
   This requirement is a permanent finding and cannot be fixed. An appropriate mitigation for the system must be implemented, but this finding cannot be considered fixed.
 references:
-  cce: |-
-    $OS_VALUE
+  cce:
+    - $OS_VALUE
   cci:
-  - CCI-001851
+    - CCI-001851
   800-53r5:
-  - AU-4(1)
+    - AU-4(1)
   800-53r4:
-  - AU-4(1)
-  disa_stig: |-
-    $OS_VALUE
+    - AU-4(1)
+  disa_stig:
+    - $OS_VALUE
   srg:
-  - N/A
+    - $OS_VALUE
   cis:
     benchmark:
-    - N/A
+      - $OS_VALUE
     controls v8:
-    - 8.9
+      - $OS_VALUE
 tags:
-- permanent
-- cisv8
+  - permanent
 mobileconfig: false
-mobileconfig_info:
-OS_specifics:
-  macOS:
-    '12':
-      references:
-        cce:
-        - CCE-90872-3
-        disa_stig:
-        - N/A
-    '11':
-      references:
-        cce:
+mobileconfig_info: null
+os_specifics:
+  '11.0':
+    references:
+      cce:
         - CCE-85271-5
-        disa_stig:
+      disa_stig:
         - N/A
-    '10.15':
-      references:
-        cce:
-        - CCE-84895-2
-        disa_stig:
+      srg:
+        - SRG-OS-000479-GPOS-00224
+        - SRG-OS-000342-GPOS-00133
+      cis:
+        benchmark:
+          - N/A
+        controls v8:
+          - 8.9
+  '12.0':
+    references:
+      cce:
+        - CCE-90872-3
+      disa_stig:
         - N/A
+      srg:
+        - N/A
+      cis:
+        benchmark:
+          - N/A
+        controls v8:
+          - 8.9
+  '13.0':
+    references:
+      cce:
+        - CCE-91728-6
+      disa_stig:
+        - N/A
+      srg:
+        - N/A
+      cis:
+        benchmark:
+          - N/A
+        controls v8:
+          - 8.9

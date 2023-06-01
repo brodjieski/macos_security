@@ -1,12 +1,6 @@
 id: sysprefs_power_nap_disable
 title: Disable Power Nap
-discussion: "Power Nap _MUST_ be disabled.\n\nPower Nap allows your Mac to perform\
-  \ actions while a Mac is asleep. This can interfere with USB power and may cause\
-  \ devices to stop functioning until a reboot and must therefore be disabled on all\
-  \ applicable systems. \n\nThe following Macs support Power Nap:\n\n* MacBook (Early\
-  \ 2015 and later)\n* MacBook Air (Late 2010 and later)\n* MacBook Pro (all models\
-  \ with Retina display)\n* Mac mini (Late 2012 and later)\n* iMac (Late 2012 and\
-  \ later)\n* Mac Pro (Late 2013 and later)\n"
+discussion: "Power Nap _MUST_ be disabled.\n\nPower Nap allows your Mac to perform actions while a Mac is asleep. This can interfere with USB power and may cause devices to stop functioning until a reboot and must therefore be disabled on all applicable systems. \n\nThe following Macs support Power Nap:\n\n* MacBook (Early 2015 and later)\n* MacBook Air (Late 2010 and later)\n* MacBook Pro (all models with Retina display)\n* Mac mini (Late 2012 and later)\n* iMac (Late 2012 and later)\n* Mac Pro (Late 2013 and later)\n"
 check: |
   /usr/bin/pmset -g custom | /usr/bin/awk '/powernap/ { sum+=$2 } END {print sum}'
 result:
@@ -17,59 +11,66 @@ fix: |
   /usr/bin/pmset -a powernap 0
   ----
 references:
-  cce: |-
-    $OS_VALUE
+  cce:
+    - $OS_VALUE
   800-53r5:
-  - CM-7
-  - CM-7(1)
+    - CM-7
+    - CM-7(1)
   800-53r4:
-  - CM-7
-  - CM-7(1)
-  disa_stig: |-
-    $OS_VALUE
+    - CM-7
+    - CM-7(1)
+  disa_stig:
+    - $OS_VALUE
   srg:
-  - N/A
+    - $OS_VALUE
   cci:
-  - N/A
+    - N/A
   800-171r2:
-  - 3.4.6
+    - 3.4.6
   cis:
     benchmark:
-    - 2.9 (level 1)
+      - $OS_VALUE
     controls v8:
-    - 4.1
-    - 4.8
+      - $OS_VALUE
 tags:
-- 800-53r5_low
-- 800-53r5_moderate
-- 800-53r5_high
-- 800-53r4_low
-- 800-53r4_moderate
-- 800-53r4_high
-- 800-171
-- cnssi-1253
-- cis_lvl1
-- cis_lvl2
-- cisv8
+  - 800-53r5_low
+  - 800-53r5_moderate
+  - 800-53r5_high
+  - 800-53r4_low
+  - 800-53r4_moderate
+  - 800-53r4_high
+  - 800-171
+  - cisv8
+  - cis_lvl1
+  - cis_lvl2
 mobileconfig: false
-mobileconfig_info:
-OS_specifics:
-  macOS:
-    '12':
-      references:
-        cce:
-        - CCE-91069-5
-        disa_stig:
-        - N/A
-    '11':
-      references:
-        cce:
+mobileconfig_info: null
+os_specifics:
+  '11.0':
+    references:
+      cce:
         - CCE-85439-8
-        disa_stig:
+      disa_stig:
         - N/A
-    '10.15':
-      references:
-        cce:
-        - CCE-84780-6
-        disa_stig:
+      srg:
         - N/A
+      cis:
+        benchmark:
+          - 2.8.2 (level 1)
+        controls v8:
+          - 4.1
+          - 4.8
+  '12.0':
+    references:
+      cce:
+        - CCE-91069-5
+      disa_stig:
+        - N/A
+      srg:
+        - N/A
+      cis:
+        benchmark:
+          - 2.8.2 (level 1)
+        controls v8:
+          - 4.1
+          - 4.8

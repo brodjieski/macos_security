@@ -8,48 +8,51 @@ check: |
   /usr/bin/stat -f '%Su:%Sg:%N' $(/usr/bin/grep -v '^#' /etc/newsyslog.conf | /usr/bin/awk '{ print $1 }') 2> /dev/null | /usr/bin/awk '!/^root:wheel:/{print $1}' | /usr/bin/wc -l | /usr/bin/tr -d ' '
 result:
   integer: 0
-fix: "[source,bash]\n----\n/usr/sbin/chown root:wheel $(/usr/bin/stat -f '%Su:%Sg:%N'\
-  \ $(/usr/bin/grep -v '^#' /etc/newsyslog.conf | /usr/bin/awk '{ print $1 }') 2>\
-  \ /dev/null | /usr/bin/awk -F\":\" '!/^root:wheel:/{print $3}')\n----  \n"
+fix: "[source,bash]\n----\n/usr/sbin/chown root:wheel $(/usr/bin/stat -f '%Su:%Sg:%N' $(/usr/bin/grep -v '^#' /etc/newsyslog.conf | /usr/bin/awk '{ print $1 }') 2> /dev/null | /usr/bin/awk -F\":\" '!/^root:wheel:/{print $3}')\n----  \n"
 references:
-  cce: |-
-    $OS_VALUE
+  cce:
+    - $OS_VALUE
   cci:
-  - CCI-001314
+    - CCI-001314
   800-53r5:
-  - SI-11
+    - SI-11
   800-53r4:
-  - SI-11
+    - SI-11
   srg:
-  - SRG-OS-000206-GPOS-00084
-  disa_stig: |-
-    $OS_VALUE
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
   800-171r2:
-  - N/A
+    - N/A
 tags:
-- 800-53r5_moderate
-- 800-53r5_high
-- stig
+  - 800-53r5_moderate
+  - 800-53r5_high
+  - stig
 severity: medium
 mobileconfig: false
-mobileconfig_info:
-OS_specifics:
-  macOS:
-    '12':
-      references:
-        cce:
-        - CCE-90954-9
-        disa_stig:
-        - APPL-12-004001
-    '11':
-      references:
-        cce:
+mobileconfig_info: null
+os_specifics:
+  '11.0':
+    references:
+      cce:
         - CCE-85469-5
-        disa_stig:
+      disa_stig:
         - APPL-11-004001
-    '10.15':
-      references:
-        cce:
-        - CCE-84942-2
-        disa_stig:
-        - AOSX-15-004001
+      srg:
+        - SRG-OS-000206-GPOS-00084
+  '12.0':
+    references:
+      cce:
+        - CCE-90954-9
+      disa_stig:
+        - APPL-12-004001
+      srg:
+        - SRG-OS-000206-GPOS-00084
+  '13.0':
+    references:
+      cce:
+        - CCE-91825-0
+      disa_stig:
+        - N/A
+      srg:
+        - N/A

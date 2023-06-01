@@ -9,41 +9,69 @@ result:
 fix: |
   Install a known good version of macOS.
 references:
-  cce: |-
-    $OS_VALUE
-  cci:
-  - N/A
+  cce:
+    - $OS_VALUE
   800-53r5:
-  - N/A
+    - N/A
   800-53r4:
-  - N/A
+    - N/A
   800-171r2:
-  - N/A
+    - N/A
   cis:
     benchmark:
-    - 2.11 (level 1)
+      - $OS_VALUE
     controls v8:
-    - 2.2
-  disa_stig: |-
-    $OS_VALUE
+      - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
+  cci:
+    - None
+  srg:
+    - $OS_VALUE
 tags:
-- cis_lvl1
-- cis_lvl2
-- cisv8
-- i386
+  - cis_lvl1
+  - cis_lvl2
+  - cisv8
+  - i386
 mobileconfig: false
-mobileconfig_info:
-OS_specifics:
-  macOS:
-    '12':
-      references:
-        cce:
-        - CCE-91102-4
-        disa_stig:
-        - N/A
-    '11':
-      references:
-        cce:
+mobileconfig_info: null
+os_specifics:
+  '11.0':
+    references:
+      cce:
         - CCE-85502-3
-        disa_stig:
-        - N/A
+      disa_stig:
+        - None
+      srg:
+        - None
+      cis:
+        benchmark:
+          - 2.9 (level 1)
+        controls v8:
+          - 2.2
+  '12.0':
+    references:
+      cce:
+        - CCE-91102-4
+      disa_stig:
+        - None
+      srg:
+        - None
+      cis:
+        benchmark:
+          - 2.9 (level 1)
+        controls v8:
+          - 2.2
+  '13.0':
+    references:
+      cce:
+        - CCE-91781-5
+      disa_stig:
+        - None
+      srg:
+        - None
+      cis:
+        benchmark:
+          - 5.9 (level 1)
+        controls v8:
+          - 2.2

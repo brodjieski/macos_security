@@ -1,7 +1,6 @@
 id: os_mobile_file_integrity_enable
 title: Enable Apple Mobile File Integrity
-discussion: |-
-  Mobile file integrity _MUST_ be ebabled.
+discussion: Mobile file integrity _MUST_ be ebabled.
 check: |
   /usr/sbin/nvram -p | /usr/bin/grep -c "amfi_get_out_of_my_way=1"
 result:
@@ -12,43 +11,75 @@ fix: |
   /usr/sbin/nvram boot-args=""
   ----
 references:
-  cce: |-
-    $OS_VALUE
+  cce:
+    - $OS_VALUE
   cci:
-  - N/A
+    - N/A
   800-53r5:
-  - N/A
+    - SI-7(1)
+    - SI-3
   800-53r4:
-  - N/A
+    - N/A
   srg:
-  - N/A
-  disa_stig: |-
-    $OS_VALUE
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
   800-171r2:
-  - N/A
+    - N/A
   cis:
     benchmark:
-    - 5.1.3 (level 1)
+      - $OS_VALUE
     controls v8:
-    - 2.3
-    - 2.6
+      - $OS_VALUE
 tags:
-- cis_lvl1
-- cis_lvl2
-- cisv8
+  - 800-53r5_low
+  - 800-53r5_moderate
+  - 800-53r5_high
+  - cis_lvl1
+  - cis_lvl2
+  - cisv8
 mobileconfig: false
-mobileconfig_info:
-OS_specifics:
-  macOS:
-    '12':
-      references:
-        cce:
-        - CCE-91109-9
-        disa_stig:
-        - N/A
-    '11':
-      references:
-        cce:
+mobileconfig_info: null
+os_specifics:
+  '11.0':
+    references:
+      cce:
         - CCE-85508-0
-        disa_stig:
+      disa_stig:
         - N/A
+      srg:
+        - N/A
+      cis:
+        benchmark:
+          - 5.1.3 (level 1)
+        controls v8:
+          - 2.3
+          - 2.6
+  '12.0':
+    references:
+      cce:
+        - CCE-91109-9
+      disa_stig:
+        - N/A
+      srg:
+        - N/A
+      cis:
+        benchmark:
+          - 5.1.3 (level 1)
+        controls v8:
+          - 2.3
+          - 2.6
+  '13.0':
+    references:
+      cce:
+        - CCE-91824-3
+      disa_stig:
+        - N/A
+      srg:
+        - N/A
+      cis:
+        benchmark:
+          - 5.1.3 (level 1)
+        controls v8:
+          - 2.3
+          - 2.6

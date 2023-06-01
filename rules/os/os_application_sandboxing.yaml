@@ -1,48 +1,52 @@
 id: os_application_sandboxing
 title: Ensure Seperate Execution Domain for Processes
-discussion: "The inherent configuration of the macOS _IS_ in compliance as Apple has\
-  \ implemented multiple features Mandatory access controls (MAC), System Integrity\
-  \ Protection (SIP), and application sandboxing. \n\nlink:https://support.apple.com/guide/security/system-integrity-protection-secb7ea06b49/web[]\n\
-  \nlink:https://developer.apple.com/library/archive/documentation/Security/Conceptual/AppSandboxDesignGuide/AboutAppSandbox/AboutAppSandbox.html[]\n"
+discussion: "The inherent configuration of the macOS _IS_ in compliance as Apple has implemented multiple features Mandatory access controls (MAC), System Integrity Protection (SIP), and application sandboxing. \n\nlink:https://support.apple.com/guide/security/system-integrity-protection-secb7ea06b49/web[]\n\nlink:https://developer.apple.com/library/archive/documentation/Security/Conceptual/AppSandboxDesignGuide/AboutAppSandbox/AboutAppSandbox.html[]\n"
 check: |
   The technology supports this requirement and cannot be configured to be out of compliance. The technology inherently meets this requirement.
 fix: |
   The technology inherently meets this requirement. No fix is required.
 references:
-  cce: |-
-    $OS_VALUE
+  cce:
+    - $OS_VALUE
   800-53r5:
-  - SC-39
+    - SC-39
   800-53r4:
-  - N/A
-  disa_stig: |-
-    $OS_VALUE
+    - N/A
+  disa_stig:
+    - $OS_VALUE
   srg:
-  - N/A
+    - $OS_VALUE
+  cci:
+    - None
 tags:
-- inherent
-- 800-53r5_low
-- 800-53r5_moderate
-- 800-53r5_high
+  - inherent
+  - 800-53r5_low
+  - 800-53r5_moderate
+  - 800-53r5_high
 mobileconfig: false
-mobileconfig_info:
-OS_specifics:
-  macOS:
-    '12':
-      references:
-        cce:
-        - CCE-90903-6
-        disa_stig:
-        - N/A
-    '11':
-      references:
-        cce:
+mobileconfig_info: null
+os_specifics:
+  '11.0':
+    references:
+      cce:
         - CCE-85474-5
-        disa_stig:
+      disa_stig:
         - N/A
-    '10.15':
-      references:
-        cce:
-        - CCE-84943-0
-        disa_stig:
+      srg:
+        - N/A
+  '12.0':
+    references:
+      cce:
+        - CCE-90903-6
+      disa_stig:
+        - N/A
+      srg:
+        - N/A
+  '13.0':
+    references:
+      cce:
+        - CCE-91758-3
+      disa_stig:
+        - N/A
+      srg:
         - N/A

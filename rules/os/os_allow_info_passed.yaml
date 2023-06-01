@@ -11,39 +11,44 @@ check: |
 fix: |
   The technology inherently meets this requirement. No fix is required.
 references:
-  cce: |-
-    $OS_VALUE
+  cce:
+    - $OS_VALUE
   cci:
-  - CCI-002165
+    - CCI-002165
   800-53r5:
-  - AC-3(4)
+    - AC-3(4)
   800-53r4:
-  - AC-3(4)
-  disa_stig: |-
-    $OS_VALUE
+    - AC-3(4)
+  disa_stig:
+    - $OS_VALUE
   srg:
-  - N/A
+    - $OS_VALUE
 tags:
-- inherent
+  - inherent
 mobileconfig: false
-mobileconfig_info:
-OS_specifics:
-  macOS:
-    '12':
-      references:
-        cce:
-        - CCE-90899-6
-        disa_stig:
-        - N/A
-    '11':
-      references:
-        cce:
+mobileconfig_info: null
+os_specifics:
+  '11.0':
+    references:
+      cce:
         - CCE-85294-7
-        disa_stig:
+      disa_stig:
         - N/A
-    '10.15':
-      references:
-        cce:
-        - CCE-84863-0
-        disa_stig:
+      srg:
+        - SRG-OS-000312-GPOS-00122
+  '12.0':
+    references:
+      cce:
+        - CCE-90899-6
+      disa_stig:
+        - N/A
+      srg:
+        - N/A
+  '13.0':
+    references:
+      cce:
+        - CCE-91755-9
+      disa_stig:
+        - N/A
+      srg:
         - N/A

@@ -1,7 +1,6 @@
 id: os_skip_screen_time_prompt_enable
 title: Disable Screen Time Prompt During Setup Assistant
-discussion: |-
-  The prompt for Screen Time setup during Setup Assistant _MUST_ be disabled.
+discussion: The prompt for Screen Time setup during Setup Assistant _MUST_ be disabled.
 check: |
   /usr/bin/osascript -l JavaScript << EOS
   $.NSUserDefaults.alloc.initWithSuiteName('com.apple.SetupAssistant.managed')\
@@ -12,32 +11,41 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce: |-
-    $OS_VALUE
+  cce:
+    - $OS_VALUE
   cci:
-  - CCI-000381
+    - CCI-000381
   800-53r5:
-  - CM-7
-  - CM-7(1)
+    - CM-7
+    - CM-7(1)
   800-53r4:
-  - CM-7
-  - CM-7(1)
+    - CM-7
+    - CM-7(1)
   srg:
-  - SRG-OS-000095-GPOS-00049
-  disa_stig: |-
-    $OS_VALUE
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
 tags:
-- stig
+  - stig
 severity: low
 mobileconfig: true
 mobileconfig_info:
   com.apple.SetupAssistant.managed:
     SkipScreenTime: true
-OS_specifics:
-  macOS:
-    '12':
-      references:
-        cce:
+os_specifics:
+  '12.0':
+    references:
+      cce:
         - CCE-91113-1
-        disa_stig:
+      disa_stig:
         - APPL-12-005055
+      srg:
+        - SRG-OS-000095-GPOS-00049
+  '13.0':
+    references:
+      cce:
+        - CCE-91880-5
+      disa_stig:
+        - N/A
+      srg:
+        - N/A

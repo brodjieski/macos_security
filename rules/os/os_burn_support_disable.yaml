@@ -1,29 +1,33 @@
 id: os_burn_support_disable
 title: Disable Burn Support
-discussion: |-
+discussion: |
   Burn support _MUST_ be disabled.
-  [IMPORTANT] ==== Some organizations rely on the use of removable media for storing and sharing data. Information System Security Officers (ISSOs) may make the risk-based decision not to disable external hard drives to avoid losing this functionality, but they are advised to first fully weigh the potential risks posed to their organization. ====
+
+  [IMPORTANT]
+  ====
+  Some organizations rely on the use of removable media for storing and sharing data. Information System Security Officers (ISSOs) may make the risk-based decision not to disable external hard drives to avoid losing this functionality, but they are advised to first fully weigh the potential risks posed to their organization.
+  ====
 check: |
-  /usr/bin/profiles -P -o stdout | /usr/bin/grep -Ec '(ProhibitBurn = 0|BurnSupport = "off")'
+  /usr/bin/profiles -P -o stdout | /usr/bin/grep -Ec '(BurnSupport = off;|ProhibitBurn = 1;)'
 result:
   integer: 2
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce: |-
-    $OS_VALUE
-  cci:
-  - CCI-000366
+  cce:
+    - $OS_VALUE
   800-53r5:
-  - MP-7
+    - MP-7
   800-53r4:
-  - MP-7(1)
+    - MP-7(1)
   srg:
-  - SRG-OS-000480-GPOS-00227
-  disa_stig: |-
-    $OS_VALUE
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
+  cci:
+    - None
 tags:
-- stig
+  - stig
 severity: low
 mobileconfig: true
 mobileconfig_info:
@@ -31,17 +35,28 @@ mobileconfig_info:
     ProhibitBurn: true
   com.apple.DiscRecording:
     BurnSupport: 'off'
-OS_specifics:
-  macOS:
-    '12':
-      references:
-        cce:
-        - CCE-91098-4
-        disa_stig:
-        - APPL-12-005053
-    '11':
-      references:
-        cce:
+os_specifics:
+  '11.0':
+    references:
+      cce:
         - CCE-85544-5
-        disa_stig:
+      disa_stig:
         - APPL-12-005053
+      srg:
+        - SRG-OS-000480-GPOS-00227
+  '12.0':
+    references:
+      cce:
+        - CCE-91098-4
+      disa_stig:
+        - APPL-12-005053
+      srg:
+        - SRG-OS-000480-GPOS-00227
+  '13.0':
+    references:
+      cce:
+        - CCE-91768-2
+      disa_stig:
+        - N/A
+      srg:
+        - N/A

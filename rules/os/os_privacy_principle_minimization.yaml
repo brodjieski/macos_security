@@ -9,42 +9,47 @@ check: |
 fix: |
   The requirement is NA. No fix is required.
 references:
-  cce: |-
-    $OS_VALUE
+  cce:
+    - $OS_VALUE
   cci:
-  - N/A
+    - N/A
   800-53r5:
-  - SA-8(33)
+    - SA-8(33)
   800-53r4:
-  - N/A
+    - N/A
   800-171r2:
-  - N/A
-  disa_stig: |-
-    $OS_VALUE
+    - N/A
+  disa_stig:
+    - $OS_VALUE
   srg:
-  - N/A
+    - $OS_VALUE
 tags:
-- 800-53r5_privacy
-- n_a
+  - 800-53r5_privacy
+  - n_a
 mobileconfig: false
-mobileconfig_info:
-OS_specifics:
-  macOS:
-    '12':
-      references:
-        cce:
-        - CCE-90980-4
-        disa_stig:
-        - N/A
-    '11':
-      references:
-        cce:
+mobileconfig_info: null
+os_specifics:
+  '11.0':
+    references:
+      cce:
         - CCE-85479-4
-        disa_stig:
+      disa_stig:
         - N/A
-    '10.15':
-      references:
-        cce:
-        - CCE-84949-7
-        disa_stig:
+      srg:
+        - N/A
+  '12.0':
+    references:
+      cce:
+        - CCE-90980-4
+      disa_stig:
+        - N/A
+      srg:
+        - N/A
+  '13.0':
+    references:
+      cce:
+        - CCE-91854-0
+      disa_stig:
+        - N/A
+      srg:
         - N/A

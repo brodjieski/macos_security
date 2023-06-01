@@ -1,7 +1,6 @@
 id: os_library_validation_enabled
 title: Enable Library Validation
-discussion: |-
-  Library validation  _MUST_ be enabled.
+discussion: Library validation  _MUST_ be enabled.
 check: |
   /usr/bin/osascript -l JavaScript << EOS
   $.NSUserDefaults.alloc.initWithSuiteName('com.apple.security.libraryvalidation')\
@@ -9,51 +8,80 @@ check: |
   EOS
 result:
   string: 'false'
-fix: |
-  [source,bash]
-  ----
-  This is implemented by a Configuration Profile.
-  ----
+fix: $OS_VALUE
 references:
-  cce: |-
-    $OS_VALUE
-  cci:
-  - N/A
+  cce:
+    - $OS_VALUE
   800-53r5:
-  - N/A
+    - N/A
   800-53r4:
-  - N/A
+    - N/A
   srg:
-  - N/A
-  disa_stig: |-
-    $OS_VALUE
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
   800-171r2:
-  - N/A
+    - N/A
   cis:
     benchmark:
-    - 5.1.4 (level 1)
+      - $OS_VALUE
     controls v8:
-    - 2.3
-    - 2.6
+      - $OS_VALUE
+  cci:
+    - None
 tags:
-- cis_lvl1
-- cis_lvl2
-- cisv8
+  - none
 mobileconfig: true
 mobileconfig_info:
   com.apple.security.libraryvalidation:
     DisableLibraryValidation: false
-OS_specifics:
-  macOS:
-    '12':
-      references:
-        cce:
-        - CCE-91108-1
-        disa_stig:
-        - N/A
-    '11':
-      references:
-        cce:
+os_specifics:
+  '11.0':
+    references:
+      cce:
         - CCE-85507-2
-        disa_stig:
+      disa_stig:
         - N/A
+      srg:
+        - N/A
+      cis:
+        benchmark:
+          - N/A
+        controls v8:
+          - N/A
+    fix: |
+      [source,bash]
+      ----
+      This is implemented by a Configuration Profile.
+      ----
+  '12.0':
+    references:
+      cce:
+        - CCE-91108-1
+      disa_stig:
+        - N/A
+      srg:
+        - N/A
+      cis:
+        benchmark:
+          - N/A
+        controls v8:
+          - N/A
+    fix: |
+      This is implemented by a Configuration Profile.
+  '13.0':
+    references:
+      cce:
+        - CCE-91810-2
+      disa_stig:
+        - N/A
+      srg:
+        - N/A
+      cis:
+        benchmark:
+          - N/A
+        controls v8:
+          - 2.3
+          - 2.6
+    fix: |
+      This is implemented by a Configuration Profile.

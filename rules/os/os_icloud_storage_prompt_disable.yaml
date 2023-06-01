@@ -1,9 +1,6 @@
 id: os_icloud_storage_prompt_disable
 title: Disable iCloud Storage Setup during Setup Assistant
-discussion: "The prompt to set up iCloud storage services during Setup Assistant _MUST_\
-  \ be disabled.\n\nThe default behavior of macOS is to prompt new users to set up\
-  \ storage in iCloud. Disabling the iCloud storage setup prompt provides organizations\
-  \ more control over the storage of their data. \n"
+discussion: "The prompt to set up iCloud storage services during Setup Assistant _MUST_ be disabled.\n\nThe default behavior of macOS is to prompt new users to set up storage in iCloud. Disabling the iCloud storage setup prompt provides organizations more control over the storage of their data. \n"
 check: |
   /usr/bin/osascript -l JavaScript << EOS
   $.NSUserDefaults.alloc.initWithSuiteName('com.apple.SetupAssistant.managed')\
@@ -14,59 +11,80 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce: |-
-    $OS_VALUE
+  cce:
+    - $OS_VALUE
   cci:
-  - CCI-000381
+    - CCI-000381
   800-53r5:
-  - AC-20
+    - AC-20
   800-53r4:
-  - AC-20
+    - AC-20
   srg:
-  - SRG-OS-000095-GPOS-00049
-  disa_stig: |-
-    $OS_VALUE
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
   800-171r2:
-  - 3.1.20
+    - 3.1.20
   cis:
     benchmark:
-    - N/A
+      - $OS_VALUE
     controls v8:
-    - 4.1
-    - 4.8
+      - $OS_VALUE
 tags:
-- 800-53r5_low
-- 800-53r5_moderate
-- 800-53r5_high
-- 800-53r4_low
-- 800-53r4_moderate
-- 800-53r4_high
-- 800-171
-- cnssi-1253
-- cisv8
-- stig
+  - 800-53r5_low
+  - 800-53r5_moderate
+  - 800-53r5_high
+  - 800-53r4_low
+  - 800-53r4_moderate
+  - 800-53r4_high
+  - 800-171
+  - stig
+  - cisv8
 severity: medium
 mobileconfig: true
 mobileconfig_info:
   com.apple.SetupAssistant.managed:
     SkipiCloudStorageSetup: true
-OS_specifics:
-  macOS:
-    '12':
-      references:
-        cce:
-        - CCE-90933-3
-        disa_stig:
-        - APPL-12-002037
-    '11':
-      references:
-        cce:
+os_specifics:
+  '11.0':
+    references:
+      cce:
         - CCE-85324-2
-        disa_stig:
+      disa_stig:
         - APPL-11-002037
-    '10.15':
-      references:
-        cce:
-        - CCE-84766-5
-        disa_stig:
-        - AOSX-15-002037
+      srg:
+        - SRG-OS-000095-GPOS-00049
+      cis:
+        benchmark:
+          - N/A
+        controls v8:
+          - 4.1
+          - 4.8
+  '12.0':
+    references:
+      cce:
+        - CCE-90933-3
+      disa_stig:
+        - APPL-12-002037
+      srg:
+        - SRG-OS-000095-GPOS-00049
+      cis:
+        benchmark:
+          - N/A
+        controls v8:
+          - 4.1
+          - 4.8
+  '13.0':
+    references:
+      cce:
+        - CCE-91802-9
+      disa_stig:
+        - N/A
+      srg:
+        - N/A
+      cis:
+        benchmark:
+          - N/A
+        controls v8:
+          - 4.1
+          - 4.8

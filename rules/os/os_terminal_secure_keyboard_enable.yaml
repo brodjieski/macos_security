@@ -11,44 +11,70 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce: |-
-    $OS_VALUE
+  cce:
+    - $OS_VALUE
   800-53r5:
-  - N/A
+    - N/A
   800-53r4:
-  - N/A
-  disa_stig: |-
-    $OS_VALUE
+    - N/A
+  disa_stig:
+    - $OS_VALUE
   srg:
-  - N/A
+    - $OS_VALUE
   cci:
-  - N/A
+    - N/A
   800-171r2:
-  - N/A
+    - N/A
   cis:
     benchmark:
-    - 2.10 (level 1)
+      - $OS_VALUE
     controls v8:
-    - 4.8
+      - $OS_VALUE
 tags:
-- cis_lvl1
-- cis_lvl2
-- cisv8
+  - cis_lvl1
+  - cis_lvl2
+  - cisv8
 mobileconfig: true
 mobileconfig_info:
   com.apple.Terminal:
     SecureKeyboardEntry: true
-OS_specifics:
-  macOS:
-    '12':
-      references:
-        cce:
-        - CCE-91118-0
-        disa_stig:
-        - N/A
-    '11':
-      references:
-        cce:
+os_specifics:
+  '11.0':
+    references:
+      cce:
         - CCE-85515-5
-        disa_stig:
+      disa_stig:
         - N/A
+      srg:
+        - N/A
+      cis:
+        benchmark:
+          - 5.11 (level 1)
+        controls v8:
+          - 4.8
+  '12.0':
+    references:
+      cce:
+        - CCE-91118-0
+      disa_stig:
+        - N/A
+      srg:
+        - N/A
+      cis:
+        benchmark:
+          - 5.11 (level 1)
+        controls v8:
+          - 4.8
+  '13.0':
+    references:
+      cce:
+        - CCE-91900-1
+      disa_stig:
+        - N/A
+      srg:
+        - N/A
+      cis:
+        benchmark:
+          - 6.4.1 (level 1)
+        controls v8:
+          - 4.8

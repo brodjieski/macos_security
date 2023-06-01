@@ -12,50 +12,54 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce: |-
-    $OS_VALUE
+  cce:
+    - $OS_VALUE
   cci:
-  - CCI-000060
+    - CCI-000060
   800-53r5:
-  - AC-11(1)
+    - AC-11(1)
   800-53r4:
-  - AC-11(1)
+    - AC-11(1)
   srg:
-  - SRG-OS-000031-GPOS-00012
-  disa_stig: |-
-    $OS_VALUE
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
   800-171r2:
-  - 3.1.10
+    - 3.1.10
 tags:
-- 800-53r5_moderate
-- 800-53r5_high
-- 800-53r4_moderate
-- 800-53r4_high
-- 800-171
-- cnssi-1253
-- stig
+  - 800-53r5_moderate
+  - 800-53r5_high
+  - 800-53r4_moderate
+  - 800-53r4_high
+  - 800-171
+  - stig
 severity: low
 mobileconfig: true
 mobileconfig_info:
   com.apple.screensaver:
     loginWindowModulePath: /System/Library/Screen Savers/Flurry.saver
-OS_specifics:
-  macOS:
-    '12':
-      references:
-        cce:
-        - CCE-90995-2
-        disa_stig:
-        - APPL-12-000006
-    '11':
-      references:
-        cce:
+os_specifics:
+  '11.0':
+    references:
+      cce:
         - CCE-85375-4
-        disa_stig:
+      disa_stig:
         - APPL-11-000006
-    '10.15':
-      references:
-        cce:
-        - CCE-84786-3
-        disa_stig:
+      srg:
+        - SRG-OS-000031-GPOS-00012
+  '12.0':
+    references:
+      cce:
+        - CCE-90995-2
+      disa_stig:
+        - APPL-12-000006
+      srg:
+        - SRG-OS-000031-GPOS-00012
+  '13.0':
+    references:
+      cce:
+        - CCE-91872-2
+      disa_stig:
+        - N/A
+      srg:
         - N/A

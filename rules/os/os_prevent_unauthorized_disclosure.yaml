@@ -1,56 +1,56 @@
 id: os_prevent_unauthorized_disclosure
-title: Configure the System to Prevent the Unauthorized Disclosure of Data via Shared
-  Resources
-discussion: "The information system _IS_ configured to ensure that the unauthorized\
-  \ disclosure of data does not occur when resources are shared. \n\nThe inherent\
-  \ configuration of the macOS does not allow for resources to be shared between users\
-  \ without authorization. \n\nlink:https://developer.apple.com/library/archive/documentation/Security/Conceptual/AuthenticationAndAuthorizationGuide/Permissions/Permissions.html[]\n"
+title: Configure the System to Prevent the Unauthorized Disclosure of Data via Shared Resources
+discussion: "The information system _IS_ configured to ensure that the unauthorized disclosure of data does not occur when resources are shared. \n\nThe inherent configuration of the macOS does not allow for resources to be shared between users without authorization. \n\nlink:https://developer.apple.com/library/archive/documentation/Security/Conceptual/AuthenticationAndAuthorizationGuide/Permissions/Permissions.html[]\n"
 check: |
   The technology supports this requirement and cannot be configured to be out of compliance. The technology inherently meets this requirement.
 fix: |
   The technology inherently meets this requirement. No fix is required.
 references:
-  cce: |-
-    $OS_VALUE
+  cce:
+    - $OS_VALUE
   cci:
-  - CCI-001090
+    - CCI-001090
   800-53r5:
-  - SC-4
+    - SC-4
   800-53r4:
-  - SC-4
-  disa_stig: |-
-    $OS_VALUE
+    - SC-4
+  disa_stig:
+    - $OS_VALUE
   srg:
-  - N/A
+    - $OS_VALUE
   800-171r2:
-  - 3.13.4
+    - 3.13.4
 tags:
-- 800-53r5_moderate
-- 800-53r5_high
-- 800-53r4_moderate
-- 800-53r4_high
-- 800-171
-- cnssi-1253
-- inherent
+  - 800-53r5_moderate
+  - 800-53r5_high
+  - 800-53r4_moderate
+  - 800-53r4_high
+  - 800-171
+  - inherent
 mobileconfig: false
-mobileconfig_info:
-OS_specifics:
-  macOS:
-    '12':
-      references:
-        cce:
-        - CCE-90979-6
-        disa_stig:
-        - N/A
-    '11':
-      references:
-        cce:
+mobileconfig_info: null
+os_specifics:
+  '11.0':
+    references:
+      cce:
         - CCE-85361-4
-        disa_stig:
+      disa_stig:
         - N/A
-    '10.15':
-      references:
-        cce:
-        - CCE-84880-4
-        disa_stig:
+      srg:
+        - SRG-OS-000138-GPOS-00069
+  '12.0':
+    references:
+      cce:
+        - CCE-90979-6
+      disa_stig:
+        - N/A
+      srg:
+        - N/A
+  '13.0':
+    references:
+      cce:
+        - CCE-91853-2
+      disa_stig:
+        - N/A
+      srg:
         - N/A

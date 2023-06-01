@@ -3,7 +3,7 @@ title: Configure Sudo Timeout Period to $ODV
 discussion: |
   The file /etc/sudoers _MUST_ include a timestamp_timout of $ODV.
 check: |
-  /usr/bin/find /etc/sudoers* -type f -exec /usr/bin/grep -E "^Defaults\s+timestamp_timeout=$ODV" '{}' \; | /usr/bin/wc -l | /usr/bin/xargs
+  /usr/bin/sudo /usr/bin/sudo -V | /usr/bin/grep -c "Authentication timestamp timeout: $ODV.0 minutes"
 result:
   integer: 1
 fix: |
@@ -13,49 +13,74 @@ fix: |
   /bin/echo "Defaults timestamp_timeout=$ODV" >> /etc/sudoers.d/mscp
   ----
 references:
-  cce: |-
-    $OS_VALUE
-  cci:
-  - N/A
+  cce:
+    - $OS_VALUE
   800-53r5:
-  - N/A
+    - N/A
   800-53r4:
-  - N/A
+    - N/A
   srg:
-  - N/A
-  disa_stig: |-
-    $OS_VALUE
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
   cis:
     benchmark:
-    - 5.3 (level 1)
+      - $OS_VALUE
     controls v8:
-    - 4.3
+      - $OS_VALUE
+  cci:
+    - None
 odv:
   hint: Number of minutes.
   recommended: 0
   cis_lvl1: 0
   cis_lvl2: 0
 tags:
-- 800-53r5_low
-- 800-53r5_moderate
-- 800-53r5_high
-- cnssi-1253
-- cis_lvl1
-- cis_lvl2
-- cisv8
+  - 800-53r5_low
+  - 800-53r5_moderate
+  - 800-53r5_high
+  - cis_lvl1
+  - cis_lvl2
+  - cisv8
 mobileconfig: false
-mobileconfig_info:
-OS_specifics:
-  macOS:
-    '12':
-      references:
-        cce:
-        - CCE-91116-4
-        disa_stig:
-        - N/A
-    '11':
-      references:
-        cce:
+mobileconfig_info: null
+os_specifics:
+  '11.0':
+    references:
+      cce:
         - CCE-85512-2
-        disa_stig:
+      disa_stig:
         - N/A
+      srg:
+        - N/A
+      cis:
+        benchmark:
+          - 5.3 (level 1)
+        controls v8:
+          - 4.3
+  '12.0':
+    references:
+      cce:
+        - CCE-91116-4
+      disa_stig:
+        - N/A
+      srg:
+        - N/A
+      cis:
+        benchmark:
+          - 5.3 (level 1)
+        controls v8:
+          - 4.3
+  '13.0':
+    references:
+      cce:
+        - CCE-91895-3
+      disa_stig:
+        - N/A
+      srg:
+        - N/A
+      cis:
+        benchmark:
+          - 5.4 (level 1)
+        controls v8:
+          - 4.3

@@ -1,20 +1,7 @@
 id: sysprefs_hot_corners_secure
 title: Secure Hot Corners
-discussion: "Hot corners _MUST_ be secured. \n\nThe information system conceals, via\
-  \ the session lock, information previously visible on the display with a publicly\
-  \ viewable image. Although hot comers can be used to initiate a session lock or\
-  \ to launch useful applications, they can also be configured to disable an automatic\
-  \ session lock from initiating. Such a configuration introduces the risk that a\
-  \ user might forget to manually lock the screen before stepping away from the computer.\n"
-check: |
-  bl_corner="$(/usr/bin/defaults read /Users/"$CURRENT_USER"/Library/Preferences/com.apple.dock wvous-bl-corner 2>/dev/null)"
-  tl_corner="$(/usr/bin/defaults read /Users/"$CURRENT_USER"/Library/Preferences/com.apple.dock wvous-tl-corner 2>/dev/null)"
-  tr_corner="$(/usr/bin/defaults read /Users/"$CURRENT_USER"/Library/Preferences/com.apple.dock wvous-tr-corner 2>/dev/null)"
-  br_corner="$(/usr/bin/defaults read /Users/"$CURRENT_USER"/Library/Preferences/com.apple.dock wvous-br-corner 2>/dev/null)"
-
-  if [[ "$bl_corner" != "6" ]] && [[ "$tl_corner" != "6" ]] && [[ "$tr_corner" != "6" ]] && [[ "$br_corner" != "6" ]]; then
-    echo "0"
-  fi
+discussion: "Hot corners _MUST_ be secured. \n\nThe information system conceals, via the session lock, information previously visible on the display with a publicly viewable image. Although hot comers can be used to initiate a session lock or to launch useful applications, they can also be configured to disable an automatic session lock from initiating. Such a configuration introduces the risk that a user might forget to manually lock the screen before stepping away from the computer.\n"
+check: $OS_VALUE
 result:
   integer: 0
 fix: |
@@ -26,41 +13,72 @@ fix: |
   /usr/bin/sudo -u "$CURRENT_USER" /usr/bin/defaults delete /Users/"$CURRENT_USER"/Library/Preferences/com.apple.dock wvous-br-corner 2>/dev/null
   ----
 references:
-  cce: |-
-    $OS_VALUE
-  cci:
-  - N/A
+  cce:
+    - $OS_VALUE
   800-53r5:
-  - AC-11(1)
+    - AC-11(1)
   800-53r4:
-  - AC-11(1)
+    - AC-11(1)
   srg:
-  - N/A
-  disa_stig: |-
-    $OS_VALUE
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
   800-171r2:
-  - N/A
+    - N/A
   cis:
     benchmark:
-    - 2.3.2 (level 2)
+      - $OS_VALUE
     controls v8:
-    - 4.3
+      - $OS_VALUE
+  cci:
+    - None
 tags:
-- cis_lvl2
-- cisv8
+  - cis_lvl2
+  - cisv8
 mobileconfig: false
-mobileconfig_info:
-OS_specifics:
-  macOS:
-    '12':
-      references:
-        cce:
-        - CCE-91128-9
-        disa_stig:
-        - N/A
-    '11':
-      references:
-        cce:
+mobileconfig_info: null
+os_specifics:
+  '11.0':
+    references:
+      cce:
         - CCE-85524-7
-        disa_stig:
+      disa_stig:
         - N/A
+      srg:
+        - N/A
+      cis:
+        benchmark:
+          - 2.3.2 (level 2)
+        controls v8:
+          - 4.3
+    check: |
+      bl_corner="$(/usr/bin/defaults read /Users/"$CURRENT_USER"/Library/Preferences/com.apple.dock wvous-bl-corner 2>/dev/null)"
+      tl_corner="$(/usr/bin/defaults read /Users/"$CURRENT_USER"/Library/Preferences/com.apple.dock wvous-tl-corner 2>/dev/null)"
+      tr_corner="$(/usr/bin/defaults read /Users/"$CURRENT_USER"/Library/Preferences/com.apple.dock wvous-tr-corner 2>/dev/null)"
+      br_corner="$(/usr/bin/defaults read /Users/"$CURRENT_USER"/Library/Preferences/com.apple.dock wvous-br-corner 2>/dev/null)"
+
+      if [[ "$bl_corner" != "6" ]] && [[ "$tl_corner" != "6" ]] && [[ "$tr_corner" != "6" ]] && [[ "$br_corner" != "6" ]]; then
+        /bin/echo "0"
+      fi
+  '12.0':
+    references:
+      cce:
+        - CCE-91128-9
+      disa_stig:
+        - N/A
+      srg:
+        - N/A
+      cis:
+        benchmark:
+          - 2.3.2 (level 2)
+        controls v8:
+          - 4.3
+    check: |
+      bl_corner="$(/usr/bin/defaults read /Users/"$CURRENT_USER"/Library/Preferences/com.apple.dock wvous-bl-corner 2>/dev/null)"
+      tl_corner="$(/usr/bin/defaults read /Users/"$CURRENT_USER"/Library/Preferences/com.apple.dock wvous-tl-corner 2>/dev/null)"
+      tr_corner="$(/usr/bin/defaults read /Users/"$CURRENT_USER"/Library/Preferences/com.apple.dock wvous-tr-corner 2>/dev/null)"
+      br_corner="$(/usr/bin/defaults read /Users/"$CURRENT_USER"/Library/Preferences/com.apple.dock wvous-br-corner 2>/dev/null)"
+
+      if [[ "$bl_corner" != "6" ]] && [[ "$tl_corner" != "6" ]] && [[ "$tr_corner" != "6" ]] && [[ "$br_corner" != "6" ]]; then
+        echo "0"
+      fi

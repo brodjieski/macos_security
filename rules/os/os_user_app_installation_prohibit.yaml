@@ -1,11 +1,6 @@
 id: os_user_app_installation_prohibit
 title: Prohibit User Installation of Software into /Users/
-discussion: "Users _MUST_ not be allowed to install software into /Users/. \n\nAllowing\
-  \ regular users to install software, without explicit privileges, presents the risk\
-  \ of untested and potentially malicious software being installed on the system.\
-  \ Explicit privileges (escalated or administrative privileges) provide the regular\
-  \ user with explicit capabilities and control that exceeds the rights of a regular\
-  \ user.\n"
+discussion: "Users _MUST_ not be allowed to install software into /Users/. \n\nAllowing regular users to install software, without explicit privileges, presents the risk of untested and potentially malicious software being installed on the system. Explicit privileges (escalated or administrative privileges) provide the regular user with explicit capabilities and control that exceeds the rights of a regular user.\n\n[IMPORTANT]\n====\nApple has deprecated the use of link:https://github.com/apple/device-management/blob/eb51fb0cb9626cac4717858556912c257a734ce0/mdm/profiles/com.apple.applicationaccess.new.yaml#L67-L70[application restriction controls], using these controls may not work as expected. Third party software may be required to fulfill the compliance requirements.\n====\n"
 check: |
   /usr/bin/osascript -l JavaScript << EOS
   function run() {
@@ -26,44 +21,49 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce: |-
-    $OS_VALUE
+  cce:
+    - $OS_VALUE
   cci:
-  - CCI-001812
+    - CCI-001812
   800-53r5:
-  - CM-11(2)
+    - CM-11(2)
   800-53r4:
-  - CM-11(2)
+    - CM-11(2)
   srg:
-  - N/A
-  disa_stig: |-
-    $OS_VALUE
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
 tags:
-- none
+  - stig
 severity: medium
 mobileconfig: true
 mobileconfig_info:
   com.apple.applicationaccess.new:
     familyControlsEnabled: true
     pathBlackList:
-    - /Users/
-OS_specifics:
-  macOS:
-    '12':
-      references:
-        cce:
-        - CCE-91023-2
-        disa_stig:
-        - N/A
-    '11':
-      references:
-        cce:
+      - /Users/
+os_specifics:
+  '11.0':
+    references:
+      cce:
         - CCE-85396-0
-        disa_stig:
+      disa_stig:
         - APPL-11-002067
-    '10.15':
-      references:
-        cce:
-        - CCE-84805-1
-        disa_stig:
-        - AOSX-15-002067
+      srg:
+        - SRG-OS-000362-GPOS-00149
+  '12.0':
+    references:
+      cce:
+        - CCE-91023-2
+      disa_stig:
+        - N/A
+      srg:
+        - N/A
+  '13.0':
+    references:
+      cce:
+        - CCE-91908-4
+      disa_stig:
+        - N/A
+      srg:
+        - N/A

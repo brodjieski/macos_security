@@ -14,51 +14,73 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce: |-
-    $OS_VALUE
+  cce:
+    - $OS_VALUE
   cci:
-  - CCI-000381
+    - CCI-000381
   800-53r5:
-  - CM-7
-  - CM-7(1)
+    - CM-7
+    - CM-7(1)
   800-53r4:
-  - CM-7
-  - CM-7(1)
+    - CM-7
+    - CM-7(1)
   srg:
-  - SRG-OS-000095-GPOS-00049
-  disa_stig: |-
-    $OS_VALUE
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
   cis:
     benchmark:
-    - N/A
+      - $OS_VALUE
     controls v8:
-    - 4.1
-    - 4.8
+      - $OS_VALUE
 tags:
-- cisv8
-- stig
+  - stig
+  - cisv8
 severity: medium
 mobileconfig: true
 mobileconfig_info:
   com.apple.SetupAssistant.managed:
     SkipPrivacySetup: true
-OS_specifics:
-  macOS:
-    '12':
-      references:
-        cce:
-        - CCE-90981-2
-        disa_stig:
-        - APPL-12-002036
-    '11':
-      references:
-        cce:
+os_specifics:
+  '11.0':
+    references:
+      cce:
         - CCE-85362-2
-        disa_stig:
+      disa_stig:
         - APPL-11-002036
-    '10.15':
-      references:
-        cce:
-        - CCE-84781-4
-        disa_stig:
-        - AOSX-15-002036
+      srg:
+        - SRG-OS-000095-GPOS-00049
+      cis:
+        benchmark:
+          - N/A
+        controls v8:
+          - 4.1
+          - 4.8
+  '12.0':
+    references:
+      cce:
+        - CCE-90981-2
+      disa_stig:
+        - APPL-12-002036
+      srg:
+        - SRG-OS-000095-GPOS-00049
+      cis:
+        benchmark:
+          - N/A
+        controls v8:
+          - 4.1
+          - 4.8
+  '13.0':
+    references:
+      cce:
+        - CCE-91855-7
+      disa_stig:
+        - N/A
+      srg:
+        - N/A
+      cis:
+        benchmark:
+          - N/A
+        controls v8:
+          - 4.1
+          - 4.8
