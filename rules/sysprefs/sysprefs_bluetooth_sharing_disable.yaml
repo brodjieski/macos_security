@@ -11,31 +11,29 @@ fix: |
   /usr/bin/sudo -u "$CURRENT_USER" /usr/bin/defaults -currentHost write com.apple.Bluetooth PrefKeyServicesEnabled -bool false
   ----
 references:
-  disa:
-    cci:
-      - N/A
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-  nist:
-    800-53r5:
-      - AC-3
-      - AC-18(4)
-      - CM-7
-      - CM-7(1)
-    800-53r4:
-      - AC-3
-      - AC-18(4)
-      - CM-7
-      - CM-7(1)
-    800-171r2:
-      - 3.1.1
-      - 3.1.2
-      - 3.1.16
-      - 3.4.7
-    cce:
-      - $OS_VALUE
+  cce:
+    - $OS_VALUE
+  cci:
+    - N/A
+  800-53r5:
+    - AC-3
+    - AC-18(4)
+    - CM-7
+    - CM-7(1)
+  800-53r4:
+    - AC-3
+    - AC-18(4)
+    - CM-7
+    - CM-7(1)
+  srg:
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
+  800-171r2:
+    - 3.1.1
+    - 3.1.2
+    - 3.1.16
+    - 3.4.7
   cis:
     benchmark:
       - $OS_VALUE
@@ -53,7 +51,7 @@ tags:
   - cis_lvl1
   - cis_lvl2
 mobileconfig: false
-mobileconfig_info: ''
+mobileconfig_info: null
 os_specifics:
   macOS:
     '11.0':

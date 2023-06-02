@@ -11,22 +11,20 @@ fix: |
   /usr/bin/sed -i.bak 's/^expire-after.*/expire-after:$ODV/' /etc/security/audit_control; /usr/sbin/audit -s
   ----
 references:
-  disa:
-    cci:
-      - CCI-001849
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-  nist:
-    800-53r5:
-      - AU-11
-      - AU-4
-    800-53r4:
-      - AU-4
-      - AU-11
-    cce:
-      - $OS_VALUE
+  cce:
+    - $OS_VALUE
+  cci:
+    - CCI-001849
+  800-53r5:
+    - AU-11
+    - AU-4
+  800-53r4:
+    - AU-4
+    - AU-11
+  srg:
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
   cis:
     benchmark:
       - $OS_VALUE
@@ -52,7 +50,7 @@ tags:
   - cisv8
 severity: medium
 mobileconfig: false
-mobileconfig_info: ''
+mobileconfig_info: null
 os_specifics:
   macOS:
     '11.0':

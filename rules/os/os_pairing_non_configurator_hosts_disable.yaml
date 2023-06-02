@@ -1,0 +1,54 @@
+id: os_pairing_non_configurator_hosts_disable
+title: Ensure Allow pairing with non-Configurator hosts is set to Disabled
+discussion: |
+  Host pairing with a non-Configurator host _MUST_ be disabled.
+check: ' '
+fix: |
+  This is implemented by a Configuration Profile.
+references:
+  cce:
+    - $OS_VALUE
+  cci:
+    - N/A
+  800-53r5:
+    - CM-6
+    - CM-7
+  800-53r4:
+    - N/A
+  srg:
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
+  800-171r2:
+    - N/A
+  cis:
+    benchmark:
+      - $OS_VALUE
+    controls v8:
+      - $OS_VALUE
+tags:
+  - ios
+  - cis_lvl2_enterprise
+  - cisv8
+  - 800-53r5
+severity: ''
+supervised: true
+mobileconfig: true
+mobileconfig_info:
+  com.apple.applicationaccess:
+    allowHostPairing: false
+os_specifics:
+  ios:
+    '16.0':
+      references:
+        cce:
+          - N/A
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - 3.2.1.20 (level 2 - Institutionally-Owned Devices)
+          controls v8:
+            - 4.8

@@ -6,22 +6,20 @@ check: |
 fix: |
   The technology inherently meets this requirement. No fix is required.
 references:
-  disa:
-    cci:
-      - CCI-002235
-    disa_stig:
-      - $OS_VALUE
-    srg:
-      - $OS_VALUE
-  nist:
-    800-53r5:
-      - AC-6(10)
-    800-53r4:
-      - AC-6(10)
-    800-171r2:
-      - 3.1.7
-    cce:
-      - $OS_VALUE
+  cce:
+    - $OS_VALUE
+  cci:
+    - CCI-002235
+  800-53r5:
+    - AC-6(10)
+  800-53r4:
+    - AC-6(10)
+  disa_stig:
+    - $OS_VALUE
+  srg:
+    - $OS_VALUE
+  800-171r2:
+    - 3.1.7
 tags:
   - 800-53r5_moderate
   - 800-53r5_high
@@ -30,7 +28,7 @@ tags:
   - 800-171
   - inherent
 mobileconfig: false
-mobileconfig_info: ''
+mobileconfig_info: null
 os_specifics:
   macOS:
     '11.0':

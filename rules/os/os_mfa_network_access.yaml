@@ -8,20 +8,18 @@ check: |
 fix: |
   For directory bound systems, the technology inherently meets this requirement. No fix is required.
 references:
-  disa:
-    cci:
-      - CCI-000765
-    disa_stig:
-      - $OS_VALUE
-    srg:
-      - $OS_VALUE
-  nist:
-    800-53r5:
-      - N/A
-    800-53r4:
-      - N/A
-    cce:
-      - $OS_VALUE
+  cce:
+    - $OS_VALUE
+  cci:
+    - CCI-000765
+  800-53r5:
+    - N/A
+  800-53r4:
+    - N/A
+  disa_stig:
+    - $OS_VALUE
+  srg:
+    - $OS_VALUE
   cis:
     benchmark:
       - $OS_VALUE
@@ -31,7 +29,7 @@ tags:
   - inherent
   - cisv8
 mobileconfig: false
-mobileconfig_info: ''
+mobileconfig_info: null
 os_specifics:
   macOS:
     '11.0':

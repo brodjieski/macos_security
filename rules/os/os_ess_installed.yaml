@@ -5,21 +5,19 @@ check: "Ask the System Administrator (SA) or Information System Security Officer
 fix: |
   Install the approved ESS solution onto the system.
 references:
-  disa:
-    cci:
-      - CCI-001233
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-  nist:
-    800-53r5:
-      - N/A
-    800-53r4:
-      - SI-2(2)
-      - SI-3
-    cce:
-      - $OS_VALUE
+  cce:
+    - $OS_VALUE
+  cci:
+    - CCI-001233
+  800-53r5:
+    - N/A
+  800-53r4:
+    - SI-2(2)
+    - SI-3
+  srg:
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
 cis:
   benchmark:
     - N/A
@@ -34,7 +32,7 @@ tags:
   - cisv8
 severity: medium
 mobileconfig: false
-mobileconfig_info: ''
+mobileconfig_info: null
 os_specifics:
   macOS:
     '11.0':

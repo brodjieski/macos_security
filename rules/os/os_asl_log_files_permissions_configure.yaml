@@ -12,29 +12,27 @@ fix: |
   /bin/chmod 640 $(/usr/bin/stat -f '%A:%N' $(/usr/bin/grep -e '^>' /etc/asl.conf /etc/asl/* | /usr/bin/awk '{ print $2 }') 2> /dev/null | /usr/bin/awk -F":" '!/640/{print $2}')
   ----
 references:
-  disa:
-    cci:
-      - CCI-001314
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-  nist:
-    800-53r5:
-      - SI-11
-    800-53r4:
-      - SI-11
-    800-171r2:
-      - N/A
-    cce:
-      - $OS_VALUE
+  cce:
+    - $OS_VALUE
+  cci:
+    - CCI-001314
+  800-53r5:
+    - SI-11
+  800-53r4:
+    - SI-11
+  srg:
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
+  800-171r2:
+    - N/A
 tags:
   - 800-53r5_moderate
   - 800-53r5_high
   - stig
 severity: medium
 mobileconfig: false
-mobileconfig_info: ''
+mobileconfig_info: null
 os_specifics:
   macOS:
     '11.0':

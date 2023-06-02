@@ -7,22 +7,20 @@ result:
   integer: 1
 fix: $OS_VALUE
 references:
-  disa:
-    cci:
-      - N/A
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-  nist:
-    800-53r5:
-      - AC-6
-    800-53r4:
-      - AC-6
-    800-171r2:
-      - 3.1.5
-    cce:
-      - $OS_VALUE
+  cce:
+    - $OS_VALUE
+  cci:
+    - N/A
+  800-53r5:
+    - AC-6
+  800-53r4:
+    - AC-6
+  srg:
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
+  800-171r2:
+    - 3.1.5
 tags:
   - 800-53r5_moderate
   - 800-53r5_high
@@ -32,7 +30,7 @@ tags:
   - arm64
 severity: medium
 mobileconfig: false
-mobileconfig_info: ''
+mobileconfig_info: null
 os_specifics:
   macOS:
     '11.5':

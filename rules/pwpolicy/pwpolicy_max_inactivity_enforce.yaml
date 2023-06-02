@@ -1,0 +1,65 @@
+id: pwpolicy_max_inactivity_enforce
+title: Ensure Maximum Auto-Lock is set to $ODV minutes or less
+discussion: |
+  The iOS _MUST_ be configured to auto-lock after $ODV minutes.
+check: ' '
+fix: |
+  This is implemented by a Configuration Profile.
+references:
+  cce:
+    - $OS_VALUE
+  cci:
+    - N/A
+  800-53r5:
+    - AC-2(5)
+    - AC-11
+    - AC-11(1)
+    - AC-12
+  800-53r4:
+    - N/A
+  srg:
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
+  800-171r2:
+    - N/A
+  cis:
+    benchmark:
+      - $OS_VALUE
+    controls v8:
+      - $OS_VALUE
+odv:
+  hint: Maximum Auto-Lock in Minutes.
+  recommended: 2
+  cis_lvl1: 2
+  cis_lvl2: 2
+tags:
+  - ios
+  - cis_lvl1_byod
+  - cis_lvl2_byod
+  - cis_lvl1_enterprise
+  - cis_lvl2_enterprise
+  - cisv8
+  - 800-53r5
+severity: ''
+supervised: false
+mobileconfig: true
+mobileconfig_info:
+  com.apple.mobiledevice.passwordpolicy:
+    maxInactivity: $ODV
+os_specifics:
+  ios:
+    '16.0':
+      references:
+        cce:
+          - N/A
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - 2.4.4 (level 1 - End-User Owned Devices)
+            - 3.4.4 (level 1 - Institutionally-Owned Devices)
+          controls v8:
+            - 4.3

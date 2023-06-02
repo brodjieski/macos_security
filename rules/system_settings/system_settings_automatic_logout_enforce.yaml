@@ -11,23 +11,21 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  disa:
-    cci:
-      - N/A
-    disa_stig:
-      - $OS_VALUE
-    srg:
-      - $OS_VALUE
-  nist:
-    800-53r5:
-      - AC-12
-      - AC-2(5)
-    800-53r4:
-      - AC-12
-    800-171r2:
-      - 3.1.11
-    cce:
-      - $OS_VALUE
+  cce:
+    - $OS_VALUE
+  cci:
+    - N/A
+  800-53r5:
+    - AC-12
+    - AC-2(5)
+  800-53r4:
+    - AC-12
+  disa_stig:
+    - $OS_VALUE
+  srg:
+    - $OS_VALUE
+  800-171r2:
+    - 3.1.11
 odv:
   hint: Number of seconds
   recommended: 86400

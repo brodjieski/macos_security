@@ -12,24 +12,22 @@ fix: |
   /usr/bin/lpstat -p | awk '{print $2}'| /usr/bin/xargs -I{} lpadmin -p {} -o printer-is-shared=false
   ----
 references:
-  disa:
-    cci:
-      - N/A
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-  nist:
-    800-53r5:
-      - CM-7
-      - CM-7(1)
-    800-53r4:
-      - CM-7
-      - CM-7(1)
-    800-171r2:
-      - N/A
-    cce:
-      - $OS_VALUE
+  cce:
+    - $OS_VALUE
+  cci:
+    - N/A
+  800-53r5:
+    - CM-7
+    - CM-7(1)
+  800-53r4:
+    - CM-7
+    - CM-7(1)
+  srg:
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
+  800-171r2:
+    - N/A
   cis:
     benchmark:
       - $OS_VALUE
@@ -46,7 +44,7 @@ tags:
   - cis_lvl2
   - cisv8
 mobileconfig: false
-mobileconfig_info: ''
+mobileconfig_info: null
 os_specifics:
   macOS:
     '13.0':

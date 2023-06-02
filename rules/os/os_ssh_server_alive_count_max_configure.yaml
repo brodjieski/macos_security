@@ -9,22 +9,20 @@ result:
   integer: $ODV
 fix: $OS_VALUE
 references:
-  disa:
-    cci:
-      - N/A
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-  nist:
-    800-53r5:
-      - SC-10
-    800-53r4:
-      - SC-10
-    800-171r2:
-      - 3.13.9
-    cce:
-      - $OS_VALUE
+  cce:
+    - $OS_VALUE
+  cci:
+    - N/A
+  800-53r5:
+    - SC-10
+  800-53r4:
+    - SC-10
+  srg:
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
+  800-171r2:
+    - 3.13.9
 odv:
   hint: Number of seconds.
   recommended: 0
@@ -35,7 +33,7 @@ tags:
   - 800-53r4_high
   - 800-171
 mobileconfig: false
-mobileconfig_info: ''
+mobileconfig_info: null
 os_specifics:
   macOS:
     '11.0':

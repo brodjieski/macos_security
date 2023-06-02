@@ -11,24 +11,22 @@ fix: |
   /usr/bin/pmset -a powernap 0
   ----
 references:
-  disa:
-    disa_stig:
-      - $OS_VALUE
-    srg:
-      - $OS_VALUE
-    cci:
-      - N/A
-  nist:
-    800-53r5:
-      - CM-7
-      - CM-7(1)
-    800-53r4:
-      - CM-7
-      - CM-7(1)
-    800-171r2:
-      - 3.4.6
-    cce:
-      - $OS_VALUE
+  cce:
+    - $OS_VALUE
+  800-53r5:
+    - CM-7
+    - CM-7(1)
+  800-53r4:
+    - CM-7
+    - CM-7(1)
+  disa_stig:
+    - $OS_VALUE
+  srg:
+    - $OS_VALUE
+  cci:
+    - N/A
+  800-171r2:
+    - 3.4.6
   cis:
     benchmark:
       - $OS_VALUE
@@ -46,7 +44,7 @@ tags:
   - cis_lvl1
   - cis_lvl2
 mobileconfig: false
-mobileconfig_info: ''
+mobileconfig_info: null
 os_specifics:
   macOS:
     '11.0':

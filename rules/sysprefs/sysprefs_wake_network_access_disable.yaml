@@ -12,22 +12,20 @@ fix: |
   /usr/bin/pmset -a womp 0
   ----
 references:
-  disa:
-    disa_stig:
-      - $OS_VALUE
-    srg:
-      - $OS_VALUE
-    cci:
-      - N/A
-  nist:
-    800-53r5:
-      - N/A
-    800-53r4:
-      - N/A
-    800-171r2:
-      - N/A
-    cce:
-      - $OS_VALUE
+  cce:
+    - $OS_VALUE
+  800-53r5:
+    - N/A
+  800-53r4:
+    - N/A
+  disa_stig:
+    - $OS_VALUE
+  srg:
+    - $OS_VALUE
+  cci:
+    - N/A
+  800-171r2:
+    - N/A
   cis:
     benchmark:
       - $OS_VALUE
@@ -38,7 +36,7 @@ tags:
   - cis_lvl2
   - cisv8
 mobileconfig: false
-mobileconfig_info: ''
+mobileconfig_info: null
 os_specifics:
   macOS:
     '11.0':

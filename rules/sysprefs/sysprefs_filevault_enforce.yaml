@@ -21,26 +21,24 @@ result:
 fix: |
   NOTE: See the FileVault supplemental to implement this rule.
 references:
-  disa:
-    cci:
-      - CCI-001199
-      - CCI-002475
-      - CCI-002476
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-  nist:
-    800-53r5:
-      - SC-28
-      - SC-28(1)
-    800-53r4:
-      - SC-28
-      - SC-28(1)
-    800-171r2:
-      - 3.13.16
-    cce:
-      - $OS_VALUE
+  cce:
+    - $OS_VALUE
+  cci:
+    - CCI-001199
+    - CCI-002475
+    - CCI-002476
+  800-53r5:
+    - SC-28
+    - SC-28(1)
+  800-53r4:
+    - SC-28
+    - SC-28(1)
+  srg:
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
+  800-171r2:
+    - 3.13.16
   cis:
     benchmark:
       - $OS_VALUE

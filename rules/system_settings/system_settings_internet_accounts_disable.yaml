@@ -14,24 +14,22 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  disa:
-    cci:
-      - N/A
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-  nist:
-    800-53r5:
-      - CM-7(5)
-      - AC-20
-    800-53r4:
-      - AC-20
-      - CM-7(5)
-    800-171r2:
-      - 3.1.20
-    cce:
-      - $OS_VALUE
+  cce:
+    - $OS_VALUE
+  cci:
+    - N/A
+  800-53r5:
+    - CM-7(5)
+    - AC-20
+  800-53r4:
+    - AC-20
+    - CM-7(5)
+  srg:
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
+  800-171r2:
+    - 3.1.20
   cis:
     benchmark:
       - $OS_VALUE

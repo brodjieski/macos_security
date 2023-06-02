@@ -8,29 +8,27 @@ result:
 fix: |
   NOTE: Boot into Recovery Mode and enable Full Secure Boot
 references:
-  disa:
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-    cci:
-      - N/A
-  nist:
-    800-53r5:
-      - SI-7
-      - SI-7(1)
-      - SI-7(5)
-      - SI-6
-    800-53r4:
-      - SI-6
-    cce:
-      - $OS_VALUE
+  cce:
+    - $OS_VALUE
+  800-53r5:
+    - SI-7
+    - SI-7(1)
+    - SI-7(5)
+    - SI-6
+  800-53r4:
+    - SI-6
+  srg:
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
+  cci:
+    - N/A
 tags:
   - 800-53r5_high
   - 800-53r5_moderate
   - 800-53r4_high
 mobileconfig: false
-mobileconfig_info: ''
+mobileconfig_info: null
 os_specifics:
   macOS:
     '11.0':

@@ -6,23 +6,21 @@ result:
   integer: 1
 fix: $OS_VALUE
 references:
-  disa:
-    cci:
-      - CCI-001133
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-  nist:
-    800-53r5:
-      - SC-10
-      - AC-12
-    800-53r4:
-      - SC-10
-    800-171r2:
-      - 3.13.9
-    cce:
-      - $OS_VALUE
+  cce:
+    - $OS_VALUE
+  cci:
+    - CCI-001133
+  800-53r5:
+    - SC-10
+    - AC-12
+  800-53r4:
+    - SC-10
+  srg:
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
+  800-171r2:
+    - 3.13.9
 odv:
   hint: Number of seconds.
   recommended: 900
@@ -31,7 +29,7 @@ tags:
   - stig
 severity: medium
 mobileconfig: false
-mobileconfig_info: ''
+mobileconfig_info: null
 os_specifics:
   macOS:
     '11.0':

@@ -11,26 +11,24 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  disa:
-    cci:
-      - CCI-000186
-      - CCI-002470
-      - CCI-001991
-      - CCI-001953
-      - CCI-001954
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-  nist:
-    800-53r5:
-      - IA-5(2)
-      - SC-17
-    800-53r4:
-      - IA-2(12)
-      - IA-5(2)
-    cce:
-      - $OS_VALUE
+  cce:
+    - $OS_VALUE
+  cci:
+    - CCI-000186
+    - CCI-002470
+    - CCI-001991
+    - CCI-001953
+    - CCI-001954
+  800-53r5:
+    - IA-5(2)
+    - SC-17
+  800-53r4:
+    - IA-2(12)
+    - IA-5(2)
+  srg:
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
 tags:
   - 800-53r4_moderate
   - 800-53r5_moderate

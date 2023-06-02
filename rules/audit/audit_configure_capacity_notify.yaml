@@ -7,20 +7,18 @@ result:
   integer: $ODV
 fix: "[source,bash]\n----\n/usr/bin/sed -i.bak 's/.*minfree.*/minfree:$ODV/' /etc/security/audit_control; /usr/sbin/audit -s \n----\n"
 references:
-  disa:
-    cci:
-      - CCI-001855
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-  nist:
-    800-53r5:
-      - AU-5(1)
-    800-53r4:
-      - AU-5(1)
-    cce:
-      - $OS_VALUE
+  cce:
+    - $OS_VALUE
+  cci:
+    - CCI-001855
+  800-53r5:
+    - AU-5(1)
+  800-53r4:
+    - AU-5(1)
+  srg:
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
 odv:
   hint: Percentage of free space.
   recommended: 25
@@ -31,7 +29,7 @@ tags:
   - stig
 severity: medium
 mobileconfig: false
-mobileconfig_info: ''
+mobileconfig_info: null
 os_specifics:
   macOS:
     '11.0':

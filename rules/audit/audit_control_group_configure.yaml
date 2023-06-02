@@ -12,33 +12,31 @@ fix: |
   /usr/bin/chgrp wheel /etc/security/audit_control
   ----
 references:
-  disa:
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-    cci:
-      - None
-  nist:
-    800-53r5:
-      - AU-9
-    800-53r4:
-      - AU-9
-    800-171r2:
-      - N/A
-    cce:
-      - $OS_VALUE
+  cce:
+    - $OS_VALUE
+  800-53r5:
+    - AU-9
+  800-53r4:
+    - AU-9
+  srg:
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
+  800-171r2:
+    - N/A
   cis:
     benchmark:
       - $OS_VALUE
     controls v8:
       - $OS_VALUE
+  cci:
+    - None
 tags:
   - cis_lvl1
   - cis_lvl2
   - cisv8
 mobileconfig: false
-mobileconfig_info: ''
+mobileconfig_info: null
 os_specifics:
   macOS:
     '11.0':

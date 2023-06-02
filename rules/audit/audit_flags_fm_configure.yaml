@@ -6,34 +6,32 @@ result:
   integer: 1
 fix: $OS_VALUE
 references:
-  disa:
-    cci:
-      - CCI-000172
-      - CCI-001814
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-  nist:
-    800-53r5:
-      - AC-2(12)
-      - AU-12
-      - AU-2
-      - AU-9
-      - CM-5(1)
-      - MA-4(1)
-    800-53r4:
-      - AU-2
-      - AU-12
-      - AU-9
-      - CM-5(1)
-      - MA-4(1)
-    800-171r2:
-      - 3.3.1
-      - 3.3.2
-      - 3.3.8
-    cce:
-      - $OS_VALUE
+  cce:
+    - $OS_VALUE
+  cci:
+    - CCI-000172
+    - CCI-001814
+  800-53r5:
+    - AC-2(12)
+    - AU-12
+    - AU-2
+    - AU-9
+    - CM-5(1)
+    - MA-4(1)
+  800-53r4:
+    - AU-2
+    - AU-12
+    - AU-9
+    - CM-5(1)
+    - MA-4(1)
+  srg:
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
+  800-171r2:
+    - 3.3.1
+    - 3.3.2
+    - 3.3.8
   cis:
     benchmark:
       - $OS_VALUE
@@ -53,7 +51,7 @@ tags:
   - cis_lvl2
 severity: medium
 mobileconfig: false
-mobileconfig_info: ''
+mobileconfig_info: null
 os_specifics:
   macOS:
     '11.0':

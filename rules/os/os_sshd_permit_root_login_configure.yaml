@@ -6,25 +6,23 @@ result:
   integer: 1
 fix: $OS_VALUE
 references:
-  disa:
-    cci:
-      - CCI-000770
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-  nist:
-    800-53r5:
-      - IA-2(5)
-    800-53r4:
-      - IA-2(5)
-    cce:
-      - $OS_VALUE
+  cce:
+    - $OS_VALUE
+  cci:
+    - CCI-000770
+  800-53r5:
+    - IA-2(5)
+  800-53r4:
+    - IA-2(5)
+  srg:
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
 tags:
   - stig
 severity: medium
 mobileconfig: false
-mobileconfig_info: ''
+mobileconfig_info: null
 os_specifics:
   macOS:
     '11.0':

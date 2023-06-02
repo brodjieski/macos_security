@@ -11,24 +11,22 @@ fix: |
   /bin/chmod 700 $(/usr/bin/grep '^dir' /etc/security/audit_control | /usr/bin/awk -F: '{print $2}')
   ----
 references:
-  disa:
-    cci:
-      - CCI-000162
-      - CCI-000163
-      - CCI-000164
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-  nist:
-    800-53r5:
-      - AU-9
-    800-53r4:
-      - AU-9
-    800-171r2:
-      - 3.3.8
-    cce:
-      - $OS_VALUE
+  cce:
+    - $OS_VALUE
+  cci:
+    - CCI-000162
+    - CCI-000163
+    - CCI-000164
+  800-53r5:
+    - AU-9
+  800-53r4:
+    - AU-9
+  srg:
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
+  800-171r2:
+    - 3.3.8
   cis:
     benchmark:
       - $OS_VALUE
@@ -47,7 +45,7 @@ tags:
   - cis_lvl2
 severity: medium
 mobileconfig: false
-mobileconfig_info: ''
+mobileconfig_info: null
 os_specifics:
   macOS:
     '11.0':

@@ -12,22 +12,20 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  disa:
-    cci:
-      - CCI-000381
-      - CCI-001150
-      - CCI-001153
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-  nist:
-    800-53r5:
-      - N/A
-    800-53r4:
-      - N/A
-    cce:
-      - $OS_VALUE
+  cce:
+    - $OS_VALUE
+  cci:
+    - CCI-000381
+    - CCI-001150
+    - CCI-001153
+  800-53r5:
+    - N/A
+  800-53r4:
+    - N/A
+  srg:
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
 tags:
   - stig
 severity: medium

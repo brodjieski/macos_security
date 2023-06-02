@@ -32,23 +32,21 @@ fix: |
   ----
   NOTE: See the password policy supplemental on more information on how to implement password policies on macOS.
 references:
-  disa:
-    cci:
-      - CCI-000795
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-  nist:
-    800-53r5:
-      - AC-2(3)
-    800-53r4:
-      - IA-4
-    800-171r2:
-      - 3.5.5
-      - 3.5.6
-    cce:
-      - $OS_VALUE
+  cce:
+    - $OS_VALUE
+  cci:
+    - CCI-000795
+  800-53r5:
+    - AC-2(3)
+  800-53r4:
+    - IA-4
+  srg:
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
+  800-171r2:
+    - 3.5.5
+    - 3.5.6
   cis:
     benchmark:
       - $OS_VALUE
@@ -66,7 +64,7 @@ tags:
   - 800-53r5_high
   - cisv8
 mobileconfig: false
-mobileconfig_info: ''
+mobileconfig_info: null
 os_specifics:
   macOS:
     '11.0':

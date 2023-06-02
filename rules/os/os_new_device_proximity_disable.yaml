@@ -1,0 +1,57 @@
+id: os_new_device_proximity_disable
+title: Ensure Allow setting up new nearby devices is set to Disabled
+discussion: |
+  The setting up of new nearby devices _MUST_ be disabled.
+check: ' '
+fix: |
+  This is implemented by a Configuration Profile.
+references:
+  cce:
+    - $OS_VALUE
+  cci:
+    - N/A
+  800-53r5:
+    - CA-7
+    - CM-12
+    - CM-12(1)
+    - SC-4
+  800-53r4:
+    - N/A
+  srg:
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
+  800-171r2:
+    - N/A
+  cis:
+    benchmark:
+      - $OS_VALUE
+    controls v8:
+      - $OS_VALUE
+tags:
+  - ios
+  - cis_lvl1_enterprise
+  - cis_lvl2_enterprise
+  - cisv8
+  - 800-53r5
+severity: ''
+supervised: true
+mobileconfig: true
+mobileconfig_info:
+  com.apple.applicationaccess:
+    allowProximitySetupToNewDevice: false
+os_specifics:
+  ios:
+    '16.0':
+      references:
+        cce:
+          - N/A
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - 3.2.1.28 (level 1 - Institutionally-Owned Devices)
+          controls v8:
+            - 3.13

@@ -15,22 +15,20 @@ fix: |
   unset IFS
   ----
 references:
-  disa:
-    cci:
-      - CCI-000366
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-  nist:
-    800-53r5:
-      - AC-6
-    800-53r4:
-      - AC-6
-    800-171r2:
-      - 3.1.5
-    cce:
-      - $OS_VALUE
+  cce:
+    - $OS_VALUE
+  cci:
+    - CCI-000366
+  800-53r5:
+    - AC-6
+  800-53r4:
+    - AC-6
+  srg:
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
+  800-171r2:
+    - 3.1.5
   cis:
     benchmark:
       - $OS_VALUE
@@ -47,7 +45,7 @@ tags:
   - cis_lvl2
 severity: medium
 mobileconfig: false
-mobileconfig_info: ''
+mobileconfig_info: null
 os_specifics:
   macOS:
     '11.0':

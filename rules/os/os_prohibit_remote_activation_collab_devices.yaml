@@ -6,27 +6,25 @@ check: |
 fix: |
   The technology partially meets this requirement. An appropriate mitigation for the system must be implemented for full compliance.
 references:
-  disa:
-    disa_stig:
-      - $OS_VALUE
-    srg:
-      - $OS_VALUE
-    cci:
-      - None
-  nist:
-    800-53r5:
-      - SC-15
-    800-53r4:
-      - N/A
-    cce:
-      - $OS_VALUE
+  cce:
+    - $OS_VALUE
+  800-53r5:
+    - SC-15
+  800-53r4:
+    - N/A
+  disa_stig:
+    - $OS_VALUE
+  srg:
+    - $OS_VALUE
+  cci:
+    - None
 tags:
   - permanent
   - 800-53r5_low
   - 800-53r5_moderate
   - 800-53r5_high
 mobileconfig: false
-mobileconfig_info: ''
+mobileconfig_info: null
 os_specifics:
   macOS:
     '11.0':

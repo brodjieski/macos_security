@@ -10,27 +10,25 @@ result:
   string: 'false'
 fix: $OS_VALUE
 references:
-  disa:
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-    cci:
-      - None
-  nist:
-    800-53r5:
-      - N/A
-    800-53r4:
-      - N/A
-    800-171r2:
-      - N/A
-    cce:
-      - $OS_VALUE
+  cce:
+    - $OS_VALUE
+  800-53r5:
+    - N/A
+  800-53r4:
+    - N/A
+  srg:
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
+  800-171r2:
+    - N/A
   cis:
     benchmark:
       - $OS_VALUE
     controls v8:
       - $OS_VALUE
+  cci:
+    - None
 tags:
   - none
 mobileconfig: true

@@ -13,33 +13,31 @@ fix: |
   ----
   NOTE: Systemsetup with -setremotelogin flag will fail unless you grant Full Disk Access to systemsetup or it's parent process. Requires supervision.
 references:
-  disa:
-    cci:
-      - N/A
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-  nist:
-    800-53r5:
-      - IA-2(8)
-      - AC-3
-      - CM-7
-      - CM-7(1)
-      - AC-17
-    800-53r4:
-      - AC-3
-      - CM-7
-      - CM-7(1)
-      - IA-2(8)
-      - IA-2(9)
-    800-171r2:
-      - 3.1.1
-      - 3.1.2
-      - 3.4.6
-      - 3.5.4
-    cce:
-      - $OS_VALUE
+  cce:
+    - $OS_VALUE
+  cci:
+    - N/A
+  800-53r5:
+    - IA-2(8)
+    - AC-3
+    - CM-7
+    - CM-7(1)
+    - AC-17
+  800-53r4:
+    - AC-3
+    - CM-7
+    - CM-7(1)
+    - IA-2(8)
+    - IA-2(9)
+  srg:
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
+  800-171r2:
+    - 3.1.1
+    - 3.1.2
+    - 3.4.6
+    - 3.5.4
   cis:
     benchmark:
       - $OS_VALUE
@@ -59,7 +57,7 @@ tags:
   - cis_lvl2
 severity: medium
 mobileconfig: false
-mobileconfig_info: ''
+mobileconfig_info: null
 os_specifics:
   macOS:
     '11.0':

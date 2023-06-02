@@ -10,30 +10,28 @@ result:
   string: 'No'
 fix: "NOTE: To remount the System volume as Read Only, rebooting the computer will mount it as Read Only. \n"
 references:
-  disa:
-    cci:
-      - N/A
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-  nist:
-    800-53r5:
-      - SC-34
-      - MA-4(1)
-      - SI-7
-    800-53r4:
-      - SC-34
-      - SI-7
-    cce:
-      - $OS_VALUE
+  cce:
+    - $OS_VALUE
+  cci:
+    - N/A
+  800-53r5:
+    - SC-34
+    - MA-4(1)
+    - SI-7
+  800-53r4:
+    - SC-34
+    - SI-7
+  srg:
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
 tags:
   - 800-53r5_moderate
   - 800-53r5_high
   - 800-53r4_moderate
   - 800-53r4_high
 mobileconfig: false
-mobileconfig_info: ''
+mobileconfig_info: null
 os_specifics:
   macOS:
     '11.0':

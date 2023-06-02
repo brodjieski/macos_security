@@ -11,22 +11,20 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  disa:
-    cci:
-      - N/A
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-  nist:
-    800-53r5:
-      - IA-5(2)
-      - SC-17
-    800-53r4:
-      - IA-2(12)
-      - IA-5(2)
-    cce:
-      - $OS_VALUE
+  cce:
+    - $OS_VALUE
+  cci:
+    - N/A
+  800-53r5:
+    - IA-5(2)
+    - SC-17
+  800-53r4:
+    - IA-2(12)
+    - IA-5(2)
+  srg:
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
 tags:
   - 800-53r4_high
   - 800-53r5_high

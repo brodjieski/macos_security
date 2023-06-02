@@ -24,26 +24,24 @@ fix: |
   /usr/sbin/chown root:wheel /etc/pam.d/su
   ----
 references:
-  disa:
-    cci:
-      - CCI-000366
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-  nist:
-    800-53r5:
-      - IA-2(1)
-      - IA-2(2)
-      - IA-2(8)
-    800-53r4:
-      - IA-2(3)
-      - IA-2(4)
-      - IA-5(11)
-    800-171r2:
-      - 3.5.3
-    cce:
-      - $OS_VALUE
+  cce:
+    - $OS_VALUE
+  cci:
+    - CCI-000366
+  800-53r5:
+    - IA-2(1)
+    - IA-2(2)
+    - IA-2(8)
+  800-53r4:
+    - IA-2(3)
+    - IA-2(4)
+    - IA-5(11)
+  srg:
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
+  800-171r2:
+    - 3.5.3
   cis:
     benchmark:
       - $OS_VALUE
@@ -61,7 +59,7 @@ tags:
   - cisv8
 severity: medium
 mobileconfig: false
-mobileconfig_info: ''
+mobileconfig_info: null
 os_specifics:
   macOS:
     '11.0':

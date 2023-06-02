@@ -11,34 +11,32 @@ fix: |
   /usr/bin/killall -HUP bluetoothd
   ----
 references:
-  disa:
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-    cci:
-      - None
-  nist:
-    800-53r5:
-      - AC-18
-      - SC-8
-      - AC-18(3)
-    800-53r4:
-      - AC-18(3)
-      - SC-8
-    800-171r2:
-      - N/A
-    cce:
-      - $OS_VALUE
+  cce:
+    - $OS_VALUE
+  800-53r5:
+    - AC-18
+    - SC-8
+    - AC-18(3)
+  800-53r4:
+    - AC-18(3)
+    - SC-8
+  srg:
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
+  800-171r2:
+    - N/A
   cis:
     benchmark:
       - $OS_VALUE
     controls v8:
       - $OS_VALUE
+  cci:
+    - None
 tags:
   - none
 mobileconfig: false
-mobileconfig_info: ''
+mobileconfig_info: null
 os_specifics:
   macOS:
     '11.0':

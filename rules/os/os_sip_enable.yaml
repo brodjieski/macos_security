@@ -12,56 +12,54 @@ fix: |
   ----
   NOTE: To reenable "System Integrity Protection", boot the affected system into "Recovery" mode, launch "Terminal" from the "Utilities" menu, and run the command.
 references:
-  disa:
-    cci:
-      - CCI-000154
-      - CCI-000158
-      - CCI-000169
-      - CCI-001493
-      - CCI-001494
-      - CCI-001495
-      - CCI-001499
-      - CCI-001875
-      - CCI-001876
-      - CCI-001877
-      - CCI-001878
-      - CCI-001879
-      - CCI-001880
-      - CCI-001881
-      - CCI-001882
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-  nist:
-    800-53r5:
-      - AC-3
-      - AU-9
-      - AU-9(3)
-      - CM-5
-      - CM-5(6)
-      - SC-4
-      - SI-2
-      - SI-7
-    800-53r4:
-      - AC-3
-      - AU-6(4)
-      - AU-7(1)
-      - AU-7
-      - AU-9
-      - AU-9(3)
-      - CM-5(6)
-      - CM-5
-      - SC-4
-    800-171r2:
-      - 3.1.1
-      - 3.1.2
-      - 3.3.6
-      - 3.3.8
-      - 3.4.5
-      - 3.13.4
-    cce:
-      - $OS_VALUE
+  cce:
+    - $OS_VALUE
+  cci:
+    - CCI-000154
+    - CCI-000158
+    - CCI-000169
+    - CCI-001493
+    - CCI-001494
+    - CCI-001495
+    - CCI-001499
+    - CCI-001875
+    - CCI-001876
+    - CCI-001877
+    - CCI-001878
+    - CCI-001879
+    - CCI-001880
+    - CCI-001881
+    - CCI-001882
+  800-53r5:
+    - AC-3
+    - AU-9
+    - AU-9(3)
+    - CM-5
+    - CM-5(6)
+    - SC-4
+    - SI-2
+    - SI-7
+  800-53r4:
+    - AC-3
+    - AU-6(4)
+    - AU-7(1)
+    - AU-7
+    - AU-9
+    - AU-9(3)
+    - CM-5(6)
+    - CM-5
+    - SC-4
+  srg:
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
+  800-171r2:
+    - 3.1.1
+    - 3.1.2
+    - 3.3.6
+    - 3.3.8
+    - 3.4.5
+    - 3.13.4
   cis:
     benchmark:
       - $OS_VALUE
@@ -81,7 +79,7 @@ tags:
   - cis_lvl2
 severity: medium
 mobileconfig: false
-mobileconfig_info: ''
+mobileconfig_info: null
 os_specifics:
   macOS:
     '11.0':

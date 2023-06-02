@@ -23,21 +23,19 @@ fix: |
 
   /usr/bin/pwpolicy -u username setaccountpolicies /path/to/file
 references:
-  disa:
-    cci:
-      - CCI-000016
-      - CCI-001682
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-  nist:
-    800-53r5:
-      - AC-2(2)
-    800-53r4:
-      - AC-2(2)
-    cce:
-      - $OS_VALUE
+  cce:
+    - $OS_VALUE
+  cci:
+    - CCI-000016
+    - CCI-001682
+  800-53r5:
+    - AC-2(2)
+  800-53r4:
+    - AC-2(2)
+  srg:
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
 tags:
   - 800-53r5_moderate
   - 800-53r5_high
@@ -47,7 +45,7 @@ tags:
   - stig
 severity: medium
 mobileconfig: false
-mobileconfig_info: ''
+mobileconfig_info: null
 os_specifics:
   macOS:
     '11.0':

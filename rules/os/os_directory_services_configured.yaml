@@ -7,20 +7,18 @@ result:
 fix: |
   Integrate the system into an existing directory services infrastructure.
 references:
-  disa:
-    cci:
-      - CCI-000366
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-  nist:
-    800-53r5:
-      - N/A
-    800-53r4:
-      - CM-6(b)
-    cce:
-      - $OS_VALUE
+  cce:
+    - $OS_VALUE
+  cci:
+    - CCI-000366
+  800-53r5:
+    - N/A
+  800-53r4:
+    - CM-6(b)
+  srg:
+    - $OS_VALUE
+  disa_stig:
+    - $OS_VALUE
   cis:
     benchmark:
       - $OS_VALUE
@@ -31,7 +29,7 @@ tags:
   - cisv8
 severity: high
 mobileconfig: false
-mobileconfig_info: ''
+mobileconfig_info: null
 os_specifics:
   macOS:
     11.0:
