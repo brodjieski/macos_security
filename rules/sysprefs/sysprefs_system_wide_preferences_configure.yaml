@@ -18,25 +18,27 @@ fix: |
   /usr/bin/security authorizationdb write system.preferences < /tmp/system.preferences.plist
   ----
 references:
+  disa:
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+    cci:
+      - CCI-001958
+  nist:
+    800-53r5:
+      - AC-6
+      - AC-6(2)
+      - AC-6(1)
+    800-53r4:
+      - AC-6
+      - AC-6(1)
+      - AC-6(2)
+    800-171r2:
+      - 3.1.5
+      - 3.1.6
   cce:
     - $OS_VALUE
-  800-53r5:
-    - AC-6
-    - AC-6(2)
-    - AC-6(1)
-  800-53r4:
-    - AC-6
-    - AC-6(1)
-    - AC-6(2)
-  disa_stig:
-    - $OS_VALUE
-  srg:
-    - $OS_VALUE
-  cci:
-    - CCI-001958
-  800-171r2:
-    - 3.1.5
-    - 3.1.6
   cis:
     benchmark:
       - $OS_VALUE
@@ -55,29 +57,30 @@ severity: medium
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85389-5
-      disa_stig:
-        - APPL-11-002069
-      srg:
-        - SRG-OS-000378-GPOS-00163
-      cis:
-        benchmark:
-          - 2.5.9 (level 1)
-        controls v8:
-          - 4.1
-  '12.0':
-    references:
-      cce:
-        - CCE-91079-4
-      disa_stig:
-        - APPL-12-002069
-      srg:
-        - None
-      cis:
-        benchmark:
-          - 2.5.9 (level 1)
-        controls v8:
-          - 4.1
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85389-5
+        disa_stig:
+          - APPL-11-002069
+        srg:
+          - SRG-OS-000378-GPOS-00163
+        cis:
+          benchmark:
+            - 2.5.9 (level 1)
+          controls v8:
+            - 4.1
+    '12.0':
+      references:
+        cce:
+          - CCE-91079-4
+        disa_stig:
+          - APPL-12-002069
+        srg:
+          - None
+        cis:
+          benchmark:
+            - 2.5.9 (level 1)
+          controls v8:
+            - 4.1

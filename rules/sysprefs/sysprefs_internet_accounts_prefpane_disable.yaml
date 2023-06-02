@@ -14,23 +14,25 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
+  disa:
+    cci:
+      - CCI-001774
+      - CCI-000381
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - CM-7(5)
+      - AC-20
+    800-53r4:
+      - AC-20
+      - CM-7(5)
+    800-171r2:
+      - 3.1.20
   cce:
     - $OS_VALUE
-  cci:
-    - CCI-001774
-    - CCI-000381
-  800-53r5:
-    - CM-7(5)
-    - AC-20
-  800-53r4:
-    - AC-20
-    - CM-7(5)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.1.20
 cis:
   benchmark:
     - N/A
@@ -54,27 +56,28 @@ mobileconfig_info:
     DisabledPreferencePanes:
       - com.apple.preferences.internetaccounts
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85328-3
-      disa_stig:
-        - APPL-11-002032
-      srg:
-        - SRG-OS-000095-GPOS-00049
-        - SRG-OS-000370-GPOS-00155
-  '12.0':
-    references:
-      cce:
-        - CCE-90938-2
-      disa_stig:
-        - APPL-12-002032
-      srg:
-        - SRG-OS-000370-GPOS-00155
-        - SRG-OS-000095-GPOS-00049
-      cis:
-        benchmark:
-          - N/A
-        controls v8:
-          - 4.8
-          - 15.2
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85328-3
+        disa_stig:
+          - APPL-11-002032
+        srg:
+          - SRG-OS-000095-GPOS-00049
+          - SRG-OS-000370-GPOS-00155
+    '12.0':
+      references:
+        cce:
+          - CCE-90938-2
+        disa_stig:
+          - APPL-12-002032
+        srg:
+          - SRG-OS-000370-GPOS-00155
+          - SRG-OS-000095-GPOS-00049
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 4.8
+            - 15.2

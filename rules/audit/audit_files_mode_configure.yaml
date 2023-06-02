@@ -11,20 +11,22 @@ fix: |
   /bin/chmod 440 $(/usr/bin/grep '^dir' /etc/security/audit_control | /usr/bin/awk -F: '{print $2}')/*
   ----
 references:
+  disa:
+    cci:
+      - CCI-000162
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - AU-9
+    800-53r4:
+      - AU-9
+    800-171r2:
+      - 3.3.8
   cce:
     - $OS_VALUE
-  cci:
-    - CCI-000162
-  800-53r5:
-    - AU-9
-  800-53r4:
-    - AU-9
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.3.8
   cis:
     benchmark:
       - $OS_VALUE
@@ -45,42 +47,43 @@ severity: medium
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85259-0
-      disa_stig:
-        - APPL-11-001016
-      srg:
-        - SRG-OS-000057-GPOS-00027
-      cis:
-        benchmark:
-          - 3.5 (level 1)
-        controls v8:
-          - 3.3
-  '12.0':
-    references:
-      cce:
-        - CCE-90859-0
-      disa_stig:
-        - APPL-12-001016
-      srg:
-        - SRG-OS-000057-GPOS-00027
-      cis:
-        benchmark:
-          - 3.5 (level 1)
-        controls v8:
-          - 3.3
-  '13.0':
-    references:
-      cce:
-        - CCE-91713-8
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
-          - 3.5 (level 1)
-        controls v8:
-          - 3.3
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85259-0
+        disa_stig:
+          - APPL-11-001016
+        srg:
+          - SRG-OS-000057-GPOS-00027
+        cis:
+          benchmark:
+            - 3.5 (level 1)
+          controls v8:
+            - 3.3
+    '12.0':
+      references:
+        cce:
+          - CCE-90859-0
+        disa_stig:
+          - APPL-12-001016
+        srg:
+          - SRG-OS-000057-GPOS-00027
+        cis:
+          benchmark:
+            - 3.5 (level 1)
+          controls v8:
+            - 3.3
+    '13.0':
+      references:
+        cce:
+          - CCE-91713-8
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - 3.5 (level 1)
+          controls v8:
+            - 3.3

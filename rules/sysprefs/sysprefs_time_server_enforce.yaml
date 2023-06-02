@@ -14,22 +14,24 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
+  disa:
+    cci:
+      - CCI-001891
+      - CCI-002046
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - AU-12(1)
+      - SC-45(1)
+    800-53r4:
+      - AU-8(1)
+    800-171r2:
+      - 3.3.7
   cce:
     - $OS_VALUE
-  cci:
-    - CCI-001891
-    - CCI-002046
-  800-53r5:
-    - AU-12(1)
-    - SC-45(1)
-  800-53r4:
-    - AU-8(1)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.3.7
   cis:
     benchmark:
       - $OS_VALUE
@@ -53,31 +55,32 @@ mobileconfig_info:
     com.apple.timed:
       TMAutomaticTimeOnlyEnabled: true
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85449-7
-      disa_stig:
-        - APPL-11-000014
-      srg:
-        - SRG-OS-000355-GPOS-00143
-        - SRG-OS-000356-GPOS-00144
-      cis:
-        benchmark:
-          - 2.2.1 (level 1)
-        controls v8:
-          - 8.4
-  '12.0':
-    references:
-      cce:
-        - CCE-91081-0
-      disa_stig:
-        - APPL-12-000014
-      srg:
-        - SRG-OS-000355-GPOS-00143
-        - SRG-OS-000356-GPOS-00144
-      cis:
-        benchmark:
-          - 2.2.1 (level 1)
-        controls v8:
-          - 8.4
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85449-7
+        disa_stig:
+          - APPL-11-000014
+        srg:
+          - SRG-OS-000355-GPOS-00143
+          - SRG-OS-000356-GPOS-00144
+        cis:
+          benchmark:
+            - 2.2.1 (level 1)
+          controls v8:
+            - 8.4
+    '12.0':
+      references:
+        cce:
+          - CCE-91081-0
+        disa_stig:
+          - APPL-12-000014
+        srg:
+          - SRG-OS-000355-GPOS-00143
+          - SRG-OS-000356-GPOS-00144
+        cis:
+          benchmark:
+            - 2.2.1 (level 1)
+          controls v8:
+            - 8.4

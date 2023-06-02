@@ -8,20 +8,22 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
+  disa:
+    cci:
+      - CCI-002238
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - AC-7
+    800-53r4:
+      - AC-7
+    800-171r2:
+      - 3.1.8
   cce:
     - $OS_VALUE
-  cci:
-    - CCI-002238
-  800-53r5:
-    - AC-7
-  800-53r4:
-    - AC-7
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.1.8
   cis:
     benchmark:
       - $OS_VALUE
@@ -51,42 +53,43 @@ mobileconfig_info:
   com.apple.mobiledevice.passwordpolicy:
     maxFailedAttempts: $ODV
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85402-6
-      disa_stig:
-        - APPL-11-000022
-      srg:
-        - SRG-OS-000329-GPOS-00128
-      cis:
-        benchmark:
-          - 5.2.1 (level 1)
-        controls v8:
-          - 6.2
-  '12.0':
-    references:
-      cce:
-        - CCE-91029-9
-      disa_stig:
-        - APPL-12-000022
-      srg:
-        - SRG-OS-000329-GPOS-00128
-      cis:
-        benchmark:
-          - 5.2.1 (level 1)
-        controls v8:
-          - 6.2
-  '13.0':
-    references:
-      cce:
-        - CCE-91915-9
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
-          - 5.2.1 (level 1)
-        controls v8:
-          - 6.2
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85402-6
+        disa_stig:
+          - APPL-11-000022
+        srg:
+          - SRG-OS-000329-GPOS-00128
+        cis:
+          benchmark:
+            - 5.2.1 (level 1)
+          controls v8:
+            - 6.2
+    '12.0':
+      references:
+        cce:
+          - CCE-91029-9
+        disa_stig:
+          - APPL-12-000022
+        srg:
+          - SRG-OS-000329-GPOS-00128
+        cis:
+          benchmark:
+            - 5.2.1 (level 1)
+          controls v8:
+            - 6.2
+    '13.0':
+      references:
+        cce:
+          - CCE-91915-9
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - 5.2.1 (level 1)
+          controls v8:
+            - 6.2

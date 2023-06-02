@@ -8,23 +8,25 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
+  disa:
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+    cci:
+      - None
+  nist:
+    800-53r5:
+      - N/A
+    800-53r4:
+      - N/A
   cce:
-    - $OS_VALUE
-  800-53r5:
-    - N/A
-  800-53r4:
-    - N/A
-  disa_stig:
-    - $OS_VALUE
-  srg:
     - $OS_VALUE
   cis:
     benchmark:
       - $OS_VALUE
     controls v8:
       - $OS_VALUE
-  cci:
-    - None
 tags:
   - cis_lvl1
   - cis_lvl2
@@ -34,44 +36,45 @@ mobileconfig_info:
   com.apple.Safari:
     AutoOpenSafeDownloads: false
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85510-6
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
-          - 6.3 (level 1)
-        controls v8:
-          - 9
-  '12.0':
-    references:
-      cce:
-        - CCE-91111-5
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
-          - 7.2.1 (level 1)
-        controls v8:
-          - 9.1
-          - 9.6
-  '13.0':
-    references:
-      cce:
-        - CCE-91871-4
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
-          - 6.3.1 (level 1)
-        controls v8:
-          - 9.1
-          - 9.6
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85510-6
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - 6.3 (level 1)
+          controls v8:
+            - 9
+    '12.0':
+      references:
+        cce:
+          - CCE-91111-5
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - 7.2.1 (level 1)
+          controls v8:
+            - 9.1
+            - 9.6
+    '13.0':
+      references:
+        cce:
+          - CCE-91871-4
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - 6.3.1 (level 1)
+          controls v8:
+            - 9.1
+            - 9.6

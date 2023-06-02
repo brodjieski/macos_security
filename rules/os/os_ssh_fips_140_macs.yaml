@@ -11,32 +11,34 @@ fix: |
   /usr/bin/grep -q '^MACs' /etc/ssh/ssh_config && /usr/bin/sed -i.bak  's/.*MACs.*/MACs hmac-sha2-256,hmac-sha2-512/' /etc/ssh/ssh_config || /bin/echo 'MACs hmac-sha2-256,hmac-sha2-512' >> /etc/ssh/ssh_config
   ----
 references:
+  disa:
+    cci:
+      - CCI-000087
+      - CCI-000068
+      - CCI-000803
+      - CCI-002890
+      - CCI-003123
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - AC-17(2)
+      - IA-7
+      - SC-13
+      - SC-8(1)
+    800-53r4:
+      - AC-17(2)
+      - IA-7
+      - SC-8(1)
+      - SC-13
+    800-171r2:
+      - 3.1.13
+      - 3.13.8
+      - 3.13.11
   cce:
     - $OS_VALUE
-  cci:
-    - CCI-000087
-    - CCI-000068
-    - CCI-000803
-    - CCI-002890
-    - CCI-003123
-  800-53r5:
-    - AC-17(2)
-    - IA-7
-    - SC-13
-    - SC-8(1)
-  800-53r4:
-    - AC-17(2)
-    - IA-7
-    - SC-8(1)
-    - SC-13
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.1.13
-    - 3.13.8
-    - 3.13.11
 tags:
   - 800-53r5_moderate
   - 800-53r5_high
@@ -50,16 +52,17 @@ severity: medium
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85383-8
-      disa_stig:
-        - APPL-11-000055
-      srg:
-        - SRG-OS-000033-GPOS-00014
-        - SRG-OS-000120-GPOS-00061
-        - SRG-OS-000125-GPOS-00065
-        - SRG-OS-000250-GPOS-00093
-        - SRG-OS-000393-GPOS-00173
-        - SRG-OS-000394-GPOS-00174
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85383-8
+        disa_stig:
+          - APPL-11-000055
+        srg:
+          - SRG-OS-000033-GPOS-00014
+          - SRG-OS-000120-GPOS-00061
+          - SRG-OS-000125-GPOS-00065
+          - SRG-OS-000250-GPOS-00093
+          - SRG-OS-000393-GPOS-00173
+          - SRG-OS-000394-GPOS-00174

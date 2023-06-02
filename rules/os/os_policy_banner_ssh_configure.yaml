@@ -8,20 +8,22 @@ result:
   integer: 1
 fix: "[source,bash]\n----\nbannerText=\"$ODV\"\n/bin/echo \"${bannerText}\" > /etc/banner\n----   \n"
 references:
+  disa:
+    cci:
+      - CCI-000048
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - AC-8
+    800-53r4:
+      - AC-8
+    800-171r2:
+      - 3.1.9
   cce:
     - $OS_VALUE
-  cci:
-    - CCI-000048
-  800-53r5:
-    - AC-8
-  800-53r4:
-    - AC-8
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.1.9
 odv:
   hint: Organization's Policy Text
   recommended: |-
@@ -44,27 +46,28 @@ severity: medium
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85356-4
-      disa_stig:
-        - APPL-11-000023
-      srg:
-        - SRG-OS-000023-GPOS-00006
-  '12.0':
-    references:
-      cce:
-        - CCE-90974-7
-      disa_stig:
-        - APPL-12-000023
-      srg:
-        - SRG-OS-000023-GPOS-00006
-  '13.0':
-    references:
-      cce:
-        - CCE-91846-6
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85356-4
+        disa_stig:
+          - APPL-11-000023
+        srg:
+          - SRG-OS-000023-GPOS-00006
+    '12.0':
+      references:
+        cce:
+          - CCE-90974-7
+        disa_stig:
+          - APPL-12-000023
+        srg:
+          - SRG-OS-000023-GPOS-00006
+    '13.0':
+      references:
+        cce:
+          - CCE-91846-6
+        disa_stig:
+          - N/A
+        srg:
+          - N/A

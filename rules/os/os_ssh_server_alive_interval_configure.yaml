@@ -6,21 +6,23 @@ result:
   integer: $ODV
 fix: $OS_VALUE
 references:
+  disa:
+    cci:
+      - N/A
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - SC-10
+      - AC-12
+    800-53r4:
+      - SC-10
+    800-171r2:
+      - 3.13.9
   cce:
     - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - SC-10
-    - AC-12
-  800-53r4:
-    - SC-10
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.13.9
 odv:
   hint: Number of seconds.
   recommended: 900
@@ -33,56 +35,57 @@ tags:
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85381-2
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-    check: |
-      /usr/bin/awk '/^ServerAliveInterval/{print $2}' /etc/ssh/ssh_config
-    fix: |
-      [source,bash]
-      ----
-      /usr/bin/grep -q '^ServerAliveInterval' /etc/ssh/ssh_config && /usr/bin/sed -i.bak  's/.*ServerAliveInterval.*/ServerAliveInterval $ODV/' /etc/ssh/ssh_config || /bin/echo 'ServerAliveInterval $ODV' >> /etc/ssh/ssh_config
-      ----
-  '12.0':
-    references:
-      cce:
-        - CCE-91006-7
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-    check: |
-      ret="pass"
-      for u in $(/usr/bin/dscl . -list /Users UniqueID | /usr/bin/awk '$2 > 500 {print $1}'); do
-        sshCheck=$(/usr/bin/sudo -u $u /usr/bin/ssh -G . | /usr/bin/grep -c "^serveraliveinterval $ODV")
-        if [[ "$sshCheck" == "0" ]]; then
-          ret="fail"
-          break
-        fi
-      done
-      /bin/echo $ret
-    fix: "[source,bash]\n----\nfor u in $(/usr/bin/dscl . -list /Users UniqueID | /usr/bin/awk '$2 > 500 {print $1}'); do \n  config=$(/usr/bin/sudo -u $u /usr/bin/ssh -Gv . 2>&1 | /usr/bin/awk '/Reading configuration data/ {print $NF}'| /usr/bin/tr -d '\\r')\n  configarray=( ${(f)config} )\n  for c in $configarray; do\n    /usr/bin/sudo -u $u /usr/bin/grep -q '^ServerAliveInterval' \"$c\" && /usr/bin/sed -i '' 's/.*ServerAliveInterval.*/ServerAliveInterval $ODV/' \"$c\" || /bin/echo 'ServerAliveInterval $ODV' >> \"$c\"\n  done\ndone\n----\n"
-  '13.0':
-    references:
-      cce:
-        - CCE-91885-4
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-    check: |
-      ret="pass"
-      for u in $(/usr/bin/dscl . -list /Users UniqueID | /usr/bin/awk '$2 > 500 {print $1}'); do
-        sshCheck=$(/usr/bin/sudo -u $u /usr/bin/ssh -G . | /usr/bin/grep -c "^serveraliveinterval $ODV")
-        if [[ "$sshCheck" == "0" ]]; then
-          ret="fail"
-          break
-        fi
-      done
-      /bin/echo $ret
-    fix: "[source,bash]\n----\nfor u in $(/usr/bin/dscl . -list /Users UniqueID | /usr/bin/awk '$2 > 500 {print $1}'); do \n  config=$(/usr/bin/sudo -u $u /usr/bin/ssh -Gv . 2>&1 | /usr/bin/awk '/Reading configuration data/ {print $NF}'| /usr/bin/tr -d '\\r')\n  configarray=( ${(f)config} )\n  for c in $configarray; do\n    /usr/bin/sudo -u $u /usr/bin/grep -q '^ServerAliveInterval' \"$c\" && /usr/bin/sed -i '' 's/.*ServerAliveInterval.*/ServerAliveInterval $ODV/' \"$c\" || /bin/echo 'ServerAliveInterval $ODV' >> \"$c\"\n  done\ndone\n----\n"
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85381-2
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+      check: |
+        /usr/bin/awk '/^ServerAliveInterval/{print $2}' /etc/ssh/ssh_config
+      fix: |
+        [source,bash]
+        ----
+        /usr/bin/grep -q '^ServerAliveInterval' /etc/ssh/ssh_config && /usr/bin/sed -i.bak  's/.*ServerAliveInterval.*/ServerAliveInterval $ODV/' /etc/ssh/ssh_config || /bin/echo 'ServerAliveInterval $ODV' >> /etc/ssh/ssh_config
+        ----
+    '12.0':
+      references:
+        cce:
+          - CCE-91006-7
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+      check: |
+        ret="pass"
+        for u in $(/usr/bin/dscl . -list /Users UniqueID | /usr/bin/awk '$2 > 500 {print $1}'); do
+          sshCheck=$(/usr/bin/sudo -u $u /usr/bin/ssh -G . | /usr/bin/grep -c "^serveraliveinterval $ODV")
+          if [[ "$sshCheck" == "0" ]]; then
+            ret="fail"
+            break
+          fi
+        done
+        /bin/echo $ret
+      fix: "[source,bash]\n----\nfor u in $(/usr/bin/dscl . -list /Users UniqueID | /usr/bin/awk '$2 > 500 {print $1}'); do \n  config=$(/usr/bin/sudo -u $u /usr/bin/ssh -Gv . 2>&1 | /usr/bin/awk '/Reading configuration data/ {print $NF}'| /usr/bin/tr -d '\\r')\n  configarray=( ${(f)config} )\n  for c in $configarray; do\n    /usr/bin/sudo -u $u /usr/bin/grep -q '^ServerAliveInterval' \"$c\" && /usr/bin/sed -i '' 's/.*ServerAliveInterval.*/ServerAliveInterval $ODV/' \"$c\" || /bin/echo 'ServerAliveInterval $ODV' >> \"$c\"\n  done\ndone\n----\n"
+    '13.0':
+      references:
+        cce:
+          - CCE-91885-4
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+      check: |
+        ret="pass"
+        for u in $(/usr/bin/dscl . -list /Users UniqueID | /usr/bin/awk '$2 > 500 {print $1}'); do
+          sshCheck=$(/usr/bin/sudo -u $u /usr/bin/ssh -G . | /usr/bin/grep -c "^serveraliveinterval $ODV")
+          if [[ "$sshCheck" == "0" ]]; then
+            ret="fail"
+            break
+          fi
+        done
+        /bin/echo $ret
+      fix: "[source,bash]\n----\nfor u in $(/usr/bin/dscl . -list /Users UniqueID | /usr/bin/awk '$2 > 500 {print $1}'); do \n  config=$(/usr/bin/sudo -u $u /usr/bin/ssh -Gv . 2>&1 | /usr/bin/awk '/Reading configuration data/ {print $NF}'| /usr/bin/tr -d '\\r')\n  configarray=( ${(f)config} )\n  for c in $configarray; do\n    /usr/bin/sudo -u $u /usr/bin/grep -q '^ServerAliveInterval' \"$c\" && /usr/bin/sed -i '' 's/.*ServerAliveInterval.*/ServerAliveInterval $ODV/' \"$c\" || /bin/echo 'ServerAliveInterval $ODV' >> \"$c\"\n  done\ndone\n----\n"

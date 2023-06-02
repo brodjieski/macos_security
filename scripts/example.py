@@ -24,14 +24,7 @@ def main():
     
     # Output the list of rule IDs
     for id, rule in ruleset.items():
-        try:
-            #check for latest OS
-            os_specs = rule["OS_specifics"]['macOS'][macos]
-            _yaml.add_new_OS(rule, os_specs, "13")
-        except KeyError:
-            logging.info(f"Rule {rule['id']} has no specifics for macOS {macos}, not adding")
-            pass
-        pprint.pprint(rule)
+        pprint.pprint(rule['references'])
 
 if __name__ == "__main__":
     # Configure command line arguments

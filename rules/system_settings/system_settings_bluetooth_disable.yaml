@@ -11,23 +11,25 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
+  disa:
+    cci:
+      - N/A
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - AC-18
+      - SC-8
+      - AC-18(3)
+    800-53r4:
+      - AC-18(3)
+      - SC-8
+    800-171r2:
+      - 3.13.8
   cce:
     - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - AC-18
-    - SC-8
-    - AC-18(3)
-  800-53r4:
-    - AC-18(3)
-    - SC-8
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.13.8
   cis:
     benchmark:
       - $OS_VALUE
@@ -48,18 +50,19 @@ mobileconfig_info:
     com.apple.MCXBluetooth:
       DisableBluetooth: true
 os_specifics:
-  '13.0':
-    references:
-      cce:
-        - CCE-91936-5
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
+  macOS:
+    '13.0':
+      references:
+        cce:
+          - CCE-91936-5
+        disa_stig:
           - N/A
-        controls v8:
-          - 4.8
-          - 12.6
-          - 13.9
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 4.8
+            - 12.6
+            - 13.9

@@ -8,26 +8,28 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
+  disa:
+    cci:
+      - CCI-000199
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - IA-5
+    800-53r4:
+      - IA-5
+      - IA-5(1)
+    800-171r2:
+      - 3.5.1
+      - 3.5.2
+      - 3.5.7
+      - 3.5.8
+      - 3.5.9
+      - 3.5.10
   cce:
     - $OS_VALUE
-  cci:
-    - CCI-000199
-  800-53r5:
-    - IA-5
-  800-53r4:
-    - IA-5
-    - IA-5(1)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.5.1
-    - 3.5.2
-    - 3.5.7
-    - 3.5.8
-    - 3.5.9
-    - 3.5.10
   cis:
     benchmark:
       - $OS_VALUE
@@ -57,42 +59,43 @@ mobileconfig_info:
   com.apple.mobiledevice.passwordpolicy:
     maxPINAgeInDays: $ODV
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85400-0
-      disa_stig:
-        - APPL-11-003008
-      srg:
-        - SRG-OS-000076-GPOS-00044
-      cis:
-        benchmark:
-          - 5.2.7
-        controls v8:
-          - 5.3
-  '12.0':
-    references:
-      cce:
-        - CCE-91027-3
-      disa_stig:
-        - APPL-12-003008
-      srg:
-        - SRG-OS-000076-GPOS-00044
-      cis:
-        benchmark:
-          - 5.2.7
-        controls v8:
-          - 5.3
-  '13.0':
-    references:
-      cce:
-        - CCE-91922-5
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
-          - 5.2.7 (level 1)
-        controls v8:
-          - 5.3
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85400-0
+        disa_stig:
+          - APPL-11-003008
+        srg:
+          - SRG-OS-000076-GPOS-00044
+        cis:
+          benchmark:
+            - 5.2.7
+          controls v8:
+            - 5.3
+    '12.0':
+      references:
+        cce:
+          - CCE-91027-3
+        disa_stig:
+          - APPL-12-003008
+        srg:
+          - SRG-OS-000076-GPOS-00044
+        cis:
+          benchmark:
+            - 5.2.7
+          controls v8:
+            - 5.3
+    '13.0':
+      references:
+        cce:
+          - CCE-91922-5
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - 5.2.7 (level 1)
+          controls v8:
+            - 5.3

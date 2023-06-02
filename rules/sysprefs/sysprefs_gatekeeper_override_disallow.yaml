@@ -7,22 +7,24 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
+  disa:
+    cci:
+      - N/A
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - CM-5
+      - SI-7(15)
+    800-53r4:
+      - CM-5
+      - SI-7(15)
+    800-171r2:
+      - 3.4.5
   cce:
     - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - CM-5
-    - SI-7(15)
-  800-53r4:
-    - CM-5
-    - SI-7(15)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.4.5
 tags:
   - 800-53r5_low
   - 800-53r5_moderate
@@ -36,26 +38,27 @@ mobileconfig_info:
   com.apple.systempolicy.managed:
     DisableOverride: true
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85430-7
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-    check: |
-      /usr/bin/profiles -P -o stdout | /usr/bin/grep -c 'DisableOverride = 1' | /usr/bin/awk '{ if ($1 >= 1) {print "1"} else {print "0"}}'
-  '12.0':
-    references:
-      cce:
-        - CCE-91058-8
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-    check: |
-      /usr/bin/osascript -l JavaScript << EOS
-      $.NSUserDefaults.alloc.initWithSuiteName('com.apple.systempolicy.managed')\
-      .objectForKey('DisableOverride').js
-      EOS
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85430-7
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+      check: |
+        /usr/bin/profiles -P -o stdout | /usr/bin/grep -c 'DisableOverride = 1' | /usr/bin/awk '{ if ($1 >= 1) {print "1"} else {print "0"}}'
+    '12.0':
+      references:
+        cce:
+          - CCE-91058-8
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+      check: |
+        /usr/bin/osascript -l JavaScript << EOS
+        $.NSUserDefaults.alloc.initWithSuiteName('com.apple.systempolicy.managed')\
+        .objectForKey('DisableOverride').js
+        EOS

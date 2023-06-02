@@ -5,18 +5,20 @@ check: "Ask the System Administrator (SA) or Information System Security Officer
 fix: |
   Install the approved ESS solution onto the system.
 references:
+  disa:
+    cci:
+      - CCI-001233
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - N/A
+    800-53r4:
+      - SI-2(2)
+      - SI-3
   cce:
-    - $OS_VALUE
-  cci:
-    - CCI-001233
-  800-53r5:
-    - N/A
-  800-53r4:
-    - SI-2(2)
-    - SI-3
-  srg:
-    - $OS_VALUE
-  disa_stig:
     - $OS_VALUE
 cis:
   benchmark:
@@ -34,33 +36,34 @@ severity: medium
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85467-9
-      disa_stig:
-        - APPL-11-000015
-      srg:
-        - SRG-OS-000191-GPOS-00080
-    discussion: "The approved Endpoint Security Solutions (ESS) _MUST_ be installed and configured to run. \n\nThe macOS system must employ automated mechanisms to determine the state of system components. The DoD requires the installation and use of an approved ESS solution to be implemented on the operating system. For additional information, reference all applicable ESS OPORDs and FRAGOs on SIPRNET.\n"
-    title: Must Use Endpoint Security Solutions
-  '12.0':
-    references:
-      cce:
-        - CCE-90930-9
-      disa_stig:
-        - APPL-12-000015
-      srg:
-        - SRG-OS-000191-GPOS-00080
-    discussion: "The approved ESS solution _MUST_ be installed and configured to run. \n\nThe macOS system must employ automated mechanisms to determine the state of system components. The DoD requires the installation and use of an approved ESS solution to be implemented on the operating system. For additional information, reference all applicable ESS OPORDs and FRAGOs on SIPRNET.\n"
-    title: Must Use ESS
-  '13.0':
-    references:
-      cce:
-        - CCE-91785-6
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-    discussion: "The approved ESS solution _MUST_ be installed and configured to run. \n\nThe macOS system must employ automated mechanisms to determine the state of system components. The DoD requires the installation and use of an approved ESS solution to be implemented on the operating system. For additional information, reference all applicable ESS OPORDs and FRAGOs on SIPRNET.\n"
-    title: Must Use ESS
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85467-9
+        disa_stig:
+          - APPL-11-000015
+        srg:
+          - SRG-OS-000191-GPOS-00080
+      discussion: "The approved Endpoint Security Solutions (ESS) _MUST_ be installed and configured to run. \n\nThe macOS system must employ automated mechanisms to determine the state of system components. The DoD requires the installation and use of an approved ESS solution to be implemented on the operating system. For additional information, reference all applicable ESS OPORDs and FRAGOs on SIPRNET.\n"
+      title: Must Use Endpoint Security Solutions
+    '12.0':
+      references:
+        cce:
+          - CCE-90930-9
+        disa_stig:
+          - APPL-12-000015
+        srg:
+          - SRG-OS-000191-GPOS-00080
+      discussion: "The approved ESS solution _MUST_ be installed and configured to run. \n\nThe macOS system must employ automated mechanisms to determine the state of system components. The DoD requires the installation and use of an approved ESS solution to be implemented on the operating system. For additional information, reference all applicable ESS OPORDs and FRAGOs on SIPRNET.\n"
+      title: Must Use ESS
+    '13.0':
+      references:
+        cce:
+          - CCE-91785-6
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+      discussion: "The approved ESS solution _MUST_ be installed and configured to run. \n\nThe macOS system must employ automated mechanisms to determine the state of system components. The DoD requires the installation and use of an approved ESS solution to be implemented on the operating system. For additional information, reference all applicable ESS OPORDs and FRAGOs on SIPRNET.\n"
+      title: Must Use ESS

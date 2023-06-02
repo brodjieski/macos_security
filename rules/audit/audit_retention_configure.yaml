@@ -11,19 +11,21 @@ fix: |
   /usr/bin/sed -i.bak 's/^expire-after.*/expire-after:$ODV/' /etc/security/audit_control; /usr/sbin/audit -s
   ----
 references:
+  disa:
+    cci:
+      - CCI-001849
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - AU-11
+      - AU-4
+    800-53r4:
+      - AU-4
+      - AU-11
   cce:
-    - $OS_VALUE
-  cci:
-    - CCI-001849
-  800-53r5:
-    - AU-11
-    - AU-4
-  800-53r4:
-    - AU-4
-    - AU-11
-  srg:
-    - $OS_VALUE
-  disa_stig:
     - $OS_VALUE
   cis:
     benchmark:
@@ -52,48 +54,49 @@ severity: medium
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85272-3
-      disa_stig:
-        - APPL-11-001029
-      srg:
-        - SRG-OS-000341-GPOS-00132
-      cis:
-        benchmark:
-          - 3.4 (level 1)
-        controls v8:
-          - 8.3
-          - 8.1
-    discussion: "The audit service _MUST_ be configured to require records be kept for seven days or longer before deletion, unless the system uses a central audit record storage facility. \n\nWhen \"expire-after\" is set to \"$ODV\", the audit service will not delete audit logs until the log data is at least seven days old.\n"
-  '12.0':
-    references:
-      cce:
-        - CCE-90875-6
-      disa_stig:
-        - APPL-12-001029
-      srg:
-        - SRG-OS-000341-GPOS-00132
-      cis:
-        benchmark:
-          - 3.4 (level 1)
-        controls v8:
-          - 8.3
-          - 8.1
-    discussion: "The audit service _MUST_ be configured to require records be kept for a organizational defined value before deletion, unless the system uses a central audit record storage facility. \n\nWhen \"expire-after\" is set to \"$ODV\", the audit service will not delete audit logs until the log data criteria is met.\n"
-  '13.0':
-    references:
-      cce:
-        - CCE-91731-0
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
-          - 3.4 (level 1)
-        controls v8:
-          - 8.1
-          - 8.3
-    discussion: "The audit service _MUST_ be configured to require records be kept for a organizational defined value before deletion, unless the system uses a central audit record storage facility. \n\nWhen \"expire-after\" is set to \"$ODV\", the audit service will not delete audit logs until the log data criteria is met.\n"
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85272-3
+        disa_stig:
+          - APPL-11-001029
+        srg:
+          - SRG-OS-000341-GPOS-00132
+        cis:
+          benchmark:
+            - 3.4 (level 1)
+          controls v8:
+            - 8.3
+            - 8.1
+      discussion: "The audit service _MUST_ be configured to require records be kept for seven days or longer before deletion, unless the system uses a central audit record storage facility. \n\nWhen \"expire-after\" is set to \"$ODV\", the audit service will not delete audit logs until the log data is at least seven days old.\n"
+    '12.0':
+      references:
+        cce:
+          - CCE-90875-6
+        disa_stig:
+          - APPL-12-001029
+        srg:
+          - SRG-OS-000341-GPOS-00132
+        cis:
+          benchmark:
+            - 3.4 (level 1)
+          controls v8:
+            - 8.3
+            - 8.1
+      discussion: "The audit service _MUST_ be configured to require records be kept for a organizational defined value before deletion, unless the system uses a central audit record storage facility. \n\nWhen \"expire-after\" is set to \"$ODV\", the audit service will not delete audit logs until the log data criteria is met.\n"
+    '13.0':
+      references:
+        cce:
+          - CCE-91731-0
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - 3.4 (level 1)
+          controls v8:
+            - 8.1
+            - 8.3
+      discussion: "The audit service _MUST_ be configured to require records be kept for a organizational defined value before deletion, unless the system uses a central audit record storage facility. \n\nWhen \"expire-after\" is set to \"$ODV\", the audit service will not delete audit logs until the log data criteria is met.\n"

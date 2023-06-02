@@ -21,17 +21,19 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
+  disa:
+    cci:
+      - CCI-001812
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - CM-11(2)
+    800-53r4:
+      - CM-11(2)
   cce:
-    - $OS_VALUE
-  cci:
-    - CCI-001812
-  800-53r5:
-    - CM-11(2)
-  800-53r4:
-    - CM-11(2)
-  srg:
-    - $OS_VALUE
-  disa_stig:
     - $OS_VALUE
 tags:
   - stig
@@ -43,27 +45,28 @@ mobileconfig_info:
     pathBlackList:
       - /Users/
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85396-0
-      disa_stig:
-        - APPL-11-002067
-      srg:
-        - SRG-OS-000362-GPOS-00149
-  '12.0':
-    references:
-      cce:
-        - CCE-91023-2
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-  '13.0':
-    references:
-      cce:
-        - CCE-91908-4
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85396-0
+        disa_stig:
+          - APPL-11-002067
+        srg:
+          - SRG-OS-000362-GPOS-00149
+    '12.0':
+      references:
+        cce:
+          - CCE-91023-2
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+    '13.0':
+      references:
+        cce:
+          - CCE-91908-4
+        disa_stig:
+          - N/A
+        srg:
+          - N/A

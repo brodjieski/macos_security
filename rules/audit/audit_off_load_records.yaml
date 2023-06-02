@@ -6,17 +6,19 @@ check: |
 fix: |
   This requirement is a permanent finding and cannot be fixed. An appropriate mitigation for the system must be implemented, but this finding cannot be considered fixed.
 references:
+  disa:
+    cci:
+      - CCI-001851
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - AU-4(1)
+    800-53r4:
+      - AU-4(1)
   cce:
-    - $OS_VALUE
-  cci:
-    - CCI-001851
-  800-53r5:
-    - AU-4(1)
-  800-53r4:
-    - AU-4(1)
-  disa_stig:
-    - $OS_VALUE
-  srg:
     - $OS_VALUE
   cis:
     benchmark:
@@ -28,43 +30,44 @@ tags:
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85271-5
-      disa_stig:
-        - N/A
-      srg:
-        - SRG-OS-000479-GPOS-00224
-        - SRG-OS-000342-GPOS-00133
-      cis:
-        benchmark:
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85271-5
+        disa_stig:
           - N/A
-        controls v8:
-          - 8.9
-  '12.0':
-    references:
-      cce:
-        - CCE-90872-3
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
+        srg:
+          - SRG-OS-000479-GPOS-00224
+          - SRG-OS-000342-GPOS-00133
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 8.9
+    '12.0':
+      references:
+        cce:
+          - CCE-90872-3
+        disa_stig:
           - N/A
-        controls v8:
-          - 8.9
-  '13.0':
-    references:
-      cce:
-        - CCE-91728-6
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
+        srg:
           - N/A
-        controls v8:
-          - 8.9
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 8.9
+    '13.0':
+      references:
+        cce:
+          - CCE-91728-6
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 8.9

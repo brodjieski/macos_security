@@ -7,23 +7,25 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
+  disa:
+    cci:
+      - CCI-001774
+      - CCI-000381
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - CM-7
+      - CM-7(5)
+    800-53r4:
+      - CM-7
+      - CM-7(5)
+    800-171r2:
+      - N/A
   cce:
     - $OS_VALUE
-  cci:
-    - CCI-001774
-    - CCI-000381
-  800-53r5:
-    - CM-7
-    - CM-7(5)
-  800-53r4:
-    - CM-7
-    - CM-7(5)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - N/A
 tags:
   - stig
 severity: medium
@@ -33,23 +35,24 @@ mobileconfig_info:
     DisabledPreferencePanes:
       - com.apple.preference.speech
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85539-5
-      disa_stig:
-        - APPL-11-002053
-      srg:
-        - SRG-OS-000095-GPOS-00049
-    check: |
-      /usr/bin/profiles show -output stdout-xml | /usr/bin/xmllint --xpath '//key[text()="HiddenPreferencePanes"]/following-sibling::*[1]' - | /usr/bin/grep -c com.apple.preference.speech
-  '12.0':
-    references:
-      cce:
-        - CCE-91136-2
-      disa_stig:
-        - APPL-12-002053
-      srg:
-        - SRG-OS-000095-GPOS-00049
-    check: |
-      /usr/bin/profiles show -output stdout-xml | /usr/bin/xmllint --xpath '//key[text()="DisabledPreferencePanes"]/following-sibling::*[1]' - | /usr/bin/grep -c com.apple.preference.speech
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85539-5
+        disa_stig:
+          - APPL-11-002053
+        srg:
+          - SRG-OS-000095-GPOS-00049
+      check: |
+        /usr/bin/profiles show -output stdout-xml | /usr/bin/xmllint --xpath '//key[text()="HiddenPreferencePanes"]/following-sibling::*[1]' - | /usr/bin/grep -c com.apple.preference.speech
+    '12.0':
+      references:
+        cce:
+          - CCE-91136-2
+        disa_stig:
+          - APPL-12-002053
+        srg:
+          - SRG-OS-000095-GPOS-00049
+      check: |
+        /usr/bin/profiles show -output stdout-xml | /usr/bin/xmllint --xpath '//key[text()="DisabledPreferencePanes"]/following-sibling::*[1]' - | /usr/bin/grep -c com.apple.preference.speech

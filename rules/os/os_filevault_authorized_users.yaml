@@ -14,17 +14,19 @@ fix: |
   /usr/bin/fdesetup remove -user NOT_AUTHORIZED_USERNAME
   ----
 references:
+  disa:
+    cci:
+      - CCI-002143
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - AC-2(11)
+    800-53r4:
+      - N/A
   cce:
-    - $OS_VALUE
-  cci:
-    - CCI-002143
-  800-53r5:
-    - AC-2(11)
-  800-53r4:
-    - N/A
-  srg:
-    - $OS_VALUE
-  disa_stig:
     - $OS_VALUE
 tags:
   - 800-53r5_high
@@ -34,27 +36,28 @@ severity: medium
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85311-9
-      disa_stig:
-        - APPL-11-000032
-      srg:
-        - SRG-OS-000480-GPOS-00227
-  '12.0':
-    references:
-      cce:
-        - CCE-90921-8
-      disa_stig:
-        - APPL-12-000032
-      srg:
-        - SRG-OS-000480-GPOS-00227
-  '13.0':
-    references:
-      cce:
-        - CCE-91788-0
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85311-9
+        disa_stig:
+          - APPL-11-000032
+        srg:
+          - SRG-OS-000480-GPOS-00227
+    '12.0':
+      references:
+        cce:
+          - CCE-90921-8
+        disa_stig:
+          - APPL-12-000032
+        srg:
+          - SRG-OS-000480-GPOS-00227
+    '13.0':
+      references:
+        cce:
+          - CCE-91788-0
+        disa_stig:
+          - N/A
+        srg:
+          - N/A

@@ -14,18 +14,20 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
+  disa:
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    cci:
+      - None
+  nist:
+    800-53r5:
+      - MP-7
+    800-53r4:
+      - MP-7(1)
   cce:
     - $OS_VALUE
-  800-53r5:
-    - MP-7
-  800-53r4:
-    - MP-7(1)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  cci:
-    - None
 tags:
   - stig
 severity: low
@@ -36,27 +38,28 @@ mobileconfig_info:
   com.apple.DiscRecording:
     BurnSupport: 'off'
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85544-5
-      disa_stig:
-        - APPL-12-005053
-      srg:
-        - SRG-OS-000480-GPOS-00227
-  '12.0':
-    references:
-      cce:
-        - CCE-91098-4
-      disa_stig:
-        - APPL-12-005053
-      srg:
-        - SRG-OS-000480-GPOS-00227
-  '13.0':
-    references:
-      cce:
-        - CCE-91768-2
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85544-5
+        disa_stig:
+          - APPL-12-005053
+        srg:
+          - SRG-OS-000480-GPOS-00227
+    '12.0':
+      references:
+        cce:
+          - CCE-91098-4
+        disa_stig:
+          - APPL-12-005053
+        srg:
+          - SRG-OS-000480-GPOS-00227
+    '13.0':
+      references:
+        cce:
+          - CCE-91768-2
+        disa_stig:
+          - N/A
+        srg:
+          - N/A

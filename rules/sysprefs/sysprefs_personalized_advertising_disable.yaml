@@ -7,26 +7,28 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
+  disa:
+    cci:
+      - N/A
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - AC-20
+      - CM-7
+      - CM-7(1)
+      - SC-7(10)
+    800-53r4:
+      - AC-20
+      - CM-7
+      - CM-7(1)
+    800-171r2:
+      - 3.1.20
+      - 3.4.6
   cce:
     - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - AC-20
-    - CM-7
-    - CM-7(1)
-    - SC-7(10)
-  800-53r4:
-    - AC-20
-    - CM-7
-    - CM-7(1)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.1.20
-    - 3.4.6
   cis:
     benchmark:
       - $OS_VALUE
@@ -48,41 +50,42 @@ mobileconfig_info:
   com.apple.AdLib:
     allowApplePersonalizedAdvertising: false
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85438-0
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
-          - 2.5.6 (level 1)
-        controls v8:
-          - 4.1
-          - 4.8
-    check: |
-      /usr/bin/osascript -l JavaScript << EOS
-      $.NSUserDefaults.alloc.initWithSuiteName('com.apple.AdLib')\
-      .objectForKey('allowApplePersonalizedAdvertising').js
-      EOS
-  '12.0':
-    references:
-      cce:
-        - CCE-91068-7
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
-          - 2.5.6 (level 1)
-        controls v8:
-          - 4.1
-          - 4.8
-    check: |
-      /usr/bin/osascript -l JavaScript << EOS
-      $.NSUserDefaults.alloc.initWithSuiteName('com.apple.applicationaccess')\
-      .objectForKey('allowApplePersonalizedAdvertising').js
-      EOS
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85438-0
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - 2.5.6 (level 1)
+          controls v8:
+            - 4.1
+            - 4.8
+      check: |
+        /usr/bin/osascript -l JavaScript << EOS
+        $.NSUserDefaults.alloc.initWithSuiteName('com.apple.AdLib')\
+        .objectForKey('allowApplePersonalizedAdvertising').js
+        EOS
+    '12.0':
+      references:
+        cce:
+          - CCE-91068-7
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - 2.5.6 (level 1)
+          controls v8:
+            - 4.1
+            - 4.8
+      check: |
+        /usr/bin/osascript -l JavaScript << EOS
+        $.NSUserDefaults.alloc.initWithSuiteName('com.apple.applicationaccess')\
+        .objectForKey('allowApplePersonalizedAdvertising').js
+        EOS

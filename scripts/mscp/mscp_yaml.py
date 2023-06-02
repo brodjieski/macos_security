@@ -33,6 +33,21 @@ def recursive_items(dictionary):
         else:
             yield (key, value)
 
+class MyDumper(yaml.Dumper):
+
+    def increase_indent(self, flow=False, indentless=False):
+        return super(MyDumper, self).increase_indent(flow, False)
+
+def str_presenter(dumper, data):
+    """configures yaml for dumping multiline strings
+    Ref: https://stackoverflow.com/questions/8640959/how-can-i-control-what-scalar-form-pyyaml-uses-for-my-data"""
+    if data.count('\n') > 0:  # check for multiline string
+        return dumper.represent_scalar('tag:yaml.org,2002:str', data, style='|')
+    return dumper.represent_scalar('tag:yaml.org,2002:str', data)
+
+yaml.add_representer(str, str_presenter)
+yaml.representer.SafeRepresenter.add_representer(str, str_presenter)
+
 class Yaml:
     def __init__(self):
         self.versions = ["catalina", "monterey", "big sur"]
@@ -119,7 +134,7 @@ class Yaml:
     def fill_in_OS_specs(self, rule, macos):
         """Takes a rule and fills in any OS specific values for the supplied OS.  Default is the version of OS on the current system."""
         try:
-            macos_specs = rule["OS_specifics"]['macOS'][macos]
+            macos_specs = rule["os_specifics"]['macOS'][macos]
         except KeyError:
             logging.info(f"fill_in_OS_specs:  Rule {rule['id']} has no values for macOS {macos}, skipping...")
             return False
@@ -132,14 +147,14 @@ class Yaml:
             _included_keys.remove("references")
             for key in _included_keys:
                 try:
-                    rule['references'][key]=rule["OS_specifics"]['macOS'][macos]['references'][key]
+                    rule['references'][key]=rule["os_specifics"]['macOS'][macos]['references'][key]
                 except:
                     pass
             
         # process remaining keys
         for key in _included_keys:
             try:
-                rule[key]=rule["OS_specifics"]['macOS'][macos][key]
+                rule[key]=rule["os_specifics"]['macOS'][macos][key]
             except:
                 pass
         
@@ -157,7 +172,7 @@ class Yaml:
         }
 
         logging.info(f"Adding specifics for macOS {newos} for {rule['id']}")
-        rule["OS_specifics"]['macOS'][newos] = _specifics
+        rule["os_specifics"]['macOS'][newos] = _specifics
         return
     
     def exportToYaml(self, name, record, outdir, nameispath=False):
@@ -169,10 +184,25 @@ class Yaml:
         else:
             _outfile = os.path.join(outdir, name + '.yaml')
         
+        logging.info(f"Writing YAML output for {name}")
         with open(_outfile, "w") as f:
             f.write("---\n")
             f.write(self.toYamlString(record, 0))
             f.write("\n")
+        return
+
+    def dumpToYaml(self, name, record, outdir, nameispath=False):
+        """Accept a name, record, and directory and safe properly formated YAML to it."""
+        if not os.path.exists(outdir):
+            os.makedirs(outdir)
+        if nameispath:
+            _outfile = name
+        else:
+            _outfile = os.path.join(outdir, name + '.yaml')
+        
+        logging.info(f"Writing YAML output for {name}")
+        with open(_outfile, "w") as f:
+            yaml.dump(record,f, Dumper=MyDumper, sort_keys=False, width=float("inf"))
         return
     
     def toYamlString(self, obj_part, depth):

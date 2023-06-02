@@ -14,23 +14,25 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
+  disa:
+    cci:
+      - CCI-000366
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - IA-2
+      - IA-5(13)
+    800-53r4:
+      - IA-2
+      - IA-5(13)
+    800-171r2:
+      - 3.5.1
+      - 3.5.2
   cce:
     - $OS_VALUE
-  cci:
-    - CCI-000366
-  800-53r5:
-    - IA-2
-    - IA-5(13)
-  800-53r4:
-    - IA-2
-    - IA-5(13)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.5.1
-    - 3.5.2
   cis:
     benchmark:
       - $OS_VALUE
@@ -53,29 +55,30 @@ mobileconfig_info:
   com.apple.loginwindow:
     com.apple.login.mcx.DisableAutoLoginClient: true
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85419-0
-      disa_stig:
-        - APPL-11-002066
-      srg:
-        - SRG-OS-000480-GPOS-00229
-      cis:
-        benchmark:
-          - 5.6 (level 1)
-        controls v8:
-          - 4.7
-  '12.0':
-    references:
-      cce:
-        - CCE-91046-3
-      disa_stig:
-        - APPL-12-002066
-      srg:
-        - SRG-OS-000480-GPOS-00229
-      cis:
-        benchmark:
-          - 5.6 (level 1)
-        controls v8:
-          - 4.7
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85419-0
+        disa_stig:
+          - APPL-11-002066
+        srg:
+          - SRG-OS-000480-GPOS-00229
+        cis:
+          benchmark:
+            - 5.6 (level 1)
+          controls v8:
+            - 4.7
+    '12.0':
+      references:
+        cce:
+          - CCE-91046-3
+        disa_stig:
+          - APPL-12-002066
+        srg:
+          - SRG-OS-000480-GPOS-00229
+        cis:
+          benchmark:
+            - 5.6 (level 1)
+          controls v8:
+            - 4.7

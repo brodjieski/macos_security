@@ -10,25 +10,27 @@ result:
   integer: 1
 fix: $OS_VALUE
 references:
+  disa:
+    cci:
+      - CCI-000366
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - CM-14
+      - CM-5
+      - SI-7(15)
+      - SI-7(1)
+    800-53r4:
+      - CM-5(3)
+      - CM-5
+      - SI-7(15)
+    800-171r2:
+      - 3.4.5
   cce:
     - $OS_VALUE
-  cci:
-    - CCI-000366
-  800-53r5:
-    - CM-14
-    - CM-5
-    - SI-7(15)
-    - SI-7(1)
-  800-53r4:
-    - CM-5(3)
-    - CM-5
-    - SI-7(15)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.4.5
 tags:
   - 800-53r5_low
   - 800-53r5_moderate
@@ -44,29 +46,30 @@ mobileconfig_info:
     AllowIdentifiedDevelopers: true
     EnableAssessment: true
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85429-9
-      disa_stig:
-        - APPL-11-002060
-      srg:
-        - SRG-OS-000480-GPOS-00227
-    fix: |
-      [source,bash]
-      ----
-      /usr/sbin/spctl --master-enable; /usr/sbin/spctl --enable
-      ----
-  '12.0':
-    references:
-      cce:
-        - CCE-91057-0
-      disa_stig:
-        - APPL-12-002060
-      srg:
-        - SRG-OS-000480-GPOS-00227
-    fix: |
-      [source,bash]
-      ----
-      /usr/sbin/spctl --global-enable; /usr/sbin/spctl --enable
-      ----
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85429-9
+        disa_stig:
+          - APPL-11-002060
+        srg:
+          - SRG-OS-000480-GPOS-00227
+      fix: |
+        [source,bash]
+        ----
+        /usr/sbin/spctl --master-enable; /usr/sbin/spctl --enable
+        ----
+    '12.0':
+      references:
+        cce:
+          - CCE-91057-0
+        disa_stig:
+          - APPL-12-002060
+        srg:
+          - SRG-OS-000480-GPOS-00227
+      fix: |
+        [source,bash]
+        ----
+        /usr/sbin/spctl --global-enable; /usr/sbin/spctl --enable
+        ----

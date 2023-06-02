@@ -12,21 +12,23 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
+  disa:
+    cci:
+      - N/A
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - CM-5
+    800-53r4:
+      - CM-5
+      - SI-3
+    800-171r2:
+      - 3.4.5
   cce:
     - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - CM-5
-  800-53r4:
-    - CM-5
-    - SI-3
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.4.5
   cis:
     benchmark:
       - $OS_VALUE
@@ -46,42 +48,43 @@ mobileconfig_info:
     com.apple.security:
       GKAutoRearm: true
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85316-8
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85316-8
+        disa_stig:
           - N/A
-        controls v8:
-          - 10.5
-  '12.0':
-    references:
-      cce:
-        - CCE-90927-5
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
+        srg:
           - N/A
-        controls v8:
-          - 10.5
-  '13.0':
-    references:
-      cce:
-        - CCE-91794-8
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 10.5
+    '12.0':
+      references:
+        cce:
+          - CCE-90927-5
+        disa_stig:
           - N/A
-        controls v8:
-          - 10.5
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 10.5
+    '13.0':
+      references:
+        cce:
+          - CCE-91794-8
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 10.5

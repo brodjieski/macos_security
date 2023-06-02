@@ -7,27 +7,29 @@ result:
   integer: 1
 fix: $OS_VALUE
 references:
+  disa:
+    cci:
+      - CCI-001749
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - CM-14
+      - CM-5
+      - SI-7(1)
+      - SI-7(15)
+      - SI-3
+    800-53r4:
+      - CM-5(3)
+      - CM-5
+      - SI-3
+      - SI-7(15)
+    800-171r2:
+      - 3.4.5
   cce:
     - $OS_VALUE
-  cci:
-    - CCI-001749
-  800-53r5:
-    - CM-14
-    - CM-5
-    - SI-7(1)
-    - SI-7(15)
-    - SI-3
-  800-53r4:
-    - CM-5(3)
-    - CM-5
-    - SI-3
-    - SI-7(15)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.4.5
   cis:
     benchmark:
       - $OS_VALUE
@@ -50,63 +52,64 @@ mobileconfig_info:
   com.apple.systempolicy.control:
     EnableAssessment: true
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85315-0
-      disa_stig:
-        - APPL-11-002064
-      srg:
-        - SRG-OS-000366-GPOS-00153
-      cis:
-        benchmark:
-          - 2.5.7 (level 1)
-        controls v8:
-          - 10.1
-          - 10.2
-          - 10.5
-    fix: |
-      [source,bash]
-      ----
-      /usr/sbin/spctl --master-enable
-      ----
-  '12.0':
-    references:
-      cce:
-        - CCE-90926-7
-      disa_stig:
-        - APPL-12-002064
-      srg:
-        - SRG-OS-000366-GPOS-00153
-      cis:
-        benchmark:
-          - 2.5.7 (level 1)
-        controls v8:
-          - 10.1
-          - 10.2
-          - 10.5
-    fix: |
-      [source,bash]
-      ----
-      /usr/sbin/spctl --global-enable
-      ----
-  '13.0':
-    references:
-      cce:
-        - CCE-91793-0
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
-          - 2.6.4 (level 1)
-        controls v8:
-          - 10.1
-          - 10.2
-          - 10.5
-    fix: |
-      [source,bash]
-      ----
-      /usr/sbin/spctl --global-enable
-      ----
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85315-0
+        disa_stig:
+          - APPL-11-002064
+        srg:
+          - SRG-OS-000366-GPOS-00153
+        cis:
+          benchmark:
+            - 2.5.7 (level 1)
+          controls v8:
+            - 10.1
+            - 10.2
+            - 10.5
+      fix: |
+        [source,bash]
+        ----
+        /usr/sbin/spctl --master-enable
+        ----
+    '12.0':
+      references:
+        cce:
+          - CCE-90926-7
+        disa_stig:
+          - APPL-12-002064
+        srg:
+          - SRG-OS-000366-GPOS-00153
+        cis:
+          benchmark:
+            - 2.5.7 (level 1)
+          controls v8:
+            - 10.1
+            - 10.2
+            - 10.5
+      fix: |
+        [source,bash]
+        ----
+        /usr/sbin/spctl --global-enable
+        ----
+    '13.0':
+      references:
+        cce:
+          - CCE-91793-0
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - 2.6.4 (level 1)
+          controls v8:
+            - 10.1
+            - 10.2
+            - 10.5
+      fix: |
+        [source,bash]
+        ----
+        /usr/sbin/spctl --global-enable
+        ----

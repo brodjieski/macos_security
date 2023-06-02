@@ -11,25 +11,27 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
+  disa:
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    cci:
+      - None
+  nist:
+    800-53r5:
+      - N/A
+    800-53r4:
+      - N/A
+    800-171r2:
+      - N/A
   cce:
     - $OS_VALUE
-  800-53r5:
-    - N/A
-  800-53r4:
-    - N/A
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - N/A
   cis:
     benchmark:
       - $OS_VALUE
     controls v8:
       - $OS_VALUE
-  cci:
-    - None
 tags:
   - cis_lvl2
   - cisv8
@@ -38,29 +40,30 @@ mobileconfig_info:
   com.apple.TimeMachine:
     AutoBackup: true
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85535-3
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
-          - 2.7.1 (level 2)
-        controls v8:
-          - 11.2
-  '12.0':
-    references:
-      cce:
-        - CCE-91142-0
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
-          - 2.7.1 (level 2)
-        controls v8:
-          - 11.2
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85535-3
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - 2.7.1 (level 2)
+          controls v8:
+            - 11.2
+    '12.0':
+      references:
+        cce:
+          - CCE-91142-0
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - 2.7.1 (level 2)
+          controls v8:
+            - 11.2

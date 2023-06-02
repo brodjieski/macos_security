@@ -39,35 +39,36 @@ mobileconfig_info:
   com.apple.security.smartcard:
     checkCertificateTrust: 2
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85279-8
-      disa_stig:
-        - APPL-11-001060
-      srg:
-        - SRG-OS-000376-GPOS-00161
-        - SRG-OS-000377-GPOS-00162
-        - SRG-OS-000384-GPOS-00167
-        - SRG-OS-000403-GPOS-00182
-        - SRG-OS-000067-GPOS-00035
-  '12.0':
-    references:
-      cce:
-        - CCE-90882-2
-      disa_stig:
-        - APPL-12-001060
-      srg:
-        - SRG-OS-000376-GPOS-00161
-        - SRG-OS-000377-GPOS-00162
-        - SRG-OS-000384-GPOS-00167
-        - SRG-OS-000403-GPOS-00182
-        - SRG-OS-000067-GPOS-00035
-  '13.0':
-    references:
-      cce:
-        - CCE-91738-5
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85279-8
+        disa_stig:
+          - APPL-11-001060
+        srg:
+          - SRG-OS-000376-GPOS-00161
+          - SRG-OS-000377-GPOS-00162
+          - SRG-OS-000384-GPOS-00167
+          - SRG-OS-000403-GPOS-00182
+          - SRG-OS-000067-GPOS-00035
+    '12.0':
+      references:
+        cce:
+          - CCE-90882-2
+        disa_stig:
+          - APPL-12-001060
+        srg:
+          - SRG-OS-000376-GPOS-00161
+          - SRG-OS-000377-GPOS-00162
+          - SRG-OS-000384-GPOS-00167
+          - SRG-OS-000403-GPOS-00182
+          - SRG-OS-000067-GPOS-00035
+    '13.0':
+      references:
+        cce:
+          - CCE-91738-5
+        disa_stig:
+          - N/A
+        srg:
+          - N/A

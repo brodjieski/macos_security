@@ -12,22 +12,24 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
+  disa:
+    cci:
+      - CCI-000381
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - CM-7
+      - CM-7(1)
+    800-53r4:
+      - CM-7
+      - CM-7(1)
+    800-171r2:
+      - 3.4.6
   cce:
     - $OS_VALUE
-  cci:
-    - CCI-000381
-  800-53r5:
-    - CM-7
-    - CM-7(1)
-  800-53r4:
-    - CM-7
-    - CM-7(1)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.4.6
   cis:
     benchmark:
       - $OS_VALUE
@@ -50,45 +52,46 @@ mobileconfig_info:
   com.apple.mDNSResponder:
     NoMulticastAdvertisements: true
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85299-6
-      disa_stig:
-        - APPL-11-002005
-      srg:
-        - SRG-OS-000095-GPOS-00049
-      cis:
-        benchmark:
-          - 4.1 (level 2)
-        controls v8:
-          - 4.1
-          - 4.8
-  '12.0':
-    references:
-      cce:
-        - CCE-90908-5
-      disa_stig:
-        - APPL-12-002005
-      srg:
-        - SRG-OS-000095-GPOS-00049
-      cis:
-        benchmark:
-          - 4.1 (level 2)
-        controls v8:
-          - 4.1
-          - 4.8
-  '13.0':
-    references:
-      cce:
-        - CCE-91767-4
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
-          - 4.1 (level 2)
-        controls v8:
-          - 4.1
-          - 4.8
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85299-6
+        disa_stig:
+          - APPL-11-002005
+        srg:
+          - SRG-OS-000095-GPOS-00049
+        cis:
+          benchmark:
+            - 4.1 (level 2)
+          controls v8:
+            - 4.1
+            - 4.8
+    '12.0':
+      references:
+        cce:
+          - CCE-90908-5
+        disa_stig:
+          - APPL-12-002005
+        srg:
+          - SRG-OS-000095-GPOS-00049
+        cis:
+          benchmark:
+            - 4.1 (level 2)
+          controls v8:
+            - 4.1
+            - 4.8
+    '13.0':
+      references:
+        cce:
+          - CCE-91767-4
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - 4.1 (level 2)
+          controls v8:
+            - 4.1
+            - 4.8

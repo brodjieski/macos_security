@@ -11,24 +11,26 @@ fix: |
   /usr/bin/find /etc/sudoers* -type f -exec sed -i '' '/timestamp_type/d; /!tty_tickets/d' '{}' \;
   ----
 references:
+  disa:
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    cci:
+      - None
+  nist:
+    800-53r5:
+      - CM-5(1)
+      - IA-11
+    800-53r4:
+      - IA-11
   cce:
-    - $OS_VALUE
-  800-53r5:
-    - CM-5(1)
-    - IA-11
-  800-53r4:
-    - IA-11
-  srg:
-    - $OS_VALUE
-  disa_stig:
     - $OS_VALUE
   cis:
     benchmark:
       - $OS_VALUE
     controls v8:
       - $OS_VALUE
-  cci:
-    - None
 tags:
   - 800-53r5_low
   - 800-53r5_moderate
@@ -40,54 +42,55 @@ tags:
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85513-0
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
-          - 5.4 (level 1)
-        controls v8:
-          - 4.3
-    discussion: |
-      The file /etc/sudoers _MUST_ be configured to not include a timestamp_type of global or ppid aand be configured for timestamp record types of tty.
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85513-0
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - 5.4 (level 1)
+          controls v8:
+            - 4.3
+      discussion: |
+        The file /etc/sudoers _MUST_ be configured to not include a timestamp_type of global or ppid aand be configured for timestamp record types of tty.
 
-      This rule ensures that the "sudo" command will prompt for the administrator's password at least once in each newly opened terminal window. This prevents a malicious user from taking advantage of an unlocked computer or an abandoned logon session by bypassing the normal password prompt requirement.
-  '12.0':
-    references:
-      cce:
-        - CCE-91015-8
-      disa_stig:
-        - APPL-12-004021
-      srg:
-        - SRG-OS-000480-GPOS-00227
-      cis:
-        benchmark:
-          - 5.4 (level 1)
-        controls v8:
-          - 4.3
-    discussion: |
-      The file /etc/sudoers _MUST_ be configured to not include a timestamp_type of global or ppid and be configured for timestamp record types of tty.
+        This rule ensures that the "sudo" command will prompt for the administrator's password at least once in each newly opened terminal window. This prevents a malicious user from taking advantage of an unlocked computer or an abandoned logon session by bypassing the normal password prompt requirement.
+    '12.0':
+      references:
+        cce:
+          - CCE-91015-8
+        disa_stig:
+          - APPL-12-004021
+        srg:
+          - SRG-OS-000480-GPOS-00227
+        cis:
+          benchmark:
+            - 5.4 (level 1)
+          controls v8:
+            - 4.3
+      discussion: |
+        The file /etc/sudoers _MUST_ be configured to not include a timestamp_type of global or ppid and be configured for timestamp record types of tty.
 
-      This rule ensures that the "sudo" command will prompt for the administrator's password at least once in each newly opened terminal window. This prevents a malicious user from taking advantage of an unlocked computer or an abandoned logon session by bypassing the normal password prompt requirement.
-  '13.0':
-    references:
-      cce:
-        - CCE-91896-1
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
-          - 5.5 (level 1)
-        controls v8:
-          - 4.3
-    discussion: |
-      The file /etc/sudoers _MUST_ be configured to not include a timestamp_type of global or ppid aand be configured for timestamp record types of tty.
+        This rule ensures that the "sudo" command will prompt for the administrator's password at least once in each newly opened terminal window. This prevents a malicious user from taking advantage of an unlocked computer or an abandoned logon session by bypassing the normal password prompt requirement.
+    '13.0':
+      references:
+        cce:
+          - CCE-91896-1
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - 5.5 (level 1)
+          controls v8:
+            - 4.3
+      discussion: |
+        The file /etc/sudoers _MUST_ be configured to not include a timestamp_type of global or ppid aand be configured for timestamp record types of tty.
 
-      This rule ensures that the "sudo" command will prompt for the administrator's password at least once in each newly opened terminal window. This prevents a malicious user from taking advantage of an unlocked computer or an abandoned logon session by bypassing the normal password prompt requirement.
+        This rule ensures that the "sudo" command will prompt for the administrator's password at least once in each newly opened terminal window. This prevents a malicious user from taking advantage of an unlocked computer or an abandoned logon session by bypassing the normal password prompt requirement.

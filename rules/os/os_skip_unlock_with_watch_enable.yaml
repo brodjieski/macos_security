@@ -11,20 +11,22 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
+  disa:
+    cci:
+      - CCI-000381
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - AC-20
+    800-53r4:
+      - AC-20
+    800-171r2:
+      - 3.1.20
   cce:
     - $OS_VALUE
-  cci:
-    - CCI-000381
-  800-53r5:
-    - AC-20
-  800-53r4:
-    - AC-20
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.1.20
   cis:
     benchmark:
       - $OS_VALUE
@@ -46,29 +48,30 @@ mobileconfig_info:
   com.apple.SetupAssistant.managed:
     SkipUnlockWithWatch: true
 os_specifics:
-  '12.0':
-    references:
-      cce:
-        - CCE-91002-6
-      disa_stig:
-        - APPL-12-005056
-      srg:
-        - SRG-OS-000095-GPOS-00049
-      cis:
-        benchmark:
+  macOS:
+    '12.0':
+      references:
+        cce:
+          - CCE-91002-6
+        disa_stig:
+          - APPL-12-005056
+        srg:
+          - SRG-OS-000095-GPOS-00049
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 4.1
+    '13.0':
+      references:
+        cce:
+          - CCE-91881-3
+        disa_stig:
           - N/A
-        controls v8:
-          - 4.1
-  '13.0':
-    references:
-      cce:
-        - CCE-91881-3
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
+        srg:
           - N/A
-        controls v8:
-          - 4.1
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 4.1

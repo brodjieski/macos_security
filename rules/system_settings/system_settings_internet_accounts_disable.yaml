@@ -14,22 +14,24 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
+  disa:
+    cci:
+      - N/A
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - CM-7(5)
+      - AC-20
+    800-53r4:
+      - AC-20
+      - CM-7(5)
+    800-171r2:
+      - 3.1.20
   cce:
     - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - CM-7(5)
-    - AC-20
-  800-53r4:
-    - AC-20
-    - CM-7(5)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.1.20
   cis:
     benchmark:
       - $OS_VALUE
@@ -51,17 +53,18 @@ mobileconfig_info:
     DisabledSystemSettings:
       - com.apple.Internet-Accounts-Settings.extension
 os_specifics:
-  '13.0':
-    references:
-      cce:
-        - CCE-91938-1
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
+  macOS:
+    '13.0':
+      references:
+        cce:
+          - CCE-91938-1
+        disa_stig:
           - N/A
-        controls v8:
-          - 4.8
-          - 15.2
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 4.8
+            - 15.2

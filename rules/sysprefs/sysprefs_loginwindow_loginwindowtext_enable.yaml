@@ -11,25 +11,27 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
+  disa:
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    cci:
+      - None
+  nist:
+    800-53r5:
+      - N/A
+    800-53r4:
+      - N/A
+    800-171r2:
+      - N/A
   cce:
     - $OS_VALUE
-  800-53r5:
-    - N/A
-  800-53r4:
-    - N/A
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - N/A
   cis:
     benchmark:
       - $OS_VALUE
     controls v8:
       - $OS_VALUE
-  cci:
-    - None
 odv:
   hint: Organization's approved message.
   recommended: Center for Internet Security Test Message
@@ -44,29 +46,30 @@ mobileconfig_info:
   com.apple.loginwindow:
     LoginwindowText: $ODV
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85528-8
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
-          - 2.5.8 (level 1)
-        controls v8:
-          - 4.1
-  '12.0':
-    references:
-      cce:
-        - CCE-91133-9
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
-          - 2.5.8 (level 1)
-        controls v8:
-          - 4.1
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85528-8
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - 2.5.8 (level 1)
+          controls v8:
+            - 4.1
+    '12.0':
+      references:
+        cce:
+          - CCE-91133-9
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - 2.5.8 (level 1)
+          controls v8:
+            - 4.1

@@ -11,20 +11,22 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
+  disa:
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    cci:
+      - None
+  nist:
+    800-53r5:
+      - MP-7
+    800-53r4:
+      - MP-7(1)
+    800-171r2:
+      - 3.8.8
   cce:
     - $OS_VALUE
-  800-53r5:
-    - MP-7
-  800-53r4:
-    - MP-7(1)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.8.8
-  cci:
-    - None
 tags:
   - stig
 severity: medium
@@ -36,65 +38,66 @@ mobileconfig_info:
         - alert
         - eject
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85541-1
-      disa_stig:
-        - APPL-12-005051
-      srg:
-        - SRG-OS-000480-GPOS-00227
-        - SRG-OS-000319-GPOS-00164
-    discussion: |
-      Blank CD media _MUST_ be disabled.
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85541-1
+        disa_stig:
+          - APPL-12-005051
+        srg:
+          - SRG-OS-000480-GPOS-00227
+          - SRG-OS-000319-GPOS-00164
+      discussion: |
+        Blank CD media _MUST_ be disabled.
 
-      [IMPORTANT]
-      ====
-      Some organizations rely on the use of removable media for storing and sharing data. Information System Security Officers (ISSOs) may make the risk-based decision not to disable external hard drives to avoid losing this functionality, but they are advised to first fully weigh the potential risks posed to their organization.
-      ====
+        [IMPORTANT]
+        ====
+        Some organizations rely on the use of removable media for storing and sharing data. Information System Security Officers (ISSOs) may make the risk-based decision not to disable external hard drives to avoid losing this functionality, but they are advised to first fully weigh the potential risks posed to their organization.
+        ====
 
-      [IMPORTANT]
-      ====
-      Apple has deprecated the use of media mount controls, using these controls may not work as expected. Third party software may be required to fullfill the compliance requirements.
-      ====
-  '12.0':
-    references:
-      cce:
-        - CCE-91095-0
-      disa_stig:
-        - APPL-12-005051
-      srg:
-        - SRG-OS-000480-GPOS-00227
-        - SRG-OS-000319-GPOS-00164
-    discussion: |
-      Blank CD media _MUST_ be disabled.
+        [IMPORTANT]
+        ====
+        Apple has deprecated the use of media mount controls, using these controls may not work as expected. Third party software may be required to fullfill the compliance requirements.
+        ====
+    '12.0':
+      references:
+        cce:
+          - CCE-91095-0
+        disa_stig:
+          - APPL-12-005051
+        srg:
+          - SRG-OS-000480-GPOS-00227
+          - SRG-OS-000319-GPOS-00164
+      discussion: |
+        Blank CD media _MUST_ be disabled.
 
-      [IMPORTANT]
-      ====
-      Some organizations rely on the use of removable media for storing and sharing data. Information System Security Officers (ISSOs) may make the risk-based decision not to disable external hard drives to avoid losing this functionality, but they are advised to first fully weigh the potential risks posed to their organization.
-      ====
+        [IMPORTANT]
+        ====
+        Some organizations rely on the use of removable media for storing and sharing data. Information System Security Officers (ISSOs) may make the risk-based decision not to disable external hard drives to avoid losing this functionality, but they are advised to first fully weigh the potential risks posed to their organization.
+        ====
 
-      [IMPORTANT]
-      ====
-      Apple has deprecated the use of link:https://github.com/apple/device-management/blob/eb51fb0cb9626cac4717858556912c257a734ce0/mdm/profiles/com.apple.systemuiserver.yaml#L4-L8[media mount controls], using these controls may not work as expected. Third party software may be required to fulfill the compliance requirements.
-      ====
-  '13.0':
-    references:
-      cce:
-        - CCE-91764-1
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-    discussion: |
-      Blank CD media _MUST_ be disabled.
+        [IMPORTANT]
+        ====
+        Apple has deprecated the use of link:https://github.com/apple/device-management/blob/eb51fb0cb9626cac4717858556912c257a734ce0/mdm/profiles/com.apple.systemuiserver.yaml#L4-L8[media mount controls], using these controls may not work as expected. Third party software may be required to fulfill the compliance requirements.
+        ====
+    '13.0':
+      references:
+        cce:
+          - CCE-91764-1
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+      discussion: |
+        Blank CD media _MUST_ be disabled.
 
-      [IMPORTANT]
-      ====
-      Some organizations rely on the use of removable media for storing and sharing data. Information System Security Officers (ISSOs) may make the risk-based decision not to disable external hard drives to avoid losing this functionality, but they are advised to first fully weigh the potential risks posed to their organization.
-      ====
+        [IMPORTANT]
+        ====
+        Some organizations rely on the use of removable media for storing and sharing data. Information System Security Officers (ISSOs) may make the risk-based decision not to disable external hard drives to avoid losing this functionality, but they are advised to first fully weigh the potential risks posed to their organization.
+        ====
 
-      [IMPORTANT]
-      ====
-      Apple has deprecated the use of link:https://github.com/apple/device-management/blob/eb51fb0cb9626cac4717858556912c257a734ce0/mdm/profiles/com.apple.systemuiserver.yaml#L4-L8[media mount controls], using these controls may not work as expected. Third party software may be required to fulfill the compliance requirements.
-      ====
+        [IMPORTANT]
+        ====
+        Apple has deprecated the use of link:https://github.com/apple/device-management/blob/eb51fb0cb9626cac4717858556912c257a734ce0/mdm/profiles/com.apple.systemuiserver.yaml#L4-L8[media mount controls], using these controls may not work as expected. Third party software may be required to fulfill the compliance requirements.
+        ====

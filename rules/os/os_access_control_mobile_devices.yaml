@@ -11,17 +11,19 @@ check: |
 fix: |
   This requirement is a permanent finding and cannot be fixed. An appropriate mitigation for the system must be implemented, but this finding cannot be considered fixed.
 references:
+  disa:
+    cci:
+      - N/A
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - AC-19
+    800-53r4:
+      - N/A
   cce:
-    - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - AC-19
-  800-53r4:
-    - N/A
-  disa_stig:
-    - $OS_VALUE
-  srg:
     - $OS_VALUE
   cis:
     benchmark:
@@ -37,42 +39,43 @@ tags:
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85464-6
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85464-6
+        disa_stig:
           - N/A
-        controls v8:
-          - 6.4
-  '12.0':
-    references:
-      cce:
-        - CCE-90897-0
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
+        srg:
           - N/A
-        controls v8:
-          - 6.4
-  '13.0':
-    references:
-      cce:
-        - CCE-91753-4
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 6.4
+    '12.0':
+      references:
+        cce:
+          - CCE-90897-0
+        disa_stig:
           - N/A
-        controls v8:
-          - 6.4
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 6.4
+    '13.0':
+      references:
+        cce:
+          - CCE-91753-4
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 6.4

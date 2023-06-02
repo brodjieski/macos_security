@@ -79,7 +79,7 @@ def create_os_specifics(rule, fields):
     new_rule_yaml = {}
     
     version=rule['macOS'][0]
-
+    new_rule_yaml = {}
     new_rule_yaml[version] = {}
     
     # process references
@@ -97,7 +97,7 @@ def create_os_specifics(rule, fields):
     # process fields
     for field in fields:
         new_rule_yaml[version][field] = rule[field]
-
+    print(new_rule_yaml)
     return new_rule_yaml
 
 def check_for_unique_fields(all_rules, rule_id):
@@ -181,9 +181,10 @@ def main():
             
             if not rule['id'] in new_rules.keys():
                 new_rules[rule['id']] = rule
-                new_rules[rule['id']]['os_specifics'] = os_specs
+                new_rules[rule['id']]['os_specifics'] = {}
+                new_rules[rule['id']]['os_specifics']['macOS'] = os_specs
             else:
-                new_rules[rule["id"]]["os_specifics"].update(os_specs)
+                new_rules[rule["id"]]["os_specifics"]['macOS'].update(os_specs)
 
     #pprint.pprint(new_rules)
 

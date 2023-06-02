@@ -10,20 +10,22 @@ result:
   integer: 1
 fix: This is implemented by a Configuration Profile.
 references:
+  disa:
+    cci:
+      - N/A
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - AC-11
+    800-53r4:
+      - AC-11
+    800-171r2:
+      - 3.1.10
   cce:
     - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - AC-11
-  800-53r4:
-    - AC-11
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.1.10
 tags:
   - 800-53r5_moderate
   - 800-53r5_high
@@ -36,11 +38,12 @@ mobileconfig_info:
   com.apple.security.smartcard:
     tokenRemovalAction: 1
 os_specifics:
-  '13.0':
-    references:
-      cce:
-        - CCE-91991-0
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
+  macOS:
+    '13.0':
+      references:
+        cce:
+          - CCE-91991-0
+        disa_stig:
+          - N/A
+        srg:
+          - N/A

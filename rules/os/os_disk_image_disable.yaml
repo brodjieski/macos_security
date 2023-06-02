@@ -22,20 +22,22 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
+  disa:
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    cci:
+      - None
+  nist:
+    800-53r5:
+      - MP-7
+    800-53r4:
+      - MP-7(1)
+    800-171r2:
+      - 3.8.8
   cce:
     - $OS_VALUE
-  800-53r5:
-    - MP-7
-  800-53r4:
-    - MP-7(1)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.8.8
-  cci:
-    - None
 tags:
   - stig
 severity: medium
@@ -47,29 +49,30 @@ mobileconfig_info:
         - alert
         - eject
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85546-0
-      disa_stig:
-        - APPL-12-005051
-      srg:
-        - SRG-OS-000480-GPOS-00227
-        - SRG-OS-000319-GPOS-00164
-  '12.0':
-    references:
-      cce:
-        - CCE-91100-8
-      disa_stig:
-        - APPL-12-005051
-      srg:
-        - SRG-OS-000480-GPOS-00227
-        - SRG-OS-000319-GPOS-00164
-  '13.0':
-    references:
-      cce:
-        - CCE-91779-9
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85546-0
+        disa_stig:
+          - APPL-12-005051
+        srg:
+          - SRG-OS-000480-GPOS-00227
+          - SRG-OS-000319-GPOS-00164
+    '12.0':
+      references:
+        cce:
+          - CCE-91100-8
+        disa_stig:
+          - APPL-12-005051
+        srg:
+          - SRG-OS-000480-GPOS-00227
+          - SRG-OS-000319-GPOS-00164
+    '13.0':
+      references:
+        cce:
+          - CCE-91779-9
+        disa_stig:
+          - N/A
+        srg:
+          - N/A

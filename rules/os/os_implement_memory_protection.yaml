@@ -6,17 +6,19 @@ check: |
 fix: |
   The technology inherently meets this requirement. No fix is required.
 references:
+  disa:
+    cci:
+      - CCI-002824
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - SI-16
+    800-53r4:
+      - SI-16
   cce:
-    - $OS_VALUE
-  cci:
-    - CCI-002824
-  800-53r5:
-    - SI-16
-  800-53r4:
-    - SI-16
-  disa_stig:
-    - $OS_VALUE
-  srg:
     - $OS_VALUE
 tags:
   - 800-53r5_moderate
@@ -27,28 +29,29 @@ tags:
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85327-5
-      disa_stig:
-        - N/A
-      srg:
-        - SRG-OS-000433-GPOS-00192
-        - SRG-OS-000433-GPOS-00193
-  '12.0':
-    references:
-      cce:
-        - CCE-90936-6
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-  '13.0':
-    references:
-      cce:
-        - CCE-91805-2
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85327-5
+        disa_stig:
+          - N/A
+        srg:
+          - SRG-OS-000433-GPOS-00192
+          - SRG-OS-000433-GPOS-00193
+    '12.0':
+      references:
+        cce:
+          - CCE-90936-6
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+    '13.0':
+      references:
+        cce:
+          - CCE-91805-2
+        disa_stig:
+          - N/A
+        srg:
+          - N/A

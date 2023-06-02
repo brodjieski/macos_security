@@ -7,23 +7,25 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
+  disa:
+    cci:
+      - CCI-001774
+      - CCI-000381
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - CM-7
+      - CM-7(5)
+    800-53r4:
+      - CM-7
+      - CM-7(5)
+    800-171r2:
+      - N/A
   cce:
     - $OS_VALUE
-  cci:
-    - CCI-001774
-    - CCI-000381
-  800-53r5:
-    - CM-7
-    - CM-7(5)
-  800-53r4:
-    - CM-7
-    - CM-7(5)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - N/A
 tags:
   - stig
 severity: medium
@@ -33,22 +35,23 @@ mobileconfig_info:
     DisabledPreferencePanes:
       - com.apple.preferences.password
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85488-5
-      disa_stig:
-        - APPL-11-002051
-      srg:
-        - SRG-OS-000095-GPOS-00049
-    check: "/usr/bin/profiles show -output stdout-xml | /usr/bin/xmllint --xpath '//key[text()=\"DisabledPreferencePanes\"]/following-sibling::*[1]' - | /usr/bin/grep -c com.apple.preferences.password \n"
-  '12.0':
-    references:
-      cce:
-        - CCE-91144-6
-      disa_stig:
-        - APPL-12-002051
-      srg:
-        - SRG-OS-000095-GPOS-00049
-    check: |
-      /usr/bin/profiles show -output stdout-xml | /usr/bin/xmllint --xpath '//key[text()="DisabledPreferencePanes"]/following-sibling::*[1]' - | /usr/bin/grep -c com.apple.preferences.password
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85488-5
+        disa_stig:
+          - APPL-11-002051
+        srg:
+          - SRG-OS-000095-GPOS-00049
+      check: "/usr/bin/profiles show -output stdout-xml | /usr/bin/xmllint --xpath '//key[text()=\"DisabledPreferencePanes\"]/following-sibling::*[1]' - | /usr/bin/grep -c com.apple.preferences.password \n"
+    '12.0':
+      references:
+        cce:
+          - CCE-91144-6
+        disa_stig:
+          - APPL-12-002051
+        srg:
+          - SRG-OS-000095-GPOS-00049
+      check: |
+        /usr/bin/profiles show -output stdout-xml | /usr/bin/xmllint --xpath '//key[text()="DisabledPreferencePanes"]/following-sibling::*[1]' - | /usr/bin/grep -c com.apple.preferences.password

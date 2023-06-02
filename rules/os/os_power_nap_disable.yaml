@@ -11,22 +11,24 @@ fix: |
   /usr/bin/pmset -a powernap 0
   ----
 references:
+  disa:
+    cci:
+      - N/A
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - CM-7
+      - CM-7(1)
+    800-53r4:
+      - CM-7
+      - CM-7(1)
+    800-171r2:
+      - N/A
   cce:
     - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - CM-7
-    - CM-7(1)
-  800-53r4:
-    - CM-7
-    - CM-7(1)
-  disa_stig:
-    - $OS_VALUE
-  srg:
-    - $OS_VALUE
-  800-171r2:
-    - N/A
   cis:
     benchmark:
       - $OS_VALUE
@@ -40,17 +42,18 @@ tags:
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
-  '13.0':
-    references:
-      cce:
-        - CCE-91848-2
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
-          - 2.9.1 (level 1)
-        controls v8:
-          - 4.1
-          - 4.8
+  macOS:
+    '13.0':
+      references:
+        cce:
+          - CCE-91848-2
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - 2.9.1 (level 1)
+          controls v8:
+            - 4.1
+            - 4.8

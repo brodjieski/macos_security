@@ -13,30 +13,32 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
+  disa:
+    cci:
+      - CCI-000381
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - AC-3
+      - AC-20
+      - CM-7
+      - CM-7(1)
+    800-53r4:
+      - CM-7
+      - CM-7(1)
+      - AC-3
+      - AC-20
+    800-171r2:
+      - 3.1.1
+      - 3.1.2
+      - 3.1.16
+      - 3.1.20
+      - 3.4.6
   cce:
     - $OS_VALUE
-  cci:
-    - CCI-000381
-  800-53r5:
-    - AC-3
-    - AC-20
-    - CM-7
-    - CM-7(1)
-  800-53r4:
-    - CM-7
-    - CM-7(1)
-    - AC-3
-    - AC-20
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.1.1
-    - 3.1.2
-    - 3.1.16
-    - 3.1.20
-    - 3.4.6
   cis:
     benchmark:
       - $OS_VALUE
@@ -60,48 +62,49 @@ mobileconfig_info:
   com.apple.applicationaccess:
     allowAirDrop: false
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85293-9
-      disa_stig:
-        - APPL-11-002009
-      srg:
-        - SRG-OS-000095-GPOS-00049
-      cis:
-        benchmark:
-          - 2.4.11 (level 1)
-        controls v8:
-          - 4.1
-          - 4.8
-          - 6.7
-  '12.0':
-    references:
-      cce:
-        - CCE-90898-8
-      disa_stig:
-        - APPL-12-002009
-      srg:
-        - SRG-OS-000095-GPOS-00049
-      cis:
-        benchmark:
-          - 2.4.11 (level 1)
-        controls v8:
-          - 4.1
-          - 4.8
-          - 6.7
-  '13.0':
-    references:
-      cce:
-        - CCE-91754-2
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
-          - 2.3.1.1 (level 1)
-        controls v8:
-          - 4.1
-          - 4.8
-          - 6.7
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85293-9
+        disa_stig:
+          - APPL-11-002009
+        srg:
+          - SRG-OS-000095-GPOS-00049
+        cis:
+          benchmark:
+            - 2.4.11 (level 1)
+          controls v8:
+            - 4.1
+            - 4.8
+            - 6.7
+    '12.0':
+      references:
+        cce:
+          - CCE-90898-8
+        disa_stig:
+          - APPL-12-002009
+        srg:
+          - SRG-OS-000095-GPOS-00049
+        cis:
+          benchmark:
+            - 2.4.11 (level 1)
+          controls v8:
+            - 4.1
+            - 4.8
+            - 6.7
+    '13.0':
+      references:
+        cce:
+          - CCE-91754-2
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - 2.3.1.1 (level 1)
+          controls v8:
+            - 4.1
+            - 4.8
+            - 6.7

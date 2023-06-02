@@ -11,20 +11,22 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
+  disa:
+    cci:
+      - N/A
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - SI-2
+    800-53r4:
+      - N/A
+    800-171r2:
+      - N/A
   cce:
     - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - SI-2
-  800-53r4:
-    - N/A
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - N/A
   cis:
     benchmark:
       - $OS_VALUE
@@ -42,18 +44,19 @@ mobileconfig_info:
   com.apple.SoftwareUpdate:
     CriticalUpdateInstall: true
 os_specifics:
-  '13.0':
-    references:
-      cce:
-        - CCE-91944-9
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
-          - 1.6 (level 1)
-        controls v8:
-          - 7.3
-          - 7.4
-          - 7.7
+  macOS:
+    '13.0':
+      references:
+        cce:
+          - CCE-91944-9
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - 1.6 (level 1)
+          controls v8:
+            - 7.3
+            - 7.4
+            - 7.7

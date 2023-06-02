@@ -8,23 +8,25 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
+  disa:
+    cci:
+      - CCI-001774
+      - CCI-000381
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - CM-7
+      - CM-7(5)
+    800-53r4:
+      - CM-7
+      - CM-7(5)
+    800-171r2:
+      - N/A
   cce:
     - $OS_VALUE
-  cci:
-    - CCI-001774
-    - CCI-000381
-  800-53r5:
-    - CM-7
-    - CM-7(5)
-  800-53r4:
-    - CM-7
-    - CM-7(5)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - N/A
 tags:
   - stig
 severity: medium
@@ -34,21 +36,22 @@ mobileconfig_info:
     HiddenPreferencePanes:
       - com.apple.preference.speech
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85491-9
-      disa_stig:
-        - APPL-11-002053
-      srg:
-        - SRG-OS-000095-GPOS-00049
-    discussion: "The system preference pane for Siri _MUST_ be hidden.\n\nHiding the system preference pane prevents the users from configuring Siri. \n"
-  '12.0':
-    references:
-      cce:
-        - CCE-91137-0
-      disa_stig:
-        - APPL-12-002053
-      srg:
-        - SRG-OS-000095-GPOS-00049
-    discussion: "The system preference pane for Siri _MUST_ be hidden.\n\nHIding the system preference pane prevents the users from configuring Siri. \n"
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85491-9
+        disa_stig:
+          - APPL-11-002053
+        srg:
+          - SRG-OS-000095-GPOS-00049
+      discussion: "The system preference pane for Siri _MUST_ be hidden.\n\nHiding the system preference pane prevents the users from configuring Siri. \n"
+    '12.0':
+      references:
+        cce:
+          - CCE-91137-0
+        disa_stig:
+          - APPL-12-002053
+        srg:
+          - SRG-OS-000095-GPOS-00049
+      discussion: "The system preference pane for Siri _MUST_ be hidden.\n\nHIding the system preference pane prevents the users from configuring Siri. \n"

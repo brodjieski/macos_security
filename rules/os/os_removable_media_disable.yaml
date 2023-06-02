@@ -11,20 +11,22 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
+  disa:
+    cci:
+      - N/A
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - MP-7
+    800-53r4:
+      - MP-7(1)
+    800-171r2:
+      - 3.8.8
   cce:
     - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - MP-7
-  800-53r4:
-    - MP-7(1)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.8.8
 tags:
   - stig
 mobileconfig: true
@@ -35,70 +37,71 @@ mobileconfig_info:
         - alert
         - eject
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85370-5
-      disa_stig:
-        - APPL-11-005051
-      srg:
-        - SRG-OS-000480-GPOS-00227
-    discussion: |
-      Removable media, such as USB connected external hard drives, thumb drives, and optical media, _MUST_ be disabled for users.
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85370-5
+        disa_stig:
+          - APPL-11-005051
+        srg:
+          - SRG-OS-000480-GPOS-00227
+      discussion: |
+        Removable media, such as USB connected external hard drives, thumb drives, and optical media, _MUST_ be disabled for users.
 
-      Disabling removable storage devices reduces the risks and known vulnerabilities of such devices (e.g., malicious code insertion)
+        Disabling removable storage devices reduces the risks and known vulnerabilities of such devices (e.g., malicious code insertion)
 
-      [IMPORTANT]
-      ====
-      Some organizations rely on the use of removable media for storing and sharing data. Information System Security Officers (ISSOs) may make the risk-based decision not to disable external hard drives to avoid losing this functionality, but they are advised to first fully weigh the potential risks posed to their organization.
-      ====
+        [IMPORTANT]
+        ====
+        Some organizations rely on the use of removable media for storing and sharing data. Information System Security Officers (ISSOs) may make the risk-based decision not to disable external hard drives to avoid losing this functionality, but they are advised to first fully weigh the potential risks posed to their organization.
+        ====
 
-      [IMPORTANT]
-      ====
-      Apple has deprecated the use of link:https://github.com/apple/device-management/blob/eb51fb0cb9626cac4717858556912c257a734ce0/mdm/profiles/com.apple.systemuiserver.yaml#L4-L8[media mount controls], using these controls may not work as expected. Third party software may be required to fulfill the compliance requirements.
-      ====
-  '12.0':
-    references:
-      cce:
-        - CCE-90991-1
-      disa_stig:
-        - APPL-12-005051
-      srg:
-        - SRG-OS-000480-GPOS-00227
-        - SRG-OS-000319-GPOS-00164
-    discussion: |
-      Removable media, such as USB connected external hard drives, thumb drives, and optical media, _MUST_ be disabled for users.
+        [IMPORTANT]
+        ====
+        Apple has deprecated the use of link:https://github.com/apple/device-management/blob/eb51fb0cb9626cac4717858556912c257a734ce0/mdm/profiles/com.apple.systemuiserver.yaml#L4-L8[media mount controls], using these controls may not work as expected. Third party software may be required to fulfill the compliance requirements.
+        ====
+    '12.0':
+      references:
+        cce:
+          - CCE-90991-1
+        disa_stig:
+          - APPL-12-005051
+        srg:
+          - SRG-OS-000480-GPOS-00227
+          - SRG-OS-000319-GPOS-00164
+      discussion: |
+        Removable media, such as USB connected external hard drives, thumb drives, and optical media, _MUST_ be disabled for users.
 
-      Disabling removable storage devices reduces the risks and known vulnerabilities of such devices (e.g., malicious code insertion)
+        Disabling removable storage devices reduces the risks and known vulnerabilities of such devices (e.g., malicious code insertion)
 
-      [IMPORTANT]
-      ====
-      Some organizations rely on the use of removable media for storing and sharing data. Information System Security Officers (ISSOs) may make the risk-based decision not to disable external hard drives to avoid losing this functionality, but they are advised to first fully weigh the potential risks posed to their organization.
-      ====
+        [IMPORTANT]
+        ====
+        Some organizations rely on the use of removable media for storing and sharing data. Information System Security Officers (ISSOs) may make the risk-based decision not to disable external hard drives to avoid losing this functionality, but they are advised to first fully weigh the potential risks posed to their organization.
+        ====
 
-      [IMPORTANT]
-      ====
-      Apple has deprecated the use of link:https://github.com/apple/device-management/blob/eb51fb0cb9626cac4717858556912c257a734ce0/mdm/profiles/com.apple.systemuiserver.yaml#L4-L8[media mount controls], using these controls may not work as expected. Third party software may be required to fulfill the compliance requirements.
-      ====
-  '13.0':
-    references:
-      cce:
-        - CCE-91867-2
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-    discussion: |
-      Removable media, such as USB connected external hard drives, thumb drives, and optical media, _MUST_ be disabled for users.
+        [IMPORTANT]
+        ====
+        Apple has deprecated the use of link:https://github.com/apple/device-management/blob/eb51fb0cb9626cac4717858556912c257a734ce0/mdm/profiles/com.apple.systemuiserver.yaml#L4-L8[media mount controls], using these controls may not work as expected. Third party software may be required to fulfill the compliance requirements.
+        ====
+    '13.0':
+      references:
+        cce:
+          - CCE-91867-2
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+      discussion: |
+        Removable media, such as USB connected external hard drives, thumb drives, and optical media, _MUST_ be disabled for users.
 
-      Disabling removable storage devices reduces the risks and known vulnerabilities of such devices (e.g., malicious code insertion)
+        Disabling removable storage devices reduces the risks and known vulnerabilities of such devices (e.g., malicious code insertion)
 
-      [IMPORTANT]
-      ====
-      Some organizations rely on the use of removable media for storing and sharing data. Information System Security Officers (ISSOs) may make the risk-based decision not to disable external hard drives to avoid losing this functionality, but they are advised to first fully weigh the potential risks posed to their organization.
-      ====
+        [IMPORTANT]
+        ====
+        Some organizations rely on the use of removable media for storing and sharing data. Information System Security Officers (ISSOs) may make the risk-based decision not to disable external hard drives to avoid losing this functionality, but they are advised to first fully weigh the potential risks posed to their organization.
+        ====
 
-      [IMPORTANT]
-      ====
-      Apple has deprecated the use of link:https://github.com/apple/device-management/blob/eb51fb0cb9626cac4717858556912c257a734ce0/mdm/profiles/com.apple.systemuiserver.yaml#L4-L8[media mount controls], using these controls may not work as expected. Third party software may be required to fullfill the compliance requirements.
-      ====
+        [IMPORTANT]
+        ====
+        Apple has deprecated the use of link:https://github.com/apple/device-management/blob/eb51fb0cb9626cac4717858556912c257a734ce0/mdm/profiles/com.apple.systemuiserver.yaml#L4-L8[media mount controls], using these controls may not work as expected. Third party software may be required to fullfill the compliance requirements.
+        ====

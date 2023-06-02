@@ -7,26 +7,28 @@ result:
   integer: 1
 fix: "[source,bash]\n----\nbannerText=\"$ODV\"\n/bin/mkdir /Library/Security/PolicyBanner.rtfd\n/usr/bin/textutil -convert rtf -output /Library/Security/PolicyBanner.rtfd/TXT.rtf -stdin <<EOF              \n$bannerText\nEOF\n----\n"
 references:
+  disa:
+    cci:
+      - CCI-000048
+      - CCI-000050
+      - CCI-001384
+      - CCI-001385
+      - CCI-001386
+      - CCI-001387
+      - CCI-001388
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - AC-8
+    800-53r4:
+      - AC-8
+    800-171r2:
+      - 3.1.9
   cce:
     - $OS_VALUE
-  cci:
-    - CCI-000048
-    - CCI-000050
-    - CCI-001384
-    - CCI-001385
-    - CCI-001386
-    - CCI-001387
-    - CCI-001388
-  800-53r5:
-    - AC-8
-  800-53r4:
-    - AC-8
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.1.9
   cis:
     benchmark:
       - $OS_VALUE
@@ -58,46 +60,47 @@ severity: medium
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85355-6
-      disa_stig:
-        - APPL-11-000025
-      srg:
-        - SRG-OS-000023-GPOS-00006
-        - SRG-OS-000024-GPOS-00007
-        - SRG-OS-000228-GPOS-00088
-      cis:
-        benchmark:
-          - 5.8 (level 2)
-        controls v8:
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85355-6
+        disa_stig:
+          - APPL-11-000025
+        srg:
+          - SRG-OS-000023-GPOS-00006
+          - SRG-OS-000024-GPOS-00007
+          - SRG-OS-000228-GPOS-00088
+        cis:
+          benchmark:
+            - 5.8 (level 2)
+          controls v8:
+            - N/A
+    '12.0':
+      references:
+        cce:
+          - CCE-90973-9
+        disa_stig:
+          - APPL-12-000025
+        srg:
+          - SRG-OS-000023-GPOS-00006
+          - SRG-OS-000024-GPOS-00007
+          - SRG-OS-000228-GPOS-00088
+        cis:
+          benchmark:
+            - 5.8 (level 2)
+          controls v8:
+            - N/A
+    '13.0':
+      references:
+        cce:
+          - CCE-91845-8
+        disa_stig:
           - N/A
-  '12.0':
-    references:
-      cce:
-        - CCE-90973-9
-      disa_stig:
-        - APPL-12-000025
-      srg:
-        - SRG-OS-000023-GPOS-00006
-        - SRG-OS-000024-GPOS-00007
-        - SRG-OS-000228-GPOS-00088
-      cis:
-        benchmark:
-          - 5.8 (level 2)
-        controls v8:
+        srg:
           - N/A
-  '13.0':
-    references:
-      cce:
-        - CCE-91845-8
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
-          - 5.8 (level 2)
-        controls v8:
-          - 4.1
+        cis:
+          benchmark:
+            - 5.8 (level 2)
+          controls v8:
+            - 4.1

@@ -11,20 +11,22 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
+  disa:
+    cci:
+      - N/A
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - N/A
+    800-53r4:
+      - N/A
+    800-171r2:
+      - N/A
   cce:
     - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - N/A
-  800-53r4:
-    - N/A
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - N/A
   cis:
     benchmark:
       - $OS_VALUE
@@ -44,16 +46,17 @@ mobileconfig_info:
   com.apple.loginwindow:
     LoginwindowText: $ODV
 os_specifics:
-  '13.0':
-    references:
-      cce:
-        - CCE-91964-7
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
-          - 2.10.3 (level 1)
-        controls v8:
-          - 4.1
+  macOS:
+    '13.0':
+      references:
+        cce:
+          - CCE-91964-7
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - 2.10.3 (level 1)
+          controls v8:
+            - 4.1

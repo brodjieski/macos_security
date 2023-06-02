@@ -14,23 +14,25 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
+  disa:
+    cci:
+      - CCI-001774
+      - CCI-000381
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - CM-7(5)
+      - AC-20
+    800-53r4:
+      - AC-20
+      - CM-7(5)
+    800-171r2:
+      - 3.1.20
   cce:
     - $OS_VALUE
-  cci:
-    - CCI-001774
-    - CCI-000381
-  800-53r5:
-    - CM-7(5)
-    - AC-20
-  800-53r4:
-    - AC-20
-    - CM-7(5)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.1.20
 tags:
   - stig
 severity: medium
@@ -40,21 +42,22 @@ mobileconfig_info:
     HiddenPreferencePanes:
       - com.apple.preferences.internetaccounts
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85487-7
-      disa_stig:
-        - APPL-11-002032
-      srg:
-        - SRG-OS-000095-GPOS-00049
-        - SRG-OS-000370-GPOS-00155
-  '12.0':
-    references:
-      cce:
-        - CCE-91130-5
-      disa_stig:
-        - APPL-12-002032
-      srg:
-        - SRG-OS-000095-GPOS-00049
-        - SRG-OS-000370-GPOS-00155
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85487-7
+        disa_stig:
+          - APPL-11-002032
+        srg:
+          - SRG-OS-000095-GPOS-00049
+          - SRG-OS-000370-GPOS-00155
+    '12.0':
+      references:
+        cce:
+          - CCE-91130-5
+        disa_stig:
+          - APPL-12-002032
+        srg:
+          - SRG-OS-000095-GPOS-00049
+          - SRG-OS-000370-GPOS-00155

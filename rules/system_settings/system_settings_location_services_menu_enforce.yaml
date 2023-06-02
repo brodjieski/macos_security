@@ -12,20 +12,22 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
+  disa:
+    cci:
+      - N/A
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - N/A
+    800-53r4:
+      - N/A
+    800-171r2:
+      - N/A
   cce:
     - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - N/A
-  800-53r4:
-    - N/A
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - N/A
   cis:
     benchmark:
       - $OS_VALUE
@@ -38,17 +40,18 @@ mobileconfig_info:
   com.apple.locationmenu:
     ShowSystemServices: true
 os_specifics:
-  '13.0':
-    references:
-      cce:
-        - CCE-91963-9
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
-          - 2.6.1.2 (level 2)
-        controls v8:
-          - 4.1
-          - 4.8
+  macOS:
+    '13.0':
+      references:
+        cce:
+          - CCE-91963-9
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - 2.6.1.2 (level 2)
+          controls v8:
+            - 4.1
+            - 4.8

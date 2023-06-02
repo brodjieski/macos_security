@@ -7,21 +7,23 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
+  disa:
+    cci:
+      - CCI-000057
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - AC-11
+      - IA-11
+    800-53r4:
+      - AC-11
+    800-171r2:
+      - 3.1.10
   cce:
     - $OS_VALUE
-  cci:
-    - CCI-000057
-  800-53r5:
-    - AC-11
-    - IA-11
-  800-53r4:
-    - AC-11
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.1.10
   cis:
     benchmark:
       - $OS_VALUE
@@ -50,53 +52,54 @@ mobileconfig_info:
   com.apple.screensaver:
     idleTime: $ODV
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85444-8
-      disa_stig:
-        - APPL-11-000004
-      srg:
-        - SRG-OS-000029-GPOS-00010
-      cis:
-        benchmark:
-          - 2.3.1 (level 1)
-        controls v8:
-          - 4.3
-    check: |
-      /usr/bin/osascript -l JavaScript << EOS
-      function run() {
-        let timeout = ObjC.unwrap($.NSUserDefaults.alloc.initWithSuiteName('com.apple.screensaver')\
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85444-8
+        disa_stig:
+          - APPL-11-000004
+        srg:
+          - SRG-OS-000029-GPOS-00010
+        cis:
+          benchmark:
+            - 2.3.1 (level 1)
+          controls v8:
+            - 4.3
+      check: |
+        /usr/bin/osascript -l JavaScript << EOS
+        function run() {
+          let timeout = ObjC.unwrap($.NSUserDefaults.alloc.initWithSuiteName('com.apple.screensaver')\
+          .objectForKey('idleTime'))
+          if ( timeout <= $ODV ) {
+            return("true")
+          } else {
+            return("false")
+          }
+        }
+        EOS
+    '12.0':
+      references:
+        cce:
+          - CCE-91074-5
+        disa_stig:
+          - APPL-12-000004
+        srg:
+          - SRG-OS-000029-GPOS-00010
+        cis:
+          benchmark:
+            - 2.3.1 (level 1)
+          controls v8:
+            - 4.3
+      check: |
+        /usr/bin/osascript -l JavaScript << EOS
+        function run() {
+          let timeout = ObjC.unwrap($.NSUserDefaults.alloc.initWithSuiteName('com.apple.screensaver')\
         .objectForKey('idleTime'))
-        if ( timeout <= $ODV ) {
-          return("true")
-        } else {
-          return("false")
+          if ( timeout <= $ODV ) {
+            return("true")
+          } else {
+            return("false")
+          }
         }
-      }
-      EOS
-  '12.0':
-    references:
-      cce:
-        - CCE-91074-5
-      disa_stig:
-        - APPL-12-000004
-      srg:
-        - SRG-OS-000029-GPOS-00010
-      cis:
-        benchmark:
-          - 2.3.1 (level 1)
-        controls v8:
-          - 4.3
-    check: |
-      /usr/bin/osascript -l JavaScript << EOS
-      function run() {
-        let timeout = ObjC.unwrap($.NSUserDefaults.alloc.initWithSuiteName('com.apple.screensaver')\
-      .objectForKey('idleTime'))
-        if ( timeout <= $ODV ) {
-          return("true")
-        } else {
-          return("false")
-        }
-      }
-      EOS
+        EOS

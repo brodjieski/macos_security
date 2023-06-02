@@ -44,48 +44,49 @@ mobileconfig_info:
   com.apple.security.smartcard:
     allowSmartCard: true
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85277-2
-      disa_stig:
-        - N/A
-      srg:
-        - SRG-OS-000376-GPOS-00161
-      cis:
-        benchmark:
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85277-2
+        disa_stig:
           - N/A
-        controls v8:
-          - 6.3
-          - 6.4
-          - 6.5
-  '12.0':
-    references:
-      cce:
-        - CCE-90880-6
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
+        srg:
+          - SRG-OS-000376-GPOS-00161
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 6.3
+            - 6.4
+            - 6.5
+    '12.0':
+      references:
+        cce:
+          - CCE-90880-6
+        disa_stig:
           - N/A
-        controls v8:
-          - 6.3
-          - 6.4
-          - 6.5
-  '13.0':
-    references:
-      cce:
-        - CCE-91736-9
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
+        srg:
           - N/A
-        controls v8:
-          - 6.3
-          - 6.4
-          - 6.5
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 6.3
+            - 6.4
+            - 6.5
+    '13.0':
+      references:
+        cce:
+          - CCE-91736-9
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 6.3
+            - 6.4
+            - 6.5

@@ -9,20 +9,22 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
+  disa:
+    cci:
+      - CCI-002418
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - N/A
+    800-53r4:
+      - SC-8
+    800-171r2:
+      - N/A
   cce:
     - $OS_VALUE
-  cci:
-    - CCI-002418
-  800-53r5:
-    - N/A
-  800-53r4:
-    - SC-8
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - N/A
 tags:
   - stig
 severity: medium
@@ -32,19 +34,20 @@ mobileconfig_info:
     HiddenPreferencePanes:
       - com.apple.preferences.Bluetooth
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85492-7
-      disa_stig:
-        - APPL-11-002062
-      srg:
-        - SRG-OS-000481-GPOS-00481
-  '12.0':
-    references:
-      cce:
-        - CCE-91125-5
-      disa_stig:
-        - APPL-12-002062
-      srg:
-        - SRG-OS-000481-GPOS-000481
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85492-7
+        disa_stig:
+          - APPL-11-002062
+        srg:
+          - SRG-OS-000481-GPOS-00481
+    '12.0':
+      references:
+        cce:
+          - CCE-91125-5
+        disa_stig:
+          - APPL-12-002062
+        srg:
+          - SRG-OS-000481-GPOS-000481

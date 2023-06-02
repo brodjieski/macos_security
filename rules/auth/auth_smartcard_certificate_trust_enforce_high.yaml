@@ -33,27 +33,28 @@ mobileconfig_info:
   com.apple.security.smartcard:
     checkCertificateTrust: 3
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85278-0
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-  '12.0':
-    references:
-      cce:
-        - CCE-90881-4
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-  '13.0':
-    references:
-      cce:
-        - CCE-91737-7
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85278-0
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+    '12.0':
+      references:
+        cce:
+          - CCE-90881-4
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+    '13.0':
+      references:
+        cce:
+          - CCE-91737-7
+        disa_stig:
+          - N/A
+        srg:
+          - N/A

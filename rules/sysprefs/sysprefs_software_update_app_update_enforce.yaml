@@ -12,25 +12,27 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
+  disa:
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    cci:
+      - None
+  nist:
+    800-53r5:
+      - N/A
+    800-53r4:
+      - N/A
+    800-171r2:
+      - N/A
   cce:
     - $OS_VALUE
-  800-53r5:
-    - N/A
-  800-53r4:
-    - N/A
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - N/A
   cis:
     benchmark:
       - $OS_VALUE
     controls v8:
       - $OS_VALUE
-  cci:
-    - None
 tags:
   - cis_lvl1
   - cis_lvl2
@@ -40,31 +42,32 @@ mobileconfig_info:
   com.apple.SoftwareUpdate:
     AutomaticallyInstallAppUpdates: true
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85531-2
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
-          - 1.4 (level 1)
-        controls v8:
-          - 7.3
-          - 7.4
-  '12.0':
-    references:
-      cce:
-        - CCE-91138-8
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
-          - 1.4 (level 1)
-        controls v8:
-          - 7.3
-          - 7.4
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85531-2
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - 1.4 (level 1)
+          controls v8:
+            - 7.3
+            - 7.4
+    '12.0':
+      references:
+        cce:
+          - CCE-91138-8
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - 1.4 (level 1)
+          controls v8:
+            - 7.3
+            - 7.4

@@ -10,20 +10,22 @@ result:
   integer: 0
 fix: "[source,bash]\n----\n/usr/sbin/chown root:wheel $(/usr/bin/stat -f '%Su:%Sg:%N' $(/usr/bin/grep -v '^#' /etc/newsyslog.conf | /usr/bin/awk '{ print $1 }') 2> /dev/null | /usr/bin/awk -F\":\" '!/^root:wheel:/{print $3}')\n----  \n"
 references:
+  disa:
+    cci:
+      - CCI-001314
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - SI-11
+    800-53r4:
+      - SI-11
+    800-171r2:
+      - N/A
   cce:
     - $OS_VALUE
-  cci:
-    - CCI-001314
-  800-53r5:
-    - SI-11
-  800-53r4:
-    - SI-11
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - N/A
 tags:
   - 800-53r5_moderate
   - 800-53r5_high
@@ -32,27 +34,28 @@ severity: medium
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85469-5
-      disa_stig:
-        - APPL-11-004001
-      srg:
-        - SRG-OS-000206-GPOS-00084
-  '12.0':
-    references:
-      cce:
-        - CCE-90954-9
-      disa_stig:
-        - APPL-12-004001
-      srg:
-        - SRG-OS-000206-GPOS-00084
-  '13.0':
-    references:
-      cce:
-        - CCE-91825-0
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85469-5
+        disa_stig:
+          - APPL-11-004001
+        srg:
+          - SRG-OS-000206-GPOS-00084
+    '12.0':
+      references:
+        cce:
+          - CCE-90954-9
+        disa_stig:
+          - APPL-12-004001
+        srg:
+          - SRG-OS-000206-GPOS-00084
+    '13.0':
+      references:
+        cce:
+          - CCE-91825-0
+        disa_stig:
+          - N/A
+        srg:
+          - N/A

@@ -11,22 +11,24 @@ fix: |
   /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -deactivate -stop
   ----
 references:
+  disa:
+    cci:
+      - N/A
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - CM-7
+      - CM-7(1)
+    800-53r4:
+      - CM-7
+      - CM-7(1)
+    800-171r2:
+      - N/A
   cce:
     - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - CM-7
-    - CM-7(1)
-  800-53r4:
-    - CM-7
-    - CM-7(1)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - N/A
   cis:
     benchmark:
       - $OS_VALUE
@@ -45,18 +47,19 @@ tags:
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
-  '13.0':
-    references:
-      cce:
-        - CCE-91971-2
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
-          - 2.3.3.6 (level 1)
-        controls v8:
-          - 4.1
-          - 4.8
-          - 5.4
+  macOS:
+    '13.0':
+      references:
+        cce:
+          - CCE-91971-2
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - 2.3.3.6 (level 1)
+          controls v8:
+            - 4.1
+            - 4.8
+            - 5.4

@@ -8,26 +8,28 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
+  disa:
+    cci:
+      - CCI-000194
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - IA-5(1)
+    800-53r4:
+      - IA-5
+      - IA-5(1)
+    800-171r2:
+      - 3.5.1
+      - 3.5.2
+      - 3.5.7
+      - 3.5.8
+      - 3.5.9
+      - 3.5.10
   cce:
     - $OS_VALUE
-  cci:
-    - CCI-000194
-  800-53r5:
-    - IA-5(1)
-  800-53r4:
-    - IA-5
-    - IA-5(1)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.5.1
-    - 3.5.2
-    - 3.5.7
-    - 3.5.8
-    - 3.5.9
-    - 3.5.10
   cis:
     benchmark:
       - $OS_VALUE
@@ -50,45 +52,46 @@ mobileconfig_info:
   com.apple.mobiledevice.passwordpolicy:
     requireAlphanumeric: true
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85404-2
-      disa_stig:
-        - APPL-11-003007
-      srg:
-        - SRG-OS-000071-GPOS-00039
-      cis:
-        benchmark:
-          - 5.2.3 (level 2)
-          - 5.2.4 (level 2)
-        controls v8:
-          - 5.2
-  '12.0':
-    references:
-      cce:
-        - CCE-91031-5
-      disa_stig:
-        - APPL-12-003007
-      srg:
-        - SRG-OS-000071-GPOS-00039
-      cis:
-        benchmark:
-          - 5.2.3 (level 2)
-          - 5.2.4 (level 2)
-        controls v8:
-          - 5.2
-  '13.0':
-    references:
-      cce:
-        - CCE-91917-5
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
-          - 5.2.3 (level 2)
-          - 5.2.4 (level 2)
-        controls v8:
-          - 5.2
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85404-2
+        disa_stig:
+          - APPL-11-003007
+        srg:
+          - SRG-OS-000071-GPOS-00039
+        cis:
+          benchmark:
+            - 5.2.3 (level 2)
+            - 5.2.4 (level 2)
+          controls v8:
+            - 5.2
+    '12.0':
+      references:
+        cce:
+          - CCE-91031-5
+        disa_stig:
+          - APPL-12-003007
+        srg:
+          - SRG-OS-000071-GPOS-00039
+        cis:
+          benchmark:
+            - 5.2.3 (level 2)
+            - 5.2.4 (level 2)
+          controls v8:
+            - 5.2
+    '13.0':
+      references:
+        cce:
+          - CCE-91917-5
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - 5.2.3 (level 2)
+            - 5.2.4 (level 2)
+          controls v8:
+            - 5.2

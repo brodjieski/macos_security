@@ -12,25 +12,27 @@ fix: |
   /usr/sbin/networksetup -setnetworkserviceenabled "Wi-Fi" off
   ----
 references:
+  disa:
+    cci:
+      - N/A
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - AC-4
+      - AC-18
+      - AC-18(1)
+      - AC-18(3)
+    800-53r4:
+      - AC-4
+      - AC-18(1)
+      - AC-18(3)
+    800-171r2:
+      - N/A
   cce:
     - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - AC-4
-    - AC-18
-    - AC-18(1)
-    - AC-18(3)
-  800-53r4:
-    - AC-4
-    - AC-18(1)
-    - AC-18(3)
-  disa_stig:
-    - $OS_VALUE
-  srg:
-    - $OS_VALUE
-  800-171r2:
-    - N/A
   cis:
     benchmark:
       - $OS_VALUE
@@ -50,33 +52,34 @@ severity: medium
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85473-7
-      disa_stig:
-        - APPL-11-000008
-      srg:
-        - SRG-OS-000299-GPOS-00117
-        - SRG-OS-000300-GPOS-00118
-        - SRG-OS-000379-GPOS-00164
-      cis:
-        benchmark:
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85473-7
+        disa_stig:
+          - APPL-11-000008
+        srg:
+          - SRG-OS-000299-GPOS-00117
+          - SRG-OS-000300-GPOS-00118
+          - SRG-OS-000379-GPOS-00164
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 4.2
+            - 12.6
+    '12.0':
+      references:
+        cce:
+          - CCE-91084-4
+        disa_stig:
           - N/A
-        controls v8:
-          - 4.2
-          - 12.6
-  '12.0':
-    references:
-      cce:
-        - CCE-91084-4
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
+        srg:
           - N/A
-        controls v8:
-          - 4.2
-          - 12.6
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 4.2
+            - 12.6

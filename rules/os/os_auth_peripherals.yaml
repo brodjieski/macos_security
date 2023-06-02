@@ -6,21 +6,23 @@ check: |
   The technology does support this requirement, however, third party solutions are required to implement at an infrastructure level.
 fix: "This requirement is a permanent finding and can be fixed by implementing a third party solution. \n"
 references:
+  disa:
+    cci:
+      - CCI-001958
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - IA-3
+    800-53r4:
+      - IA-3
+    800-171r2:
+      - 3.5.1
+      - 3.5.2
   cce:
     - $OS_VALUE
-  cci:
-    - CCI-001958
-  800-53r5:
-    - IA-3
-  800-53r4:
-    - IA-3
-  disa_stig:
-    - $OS_VALUE
-  srg:
-    - $OS_VALUE
-  800-171r2:
-    - 3.5.1
-    - 3.5.2
   cis:
     benchmark:
       - $OS_VALUE
@@ -36,45 +38,46 @@ tags:
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85297-0
-      disa_stig:
-        - N/A
-      srg:
-        - SRG-OS-000378-GPOS-00163
-      cis:
-        benchmark:
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85297-0
+        disa_stig:
           - N/A
-        controls v8:
-          - 13.9
-    title: Must authenticate peripherals before establishing a connection
-  '12.0':
-    references:
-      cce:
-        - CCE-90906-9
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
+        srg:
+          - SRG-OS-000378-GPOS-00163
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 13.9
+      title: Must authenticate peripherals before establishing a connection
+    '12.0':
+      references:
+        cce:
+          - CCE-90906-9
+        disa_stig:
           - N/A
-        controls v8:
-          - 13.9
-    title: Must authenticate peripherals before establishing a connection
-  '13.0':
-    references:
-      cce:
-        - CCE-91761-7
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
+        srg:
           - N/A
-        controls v8:
-          - 13.9
-    title: Must Authenticate Before Establishing a Connection
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 13.9
+      title: Must authenticate peripherals before establishing a connection
+    '13.0':
+      references:
+        cce:
+          - CCE-91761-7
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 13.9
+      title: Must Authenticate Before Establishing a Connection

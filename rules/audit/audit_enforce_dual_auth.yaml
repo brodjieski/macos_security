@@ -6,45 +6,48 @@ check: |
 fix: |
   This requirement is a permanent finding and cannot be fixed. An appropriate mitigation for the system must be implemented, but this finding cannot be considered fixed.
 references:
+  disa:
+    cci:
+      - CCI-000366
+      - CCI-001896
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - AU-9(5)
+    800-53r4:
+      - AU-9(5)
   cce:
-    - $OS_VALUE
-  cci:
-    - CCI-000366
-    - CCI-001896
-  800-53r5:
-    - AU-9(5)
-  800-53r4:
-    - AU-9(5)
-  disa_stig:
-    - $OS_VALUE
-  srg:
     - $OS_VALUE
 tags:
   - permanent
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85256-6
-      disa_stig:
-        - N/A
-      srg:
-        - SRG-OS-000360-GPOS-00147
-  '12.0':
-    references:
-      cce:
-        - CCE-90856-6
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-  '13.0':
-    references:
-      cce:
-        - CCE-91710-4
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85256-6
+        disa_stig:
+          - N/A
+        srg:
+          - SRG-OS-000360-GPOS-00147
+    '12.0':
+      references:
+        cce:
+          - CCE-90856-6
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+    '13.0':
+      references:
+        cce:
+          - CCE-91710-4
+        disa_stig:
+          - N/A
+        srg:
+          - N/A

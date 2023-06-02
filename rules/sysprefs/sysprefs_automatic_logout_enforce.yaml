@@ -11,21 +11,23 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
+  disa:
+    cci:
+      - CCI-002361
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - AC-12
+      - AC-2(5)
+    800-53r4:
+      - AC-12
+    800-171r2:
+      - 3.1.11
   cce:
     - $OS_VALUE
-  cci:
-    - CCI-002361
-  800-53r5:
-    - AC-12
-    - AC-2(5)
-  800-53r4:
-    - AC-12
-  disa_stig:
-    - $OS_VALUE
-  srg:
-    - $OS_VALUE
-  800-171r2:
-    - 3.1.11
 odv:
   hint: Number of seconds
   recommended: 86400
@@ -40,19 +42,20 @@ mobileconfig_info:
   .GlobalPreferences:
     com.apple.autologout.AutoLogOutDelay: $ODV
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85424-0
-      disa_stig:
-        - N/A
-      srg:
-        - SRG-OS-000279-GPOS-00109
-  '12.0':
-    references:
-      cce:
-        - CCE-91047-1
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85424-0
+        disa_stig:
+          - N/A
+        srg:
+          - SRG-OS-000279-GPOS-00109
+    '12.0':
+      references:
+        cce:
+          - CCE-91047-1
+        disa_stig:
+          - N/A
+        srg:
+          - N/A

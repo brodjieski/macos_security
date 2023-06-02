@@ -20,20 +20,22 @@ fix: |
   . Click *Encrypt Backups*
   . Click *Use Disk*
 references:
+  disa:
+    cci:
+      - N/A
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - N/A
+    800-53r4:
+      - N/A
+    800-171r2:
+      - N/A
   cce:
     - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - N/A
-  800-53r4:
-    - N/A
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - N/A
   cis:
     benchmark:
       - $OS_VALUE
@@ -46,18 +48,19 @@ tags:
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
-  '13.0':
-    references:
-      cce:
-        - CCE-91988-6
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
-          - 2.3.4.2 (level 1)
-        controls v8:
-          - 3.6
-          - 3.11
-          - 11.3
+  macOS:
+    '13.0':
+      references:
+        cce:
+          - CCE-91988-6
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - 2.3.4.2 (level 1)
+          controls v8:
+            - 3.6
+            - 3.11
+            - 11.3

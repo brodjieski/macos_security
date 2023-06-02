@@ -12,25 +12,27 @@ fix: |
   /usr/sbin/networksetup -setnetworkserviceenabled "Wi-Fi" off
   ----
 references:
+  disa:
+    cci:
+      - N/A
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - AC-4
+      - AC-18
+      - AC-18(1)
+      - AC-18(3)
+    800-53r4:
+      - AC-4
+      - AC-18(1)
+      - AC-18(3)
+    800-171r2:
+      - N/A
   cce:
     - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - AC-4
-    - AC-18
-    - AC-18(1)
-    - AC-18(3)
-  800-53r4:
-    - AC-4
-    - AC-18(1)
-    - AC-18(3)
-  disa_stig:
-    - $OS_VALUE
-  srg:
-    - $OS_VALUE
-  800-171r2:
-    - N/A
   cis:
     benchmark:
       - $OS_VALUE
@@ -49,17 +51,18 @@ severity: medium
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
-  '13.0':
-    references:
-      cce:
-        - CCE-91998-5
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
+  macOS:
+    '13.0':
+      references:
+        cce:
+          - CCE-91998-5
+        disa_stig:
           - N/A
-        controls v8:
-          - 4.2
-          - 12.6
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 4.2
+            - 12.6

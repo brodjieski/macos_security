@@ -9,17 +9,19 @@ result:
   integer: 1
 fix: $OS_VALUE
 references:
+  disa:
+    cci:
+      - CCI-000366
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - N/A
+    800-53r4:
+      - SI-2
   cce:
-    - $OS_VALUE
-  cci:
-    - CCI-000366
-  800-53r5:
-    - N/A
-  800-53r4:
-    - SI-2
-  srg:
-    - $OS_VALUE
-  disa_stig:
     - $OS_VALUE
 tags:
   - stig
@@ -27,50 +29,51 @@ severity: high
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85501-5
-      disa_stig:
-        - APPL-11-002070
-      srg:
-        - SRG-OS-000480-GPOS-00227
-    check: |
-      /bin/launchctl print-disabled system | /usr/bin/grep -c '"com.apple.mrt" => false'
-    fix: |
-      [source,bash]
-      ----
-      /bin/launchctl enable system/com.apple.mrt
-      ----
-  '12.0':
-    references:
-      cce:
-        - CCE-90900-2
-      disa_stig:
-        - APPL-12-002070
-      srg:
-        - SRG-OS-000480-GPOS-00227
-    check: |
-      /bin/launchctl list | /usr/bin/grep -cE "(com.apple.XprotectFramework.PluginService$|com.apple.XProtect.daemon.scan$)"
-    fix: |
-      [source,bash]
-      ----
-      /bin/launchctl load -w /Library/Apple/System/Library/LaunchDaemons/com.apple.XProtect.daemon.scan.plist
-      /bin/launchctl load -w /Library/Apple/System/Library/LaunchDaemons/com.apple.XprotectFramework.PluginService.plist
-      ----
-  '13.0':
-    references:
-      cce:
-        - CCE-91756-7
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-    check: |
-      /bin/launchctl list | /usr/bin/grep -cE "(com.apple.XprotectFramework.PluginService$|com.apple.XProtect.daemon.scan$)"
-    fix: |
-      [source,bash]
-      ----
-      /bin/launchctl load -w /Library/Apple/System/Library/LaunchDaemons/com.apple.XProtect.daemon.scan.plist
-      /bin/launchctl load -w /Library/Apple/System/Library/LaunchDaemons/com.apple.XprotectFramework.PluginService.plist
-      ----
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85501-5
+        disa_stig:
+          - APPL-11-002070
+        srg:
+          - SRG-OS-000480-GPOS-00227
+      check: |
+        /bin/launchctl print-disabled system | /usr/bin/grep -c '"com.apple.mrt" => false'
+      fix: |
+        [source,bash]
+        ----
+        /bin/launchctl enable system/com.apple.mrt
+        ----
+    '12.0':
+      references:
+        cce:
+          - CCE-90900-2
+        disa_stig:
+          - APPL-12-002070
+        srg:
+          - SRG-OS-000480-GPOS-00227
+      check: |
+        /bin/launchctl list | /usr/bin/grep -cE "(com.apple.XprotectFramework.PluginService$|com.apple.XProtect.daemon.scan$)"
+      fix: |
+        [source,bash]
+        ----
+        /bin/launchctl load -w /Library/Apple/System/Library/LaunchDaemons/com.apple.XProtect.daemon.scan.plist
+        /bin/launchctl load -w /Library/Apple/System/Library/LaunchDaemons/com.apple.XprotectFramework.PluginService.plist
+        ----
+    '13.0':
+      references:
+        cce:
+          - CCE-91756-7
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+      check: |
+        /bin/launchctl list | /usr/bin/grep -cE "(com.apple.XprotectFramework.PluginService$|com.apple.XProtect.daemon.scan$)"
+      fix: |
+        [source,bash]
+        ----
+        /bin/launchctl load -w /Library/Apple/System/Library/LaunchDaemons/com.apple.XProtect.daemon.scan.plist
+        /bin/launchctl load -w /Library/Apple/System/Library/LaunchDaemons/com.apple.XprotectFramework.PluginService.plist
+        ----

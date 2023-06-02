@@ -8,23 +8,25 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
+  disa:
+    cci:
+      - CCI-000200
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - IA-5(1)
+    800-53r4:
+      - IA-5(1)
+    800-171r2:
+      - 3.5.7
+      - 3.5.8
+      - 3.5.9
+      - 3.5.10
   cce:
     - $OS_VALUE
-  cci:
-    - CCI-000200
-  800-53r5:
-    - IA-5(1)
-  800-53r4:
-    - IA-5(1)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.5.7
-    - 3.5.8
-    - 3.5.9
-    - 3.5.10
   cis:
     benchmark:
       - $OS_VALUE
@@ -54,42 +56,43 @@ mobileconfig_info:
   com.apple.mobiledevice.passwordpolicy:
     pinHistory: $ODV
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85407-5
-      disa_stig:
-        - APPL-11-003009
-      srg:
-        - SRG-OS-000077-GPOS-00045
-      cis:
-        benchmark:
-          - 5.2.7 (level 1)
-        controls v8:
-          - 5.2
-  '12.0':
-    references:
-      cce:
-        - CCE-91034-9
-      disa_stig:
-        - APPL-12-003009
-      srg:
-        - SRG-OS-000077-GPOS-00045
-      cis:
-        benchmark:
-          - 5.2.8 (level 1)
-        controls v8:
-          - 5.2
-  '13.0':
-    references:
-      cce:
-        - CCE-91920-9
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
-          - 5.2.8 (level 1)
-        controls v8:
-          - 5.2
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85407-5
+        disa_stig:
+          - APPL-11-003009
+        srg:
+          - SRG-OS-000077-GPOS-00045
+        cis:
+          benchmark:
+            - 5.2.7 (level 1)
+          controls v8:
+            - 5.2
+    '12.0':
+      references:
+        cce:
+          - CCE-91034-9
+        disa_stig:
+          - APPL-12-003009
+        srg:
+          - SRG-OS-000077-GPOS-00045
+        cis:
+          benchmark:
+            - 5.2.8 (level 1)
+          controls v8:
+            - 5.2
+    '13.0':
+      references:
+        cce:
+          - CCE-91920-9
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - 5.2.8 (level 1)
+          controls v8:
+            - 5.2

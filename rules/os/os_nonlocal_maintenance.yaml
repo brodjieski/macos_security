@@ -6,19 +6,21 @@ check: |
 fix: |
   The requirement is NA. No fix is required.
 references:
+  disa:
+    cci:
+      - N/A
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - MA-4
+    800-53r4:
+      - MA-4
+    800-171r2:
+      - 3.7.5
   cce:
-    - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - MA-4
-  800-53r4:
-    - MA-4
-  800-171r2:
-    - 3.7.5
-  disa_stig:
-    - $OS_VALUE
-  srg:
     - $OS_VALUE
 tags:
   - 800-53r5_low
@@ -32,27 +34,28 @@ tags:
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85458-8
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-  '12.0':
-    references:
-      cce:
-        - CCE-90958-0
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-  '13.0':
-    references:
-      cce:
-        - CCE-91829-2
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85458-8
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+    '12.0':
+      references:
+        cce:
+          - CCE-90958-0
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+    '13.0':
+      references:
+        cce:
+          - CCE-91829-2
+        disa_stig:
+          - N/A
+        srg:
+          - N/A

@@ -13,23 +13,25 @@ fix: |
   /bin/echo "Defaults timestamp_timeout=$ODV" >> /etc/sudoers.d/mscp
   ----
 references:
+  disa:
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    cci:
+      - None
+  nist:
+    800-53r5:
+      - N/A
+    800-53r4:
+      - N/A
   cce:
-    - $OS_VALUE
-  800-53r5:
-    - N/A
-  800-53r4:
-    - N/A
-  srg:
-    - $OS_VALUE
-  disa_stig:
     - $OS_VALUE
   cis:
     benchmark:
       - $OS_VALUE
     controls v8:
       - $OS_VALUE
-  cci:
-    - None
 odv:
   hint: Number of minutes.
   recommended: 0
@@ -45,42 +47,43 @@ tags:
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85512-2
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
-          - 5.3 (level 1)
-        controls v8:
-          - 4.3
-  '12.0':
-    references:
-      cce:
-        - CCE-91116-4
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
-          - 5.3 (level 1)
-        controls v8:
-          - 4.3
-  '13.0':
-    references:
-      cce:
-        - CCE-91895-3
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
-          - 5.4 (level 1)
-        controls v8:
-          - 4.3
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85512-2
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - 5.3 (level 1)
+          controls v8:
+            - 4.3
+    '12.0':
+      references:
+        cce:
+          - CCE-91116-4
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - 5.3 (level 1)
+          controls v8:
+            - 4.3
+    '13.0':
+      references:
+        cce:
+          - CCE-91895-3
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - 5.4 (level 1)
+          controls v8:
+            - 4.3

@@ -37,23 +37,25 @@ fix: |
   ----
   NOTE: See the password policy supplemental on more information on how to implement password policies on macOS.
 references:
+  disa:
+    cci:
+      - N/A
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - IA-5
+    800-53r4:
+      - IA-5(1)
+    800-171r2:
+      - 3.5.7
+      - 3.5.8
+      - 3.5.9
+      - 3.5.10
   cce:
     - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - IA-5
-  800-53r4:
-    - IA-5(1)
-  disa_stig:
-    - $OS_VALUE
-  srg:
-    - $OS_VALUE
-  800-171r2:
-    - 3.5.7
-    - 3.5.8
-    - 3.5.9
-    - 3.5.10
   cis:
     benchmark:
       - $OS_VALUE
@@ -74,42 +76,43 @@ tags:
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85410-9
-      disa_stig:
-        - N/A
-      srg:
-        - SRG-OS-000075-GPOS-00043
-      cis:
-        benchmark:
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85410-9
+        disa_stig:
           - N/A
-        controls v8:
-          - 4.7
-  '12.0':
-    references:
-      cce:
-        - CCE-91037-2
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
+        srg:
+          - SRG-OS-000075-GPOS-00043
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 4.7
+    '12.0':
+      references:
+        cce:
+          - CCE-91037-2
+        disa_stig:
           - N/A
-        controls v8:
-          - 4.7
-  '13.0':
-    references:
-      cce:
-        - CCE-91924-1
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
+        srg:
           - N/A
-        controls v8:
-          - 4.7
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 4.7
+    '13.0':
+      references:
+        cce:
+          - CCE-91924-1
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 4.7

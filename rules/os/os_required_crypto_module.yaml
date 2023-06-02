@@ -6,17 +6,19 @@ check: |
 fix: |
   The technology inherently meets this requirement. No fix is required.
 references:
+  disa:
+    cci:
+      - CCI-000803
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - IA-7
+    800-53r4:
+      - IA-7
   cce:
-    - $OS_VALUE
-  cci:
-    - CCI-000803
-  800-53r5:
-    - IA-7
-  800-53r4:
-    - IA-7
-  disa_stig:
-    - $OS_VALUE
-  srg:
     - $OS_VALUE
 tags:
   - 800-53r5_low
@@ -29,57 +31,58 @@ tags:
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85373-9
-      disa_stig:
-        - N/A
-      srg:
-        - SRG-OS-000120-GPOS-00061
-    discussion: |
-      The inherent configuration of the macOS _IS_ in compliance by implementing mechanisms for authentication to a cryptographic module that meet the requirements of all applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance for such authentication
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85373-9
+        disa_stig:
+          - N/A
+        srg:
+          - SRG-OS-000120-GPOS-00061
+      discussion: |
+        The inherent configuration of the macOS _IS_ in compliance by implementing mechanisms for authentication to a cryptographic module that meet the requirements of all applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance for such authentication
 
-      macOS contains many open source projects that may use their own cryptographic libraries typically for the purposes of maintaining platform independence. These services are not covered by the Apple FIPS Validation of the CoreCrypto and CoreCrypto Kernel modules.
+        macOS contains many open source projects that may use their own cryptographic libraries typically for the purposes of maintaining platform independence. These services are not covered by the Apple FIPS Validation of the CoreCrypto and CoreCrypto Kernel modules.
 
-      macOS Big Sur is in process of receiving FIPS validation from the National Institute of Standards and Technology (NIST).
+        macOS Big Sur is in process of receiving FIPS validation from the National Institute of Standards and Technology (NIST).
 
-      link:https://csrc.nist.gov/Projects/cryptographic-module-validation-program/modules-in-process/Modules-In-Process-List[]
+        link:https://csrc.nist.gov/Projects/cryptographic-module-validation-program/modules-in-process/Modules-In-Process-List[]
 
-      link:https://support.apple.com/en-us/HT201159[]
-  '12.0':
-    references:
-      cce:
-        - CCE-90993-7
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-    discussion: |
-      The inherent configuration of the macOS _IS_ in compliance by implementing mechanisms for authentication to a cryptographic module that meet the requirements of all applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance for such authentication
+        link:https://support.apple.com/en-us/HT201159[]
+    '12.0':
+      references:
+        cce:
+          - CCE-90993-7
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+      discussion: |
+        The inherent configuration of the macOS _IS_ in compliance by implementing mechanisms for authentication to a cryptographic module that meet the requirements of all applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance for such authentication
 
-      macOS contains many open source projects that may use their own cryptographic libraries typically for the purposes of maintaining platform independence. These services are not covered by the Apple FIPS Validation of the CoreCrypto and CoreCrypto Kernel modules.
+        macOS contains many open source projects that may use their own cryptographic libraries typically for the purposes of maintaining platform independence. These services are not covered by the Apple FIPS Validation of the CoreCrypto and CoreCrypto Kernel modules.
 
-      macOS Monterey has been submitted to the National Institute of Standards and Technology (NIST) and is in review for the cryptographic module for FIPS 140-3 validation.
+        macOS Monterey has been submitted to the National Institute of Standards and Technology (NIST) and is in review for the cryptographic module for FIPS 140-3 validation.
 
-      link:https://csrc.nist.gov/Projects/cryptographic-module-validation-program/modules-in-process/IUT-List[]
+        link:https://csrc.nist.gov/Projects/cryptographic-module-validation-program/modules-in-process/IUT-List[]
 
-      link:https://support.apple.com/en-us/HT201159[]
-  '13.0':
-    references:
-      cce:
-        - CCE-91869-8
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-    discussion: |
-      The inherent configuration of the macOS _IS_ in compliance by implementing mechanisms for authentication to a cryptographic module that meet the requirements of all applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance for such authentication
+        link:https://support.apple.com/en-us/HT201159[]
+    '13.0':
+      references:
+        cce:
+          - CCE-91869-8
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+      discussion: |
+        The inherent configuration of the macOS _IS_ in compliance by implementing mechanisms for authentication to a cryptographic module that meet the requirements of all applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance for such authentication
 
-      macOS contains many open source projects that may use their own cryptographic libraries typically for the purposes of maintaining platform independence. These services are not covered by the Apple FIPS Validation of the CoreCrypto and CoreCrypto Kernel modules.
+        macOS contains many open source projects that may use their own cryptographic libraries typically for the purposes of maintaining platform independence. These services are not covered by the Apple FIPS Validation of the CoreCrypto and CoreCrypto Kernel modules.
 
-      Apple is committed to the FIPS validation process and historically has always submitted and validated the cryptographic modules in macOS. macOS Ventura will be submitted for FIPS validation.
+        Apple is committed to the FIPS validation process and historically has always submitted and validated the cryptographic modules in macOS. macOS Ventura will be submitted for FIPS validation.
 
-      link:https://csrc.nist.gov/Projects/cryptographic-module-validation-program/validated-modules[]
+        link:https://csrc.nist.gov/Projects/cryptographic-module-validation-program/validated-modules[]
 
-      link:https://support.apple.com/en-us/HT201159[]
+        link:https://support.apple.com/en-us/HT201159[]

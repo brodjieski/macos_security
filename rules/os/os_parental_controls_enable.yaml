@@ -11,21 +11,23 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
+  disa:
+    cci:
+      - CCI-001812
+      - CCI-001764
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - CM-7(2)
+    800-53r4:
+      - CM-7(2)
+    800-171r2:
+      - 3.4.7
   cce:
     - $OS_VALUE
-  cci:
-    - CCI-001812
-    - CCI-001764
-  800-53r5:
-    - CM-7(2)
-  800-53r4:
-    - CM-7(2)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.4.7
   cis:
     benchmark:
       - $OS_VALUE
@@ -43,46 +45,47 @@ mobileconfig_info:
   com.apple.applicationaccess.new:
     familyControlsEnabled: true
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85350-7
-      disa_stig:
-        - N/A
-      srg:
-        - SRG-OS-000362-GPOS-00149
-        - SRG-OS-000368-GPOS-00154
-      cis:
-        benchmark:
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85350-7
+        disa_stig:
           - N/A
-        controls v8:
-          - 4.8
-    discussion: "Parental Controls _MUST_ be enabled. \n\nControl of program execution is a mechanism used to prevent program execution of unauthorized programs, which is critical to maintaining a secure system baseline.\n\nParental Controls on the macOS consist of many different payloads, which are set individually depending on the type of control required. Enabling parental controls allows for further configuration of these restrictions.\n"
-  '12.0':
-    references:
-      cce:
-        - CCE-90966-3
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
+        srg:
+          - SRG-OS-000362-GPOS-00149
+          - SRG-OS-000368-GPOS-00154
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 4.8
+      discussion: "Parental Controls _MUST_ be enabled. \n\nControl of program execution is a mechanism used to prevent program execution of unauthorized programs, which is critical to maintaining a secure system baseline.\n\nParental Controls on the macOS consist of many different payloads, which are set individually depending on the type of control required. Enabling parental controls allows for further configuration of these restrictions.\n"
+    '12.0':
+      references:
+        cce:
+          - CCE-90966-3
+        disa_stig:
           - N/A
-        controls v8:
-          - 4.8
-    discussion: "Parental Controls _MUST_ be enabled. \n\nControl of program execution is a mechanism used to prevent program execution of unauthorized programs, which is critical to maintaining a secure system baseline.\n\nParental Controls on the macOS consist of many different payloads, which are set individually depending on the type of control required. Enabling parental controls allows for further configuration of these restrictions.\n"
-  '13.0':
-    references:
-      cce:
-        - CCE-91837-5
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
+        srg:
           - N/A
-        controls v8:
-          - 4.8
-    discussion: "Parental Controls _MUST_ be enabled. \n\nControl of program execution is a mechanism used to prevent program execution of unauthorized programs, which is critical to maintaining a secure system baseline.\n\nParental Controls on the macOS consist of many different payloads, which are set individually depending on the type of control required. Enabling parental controls allows for further configuration of these restrictions.\n\n[IMPORTANT]\n====\nApple has deprecated the use of link:https://github.com/apple/device-management/blob/eb51fb0cb9626cac4717858556912c257a734ce0/mdm/profiles/com.apple.applicationaccess.new.yaml#L67-L70[application restriction controls], using these controls may not work as expected. Third party software may be required to fulfill the compliance requirements.\n====\n"
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 4.8
+      discussion: "Parental Controls _MUST_ be enabled. \n\nControl of program execution is a mechanism used to prevent program execution of unauthorized programs, which is critical to maintaining a secure system baseline.\n\nParental Controls on the macOS consist of many different payloads, which are set individually depending on the type of control required. Enabling parental controls allows for further configuration of these restrictions.\n"
+    '13.0':
+      references:
+        cce:
+          - CCE-91837-5
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 4.8
+      discussion: "Parental Controls _MUST_ be enabled. \n\nControl of program execution is a mechanism used to prevent program execution of unauthorized programs, which is critical to maintaining a secure system baseline.\n\nParental Controls on the macOS consist of many different payloads, which are set individually depending on the type of control required. Enabling parental controls allows for further configuration of these restrictions.\n\n[IMPORTANT]\n====\nApple has deprecated the use of link:https://github.com/apple/device-management/blob/eb51fb0cb9626cac4717858556912c257a734ce0/mdm/profiles/com.apple.applicationaccess.new.yaml#L67-L70[application restriction controls], using these controls may not work as expected. Third party software may be required to fulfill the compliance requirements.\n====\n"

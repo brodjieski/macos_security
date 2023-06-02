@@ -17,70 +17,73 @@ fix: |
   fi
   ----
 references:
+  disa:
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    cci:
+      - None
+  nist:
+    800-53r5:
+      - N/A
+    800-53r4:
+      - N/A
+    800-171r2:
+      - N/A
   cce:
     - $OS_VALUE
-  800-53r5:
-    - N/A
-  800-53r4:
-    - N/A
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - N/A
   cis:
     benchmark:
       - $OS_VALUE
     controls v8:
       - $OS_VALUE
-  cci:
-    - None
 tags:
   - cis_lvl2
   - cisv8
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85505-6
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
-          - 2.8.3 (level 2)
-        controls v8:
-          - 4.1
-    discussion: "Hibernate mode _MUST_ be enabled. \n\nNOTE: Hibernate mode will disable instate wake on Apple Silicon laptops.\n"
-  '12.0':
-    references:
-      cce:
-        - CCE-91106-5
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
-          - 2.8.3 (level 2)
-        controls v8:
-          - 4.1
-    discussion: "Hibernate mode _MUST_ be enabled. \n\nNOTE: Hibernate mode will disable instate wake on Apple Silicon laptops.\n"
-  '13.0':
-    references:
-      cce:
-        - CCE-91799-7
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
-          - 2.9.3 (level 2)
-        controls v8:
-          - 4.1
-    discussion: "Hibernate mode _MUST_ be enabled. \n\nNOTE: Hibernate mode will disable instant wake on Apple Silicon laptops.\n"
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85505-6
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - 2.8.3 (level 2)
+          controls v8:
+            - 4.1
+      discussion: "Hibernate mode _MUST_ be enabled. \n\nNOTE: Hibernate mode will disable instate wake on Apple Silicon laptops.\n"
+    '12.0':
+      references:
+        cce:
+          - CCE-91106-5
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - 2.8.3 (level 2)
+          controls v8:
+            - 4.1
+      discussion: "Hibernate mode _MUST_ be enabled. \n\nNOTE: Hibernate mode will disable instate wake on Apple Silicon laptops.\n"
+    '13.0':
+      references:
+        cce:
+          - CCE-91799-7
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - 2.9.3 (level 2)
+          controls v8:
+            - 4.1
+      discussion: "Hibernate mode _MUST_ be enabled. \n\nNOTE: Hibernate mode will disable instant wake on Apple Silicon laptops.\n"

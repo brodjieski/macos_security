@@ -11,22 +11,24 @@ result:
 fix: |
   This is implemented by a Configuration Profile.
 references:
+  disa:
+    cci:
+      - N/A
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - CM-7
+      - CM-7(1)
+    800-53r4:
+      - CM-7
+      - CM-7(1)
+    800-171r2:
+      - 3.4.6
   cce:
     - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - CM-7
-    - CM-7(1)
-  800-53r4:
-    - CM-7
-    - CM-7(1)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.4.6
   cis:
     benchmark:
       - $OS_VALUE
@@ -47,16 +49,17 @@ mobileconfig_info:
   com.apple.applicationaccess:
     allowContentCaching: false
 os_specifics:
-  '13.0':
-    references:
-      cce:
-        - CCE-91943-1
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
-      cis:
-        benchmark:
-          - 2.3.3.9 (level 2)
-        controls v8:
-          - 4.8
+  macOS:
+    '13.0':
+      references:
+        cce:
+          - CCE-91943-1
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        cis:
+          benchmark:
+            - 2.3.3.9 (level 2)
+          controls v8:
+            - 4.8

@@ -23,18 +23,20 @@ fix: |
 
   /usr/bin/pwpolicy -u username setaccountpolicies /path/to/file
 references:
+  disa:
+    cci:
+      - CCI-000016
+      - CCI-001682
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - AC-2(2)
+    800-53r4:
+      - AC-2(2)
   cce:
-    - $OS_VALUE
-  cci:
-    - CCI-000016
-    - CCI-001682
-  800-53r5:
-    - AC-2(2)
-  800-53r4:
-    - AC-2(2)
-  srg:
-    - $OS_VALUE
-  disa_stig:
     - $OS_VALUE
 tags:
   - 800-53r5_moderate
@@ -47,29 +49,30 @@ severity: medium
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85414-1
-      disa_stig:
-        - APPL-11-000012
-      srg:
-        - SRG-OS-000002-GPOS-00002
-        - SRG-OS-000123-GPOS-00064
-  '12.0':
-    references:
-      cce:
-        - CCE-91042-2
-      disa_stig:
-        - APPL-12-000012
-      srg:
-        - SRG-OS-000002-GPOS-00002
-        - SRG-OS-000123-GPOS-00064
-  '13.0':
-    references:
-      cce:
-        - CCE-91929-0
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85414-1
+        disa_stig:
+          - APPL-11-000012
+        srg:
+          - SRG-OS-000002-GPOS-00002
+          - SRG-OS-000123-GPOS-00064
+    '12.0':
+      references:
+        cce:
+          - CCE-91042-2
+        disa_stig:
+          - APPL-12-000012
+        srg:
+          - SRG-OS-000002-GPOS-00002
+          - SRG-OS-000123-GPOS-00064
+    '13.0':
+      references:
+        cce:
+          - CCE-91929-0
+        disa_stig:
+          - N/A
+        srg:
+          - N/A

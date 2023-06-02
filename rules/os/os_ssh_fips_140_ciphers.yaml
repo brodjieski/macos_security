@@ -11,28 +11,30 @@ fix: |
   /usr/bin/grep -q '^Ciphers' /etc/ssh/ssh_config && /usr/bin/sed -i.bak  's/.^Ciphers.*/Ciphers aes256-ctr,aes192-ctr,aes128-ctr/' /etc/ssh/ssh_config || /bin/echo 'Ciphers aes256-ctr,aes192-ctr,aes128-ctr' >> /etc/ssh/ssh_config
   ----
 references:
+  disa:
+    cci:
+      - N/A
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - AC-17(2)
+      - IA-7
+      - SC-13
+      - SC-8(1)
+    800-53r4:
+      - AC-17(2)
+      - IA-7
+      - SC-8(1)
+      - SC-13
+    800-171r2:
+      - 3.1.13
+      - 3.13.8
+      - 3.13.11
   cce:
     - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - AC-17(2)
-    - IA-7
-    - SC-13
-    - SC-8(1)
-  800-53r4:
-    - AC-17(2)
-    - IA-7
-    - SC-8(1)
-    - SC-13
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.1.13
-    - 3.13.8
-    - 3.13.11
 tags:
   - 800-53r5_moderate
   - 800-53r5_high
@@ -44,11 +46,12 @@ tags:
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
-  '11.0':
-    references:
-      cce:
-        - CCE-85382-0
-      disa_stig:
-        - N/A
-      srg:
-        - N/A
+  macOS:
+    '11.0':
+      references:
+        cce:
+          - CCE-85382-0
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
