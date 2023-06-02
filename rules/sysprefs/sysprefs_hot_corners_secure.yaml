@@ -27,8 +27,8 @@ references:
       - AC-11(1)
     800-171r2:
       - N/A
-  cce:
-    - $OS_VALUE
+    cce:
+      - $OS_VALUE
   cis:
     benchmark:
       - $OS_VALUE
@@ -38,7 +38,7 @@ tags:
   - cis_lvl2
   - cisv8
 mobileconfig: false
-mobileconfig_info: null
+mobileconfig_info: ''
 os_specifics:
   macOS:
     '11.0':

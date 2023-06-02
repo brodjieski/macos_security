@@ -28,8 +28,8 @@ references:
       - SI-7(15)
     800-171r2:
       - 3.4.5
-  cce:
-    - $OS_VALUE
+    cce:
+      - $OS_VALUE
   cis:
     benchmark:
       - $OS_VALUE

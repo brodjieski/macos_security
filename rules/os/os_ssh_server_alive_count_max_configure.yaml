@@ -23,8 +23,8 @@ references:
       - SC-10
     800-171r2:
       - 3.13.9
-  cce:
-    - $OS_VALUE
+    cce:
+      - $OS_VALUE
 odv:
   hint: Number of seconds.
   recommended: 0
@@ -35,7 +35,7 @@ tags:
   - 800-53r4_high
   - 800-171
 mobileconfig: false
-mobileconfig_info: null
+mobileconfig_info: ''
 os_specifics:
   macOS:
     '11.0':

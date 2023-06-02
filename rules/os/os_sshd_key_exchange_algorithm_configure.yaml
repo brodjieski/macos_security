@@ -28,13 +28,13 @@ references:
       - MA-4(6)
     800-171r2:
       - N/A
-  cce:
-    - $OS_VALUE
+    cce:
+      - $OS_VALUE
 tags:
   - stig
 severity: medium
 mobileconfig: false
-mobileconfig_info: null
+mobileconfig_info: ''
 os_specifics:
   macOS:
     '11.0':

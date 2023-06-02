@@ -21,13 +21,13 @@ references:
       - N/A
     800-53r4:
       - SI-2
-  cce:
-    - $OS_VALUE
+    cce:
+      - $OS_VALUE
 tags:
   - stig
 severity: high
 mobileconfig: false
-mobileconfig_info: null
+mobileconfig_info: ''
 os_specifics:
   macOS:
     '11.0':

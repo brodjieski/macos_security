@@ -78,7 +78,10 @@ def collect_rules(path):
 def create_os_specifics(rule, fields):
     new_rule_yaml = {}
     
-    version=rule['macOS'][0]
+    try:
+        version=rule['macOS'][0]
+    except:
+        version=rule['ios'][0]
     new_rule_yaml = {}
     new_rule_yaml[version] = {}
     
@@ -176,15 +179,25 @@ def main():
             for field in os_specific_fields:
                 rule[field] = "$OS_VALUE"
 
-            del rule['macOS']
+            try:
+                del rule['macOS']
+                spec_var = "macOS"
+            except:
+                del rule['ios']
+                spec_var = "ios"
+            else:
+                pass
 
             
             if not rule['id'] in new_rules.keys():
                 new_rules[rule['id']] = rule
                 new_rules[rule['id']]['os_specifics'] = {}
-                new_rules[rule['id']]['os_specifics']['macOS'] = os_specs
+                new_rules[rule['id']]['os_specifics'][spec_var] = os_specs
             else:
-                new_rules[rule["id"]]["os_specifics"]['macOS'].update(os_specs)
+                try:
+                    new_rules[rule["id"]]["os_specifics"][spec_var].update(os_specs)
+                except KeyError:
+                    new_rules[rule['id']]['os_specifics'][spec_var] = os_specs
 
     #pprint.pprint(new_rules)
 

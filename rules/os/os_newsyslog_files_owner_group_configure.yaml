@@ -24,15 +24,15 @@ references:
       - SI-11
     800-171r2:
       - N/A
-  cce:
-    - $OS_VALUE
+    cce:
+      - $OS_VALUE
 tags:
   - 800-53r5_moderate
   - 800-53r5_high
   - stig
 severity: medium
 mobileconfig: false
-mobileconfig_info: null
+mobileconfig_info: ''
 os_specifics:
   macOS:
     '11.0':

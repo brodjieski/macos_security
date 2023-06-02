@@ -23,8 +23,8 @@ references:
       - SC-8
     800-171r2:
       - N/A
-  cce:
-    - $OS_VALUE
+    cce:
+      - $OS_VALUE
 tags:
   - stig
 severity: medium

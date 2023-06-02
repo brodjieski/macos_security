@@ -19,8 +19,8 @@ references:
       - N/A
     800-53r4:
       - CM-6(b)
-  cce:
-    - $OS_VALUE
+    cce:
+      - $OS_VALUE
   cis:
     benchmark:
       - $OS_VALUE
@@ -31,7 +31,7 @@ tags:
   - cisv8
 severity: high
 mobileconfig: false
-mobileconfig_info: null
+mobileconfig_info: ''
 os_specifics:
   macOS:
     11.0:

@@ -26,8 +26,8 @@ references:
       - MP-7
     800-53r4:
       - MP-7(1)
-  cce:
-    - $OS_VALUE
+    cce:
+      - $OS_VALUE
 tags:
   - stig
 severity: low

@@ -25,15 +25,15 @@ references:
     800-53r4:
       - SC-34
       - SI-7
-  cce:
-    - $OS_VALUE
+    cce:
+      - $OS_VALUE
 tags:
   - 800-53r5_moderate
   - 800-53r5_high
   - 800-53r4_moderate
   - 800-53r4_high
 mobileconfig: false
-mobileconfig_info: null
+mobileconfig_info: ''
 os_specifics:
   macOS:
     '11.0':

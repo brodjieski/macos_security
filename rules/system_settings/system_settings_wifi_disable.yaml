@@ -31,8 +31,8 @@ references:
       - AC-18(3)
     800-171r2:
       - N/A
-  cce:
-    - $OS_VALUE
+    cce:
+      - $OS_VALUE
   cis:
     benchmark:
       - $OS_VALUE
@@ -49,7 +49,7 @@ tags:
   - cisv8
 severity: medium
 mobileconfig: false
-mobileconfig_info: null
+mobileconfig_info: ''
 os_specifics:
   macOS:
     '13.0':

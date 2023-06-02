@@ -28,8 +28,8 @@ references:
       - CM-7(1)
     800-171r2:
       - 3.4.6
-  cce:
-    - $OS_VALUE
+    cce:
+      - $OS_VALUE
 cis:
   benchmark:
     - N/A
@@ -46,7 +46,7 @@ tags:
   - stig
 severity: medium
 mobileconfig: false
-mobileconfig_info: null
+mobileconfig_info: ''
 os_specifics:
   macOS:
     '11.0':

@@ -19,8 +19,8 @@ references:
       - IA-4
     800-53r4:
       - N/A
-  cce:
-    - $OS_VALUE
+    cce:
+      - $OS_VALUE
   cis:
     benchmark:
       - $OS_VALUE
@@ -33,7 +33,7 @@ tags:
   - inherent
   - cisv8
 mobileconfig: false
-mobileconfig_info: null
+mobileconfig_info: ''
 os_specifics:
   macOS:
     '11.0':

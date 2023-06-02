@@ -31,8 +31,8 @@ references:
       - CM-7(5)
     800-171r2:
       - 3.1.20
-  cce:
-    - $OS_VALUE
+    cce:
+      - $OS_VALUE
 cis:
   benchmark:
     - N/A

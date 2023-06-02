@@ -18,13 +18,13 @@ references:
       - IA-2(5)
     800-53r4:
       - IA-2(5)
-  cce:
-    - $OS_VALUE
+    cce:
+      - $OS_VALUE
 tags:
   - stig
 severity: medium
 mobileconfig: false
-mobileconfig_info: null
+mobileconfig_info: ''
 os_specifics:
   macOS:
     '11.0':

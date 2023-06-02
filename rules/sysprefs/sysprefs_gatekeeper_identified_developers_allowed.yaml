@@ -29,8 +29,8 @@ references:
       - SI-7(15)
     800-171r2:
       - 3.4.5
-  cce:
-    - $OS_VALUE
+    cce:
+      - $OS_VALUE
 tags:
   - 800-53r5_low
   - 800-53r5_moderate

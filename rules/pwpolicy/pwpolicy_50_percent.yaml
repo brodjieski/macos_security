@@ -27,8 +27,8 @@ references:
       - 3.5.8
       - 3.5.9
       - 3.5.10
-  cce:
-    - $OS_VALUE
+    cce:
+      - $OS_VALUE
 tags:
   - 800-171
   - 800-53r4_low
@@ -36,7 +36,7 @@ tags:
   - 800-53r4_high
   - permanent
 mobileconfig: false
-mobileconfig_info: null
+mobileconfig_info: ''
 os_specifics:
   macOS:
     '11.0':

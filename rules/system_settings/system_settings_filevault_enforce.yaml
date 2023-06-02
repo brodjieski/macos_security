@@ -37,8 +37,8 @@ references:
       - SC-28(1)
     800-171r2:
       - 3.13.16
-  cce:
-    - $OS_VALUE
+    cce:
+      - $OS_VALUE
   cis:
     benchmark:
       - $OS_VALUE

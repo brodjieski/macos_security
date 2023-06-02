@@ -21,8 +21,8 @@ references:
       - AC-6
     800-171r2:
       - 3.1.5
-  cce:
-    - $OS_VALUE
+    cce:
+      - $OS_VALUE
 tags:
   - 800-53r5_moderate
   - 800-53r5_high
@@ -32,7 +32,7 @@ tags:
   - arm64
 severity: medium
 mobileconfig: false
-mobileconfig_info: null
+mobileconfig_info: ''
 os_specifics:
   macOS:
     '11.5':

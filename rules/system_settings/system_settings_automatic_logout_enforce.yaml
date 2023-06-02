@@ -26,8 +26,8 @@ references:
       - AC-12
     800-171r2:
       - 3.1.11
-  cce:
-    - $OS_VALUE
+    cce:
+      - $OS_VALUE
 odv:
   hint: Number of seconds
   recommended: 86400

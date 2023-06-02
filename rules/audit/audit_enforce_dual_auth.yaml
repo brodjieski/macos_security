@@ -19,12 +19,12 @@ references:
       - AU-9(5)
     800-53r4:
       - AU-9(5)
-  cce:
-    - $OS_VALUE
+    cce:
+      - $OS_VALUE
 tags:
   - permanent
 mobileconfig: false
-mobileconfig_info: null
+mobileconfig_info: ''
 os_specifics:
   macOS:
     '11.0':

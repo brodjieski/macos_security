@@ -61,7 +61,7 @@ tags:
   - cisv8
 severity: medium
 mobileconfig: false
-mobileconfig_info: null
+mobileconfig_info: ""
 os_specifics:
   macOS:
     '11.0':

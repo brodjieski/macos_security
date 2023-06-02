@@ -27,8 +27,8 @@ references:
     800-171r2:
       - 3.1.20
       - 3.4.6
-  cce:
-    - $OS_VALUE
+    cce:
+      - $OS_VALUE
   cis:
     benchmark:
       - $OS_VALUE

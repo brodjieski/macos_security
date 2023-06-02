@@ -21,8 +21,8 @@ references:
       - AC-7
     800-171r2:
       - 3.1.8
-  cce:
-    - $OS_VALUE
+    cce:
+      - $OS_VALUE
   cis:
     benchmark:
       - $OS_VALUE

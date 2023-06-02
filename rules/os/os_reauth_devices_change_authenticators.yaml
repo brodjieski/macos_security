@@ -18,15 +18,15 @@ references:
       - IA-11
     800-53r4:
       - IA-11
-  cce:
-    - $OS_VALUE
+    cce:
+      - $OS_VALUE
 tags:
   - 800-53r5_low
   - 800-53r5_moderate
   - 800-53r5_high
   - permanent
 mobileconfig: false
-mobileconfig_info: null
+mobileconfig_info: ''
 os_specifics:
   macOS:
     '11.0':

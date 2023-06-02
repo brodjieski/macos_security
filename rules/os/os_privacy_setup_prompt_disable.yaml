@@ -28,8 +28,8 @@ references:
     800-53r4:
       - CM-7
       - CM-7(1)
-  cce:
-    - $OS_VALUE
+    cce:
+      - $OS_VALUE
   cis:
     benchmark:
       - $OS_VALUE

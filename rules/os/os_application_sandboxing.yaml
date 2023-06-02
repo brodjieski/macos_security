@@ -18,15 +18,15 @@ references:
       - SC-39
     800-53r4:
       - N/A
-  cce:
-    - $OS_VALUE
+    cce:
+      - $OS_VALUE
 tags:
   - inherent
   - 800-53r5_low
   - 800-53r5_moderate
   - 800-53r5_high
 mobileconfig: false
-mobileconfig_info: null
+mobileconfig_info: ''
 os_specifics:
   macOS:
     '11.0':

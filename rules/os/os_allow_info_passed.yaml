@@ -23,12 +23,12 @@ references:
       - AC-3(4)
     800-53r4:
       - AC-3(4)
-  cce:
-    - $OS_VALUE
+    cce:
+      - $OS_VALUE
 tags:
   - inherent
 mobileconfig: false
-mobileconfig_info: null
+mobileconfig_info: ''
 os_specifics:
   macOS:
     '11.0':

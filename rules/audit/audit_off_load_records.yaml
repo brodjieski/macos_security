@@ -18,8 +18,8 @@ references:
       - AU-4(1)
     800-53r4:
       - AU-4(1)
-  cce:
-    - $OS_VALUE
+    cce:
+      - $OS_VALUE
   cis:
     benchmark:
       - $OS_VALUE
@@ -28,7 +28,7 @@ references:
 tags:
   - permanent
 mobileconfig: false
-mobileconfig_info: null
+mobileconfig_info: ''
 os_specifics:
   macOS:
     '11.0':

@@ -24,8 +24,8 @@ references:
       - SC-21
     800-53r4:
       - SC-21
-  cce:
-    - $OS_VALUE
+    cce:
+      - $OS_VALUE
   cis:
     benchmark:
       - $OS_VALUE
@@ -41,7 +41,7 @@ tags:
   - permanent
   - cisv8
 mobileconfig: false
-mobileconfig_info: null
+mobileconfig_info: ''
 os_specifics:
   macOS:
     '11.0':

@@ -28,8 +28,8 @@ references:
       - SC-8
     800-171r2:
       - 3.13.8
-  cce:
-    - $OS_VALUE
+    cce:
+      - $OS_VALUE
   cis:
     benchmark:
       - $OS_VALUE

@@ -25,8 +25,8 @@ references:
     800-53r4:
       - AU-4
       - AU-11
-  cce:
-    - $OS_VALUE
+    cce:
+      - $OS_VALUE
   cis:
     benchmark:
       - $OS_VALUE
@@ -52,7 +52,7 @@ tags:
   - cisv8
 severity: medium
 mobileconfig: false
-mobileconfig_info: null
+mobileconfig_info: ''
 os_specifics:
   macOS:
     '11.0':

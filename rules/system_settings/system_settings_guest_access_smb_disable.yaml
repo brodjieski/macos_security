@@ -28,8 +28,8 @@ references:
     800-53r4:
       - AC-2
       - AC-2(9)
-  cce:
-    - $OS_VALUE
+    cce:
+      - $OS_VALUE
   cis:
     benchmark:
       - $OS_VALUE
@@ -47,7 +47,7 @@ tags:
   - cis_lvl2
   - cisv8
 mobileconfig: false
-mobileconfig_info: null
+mobileconfig_info: ''
 os_specifics:
   macOS:
     '13.0':

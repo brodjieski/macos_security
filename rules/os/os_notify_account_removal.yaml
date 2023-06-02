@@ -18,14 +18,14 @@ references:
       - N/A
     800-53r4:
       - AC-2(4)
-  cce:
-    - $OS_VALUE
+    cce:
+      - $OS_VALUE
 tags:
   - 800-53r4_moderate
   - 800-53r4_high
   - permanent
 mobileconfig: false
-mobileconfig_info: null
+mobileconfig_info: ''
 os_specifics:
   macOS:
     '11.0':

@@ -34,8 +34,8 @@ references:
       - 3.1.2
       - 3.1.16
       - 3.4.7
-  cce:
-    - $OS_VALUE
+    cce:
+      - $OS_VALUE
   cis:
     benchmark:
       - $OS_VALUE
@@ -53,7 +53,7 @@ tags:
   - cis_lvl1
   - cis_lvl2
 mobileconfig: false
-mobileconfig_info: null
+mobileconfig_info: ''
 os_specifics:
   macOS:
     '11.0':

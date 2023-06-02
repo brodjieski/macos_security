@@ -30,8 +30,8 @@ references:
       - 3.13.3
     800-53r4:
       - None
-  cce:
-    - $OS_VALUE
+    cce:
+      - $OS_VALUE
   cis:
     benchmark:
       - $OS_VALUE

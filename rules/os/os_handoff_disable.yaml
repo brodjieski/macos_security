@@ -34,8 +34,8 @@ references:
       - 3.1.2
       - 3.1.20
       - 3.4.6
-  cce:
-    - $OS_VALUE
+    cce:
+      - $OS_VALUE
   cis:
     benchmark:
       - $OS_VALUE

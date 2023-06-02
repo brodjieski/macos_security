@@ -18,8 +18,8 @@ references:
       - SI-3
     800-53r4:
       - N/A
-  cce:
-    - $OS_VALUE
+    cce:
+      - $OS_VALUE
   cis:
     benchmark:
       - $OS_VALUE
@@ -32,7 +32,7 @@ tags:
   - 800-53r5_high
   - cisv8
 mobileconfig: false
-mobileconfig_info: null
+mobileconfig_info: ''
 os_specifics:
   macOS:
     '11.0':
