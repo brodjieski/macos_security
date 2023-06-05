@@ -4,33 +4,36 @@ discussion: |
   The macOS system time  _MUST_ be monitored to not drift more than four minutes and thirty seconds.
 check: |
   /usr/bin/sntp $(/usr/sbin/systemsetup -getnetworktimeserver | /usr/bin/awk '{print $4}') | /usr/bin/awk -F'.' '/\+\/\-/{if (substr($1,2) >= 270) {print "No"} else {print "Yes"}}'
-result:
-  string: 'Yes'
+result: 'Yes'
 fix: |
   [source,bash]
   ----
   /usr/bin/sntp -Ss $(/usr/sbin/systemsetup -getnetworktimeserver | /usr/bin/awk '{print $4}')
   ----
 references:
-  cce:
-    - $OS_VALUE
-  800-53r5:
-    - N/A
-  800-53r4:
-    - N/A
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - N/A
+  disa:
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    cci:
+      - None
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - N/A
+    800-53r4:
+      - N/A
+    800-171r2:
+      - N/A
   cis:
     benchmark:
       - $OS_VALUE
     controls v8:
       - $OS_VALUE
-  cci:
-    - None
 tags:
   - cis_lvl1
   - cis_lvl2
@@ -47,6 +50,8 @@ os_specifics:
           - N/A
         srg:
           - N/A
+        sfr:
+          - N/A
         cis:
           benchmark:
             - 2.2.2 (level 1)
@@ -60,6 +65,8 @@ os_specifics:
           - N/A
         srg:
           - N/A
+        sfr:
+          - N/A
         cis:
           benchmark:
             - 2.2.2 (level 1)
@@ -72,6 +79,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
         cis:
           benchmark:

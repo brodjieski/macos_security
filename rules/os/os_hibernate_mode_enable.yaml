@@ -2,8 +2,7 @@ id: os_hibernate_mode_enable
 title: Enable Hibernate Mode
 discussion: $OS_VALUE
 check: "error_count=0\nif /usr/sbin/ioreg -rd1 -c IOPlatformExpertDevice 2>&1 | /usr/bin/grep -q \"MacBook\"; then\n  hibernateMode=$(/usr/bin/pmset -b -g | /usr/bin/grep hibernatemode 2>&1 | /usr/bin/awk '{print $2}')\n  if [[ \"$(/usr/sbin/sysctl -n machdep.cpu.brand_string)\" =~ \"Intel\" ]]; then\n      hibernateStandbyLowValue=$(/usr/bin/pmset -g | /usr/bin/grep standbydelaylow 2>&1 | /usr/bin/awk '{print $2}')\n      hibernateStandbyHighValue=$(/usr/bin/pmset -g | /usr/bin/grep standbydelayhigh 2>&1 | /usr/bin/awk '{print $2}')\n      hibernateStandbyThreshValue=$(/usr/bin/pmset -g | /usr/bin/grep highstandbythreshold 2>&1 | /usr/bin/awk '{print $2}')\n      \n      if [[ \"$hibernateStandbyLowValue\" == \"\" ]] || [[ \"$hibernateStandbyLowValue\" -gt 600 ]]; then\n          ((error_count++))\n      fi\n      if [[ \"$hibernateStandbyHighValue\" == \"\" ]] || [[ \"$hibernateStandbyHighValue\" -gt 600 ]]; then\n          ((error_count++))\n      fi\n      if [[ \"$hibernateStandbyThreshValue\" == \"\" ]] || [[ \"$hibernateStandbyThreshValue\" -lt 90 ]]; then\n          ((error_count++))\n      fi\n  else\n      if [[ \"$(/usr/bin/pmset -g | /usr/bin/grep standbydelay 2>&1 | /usr/bin/awk '{print $2}')\" -gt 900 ]]; then\n          ((error_count++))\n      fi\n  fi\n  if [[ \"$hibernateMode\" == \"\" ]] || [[ \"$hibernateMode\" != 25 ]]; then\n    ((error_count++))\n  fi\nfi\necho \"$error_count\"\n"
-result:
-  integer: 0
+result: 0
 fix: |
   [source,bash]
   ----
@@ -17,25 +16,29 @@ fix: |
   fi
   ----
 references:
-  cce:
-    - $OS_VALUE
-  800-53r5:
-    - N/A
-  800-53r4:
-    - N/A
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - N/A
+  disa:
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    cci:
+      - None
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - N/A
+    800-53r4:
+      - N/A
+    800-171r2:
+      - N/A
   cis:
     benchmark:
       - $OS_VALUE
     controls v8:
       - $OS_VALUE
-  cci:
-    - None
 tags:
   - cis_lvl2
   - cisv8
@@ -51,6 +54,8 @@ os_specifics:
           - N/A
         srg:
           - N/A
+        sfr:
+          - N/A
         cis:
           benchmark:
             - 2.8.3 (level 2)
@@ -65,6 +70,8 @@ os_specifics:
           - N/A
         srg:
           - N/A
+        sfr:
+          - N/A
         cis:
           benchmark:
             - 2.8.3 (level 2)
@@ -78,6 +85,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
         cis:
           benchmark:

@@ -2,28 +2,31 @@ id: audit_failure_halt
 title: Configure System to Shut Down Upon Audit Failure
 discussion: "The audit service _MUST_ be configured to shut down the computer if it is unable to audit system events. \n\nOnce audit failure occurs, user and system activity are no longer recorded, and malicious activity could go undetected. Audit processing failures can occur due to software/hardware errors, failures in the audit capturing mechanisms, and audit storage capacity being reached or exceeded. \n"
 check: "/usr/bin/awk -F':' '/^policy/ {print $NF}' /etc/security/audit_control | /usr/bin/tr ',' '\\n' | /usr/bin/grep -Ec 'ahlt' \n"
-result:
-  integer: 1
+result: 1
 fix: |
   [source,bash]
   ----
   /usr/bin/sed -i.bak 's/^policy.*/policy: ahlt,argv/' /etc/security/audit_control; /usr/sbin/audit -s
   ----
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-000140
-  800-53r5:
-    - AU-5
-  800-53r4:
-    - AU-5
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.3.4
+  disa:
+    cci:
+      - CCI-000140
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - AU-5
+    800-53r4:
+      - AU-5
+    800-171r2:
+      - 3.3.4
 tags:
   - 800-53r5_low
   - 800-53r5_moderate
@@ -32,6 +35,7 @@ tags:
   - 800-53r4_moderate
   - 800-53r4_high
   - 800-171
+  - cnssi-1253
   - stig
 severity: medium
 mobileconfig: false
@@ -46,6 +50,18 @@ os_specifics:
           - APPL-11-001010
         srg:
           - SRG-OS-000047-GPOS-00023
+        sfr:
+          - N/A
+    '10.15':
+      references:
+        cce:
+          - CCE-84708-7
+        disa_stig:
+          - AOSX-15-001010
+        srg:
+          - SRG-OS-000047-GPOS-00023
+        sfr:
+          - N/A
     '12.0':
       references:
         cce:
@@ -54,11 +70,15 @@ os_specifics:
           - APPL-12-001010
         srg:
           - SRG-OS-000047-GPOS-00023
+        sfr:
+          - N/A
     '13.0':
       references:
         cce:
           - CCE-91711-2
         disa_stig:
-          - N/A
+          - APPL-13-001010
         srg:
+          - SRG-OS-000047-GPOS-00023
+        sfr:
           - N/A

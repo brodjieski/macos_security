@@ -4,24 +4,27 @@ discussion: "Remote login service _MUST_ be configured to display a policy banne
 check: |
   bannerText="$ODV"
   test "$(cat /etc/banner)" = "$bannerText" && echo "1" || echo "0"
-result:
-  integer: 1
+result: 1
 fix: "[source,bash]\n----\nbannerText=\"$ODV\"\n/bin/echo \"${bannerText}\" > /etc/banner\n----   \n"
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-000048
-  800-53r5:
-    - AC-8
-  800-53r4:
-    - AC-8
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.1.9
+  disa:
+    cci:
+      - CCI-000048
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - AC-8
+    800-53r4:
+      - AC-8
+    800-171r2:
+      - 3.1.9
 odv:
   hint: Organization's Policy Text
   recommended: |-
@@ -39,6 +42,13 @@ odv:
     -This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.
     -Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.
 tags:
+  - 800-53r5_low
+  - 800-53r5_moderate
+  - 800-53r5_high
+  - 800-53r4_low
+  - 800-53r4_moderate
+  - 800-53r4_high
+  - 800-171
   - stig
 severity: medium
 mobileconfig: false
@@ -53,6 +63,18 @@ os_specifics:
           - APPL-11-000023
         srg:
           - SRG-OS-000023-GPOS-00006
+        sfr:
+          - N/A
+    '10.15':
+      references:
+        cce:
+          - CCE-84778-0
+        disa_stig:
+          - AOSX-15-000023
+        srg:
+          - SRG-OS-000023-GPOS-00006
+        sfr:
+          - N/A
     '12.0':
       references:
         cce:
@@ -61,6 +83,8 @@ os_specifics:
           - APPL-12-000023
         srg:
           - SRG-OS-000023-GPOS-00006
+        sfr:
+          - N/A
     '13.0':
       references:
         cce:
@@ -68,4 +92,6 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A

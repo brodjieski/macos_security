@@ -3,31 +3,34 @@ title: Disable Login to Other User's Active and Locked Sessions
 discussion: "The ability to log in to another user's active or locked session _MUST_ be disabled. \n\nmacOS has a privilege that can be granted to any user that will allow that user to unlock active user's sessions. Disabling the admins and/or user's ability to log into another user's active andlocked session prevents unauthorized persons from viewing potentially sensitive and/or personal information.\n"
 check: |
   /usr/bin/security authorizationdb read system.login.screensaver 2>&1 | /usr/bin/grep -c 'use-login-window-ui'
-result:
-  integer: 1
+result: 1
 fix: |
   [source,bash]
   ----
   /usr/bin/security authorizationdb write system.login.screensaver "use-login-window-ui"
   ----
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - IA-2
-    - IA-2(5)
-  800-53r4:
-    - IA-2
-    - IA-2(5)
-  disa_stig:
-    - $OS_VALUE
-  srg:
-    - $OS_VALUE
-  800-171r2:
-    - 3.5.1
-    - 3.5.2
+  disa:
+    cci:
+      - N/A
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - IA-2
+      - IA-2(5)
+    800-53r4:
+      - IA-2
+      - IA-2(5)
+    800-171r2:
+      - 3.5.1
+      - 3.5.2
   cis:
     benchmark:
       - $OS_VALUE
@@ -43,6 +46,8 @@ tags:
   - 800-171
   - cis_lvl1
   - cis_lvl2
+  - cisv8
+  - cnssi-1253
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
@@ -55,11 +60,23 @@ os_specifics:
           - N/A
         srg:
           - N/A
+        sfr:
+          - N/A
         cis:
           benchmark:
             - 5.7 (level 1)
           controls v8:
             - 4.3
+    '10.15':
+      references:
+        cce:
+          - CCE-84804-4
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        sfr:
+          - N/A
     '12.0':
       references:
         cce:
@@ -67,6 +84,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
         cis:
           benchmark:
@@ -80,6 +99,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
         cis:
           benchmark:

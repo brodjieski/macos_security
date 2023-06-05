@@ -9,27 +9,30 @@ check: |
   $.NSUserDefaults.alloc.initWithSuiteName('com.apple.MCX')\
   .objectForKey('timeServer').js
   EOS
-result:
-  string: $ODV
+result: $ODV
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-001891
-    - CCI-002046
-  800-53r5:
-    - AU-12(1)
-    - SC-45(1)
-  800-53r4:
-    - AU-8(1)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.3.7
+  disa:
+    cci:
+      - CCI-001891
+      - CCI-002046
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - AU-12(1)
+      - SC-45(1)
+    800-53r4:
+      - AU-8(1)
+    800-171r2:
+      - 3.3.7
   cis:
     benchmark:
       - $OS_VALUE
@@ -48,10 +51,11 @@ tags:
   - 800-53r5_high
   - 800-53r4_moderate
   - 800-53r4_high
-  - stig
   - cis_lvl1
   - cis_lvl2
   - cisv8
+  - stig
+  - cnssi-1253
 severity: medium
 mobileconfig: true
 mobileconfig_info:
@@ -68,9 +72,27 @@ os_specifics:
         srg:
           - SRG-OS-000355-GPOS-00143
           - SRG-OS-000356-GPOS-00144
+        sfr:
+          - N/A
         cis:
           benchmark:
             - 2.2.1 (level 1)
+          controls v8:
+            - 8.4
+    '10.15':
+      references:
+        cce:
+          - CCE-84846-5
+        disa_stig:
+          - AOSX-15-000014
+        srg:
+          - SRG-OS-000355-GPOS-00143
+          - SRG-OS-000356-GPOS-00144
+        sfr:
+          - N/A
+        cis:
+          benchmark:
+            - N/A
           controls v8:
             - 8.4
     '12.0':
@@ -82,6 +104,8 @@ os_specifics:
         srg:
           - SRG-OS-000355-GPOS-00143
           - SRG-OS-000356-GPOS-00144
+        sfr:
+          - N/A
         cis:
           benchmark:
             - 2.2.1 (level 1)

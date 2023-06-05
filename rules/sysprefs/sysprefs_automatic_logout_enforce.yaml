@@ -6,26 +6,29 @@ check: |
   $.NSUserDefaults.alloc.initWithSuiteName('.GlobalPreferences')\
   .objectForKey('com.apple.autologout.AutoLogOutDelay').js
   EOS
-result:
-  integer: $ODV
+result: $ODV
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-002361
-  800-53r5:
-    - AC-12
-    - AC-2(5)
-  800-53r4:
-    - AC-12
-  disa_stig:
-    - $OS_VALUE
-  srg:
-    - $OS_VALUE
-  800-171r2:
-    - 3.1.11
+  disa:
+    cci:
+      - CCI-002361
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - AC-12
+      - AC-2(5)
+    800-53r4:
+      - AC-12
+    800-171r2:
+      - 3.1.11
 odv:
   hint: Number of seconds
   recommended: 86400
@@ -35,6 +38,7 @@ tags:
   - 800-53r4_moderate
   - 800-53r4_high
   - 800-171
+  - cnssi-1253
 mobileconfig: true
 mobileconfig_info:
   .GlobalPreferences:
@@ -49,6 +53,18 @@ os_specifics:
           - N/A
         srg:
           - SRG-OS-000279-GPOS-00109
+        sfr:
+          - N/A
+    '10.15':
+      references:
+        cce:
+          - CCE-84870-5
+        disa_stig:
+          - N/A
+        srg:
+          - SRG-OS-000279-GPOS-00109
+        sfr:
+          - N/A
     '12.0':
       references:
         cce:
@@ -56,4 +72,6 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A

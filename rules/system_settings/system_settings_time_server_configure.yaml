@@ -9,26 +9,29 @@ check: |
   $.NSUserDefaults.alloc.initWithSuiteName('com.apple.MCX')\
   .objectForKey('timeServer').js
   EOS
-result:
-  string: $ODV
+result: $ODV
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - AU-12(1)
-    - SC-45(1)
-  800-53r4:
-    - AU-8(1)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.3.7
+  disa:
+    cci:
+      - N/A
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - AU-12(1)
+      - SC-45(1)
+    800-53r4:
+      - AU-8(1)
+    800-171r2:
+      - 3.3.7
   cis:
     benchmark:
       - $OS_VALUE
@@ -63,6 +66,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
         cis:
           benchmark:

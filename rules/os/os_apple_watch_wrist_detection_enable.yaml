@@ -6,31 +6,31 @@ check: ' '
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-000381
-  800-53r5:
-    - AC-3
-    - AC-5
-    - AC-6
-    - CM-7
-    - MP-2
-  sfr:
-    - 'FMT_SMF_EXT.1.1 #47'
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - N/A
+  disa:
+    cci:
+      - CCI-000381
+    sfr:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - AC-3
+      - CM-7
+      - CM-7(1)
+    800-171r2:
+      - N/A
+    800-53r4:
+      - None
   cis:
     benchmark:
       - $OS_VALUE
     controls v8:
       - $OS_VALUE
-  800-53r4:
-    - None
-  srg:
-    - $OS_VALUE
 tags:
   - ios
   - 800-53r5_low
@@ -49,7 +49,7 @@ mobileconfig_info:
   com.apple.applicationaccess:
     forceWatchWristDetection: true
 os_specifics:
-  ios:
+  iOS:
     '16.0':
       references:
         cce:
@@ -58,6 +58,8 @@ os_specifics:
           - AIOS-16-011800
         srg:
           - None
+        sfr:
+          - 'FMT_SMF_EXT.1.1 #47'
         cis:
           benchmark:
             - 2.2.1.13 (level 1 - End-User Owned Devices)

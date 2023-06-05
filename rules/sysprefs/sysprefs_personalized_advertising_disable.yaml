@@ -2,31 +2,34 @@ id: sysprefs_personalized_advertising_disable
 title: Disable Personalized Advertising
 discussion: "Ad tracking and targeted ads _MUST_ be disabled.\n\nThe information system _MUST_ be configured to provide only essential capabilities. Disabling ad tracking ensures that applications and advertisers are unable to track users' interests and deliver targeted advertisements.  \n"
 check: $OS_VALUE
-result:
-  string: 'false'
+result: 'false'
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - AC-20
-    - CM-7
-    - CM-7(1)
-    - SC-7(10)
-  800-53r4:
-    - AC-20
-    - CM-7
-    - CM-7(1)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.1.20
-    - 3.4.6
+  disa:
+    cci:
+      - N/A
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - AC-20
+      - CM-7
+      - CM-7(1)
+      - SC-7(10)
+    800-53r4:
+      - AC-20
+      - CM-7
+      - CM-7(1)
+    800-171r2:
+      - 3.1.20
+      - 3.4.6
   cis:
     benchmark:
       - $OS_VALUE
@@ -40,9 +43,9 @@ tags:
   - 800-53r4_moderate
   - 800-53r4_high
   - 800-171
-  - cisv8
   - cis_lvl1
   - cis_lvl2
+  - cisv8
 mobileconfig: true
 mobileconfig_info:
   com.apple.AdLib:
@@ -56,6 +59,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
         cis:
           benchmark:
@@ -75,6 +80,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
         cis:
           benchmark:

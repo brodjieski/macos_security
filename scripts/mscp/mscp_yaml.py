@@ -70,10 +70,9 @@ class Yaml:
                         ) from exc
         return rule_dict
 
-    def compileRules(self, original_rules, custom_rules, benchmark, macos):
+    def compileRules(self, original_rules, custom_rules, benchmark, platform, os_version):
         """Takes the orginal rules and the custom rules and returns a list of rules with usable values"""
         rule_list = []
-        
         # build list of rules from original library, overriding values from custom library
         for rule in original_rules:
             record = {}
@@ -86,7 +85,7 @@ class Yaml:
                     logger.info(f"Overwriting value for {k} in {rule}")
                     record[k] = v
             self.fill_in_ODV(record, benchmark)
-            if self.fill_in_OS_specs(record, macos):
+            if self.fill_in_OS_specs(record, platform, os_version):
                 rule_list.append(record)
 
         # add any new custom rules found that don't match with original library
@@ -97,7 +96,7 @@ class Yaml:
                 for k, v in custom_rules[rule].items():
                     record[k] = v
                 self.fill_in_ODV(record, benchmark)
-                if self.fill_in_OS_specs(record, macos):
+                if self.fill_in_OS_specs(record, platform, os_version):
                     rule_list.append(record)
 
         return rule_list
@@ -120,9 +119,10 @@ class Yaml:
                 if "$ODV" in rule[field]:
                     rule[field]=rule[field].replace("$ODV", odv)
 
-            for result_value in rule['result']:
-                if "$ODV" in str(rule['result'][result_value]):
-                    rule['result'][result_value] = odv
+            if 'result' in rule.keys():
+                for result_value in rule['result']:
+                    if "$ODV" in str(rule['result'][result_value]):
+                        rule['result'][result_value] = odv
 
             if rule['mobileconfig_info']:
                 for mobileconfig_type in rule['mobileconfig_info']:
@@ -131,30 +131,30 @@ class Yaml:
                             if "$ODV" in str(rule['mobileconfig_info'][mobileconfig_type][mobileconfig_value]):
                                 rule['mobileconfig_info'][mobileconfig_type][mobileconfig_value] = odv
     
-    def fill_in_OS_specs(self, rule, macos):
+    def fill_in_OS_specs(self, rule, platform, os_version):
         """Takes a rule and fills in any OS specific values for the supplied OS.  Default is the version of OS on the current system."""
         try:
-            macos_specs = rule["os_specifics"]['macOS'][macos]
+            os_version_specs = rule["os_specifics"][platform][os_version]
         except KeyError:
-            logging.info(f"fill_in_OS_specs:  Rule {rule['id']} has no values for macOS {macos}, skipping...")
+            logging.info(f"fill_in_OS_specs:  Rule {rule['id']} has no values for OS {platform} {os_version}, skipping...")
             return False
 
         _included_keys = []
-        for key, value in recursive_items(macos_specs):
+        for key, value in recursive_items(os_version_specs):
             _included_keys.append(key)
 
         if "references" in _included_keys:
             _included_keys.remove("references")
             for key in _included_keys:
                 try:
-                    rule['references'][key]=rule["os_specifics"]['macOS'][macos]['references'][key]
+                    rule['references'][key]=rule["os_specifics"][platform][os_version]['references'][key]
                 except:
                     pass
             
         # process remaining keys
         for key in _included_keys:
             try:
-                rule[key]=rule["os_specifics"]['macOS'][macos][key]
+                rule[key]=rule["os_specifics"][platform][os_version][key]
             except:
                 pass
         

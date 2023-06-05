@@ -9,24 +9,28 @@ discussion: |
   ====
 check: |
   /usr/bin/profiles -P -o stdout | /usr/bin/grep -Ec '(BurnSupport = off;|ProhibitBurn = 1;)'
-result:
-  integer: 2
+result: 2
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - $OS_VALUE
-  800-53r5:
-    - MP-7
-  800-53r4:
-    - MP-7(1)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  cci:
-    - None
+  disa:
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    cci:
+      - None
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - MP-7
+    800-53r4:
+      - MP-7(1)
 tags:
+  - none
   - stig
 severity: low
 mobileconfig: true
@@ -45,6 +49,8 @@ os_specifics:
           - APPL-12-005053
         srg:
           - SRG-OS-000480-GPOS-00227
+        sfr:
+          - N/A
     '12.0':
       references:
         cce:
@@ -53,6 +59,8 @@ os_specifics:
           - APPL-12-005053
         srg:
           - SRG-OS-000480-GPOS-00227
+        sfr:
+          - N/A
     '13.0':
       references:
         cce:
@@ -60,4 +68,6 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A

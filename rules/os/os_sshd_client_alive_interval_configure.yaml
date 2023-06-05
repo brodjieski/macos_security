@@ -2,30 +2,38 @@ id: os_sshd_client_alive_interval_configure
 title: $OS_VALUE
 discussion: $OS_VALUE
 check: $OS_VALUE
-result:
-  integer: 1
+result: 1
 fix: $OS_VALUE
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-001133
-  800-53r5:
-    - SC-10
-    - AC-12
-  800-53r4:
-    - SC-10
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.13.9
+  disa:
+    cci:
+      - CCI-001133
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - SC-10
+      - AC-12
+    800-53r4:
+      - SC-10
+    800-171r2:
+      - 3.13.9
 odv:
   hint: Number of seconds.
   recommended: 900
   stig: 900
 tags:
+  - 800-53r5_moderate
+  - 800-53r5_high
+  - 800-53r4_moderate
+  - 800-53r4_high
+  - 800-171
   - stig
 severity: medium
 mobileconfig: false
@@ -40,6 +48,8 @@ os_specifics:
           - APPL-11-000051
         srg:
           - SRG-OS-000163-GPOS-00072
+        sfr:
+          - N/A
       discussion: "If SSHD is enabled then it _MUST_ be configured with an Active Client Alive Maximum Count set to $ODV. \n\nSetting the Active Client Alive Maximum Count to $ODV (second) will log users out after an organizational defined interval of inactivity.\n\nNOTE: /etc/ssh/sshd_config will be automatically modified to its original state following any update or major upgrade to the operating system.\n"
       title: Configure SSHD ClientAliveInterval option set to $ODV
       check: |
@@ -49,6 +59,25 @@ os_specifics:
         ----
         /usr/bin/sed -i.bak 's/.*ClientAliveInterval.*/ClientAliveInterval $ODV/' /etc/ssh/sshd_config; /bin/launchctl kickstart -k system/com.openssh.sshd
         ----
+    '10.15':
+      references:
+        cce:
+          - CCE-84793-9
+        disa_stig:
+          - AOSX-15-000051
+        srg:
+          - SRG-OS-000163-GPOS-00072
+        sfr:
+          - N/A
+      discussion: "If SSHD is enabled then it _MUST_ be configured with an Active Client Alive Maximum Count set to $ODV. \n\nSetting the Active Client Alive Maximum Count to $ODV  (second) will log users out after a 15-minute interval of inactivity.\n\nNOTE: /etc/ssh/sshd_config will be automatically modified to its original state following any update or major upgrade to the operating system.\n"
+      title: Configure SSHD ClientAliveInterval option set to $ODV
+      check: |
+        /usr/bin/grep -c "^ClientAliveInterval $ODV " /etc/ssh/sshd_config
+      fix: |
+        [source,bash]
+        ----
+        /usr/bin/sed -i.bak 's/.*ClientAliveInterval.*/ClientAliveInterval $ODV /' /etc/ssh/sshd_config; /bin/launchctl kickstart -k system/com.openssh.sshd
+        ----
     '12.0':
       references:
         cce:
@@ -57,6 +86,8 @@ os_specifics:
           - APPL-12-000051
         srg:
           - SRG-OS-000163-GPOS-00072
+        sfr:
+          - N/A
       discussion: "If SSHD is enabled then it _MUST_ be configured with the Client Alive Interval set to $ODV. \n\nSets a timeout interval in seconds after which if no data has been received from the client, sshd(8) will send a message through the encrypted channel to request a response from the client.\n\nThis setting works in conjuction with ClientAliveCountMax to determine the termination of the connection after the threshold has been reached.\n\nNOTE: This setting is not intended to manage idle user sessions where there is no input from the client. Its purpose is to monitor for interruptions in network connectivity and force the session to terminate after the connection appears to be broken.\n\nNOTE: /etc/ssh/sshd_config will be automatically modified to its original state following any update or major upgrade to the operating system.\n"
       title: Configure SSHD ClientAliveInterval to $ODV
       check: |
@@ -89,6 +120,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
       discussion: "If SSHD is enabled then it _MUST_ be configured with the Client Alive Interval set to $ODV. \n\nSets a timeout interval in seconds after which if no data has been received from the client, sshd(8) will send a message through the encrypted channel to request a response from the client.\n\nThis setting works in conjuction with ClientAliveCountMax to determine the termination of the connection after the threshold has been reached.\n\nNOTE: This setting is not intended to manage idle user sessions where there is no input from the client. Its purpose is to monitor for interruptions in network connectivity and force the session to terminate after the connection appears to be broken.\n\nNOTE: /etc/ssh/sshd_config will be automatically modified to its original state following any update or major upgrade to the operating system.\n"
       title: Configure SSHD ClientAliveInterval to $ODV

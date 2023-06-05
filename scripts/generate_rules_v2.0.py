@@ -81,7 +81,7 @@ def create_os_specifics(rule, fields):
     try:
         version=rule['macOS'][0]
     except:
-        version=rule['ios'][0]
+        version=rule['iOS'][0]
     new_rule_yaml = {}
     new_rule_yaml[version] = {}
     
@@ -90,6 +90,10 @@ def create_os_specifics(rule, fields):
     new_rule_yaml[version]['references']['cce'] = rule['references']['cce']
     new_rule_yaml[version]['references']['disa_stig'] = rule['references']['disa_stig']
     new_rule_yaml[version]['references']['srg'] = rule['references']['srg']
+    if 'sfr' in rule['references'].keys():
+        new_rule_yaml[version]['references']['sfr'] = rule['references']['sfr']
+    else:
+        new_rule_yaml[version]['references']['sfr'] = ["N/A"]
     if 'cis' in rule['references'].keys():
         new_rule_yaml[version]['references']['cis'] = {}
 
@@ -100,7 +104,7 @@ def create_os_specifics(rule, fields):
     # process fields
     for field in fields:
         new_rule_yaml[version][field] = rule[field]
-    print(new_rule_yaml)
+    #print(new_rule_yaml)
     return new_rule_yaml
 
 def check_for_unique_fields(all_rules, rule_id):
@@ -118,7 +122,7 @@ def check_for_unique_fields(all_rules, rule_id):
                 continue
             else:
                 os_specific_fields.append(field)
-                print(f'{field} is DIFFERENT across OS versions')
+                #print(f'{field} is DIFFERENT across OS versions')
         except KeyError as e:
             print("rule not found in one of the OSs")
             print(e)
@@ -127,7 +131,22 @@ def check_for_unique_fields(all_rules, rule_id):
 
     return os_specific_fields
 
-    
+def keys_exists(element, *keys):
+    '''
+    Check if *keys (nested) exists in `element` (dict).
+    '''
+    if not isinstance(element, dict):
+        raise AttributeError('keys_exists() expects dict as first argument.')
+    if len(keys) == 0:
+        raise AttributeError('keys_exists() expects at least two arguments, one given.')
+
+    _element = element
+    for key in keys:
+        try:
+            _element = _element[key]
+        except KeyError:
+            return False
+    return True
 
 
 def main():
@@ -167,6 +186,8 @@ def main():
             rule['references']['cce'] = ['$OS_VALUE']
             rule['references']['disa_stig'] = ['$OS_VALUE']
             rule['references']['srg'] = ['$OS_VALUE']
+            rule['references']['sfr'] = ['$OS_VALUE']
+
             try:
                 rule['references']['cis']['benchmark'] = ['$OS_VALUE']
             except:
@@ -183,8 +204,8 @@ def main():
                 del rule['macOS']
                 spec_var = "macOS"
             except:
-                del rule['ios']
-                spec_var = "ios"
+                del rule['iOS']
+                spec_var = "iOS"
             else:
                 pass
 
@@ -198,6 +219,11 @@ def main():
                     new_rules[rule["id"]]["os_specifics"][spec_var].update(os_specs)
                 except KeyError:
                     new_rules[rule['id']]['os_specifics'][spec_var] = os_specs
+                
+                current_tags=rule['tags']
+                new_tags=new_rules[rule["id"]]["tags"]
+                combined_tags=current_tags + list(set(new_tags) - set(current_tags))
+                new_rules[rule["id"]]["tags"]=combined_tags
 
     #pprint.pprint(new_rules)
 

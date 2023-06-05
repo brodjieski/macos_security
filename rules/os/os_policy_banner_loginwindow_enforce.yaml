@@ -3,30 +3,33 @@ title: Display Policy Banner at Login Window
 discussion: "Displaying a standardized and approved use notification before granting access to the operating system ensures that users are provided with privacy and security notification verbiage that is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.\n\nSystem use notifications are required only for access via login interfaces with human users and are not required when such human interfaces do not exist.\n\nThe policy banner will show if a \"PolicyBanner.rtf\" or \"PolicyBanner.rtfd\" exists in the \"/Library/Security\" folder.\nNOTE: \n  The banner text of the document _MUST_ read:\n\n  \"$ODV\"\n"
 check: |
   /bin/ls -ld /Library/Security/PolicyBanner.rtf* | /usr/bin/wc -l | /usr/bin/tr -d ' '
-result:
-  integer: 1
+result: 1
 fix: "[source,bash]\n----\nbannerText=\"$ODV\"\n/bin/mkdir /Library/Security/PolicyBanner.rtfd\n/usr/bin/textutil -convert rtf -output /Library/Security/PolicyBanner.rtfd/TXT.rtf -stdin <<EOF              \n$bannerText\nEOF\n----\n"
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-000048
-    - CCI-000050
-    - CCI-001384
-    - CCI-001385
-    - CCI-001386
-    - CCI-001387
-    - CCI-001388
-  800-53r5:
-    - AC-8
-  800-53r4:
-    - AC-8
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.1.9
+  disa:
+    cci:
+      - CCI-000048
+      - CCI-000050
+      - CCI-001384
+      - CCI-001385
+      - CCI-001386
+      - CCI-001387
+      - CCI-001388
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - AC-8
+    800-53r4:
+      - AC-8
+    800-171r2:
+      - 3.1.9
   cis:
     benchmark:
       - $OS_VALUE
@@ -52,8 +55,9 @@ tags:
   - 800-53r4_moderate
   - 800-53r4_high
   - 800-171
-  - stig
   - cis_lvl2
+  - stig
+  - cnssi-1253
 severity: medium
 mobileconfig: false
 mobileconfig_info: null
@@ -69,11 +73,25 @@ os_specifics:
           - SRG-OS-000023-GPOS-00006
           - SRG-OS-000024-GPOS-00007
           - SRG-OS-000228-GPOS-00088
+        sfr:
+          - N/A
         cis:
           benchmark:
             - 5.8 (level 2)
           controls v8:
             - N/A
+    '10.15':
+      references:
+        cce:
+          - CCE-84777-2
+        disa_stig:
+          - AOSX-15-000025
+        srg:
+          - SRG-OS-000023-GPOS-00006
+          - SRG-OS-000024-GPOS-00007
+          - SRG-OS-000228-GPOS-00088
+        sfr:
+          - N/A
     '12.0':
       references:
         cce:
@@ -84,6 +102,8 @@ os_specifics:
           - SRG-OS-000023-GPOS-00006
           - SRG-OS-000024-GPOS-00007
           - SRG-OS-000228-GPOS-00088
+        sfr:
+          - N/A
         cis:
           benchmark:
             - 5.8 (level 2)
@@ -96,6 +116,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
         cis:
           benchmark:

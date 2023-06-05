@@ -7,26 +7,29 @@ check: |
   $.NSUserDefaults.alloc.initWithSuiteName('com.apple.security')\
   .objectForKey('GKAutoRearm').js
   EOS
-result:
-  string: 'true'
+result: 'true'
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - CM-5
-  800-53r4:
-    - CM-5
-    - SI-3
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.4.5
+  disa:
+    cci:
+      - N/A
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - CM-5
+    800-53r4:
+      - CM-5
+      - SI-3
+    800-171r2:
+      - 3.4.5
   cis:
     benchmark:
       - $OS_VALUE
@@ -40,6 +43,7 @@ tags:
   - 800-53r4_high
   - 800-171
   - cisv8
+  - cnssi-1253
 mobileconfig: true
 mobileconfig_info:
   com.apple.ManagedClient.preferences:
@@ -55,6 +59,23 @@ os_specifics:
           - N/A
         srg:
           - N/A
+        sfr:
+          - N/A
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 10.5
+    '10.15':
+      references:
+        cce:
+          - CCE-84852-3
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        sfr:
+          - N/A
         cis:
           benchmark:
             - N/A
@@ -68,6 +89,8 @@ os_specifics:
           - N/A
         srg:
           - N/A
+        sfr:
+          - N/A
         cis:
           benchmark:
             - N/A
@@ -80,6 +103,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
         cis:
           benchmark:

@@ -6,26 +6,29 @@ check: |
   $.NSUserDefaults.alloc.initWithSuiteName('com.apple.SoftwareUpdate')\
   .objectForKey('ConfigDataInstall').js
   EOS
-result:
-  string: 'true'
+result: 'true'
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - SI-3
-    - SI-2(5)
-  800-53r4:
-    - N/A
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - N/A
+  disa:
+    cci:
+      - N/A
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - SI-3
+      - SI-2(5)
+    800-53r4:
+      - N/A
+    800-171r2:
+      - N/A
   cis:
     benchmark:
       - $OS_VALUE
@@ -35,9 +38,10 @@ tags:
   - 800-53r5_low
   - 800-53r5_moderate
   - 800-53r5_high
-  - cisv8
   - cis_lvl1
   - cis_lvl2
+  - cisv8
+  - stig
 mobileconfig: true
 mobileconfig_info:
   com.apple.SoftwareUpdate:
@@ -52,9 +56,37 @@ os_specifics:
           - N/A
         srg:
           - N/A
+        sfr:
+          - N/A
         cis:
           benchmark:
             - 1.5 (level 1)
+          controls v8:
+            - 10.1
+            - 10.2
+            - 10.4
+      discussion: |
+        Software Update _MUST_ be configured to update XProtect, MRT, and Gatekeepr automatically.
+
+        This setting enforces definition updates for XProtect, MRT, and Gatekeeper; with this setting in place, new malware and adware that Apple has added to the list of malware or untrusted software will not execute. These updates do not require the computer to be restarted.
+
+        link:https://support.apple.com/en-us/HT207005[]
+
+        NOTE: Software update will automatically update XProtect, MRT, and Gatekeeper by default in the macOS.
+      title: Enforce Installation of XProtect, MRT, and Gatekeeper Updates Automatically
+    '10.15':
+      references:
+        cce:
+          - CCE-84929-9
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        sfr:
+          - N/A
+        cis:
+          benchmark:
+            - N/A
           controls v8:
             - 10.1
             - 10.2
@@ -76,6 +108,8 @@ os_specifics:
           - APPL-12-002070
         srg:
           - SRG-OS-000480-GPOS-00227
+        sfr:
+          - N/A
         cis:
           benchmark:
             - 1.5 (level 1)
@@ -99,6 +133,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
         cis:
           benchmark:

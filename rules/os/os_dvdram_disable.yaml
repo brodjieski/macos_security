@@ -17,26 +17,30 @@ check: |
   ObjC.unwrap($.NSUserDefaults.alloc.initWithSuiteName('com.apple.systemuiserver')\
   .objectForKey('mount-controls'))["dvdram"]
   EOS
-result:
-  string: deny
+result: deny
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - $OS_VALUE
-  800-53r5:
-    - MP-7
-  800-53r4:
-    - MP-7(1)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.8.8
-  cci:
-    - None
+  disa:
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    cci:
+      - None
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - MP-7
+    800-53r4:
+      - MP-7(1)
+    800-171r2:
+      - 3.8.8
 tags:
+  - none
   - stig
 severity: medium
 mobileconfig: true
@@ -57,6 +61,8 @@ os_specifics:
         srg:
           - SRG-OS-000480-GPOS-00227
           - SRG-OS-000319-GPOS-00164
+        sfr:
+          - N/A
     '12.0':
       references:
         cce:
@@ -66,6 +72,8 @@ os_specifics:
         srg:
           - SRG-OS-000480-GPOS-00227
           - SRG-OS-000319-GPOS-00164
+        sfr:
+          - N/A
     '13.0':
       references:
         cce:
@@ -73,4 +81,6 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A

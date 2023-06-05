@@ -6,20 +6,24 @@ check: |
 fix: |
   The technology inherently meets this requirement. No fix is required.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-002450
-  800-53r5:
-    - SC-13
-  800-53r4:
-    - SC-13
-  disa_stig:
-    - $OS_VALUE
-  srg:
-    - $OS_VALUE
-  800-171r2:
-    - 3.13.11
+  disa:
+    cci:
+      - CCI-002450
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - SC-13
+    800-53r4:
+      - SC-13
+    800-171r2:
+      - 3.13.11
 tags:
   - 800-53r5_low
   - 800-53r5_moderate
@@ -29,6 +33,7 @@ tags:
   - 800-53r4_high
   - 800-171
   - inherent
+  - cnssi-1253
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
@@ -41,7 +46,20 @@ os_specifics:
           - N/A
         srg:
           - SRG-OS-000396-GPOS-00176
+        sfr:
+          - N/A
       discussion: "The information system _IS_ configured to implement approved cryptography to protect information. \n\nUse of weak or untested encryption algorithms undermines the purposes of utilizing encryption to protect data. The operating system must implement cryptographic modules that adhere to the higher standards that have been tested, validated, and approved by the federal government. \n\nmacOS Big Sur has been submitted to the National Institute of Standards and Technology (NIST) and is in review for the cryptographic module for FIPS 140-3 validation.\n\nlink:https://csrc.nist.gov/Projects/cryptographic-module-validation-program/modules-in-process/Modules-In-Process-List[]\n\nlink:https://support.apple.com/en-us/HT201159[]\n"
+    '10.15':
+      references:
+        cce:
+          - CCE-84867-1
+        disa_stig:
+          - N/A
+        srg:
+          - SRG-OS-000396-GPOS-00176
+        sfr:
+          - N/A
+      discussion: "The information system _IS_ configured to implement approved cryptography to protect information. \n\nUse of weak or untested encryption algorithms undermines the purposes of utilizing encryption to protect data. The operating system must implement cryptographic modules that adhere to the higher standards that have been tested, validated, and approved by the federal government. \n\nmacOS Catalina has received FIPS validation from the National Institute of Standards and Technology (NIST).\n\nlink:https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/3858[]\nlink:https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/3859[]\nlink:https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/3811[]\n\nlink:https://support.apple.com/en-us/HT201159[]\n"
     '12.0':
       references:
         cce:
@@ -49,6 +67,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
       discussion: "The information system _IS_ configured to implement approved cryptography to protect information. \n\nUse of weak or untested encryption algorithms undermines the purposes of utilizing encryption to protect data. The operating system must implement cryptographic modules that adhere to the higher standards that have been tested, validated, and approved by the federal government. \n\nmacOS Monterey has been submitted to the National Institute of Standards and Technology (NIST) and is in review for the cryptographic module for FIPS 140-3 validation.\n\nlink:https://csrc.nist.gov/Projects/cryptographic-module-validation-program/modules-in-process/Modules-In-Process-List[]\n\nlink:https://support.apple.com/en-us/HT201159[]\n"
     '13.0':
@@ -58,5 +78,7 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
       discussion: "The information system _IS_ configured to implement approved cryptography to protect information. \n\nUse of weak or untested encryption algorithms undermines the purposes of utilizing encryption to protect data. The operating system must implement cryptographic modules that adhere to the higher standards that have been tested, validated, and approved by the federal government. \n\nApple is committed to the FIPS validation process and historically has always submitted and validated the cryptographic modules in macOS. macOS Ventura will be submitted for FIPS validation.\n\nlink:https://csrc.nist.gov/Projects/cryptographic-module-validation-program/validated-modules[]\n\nlink:https://support.apple.com/en-us/HT201159[]\n"

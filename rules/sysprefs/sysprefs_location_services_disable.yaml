@@ -3,31 +3,34 @@ title: Disable Location Services
 discussion: "Location Services _MUST_ be disabled. \n\nThe information system _MUST_ be configured to provide only essential capabilities.  Disabling Location Services helps prevent the unauthorized connection of devices, unauthorized transfer of information, and unauthorized tunneling.\n"
 check: |
   /usr/bin/defaults read /var/db/locationd/Library/Preferences/ByHost/com.apple.locationd.plist LocationServicesEnabled
-result:
-  boolean: 0
+result: 0
 fix: |
   [source,bash]
   ----
   /usr/bin/defaults write /var/db/locationd/Library/Preferences/ByHost/com.apple.locationd LocationServicesEnabled -bool false; /bin/launchctl kickstart -k system/com.apple.locationd
   ----
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-000381
-  800-53r5:
-    - CM-7
-    - CM-7(1)
-    - SC-7(10)
-  800-53r4:
-    - CM-7
-    - CM-7(1)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.4.6
+  disa:
+    cci:
+      - CCI-000381
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - CM-7
+      - CM-7(1)
+      - SC-7(10)
+    800-53r4:
+      - CM-7
+      - CM-7(1)
+    800-171r2:
+      - 3.4.6
 cis:
   benchmark:
     - N/A
@@ -42,6 +45,8 @@ tags:
   - 800-53r4_high
   - 800-171
   - stig
+  - cisv8
+  - cnssi-1253
 severity: medium
 mobileconfig: false
 mobileconfig_info: null
@@ -55,6 +60,24 @@ os_specifics:
           - APPL-11-002004
         srg:
           - SRG-OS-000095-GPOS-00049
+        sfr:
+          - N/A
+    '10.15':
+      references:
+        cce:
+          - CCE-84838-2
+        disa_stig:
+          - AOSX-15-002004
+        srg:
+          - SRG-OS-000095-GPOS-00049
+        sfr:
+          - N/A
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 4.1
+            - 4.8
     '12.0':
       references:
         cce:
@@ -63,3 +86,5 @@ os_specifics:
           - APPL-12-002004
         srg:
           - SRG-OS-000095-GPOS-00049
+        sfr:
+          - N/A

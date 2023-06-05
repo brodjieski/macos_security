@@ -6,25 +6,28 @@ discussion: |
   NOTE: The system volume is read only by default in macOS.
 check: |
   /usr/sbin/system_profiler SPStorageDataType | /usr/bin/awk '/Mount Point: \/$/{x=NR+2}(NR==x){print $2}'
-result:
-  string: 'No'
+result: 'No'
 fix: "NOTE: To remount the System volume as Read Only, rebooting the computer will mount it as Read Only. \n"
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - SC-34
-    - MA-4(1)
-    - SI-7
-  800-53r4:
-    - SC-34
-    - SI-7
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
+  disa:
+    cci:
+      - N/A
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - SC-34
+      - MA-4(1)
+      - SI-7
+    800-53r4:
+      - SC-34
+      - SI-7
 tags:
   - 800-53r5_moderate
   - 800-53r5_high
@@ -42,6 +45,18 @@ os_specifics:
           - N/A
         srg:
           - N/A
+        sfr:
+          - N/A
+    '10.15':
+      references:
+        cce:
+          - CCE-84851-5
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        sfr:
+          - N/A
     '12.0':
       references:
         cce:
@@ -50,6 +65,8 @@ os_specifics:
           - N/A
         srg:
           - N/A
+        sfr:
+          - N/A
     '13.0':
       references:
         cce:
@@ -57,4 +74,6 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A

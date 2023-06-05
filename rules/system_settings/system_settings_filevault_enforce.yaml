@@ -16,27 +16,30 @@ check: |
   else
     echo "0"
   fi
-result:
-  integer: 1
+result: 1
 fix: |
   NOTE: See the FileVault supplemental to implement this rule.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - SC-28
-    - SC-28(1)
-  800-53r4:
-    - SC-28
-    - SC-28(1)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.13.16
+  disa:
+    cci:
+      - N/A
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - SC-28
+      - SC-28(1)
+    800-53r4:
+      - SC-28
+      - SC-28(1)
+    800-171r2:
+      - 3.13.16
   cis:
     benchmark:
       - $OS_VALUE
@@ -65,6 +68,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
         cis:
           benchmark:

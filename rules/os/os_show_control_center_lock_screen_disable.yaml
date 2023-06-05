@@ -6,23 +6,27 @@ check: ' '
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - AC-2(5)
-    - AC-11
-    - AC-11(1)
-    - AC-12
-  800-53r4:
-    - N/A
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - N/A
+  disa:
+    cci:
+      - N/A
+    sfr:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - AC-2(5)
+      - AC-11
+      - AC-11(1)
+      - AC-12
+    800-171r2:
+      - N/A
+    800-53r4:
+      - None
   cis:
     benchmark:
       - $OS_VALUE
@@ -35,7 +39,6 @@ tags:
   - cis_lvl1_enterprise
   - cis_lvl2_enterprise
   - cisv8
-  - 800-53r5
 severity: ''
 supervised: false
 mobileconfig: true
@@ -43,7 +46,7 @@ mobileconfig_info:
   com.apple.applicationaccess:
     allowLockScreenControlCenter: false
 os_specifics:
-  ios:
+  iOS:
     '16.0':
       references:
         cce:
@@ -51,6 +54,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - None
+        sfr:
           - N/A
         cis:
           benchmark:

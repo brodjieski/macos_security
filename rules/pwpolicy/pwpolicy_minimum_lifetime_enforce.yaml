@@ -8,8 +8,7 @@ discussion: |
   NOTE: The guidance for password based authentication in NIST 800-53 (Rev 5) and NIST 800-63B state that complexity rules should be organizationally defined. The values defined are based off of common complexity values. But your organization may define its own password complexity rules.
 check: |
   /usr/bin/pwpolicy -getaccountpolicies 2> /dev/null | /usr/bin/tail +2 | /usr/bin/xmllint --xpath '//dict/key[text()="policyAttributeMinimumLifetimeHours"]/following-sibling::integer[1]/text()' - | /usr/bin/awk '{ if ($1 >= $ODV ) {print "yes"} else {print "no"}}'
-result:
-  string: 'yes'
+result: 'yes'
 fix: |
   This setting may be enforced using local policy or by a directory service.
 
@@ -37,23 +36,27 @@ fix: |
   ----
   NOTE: See the password policy supplemental on more information on how to implement password policies on macOS.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - IA-5
-  800-53r4:
-    - IA-5(1)
-  disa_stig:
-    - $OS_VALUE
-  srg:
-    - $OS_VALUE
-  800-171r2:
-    - 3.5.7
-    - 3.5.8
-    - 3.5.9
-    - 3.5.10
+  disa:
+    cci:
+      - N/A
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - IA-5
+    800-53r4:
+      - IA-5(1)
+    800-171r2:
+      - 3.5.7
+      - 3.5.8
+      - 3.5.9
+      - 3.5.10
   cis:
     benchmark:
       - $OS_VALUE
@@ -71,6 +74,7 @@ tags:
   - 800-53r5_moderate
   - 800-53r5_high
   - cisv8
+  - cnssi-1253
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
@@ -83,6 +87,23 @@ os_specifics:
           - N/A
         srg:
           - SRG-OS-000075-GPOS-00043
+        sfr:
+          - N/A
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 4.7
+    '10.15':
+      references:
+        cce:
+          - CCE-84817-6
+        disa_stig:
+          - N/A
+        srg:
+          - SRG-OS-000075-GPOS-00043
+        sfr:
+          - N/A
         cis:
           benchmark:
             - N/A
@@ -96,6 +117,8 @@ os_specifics:
           - N/A
         srg:
           - N/A
+        sfr:
+          - N/A
         cis:
           benchmark:
             - N/A
@@ -108,6 +131,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
         cis:
           benchmark:

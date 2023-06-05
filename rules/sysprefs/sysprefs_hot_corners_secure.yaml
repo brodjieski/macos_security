@@ -2,8 +2,7 @@ id: sysprefs_hot_corners_secure
 title: Secure Hot Corners
 discussion: "Hot corners _MUST_ be secured. \n\nThe information system conceals, via the session lock, information previously visible on the display with a publicly viewable image. Although hot comers can be used to initiate a session lock or to launch useful applications, they can also be configured to disable an automatic session lock from initiating. Such a configuration introduces the risk that a user might forget to manually lock the screen before stepping away from the computer.\n"
 check: $OS_VALUE
-result:
-  integer: 0
+result: 0
 fix: |
   [source,bash]
   ----
@@ -13,25 +12,29 @@ fix: |
   /usr/bin/sudo -u "$CURRENT_USER" /usr/bin/defaults delete /Users/"$CURRENT_USER"/Library/Preferences/com.apple.dock wvous-br-corner 2>/dev/null
   ----
 references:
-  cce:
-    - $OS_VALUE
-  800-53r5:
-    - AC-11(1)
-  800-53r4:
-    - AC-11(1)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - N/A
+  disa:
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    cci:
+      - None
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - AC-11(1)
+    800-53r4:
+      - AC-11(1)
+    800-171r2:
+      - N/A
   cis:
     benchmark:
       - $OS_VALUE
     controls v8:
       - $OS_VALUE
-  cci:
-    - None
 tags:
   - cis_lvl2
   - cisv8
@@ -46,6 +49,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
         cis:
           benchmark:
@@ -68,6 +73,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
         cis:
           benchmark:

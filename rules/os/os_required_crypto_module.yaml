@@ -6,18 +6,22 @@ check: |
 fix: |
   The technology inherently meets this requirement. No fix is required.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-000803
-  800-53r5:
-    - IA-7
-  800-53r4:
-    - IA-7
-  disa_stig:
-    - $OS_VALUE
-  srg:
-    - $OS_VALUE
+  disa:
+    cci:
+      - CCI-000803
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - IA-7
+    800-53r4:
+      - IA-7
 tags:
   - 800-53r5_low
   - 800-53r5_moderate
@@ -26,6 +30,7 @@ tags:
   - 800-53r4_moderate
   - 800-53r4_high
   - inherent
+  - cnssi-1253
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
@@ -38,6 +43,8 @@ os_specifics:
           - N/A
         srg:
           - SRG-OS-000120-GPOS-00061
+        sfr:
+          - N/A
       discussion: |
         The inherent configuration of the macOS _IS_ in compliance by implementing mechanisms for authentication to a cryptographic module that meet the requirements of all applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance for such authentication
 
@@ -48,6 +55,28 @@ os_specifics:
         link:https://csrc.nist.gov/Projects/cryptographic-module-validation-program/modules-in-process/Modules-In-Process-List[]
 
         link:https://support.apple.com/en-us/HT201159[]
+    '10.15':
+      references:
+        cce:
+          - CCE-84877-0
+        disa_stig:
+          - N/A
+        srg:
+          - SRG-OS-000120-GPOS-00061
+        sfr:
+          - N/A
+      discussion: |
+        The inherent configuration of the macOS _IS_ in compliance by implementing mechanisms for authentication to a cryptographic module that meet the requirements of all applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance for such authentication
+
+        macOS contains many open source projects that may use their own cryptographic libraries typically for the purposes of maintaining platform independence. These services are not covered by the Apple FIPS Validation of the CoreCrypto and CoreCrypto Kernel modules.
+
+        macOS Catalina has received FIPS validation from the National Institute of Standards and Technology (NIST).
+
+        link:https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/3858[]
+        link:https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/3859[]
+        link:https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/3811[]
+
+        link:https://support.apple.com/en-us/HT201159[]
     '12.0':
       references:
         cce:
@@ -55,6 +84,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
       discussion: |
         The inherent configuration of the macOS _IS_ in compliance by implementing mechanisms for authentication to a cryptographic module that meet the requirements of all applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance for such authentication
@@ -73,6 +104,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
       discussion: |
         The inherent configuration of the macOS _IS_ in compliance by implementing mechanisms for authentication to a cryptographic module that meet the requirements of all applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance for such authentication

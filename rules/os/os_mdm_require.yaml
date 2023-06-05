@@ -19,28 +19,31 @@ discussion: |
   * Query list and delete local users
 check: |
   /usr/bin/profiles status -type enrollment | /usr/bin/awk -F: '/MDM enrollment/ {print $2}' | /usr/bin/grep -c "Yes (User Approved)"
-result:
-  integer: 1
+result: 1
 fix: |
   Ensure that system is enrolled via UAMDM.
 references:
-  cce:
-    - $OS_VALUE
-  800-53r5:
-    - CM-2
-    - CM-6
-  800-53r4:
-    - CM-2
-    - CM-6
-  disa_stig:
-    - $OS_VALUE
-  srg:
-    - $OS_VALUE
-  cci:
-    - N/A
-  800-171r2:
-    - 3.4.1
-    - 3.4.2
+  disa:
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+    cci:
+      - N/A
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - CM-2
+      - CM-6
+    800-53r4:
+      - CM-2
+      - CM-6
+    800-171r2:
+      - 3.4.1
+      - 3.4.2
   cis:
     benchmark:
       - $OS_VALUE
@@ -55,6 +58,7 @@ tags:
   - 800-53r4_high
   - 800-171
   - cisv8
+  - cnssi-1253
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
@@ -66,6 +70,24 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
+          - N/A
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 4.1
+            - 5.1
+    '10.15':
+      references:
+        cce:
+          - CCE-84803-6
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        sfr:
           - N/A
         cis:
           benchmark:
@@ -81,6 +103,8 @@ os_specifics:
           - N/A
         srg:
           - N/A
+        sfr:
+          - N/A
         cis:
           benchmark:
             - N/A
@@ -94,6 +118,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
         cis:
           benchmark:

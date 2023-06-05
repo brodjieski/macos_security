@@ -6,32 +6,34 @@ check: ' '
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-001090
-  800-53r5:
-    - SC-4
-    - AC-20
-    - AC-20(1)
-    - CM-7
-    - CM-7(1)
-    - SC-7(10)
-  sfr:
-    - 'FMT_MOF_EXT.1.2 #40'
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - N/A
+  disa:
+    cci:
+      - CCI-001090
+    sfr:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - SC-4
+      - AC-20
+      - AC-20(1)
+      - CM-7
+      - CM-7(1)
+      - SC-7(10)
+    800-171r2:
+      - N/A
+    800-53r4:
+      - None
   cis:
     benchmark:
       - $OS_VALUE
     controls v8:
       - $OS_VALUE
-  800-53r4:
-    - None
-  srg:
-    - $OS_VALUE
 tags:
   - ios
   - 800-53r5_low
@@ -48,7 +50,7 @@ mobileconfig_info:
   com.apple.applicationaccess:
     allowCloudBackup: false
 os_specifics:
-  ios:
+  iOS:
     '16.0':
       references:
         cce:
@@ -57,6 +59,8 @@ os_specifics:
           - AIOS-16-003000
         srg:
           - None
+        sfr:
+          - 'FMT_MOF_EXT.1.2 #40'
         cis:
           benchmark:
             - 3.2.1.4 (level 1 - Institutionally-Owned Devices)

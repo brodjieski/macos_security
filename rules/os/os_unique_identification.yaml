@@ -7,18 +7,22 @@ check: |
 fix: |
   The technology inherently meets this requirement. No fix is required.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-000764
-  800-53r5:
-    - IA-4
-  800-53r4:
-    - N/A
-  disa_stig:
-    - $OS_VALUE
-  srg:
-    - $OS_VALUE
+  disa:
+    cci:
+      - CCI-000764
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - IA-4
+    800-53r4:
+      - N/A
   cis:
     benchmark:
       - $OS_VALUE
@@ -42,6 +46,24 @@ os_specifics:
           - N/A
         srg:
           - SRG-OS-000104-GPOS-00051
+        sfr:
+          - N/A
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 5.1
+            - 6.1
+    '10.15':
+      references:
+        cce:
+          - CCE-84874-7
+        disa_stig:
+          - N/A
+        srg:
+          - SRG-OS-000104-GPOS-00051
+        sfr:
+          - N/A
         cis:
           benchmark:
             - N/A
@@ -56,6 +78,8 @@ os_specifics:
           - N/A
         srg:
           - N/A
+        sfr:
+          - N/A
         cis:
           benchmark:
             - N/A
@@ -69,6 +93,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
         cis:
           benchmark:

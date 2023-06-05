@@ -2,25 +2,28 @@ id: os_ssh_server_alive_interval_configure
 title: Configure SSH ServerAliveInterval option set to $ODV
 discussion: "SSH _MUST_ be configured with an Active Server Alive Maximum Count set to $ODV. \n\nSetting the Active Server Alive Maximum Count to $ODV will log users out after a $ODV seconds interval of inactivity.\n\nNOTE: /etc/ssh/ssh_config will be automatically modified to its original state following any update or major upgrade to the operating system.\n"
 check: $OS_VALUE
-result:
-  integer: $ODV
+result: $ODV
 fix: $OS_VALUE
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - SC-10
-    - AC-12
-  800-53r4:
-    - SC-10
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.13.9
+  disa:
+    cci:
+      - N/A
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - SC-10
+      - AC-12
+    800-53r4:
+      - SC-10
+    800-171r2:
+      - 3.13.9
 odv:
   hint: Number of seconds.
   recommended: 900
@@ -30,6 +33,7 @@ tags:
   - 800-53r4_moderate
   - 800-53r4_high
   - 800-171
+  - cnssi-1253
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
@@ -41,6 +45,25 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
+          - N/A
+      check: |
+        /usr/bin/awk '/^ServerAliveInterval/{print $2}' /etc/ssh/ssh_config
+      fix: |
+        [source,bash]
+        ----
+        /usr/bin/grep -q '^ServerAliveInterval' /etc/ssh/ssh_config && /usr/bin/sed -i.bak  's/.*ServerAliveInterval.*/ServerAliveInterval $ODV/' /etc/ssh/ssh_config || /bin/echo 'ServerAliveInterval $ODV' >> /etc/ssh/ssh_config
+        ----
+    '10.15':
+      references:
+        cce:
+          - CCE-84919-0
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        sfr:
           - N/A
       check: |
         /usr/bin/awk '/^ServerAliveInterval/{print $2}' /etc/ssh/ssh_config
@@ -56,6 +79,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
       check: |
         ret="pass"
@@ -75,6 +100,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
       check: |
         ret="pass"

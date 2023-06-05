@@ -4,25 +4,28 @@ discussion: |
   The Bluetooth System Preference pane _MUST_ be hidden to prevent access to the bluetooth configuration.
 check: |
   /usr/bin/profiles show -output stdout-xml | /usr/bin/xmllint --xpath '//key[text()="HiddenPreferencePanes"]/following-sibling::*[1]' - | /usr/bin/grep -c com.apple.preferences.Bluetooth
-result:
-  integer: 1
+result: 1
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-002418
-  800-53r5:
-    - N/A
-  800-53r4:
-    - SC-8
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - N/A
+  disa:
+    cci:
+      - CCI-002418
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - N/A
+    800-53r4:
+      - SC-8
+    800-171r2:
+      - N/A
 tags:
   - stig
 severity: medium
@@ -41,6 +44,8 @@ os_specifics:
           - APPL-11-002062
         srg:
           - SRG-OS-000481-GPOS-00481
+        sfr:
+          - N/A
     '12.0':
       references:
         cce:
@@ -49,3 +54,5 @@ os_specifics:
           - APPL-12-002062
         srg:
           - SRG-OS-000481-GPOS-000481
+        sfr:
+          - N/A

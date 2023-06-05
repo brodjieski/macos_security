@@ -6,28 +6,31 @@ check: |
   $.NSUserDefaults.alloc.initWithSuiteName('com.apple.MCXBluetooth')\
   .objectForKey('DisableBluetooth').js
   EOS
-result:
-  string: 'true'
+result: 'true'
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-002418
-  800-53r5:
-    - AC-18
-    - SC-8
-    - AC-18(3)
-  800-53r4:
-    - AC-18(3)
-    - SC-8
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.13.8
+  disa:
+    cci:
+      - CCI-002418
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - AC-18
+      - SC-8
+      - AC-18(3)
+    800-53r4:
+      - AC-18(3)
+      - SC-8
+    800-171r2:
+      - 3.13.8
   cis:
     benchmark:
       - $OS_VALUE
@@ -40,8 +43,9 @@ tags:
   - 800-53r5_moderate
   - 800-53r5_high
   - 800-171
-  - stig
   - cisv8
+  - stig
+  - cnssi-1253
 severity: low
 mobileconfig: true
 mobileconfig_info:
@@ -58,6 +62,25 @@ os_specifics:
           - APPL-11-002062
         srg:
           - SRG-OS-000481-GPOS-00481
+        sfr:
+          - N/A
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 4.8
+            - 12.6
+            - 13.9
+    '10.15':
+      references:
+        cce:
+          - CCE-84826-7
+        disa_stig:
+          - AOSX-15-002062
+        srg:
+          - SRG-OS-000481-GPOS-000481
+        sfr:
+          - N/A
         cis:
           benchmark:
             - N/A
@@ -74,6 +97,8 @@ os_specifics:
         srg:
           - SRG-OS-000481-GPOS-000481
           - SRG-OS-000319-GPOS-00164
+        sfr:
+          - N/A
         cis:
           benchmark:
             - N/A

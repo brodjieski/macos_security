@@ -3,32 +3,35 @@ title: Configure Sudoers Timestamp Type
 discussion: $OS_VALUE
 check: |
   /usr/bin/sudo /usr/bin/sudo -V | /usr/bin/awk -F": " '/Type of authentication timestamp record/{print $2}'
-result:
-  string: tty
+result: tty
 fix: |
   [source,bash]
   ----
   /usr/bin/find /etc/sudoers* -type f -exec sed -i '' '/timestamp_type/d; /!tty_tickets/d' '{}' \;
   ----
 references:
-  cce:
-    - $OS_VALUE
-  800-53r5:
-    - CM-5(1)
-    - IA-11
-  800-53r4:
-    - IA-11
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
+  disa:
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    cci:
+      - None
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - CM-5(1)
+      - IA-11
+    800-53r4:
+      - IA-11
   cis:
     benchmark:
       - $OS_VALUE
     controls v8:
       - $OS_VALUE
-  cci:
-    - None
 tags:
   - 800-53r5_low
   - 800-53r5_moderate
@@ -49,6 +52,8 @@ os_specifics:
           - N/A
         srg:
           - N/A
+        sfr:
+          - N/A
         cis:
           benchmark:
             - 5.4 (level 1)
@@ -66,6 +71,8 @@ os_specifics:
           - APPL-12-004021
         srg:
           - SRG-OS-000480-GPOS-00227
+        sfr:
+          - N/A
         cis:
           benchmark:
             - 5.4 (level 1)
@@ -82,6 +89,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
         cis:
           benchmark:

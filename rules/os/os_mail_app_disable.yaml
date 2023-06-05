@@ -16,30 +16,33 @@ check: |
     return("false")
     }
   EOS
-result:
-  string: 'true'
+result: 'true'
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - AC-20
-    - CM-7
-    - CM-7(1)
-  800-53r4:
-    - CM-7
-    - CM-7(1)
-    - AC-20
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.1.20
-    - 3.4.6
+  disa:
+    cci:
+      - N/A
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - AC-20
+      - CM-7
+      - CM-7(1)
+    800-53r4:
+      - CM-7
+      - CM-7(1)
+      - AC-20
+    800-171r2:
+      - 3.1.20
+      - 3.4.6
   cis:
     benchmark:
       - $OS_VALUE
@@ -47,6 +50,16 @@ references:
       - $OS_VALUE
 tags:
   - none
+  - 800-53r5_moderate
+  - 800-53r5_low
+  - 800-171
+  - cisv8
+  - cnssi-1253
+  - 800-53r4_moderate
+  - 800-53r4_high
+  - 800-53r5_high
+  - stig
+  - 800-53r4_low
 severity: medium
 mobileconfig: true
 mobileconfig_info:
@@ -64,6 +77,24 @@ os_specifics:
           - N/A
         srg:
           - N/A
+        sfr:
+          - N/A
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 4.1
+            - 4.8
+    '10.15':
+      references:
+        cce:
+          - CCE-84769-9
+        disa_stig:
+          - AOSX-15-002019
+        srg:
+          - SRG-OS-000095-GPOS-00049
+        sfr:
+          - N/A
         cis:
           benchmark:
             - N/A
@@ -78,6 +109,8 @@ os_specifics:
           - N/A
         srg:
           - N/A
+        sfr:
+          - N/A
         cis:
           benchmark:
             - N/A
@@ -91,6 +124,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
         cis:
           benchmark:

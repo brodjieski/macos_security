@@ -4,30 +4,33 @@ discussion: |
   The macOS Extensible Firmware Interface (EFI) _MUST_ be checked to ensure it is a known good version from Apple.
 check: |
   if /usr/sbin/ioreg -w 0 -c AppleSEPManager | /usr/bin/grep -q AppleSEPManager; then echo "1"; else /usr/libexec/firmwarecheckers/eficheck/eficheck --integrity-check | /usr/bin/grep -c "No changes detected"; fi
-result:
-  integer: 1
+result: 1
 fix: |
   Install a known good version of macOS.
 references:
-  cce:
-    - $OS_VALUE
-  800-53r5:
-    - N/A
-  800-53r4:
-    - N/A
-  800-171r2:
-    - N/A
+  disa:
+    disa_stig:
+      - $OS_VALUE
+    cci:
+      - None
+    srg:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - N/A
+    800-53r4:
+      - N/A
+    800-171r2:
+      - N/A
   cis:
     benchmark:
       - $OS_VALUE
     controls v8:
       - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  cci:
-    - None
-  srg:
-    - $OS_VALUE
 tags:
   - cis_lvl1
   - cis_lvl2
@@ -45,6 +48,8 @@ os_specifics:
           - None
         srg:
           - None
+        sfr:
+          - N/A
         cis:
           benchmark:
             - 2.9 (level 1)
@@ -58,6 +63,8 @@ os_specifics:
           - None
         srg:
           - None
+        sfr:
+          - N/A
         cis:
           benchmark:
             - 2.9 (level 1)
@@ -71,6 +78,8 @@ os_specifics:
           - None
         srg:
           - None
+        sfr:
+          - N/A
         cis:
           benchmark:
             - 5.9 (level 1)

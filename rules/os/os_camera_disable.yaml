@@ -7,26 +7,30 @@ check: |
   $.NSUserDefaults.alloc.initWithSuiteName('com.apple.applicationaccess')\
   .objectForKey('allowCamera').js
   EOS
-result:
-  string: 'false'
+result: 'false'
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-000381
-    - CCI-001150
-    - CCI-001153
-  800-53r5:
-    - N/A
-  800-53r4:
-    - N/A
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
+  disa:
+    cci:
+      - CCI-000381
+      - CCI-001150
+      - CCI-001153
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - N/A
+    800-53r4:
+      - N/A
 tags:
+  - none
   - stig
 severity: medium
 mobileconfig: true
@@ -44,6 +48,19 @@ os_specifics:
         srg:
           - SRG-OS-000095-GPOS-00049
           - SRG-OS-000370-GPOS-00155
+        sfr:
+          - N/A
+    '10.15':
+      references:
+        cce:
+          - CCE-84751-7
+        disa_stig:
+          - AOSX-15-002017
+        srg:
+          - SRG-OS-000095-GPOS-00049
+          - SRG-OS-000370-GPOS-00155
+        sfr:
+          - N/A
     '12.0':
       references:
         cce:
@@ -53,6 +70,8 @@ os_specifics:
         srg:
           - SRG-OS-000095-GPOS-00049
           - SRG-OS-000370-GPOS-00155
+        sfr:
+          - N/A
     '13.0':
       references:
         cce:
@@ -60,4 +79,6 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A

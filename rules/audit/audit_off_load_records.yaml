@@ -6,18 +6,22 @@ check: |
 fix: |
   This requirement is a permanent finding and cannot be fixed. An appropriate mitigation for the system must be implemented, but this finding cannot be considered fixed.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-001851
-  800-53r5:
-    - AU-4(1)
-  800-53r4:
-    - AU-4(1)
-  disa_stig:
-    - $OS_VALUE
-  srg:
-    - $OS_VALUE
+  disa:
+    cci:
+      - CCI-001851
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - AU-4(1)
+    800-53r4:
+      - AU-4(1)
   cis:
     benchmark:
       - $OS_VALUE
@@ -25,6 +29,7 @@ references:
       - $OS_VALUE
 tags:
   - permanent
+  - cisv8
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
@@ -38,6 +43,24 @@ os_specifics:
         srg:
           - SRG-OS-000479-GPOS-00224
           - SRG-OS-000342-GPOS-00133
+        sfr:
+          - N/A
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 8.9
+    '10.15':
+      references:
+        cce:
+          - CCE-84895-2
+        disa_stig:
+          - N/A
+        srg:
+          - SRG-OS-000479-GPOS-00224
+          - SRG-OS-000342-GPOS-00133
+        sfr:
+          - N/A
         cis:
           benchmark:
             - N/A
@@ -51,6 +74,8 @@ os_specifics:
           - N/A
         srg:
           - N/A
+        sfr:
+          - N/A
         cis:
           benchmark:
             - N/A
@@ -63,6 +88,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
         cis:
           benchmark:

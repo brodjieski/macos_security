@@ -36,7 +36,7 @@ def main():
         new_refs = {}
         new_refs["disa"] = {}
         new_refs["nist"] = {}
-        disa_fields_to_move=['disa_stig', 'srg', 'cci']
+        disa_fields_to_move=['disa_stig', 'srg', 'cci', 'sfr']
         nist_fields_to_move=['cce', '800-53r5', '800-53r4', '800-171r2']
         for k,v in rule['references'].items():
             if k in disa_fields_to_move:

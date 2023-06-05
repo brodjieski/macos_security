@@ -5,20 +5,29 @@ check: ' '
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - N/A
-  800-53r4:
-    - N/A
-  disa_stig:
-    - $OS_VALUE
-  srg:
-    - $OS_VALUE
-  800-171r2:
-    - N/A
+  disa:
+    cci:
+      - CCI-000366
+      - CCI-000370
+      - CCI-000381
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - AC-3
+      - AC-20
+      - CM-7
+      - CM-7(1)
+    800-171r2:
+      - N/A
+    800-53r4:
+      - None
   cis:
     benchmark:
       - $OS_VALUE
@@ -26,25 +35,31 @@ references:
       - $OS_VALUE
 tags:
   - ios
+  - 800-53r5_low
+  - 800-53r5_moderate
+  - 800-53r5_high
   - cis_lvl2_byod
   - cis_lvl2_enterprise
   - cisv8
-severity: ''
+  - stig
+severity: low
 supervised: false
 mobileconfig: true
 mobileconfig_info:
   com.apple.applicationaccess:
     allowActivityContinuation: false
 os_specifics:
-  ios:
+  iOS:
     '16.0':
       references:
         cce:
           - N/A
         disa_stig:
-          - N/A
+          - AIOS-16-010800
         srg:
-          - N/A
+          - None
+        sfr:
+          - 'FMT_SMF_EXT.1.1 #47'
         cis:
           benchmark:
             - 2.2.1.11 (level 2 - End-User Owned Devices)

@@ -3,34 +3,38 @@ title: Control Connections to Other Systems via a Deny-All and Allow-by-Exceptio
 discussion: "A deny-all and allow-by-exception firewall policy _MUST_ be employed for managing connections to other systems. \n\nOrganizations _MUST_ ensure the built-in packet filter firewall is configured correctly to employ the default deny rule.\n\nFailure to restrict network connectivity to authorized systems permits inbound connections from malicious systems. It also permits outbound connections that may facilitate the exfiltration of data.\n\nIf you are using a third-party firewall solution, this setting does not apply. \n\n[IMPORTANT]\n====\nConfiguring the built-in packet filter firewall to employ the default deny rule has the potential to interfere with applications on the system in an unpredictable manner. Information System Security Officers (ISSOs) may make the risk-based decision not to configure the built-in packet filter firewall to employ the default deny rule to avoid losing functionality, but they are advised to first fully weigh the potential risks posed to their organization.\n====\n"
 check: |
   /sbin/pfctl -a '*' -sr &> /dev/null | /usr/bin/grep -c "block drop in all"
-result:
-  integer: 1
+result: 1
 fix: |
   NOTE: See the firewall supplemental which includes a script that has an example policy to implement this rule.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - AC-4
-    - SC-7(5)
-  800-53r4:
-    - SC-7(5)
-    - AC-4
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.1.3
-    - 3.13.6
+  disa:
+    cci:
+      - N/A
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - AC-4
+      - SC-7(5)
+    800-53r4:
+      - SC-7(5)
+      - AC-4
+    800-171r2:
+      - 3.1.3
+      - 3.13.6
 tags:
   - 800-53r5_moderate
   - 800-53r5_high
   - 800-53r4_moderate
   - 800-53r4_high
   - 800-171
+  - cnssi-1253
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
@@ -43,6 +47,18 @@ os_specifics:
           - N/A
         srg:
           - N/A
+        sfr:
+          - N/A
+    '10.15':
+      references:
+        cce:
+          - CCE-84756-6
+        disa_stig:
+          - AOSX-15-005051
+        srg:
+          - SRG-OS-000480-GPOS-00231
+        sfr:
+          - N/A
     '12.0':
       references:
         cce:
@@ -51,6 +67,8 @@ os_specifics:
           - N/A
         srg:
           - N/A
+        sfr:
+          - N/A
     '13.0':
       references:
         cce:
@@ -58,4 +76,6 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A

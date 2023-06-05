@@ -4,31 +4,35 @@ discussion: |
   The organization _MUST_ issue or obtain public key certificates from an organization-approved service provider and ensure only approved trust anchors are in the System Keychain.
 check: |
   /usr/bin/security dump-keychain /Library/Keychains/System.keychain | /usr/bin/awk -F'"' '/labl/ {print $4}'
-result:
-  string: a list containing approved root certificates
+result: a list containing approved root certificates
 fix: |
   Obtain the approved certificates from the appropriate authority and install them to the System Keychain.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-000185
-    - CCI-002450
-  800-53r5:
-    - SC-17
-  800-53r4:
-    - SC-17
-  disa_stig:
-    - $OS_VALUE
-  srg:
-    - $OS_VALUE
+  disa:
+    cci:
+      - CCI-000185
+      - CCI-002450
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - SC-17
+    800-53r4:
+      - SC-17
 tags:
   - 800-53r5_moderate
   - 800-53r5_high
   - 800-53r4_moderate
   - 800-53r4_high
-  - stig
   - manual
+  - stig
+  - cnssi-1253
 severity: high
 mobileconfig: false
 mobileconfig_info: null
@@ -43,6 +47,19 @@ os_specifics:
         srg:
           - SRG-OS-000066-GPOS-00034
           - SRG-OS-000478-GPOS-00223
+        sfr:
+          - N/A
+    '10.15':
+      references:
+        cce:
+          - CCE-85302-8
+        disa_stig:
+          - AOSX-15-003001
+        srg:
+          - SRG-OS-000066-GPOS-00034
+          - SRG-OS-000478-GPOS-00223
+        sfr:
+          - N/A
     '12.0':
       references:
         cce:
@@ -51,6 +68,8 @@ os_specifics:
           - APPL-12-003001
         srg:
           - None
+        sfr:
+          - N/A
     '13.0':
       references:
         cce:
@@ -59,3 +78,5 @@ os_specifics:
           - N/A
         srg:
           - None
+        sfr:
+          - N/A

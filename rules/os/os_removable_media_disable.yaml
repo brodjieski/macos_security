@@ -6,27 +6,38 @@ check: |
   ObjC.unwrap($.NSUserDefaults.alloc.initWithSuiteName('com.apple.systemuiserver')\
   .objectForKey('mount-controls'))["harddisk-external"]
   EOS
-result:
-  string: deny
+result: deny
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - MP-7
-  800-53r4:
-    - MP-7(1)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.8.8
+  disa:
+    cci:
+      - N/A
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - MP-7
+    800-53r4:
+      - MP-7(1)
+    800-171r2:
+      - 3.8.8
 tags:
+  - none
+  - 800-53r5_moderate
+  - 800-53r5_low
+  - 800-171
+  - cnssi-1253
+  - 800-53r4_moderate
+  - 800-53r4_high
   - stig
+  - 800-53r5_high
 mobileconfig: true
 mobileconfig_info:
   com.apple.systemuiserver:
@@ -44,6 +55,8 @@ os_specifics:
           - APPL-11-005051
         srg:
           - SRG-OS-000480-GPOS-00227
+        sfr:
+          - N/A
       discussion: |
         Removable media, such as USB connected external hard drives, thumb drives, and optical media, _MUST_ be disabled for users.
 
@@ -58,6 +71,30 @@ os_specifics:
         ====
         Apple has deprecated the use of link:https://github.com/apple/device-management/blob/eb51fb0cb9626cac4717858556912c257a734ce0/mdm/profiles/com.apple.systemuiserver.yaml#L4-L8[media mount controls], using these controls may not work as expected. Third party software may be required to fulfill the compliance requirements.
         ====
+    '10.15':
+      references:
+        cce:
+          - CCE-84782-2
+        disa_stig:
+          - AOSX-15-005051
+        srg:
+          - SRG-OS-000480-GPOS-00227
+        sfr:
+          - N/A
+      discussion: |
+        Removable media, such as USB connected external hard drives, thumb drives, and optical media, _MUST_ be disabled for users.
+
+        Disabling removable storage devices reduces the risks and known vulnerabilities of such devices (e.g., malicious code insertion)
+
+        [IMPORTANT]
+        ====
+        Some organizations rely on the use of removable media for storing and sharing data. Information System Security Officers (ISSOs) may make the risk-based decision not to disable external hard drives to avoid losing this functionality, but they are advised to first fully weigh the potential risks posed to their organization.
+        ====
+
+        [IMPORTANT]
+        ====
+        Apple has deprecated the use of media mount controls, using these controls may not work as expected. Third party software may be required to fullfill the compliance requirements.
+        ====
     '12.0':
       references:
         cce:
@@ -67,6 +104,8 @@ os_specifics:
         srg:
           - SRG-OS-000480-GPOS-00227
           - SRG-OS-000319-GPOS-00164
+        sfr:
+          - N/A
       discussion: |
         Removable media, such as USB connected external hard drives, thumb drives, and optical media, _MUST_ be disabled for users.
 
@@ -88,6 +127,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
       discussion: |
         Removable media, such as USB connected external hard drives, thumb drives, and optical media, _MUST_ be disabled for users.

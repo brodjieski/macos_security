@@ -4,8 +4,7 @@ discussion: |
   The file /etc/sudoers _MUST_ include a timestamp_timout of $ODV.
 check: |
   /usr/bin/sudo /usr/bin/sudo -V | /usr/bin/grep -c "Authentication timestamp timeout: $ODV.0 minutes"
-result:
-  integer: 1
+result: 1
 fix: |
   [source,bash]
   ----
@@ -13,23 +12,27 @@ fix: |
   /bin/echo "Defaults timestamp_timeout=$ODV" >> /etc/sudoers.d/mscp
   ----
 references:
-  cce:
-    - $OS_VALUE
-  800-53r5:
-    - N/A
-  800-53r4:
-    - N/A
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
+  disa:
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    cci:
+      - None
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - N/A
+    800-53r4:
+      - N/A
   cis:
     benchmark:
       - $OS_VALUE
     controls v8:
       - $OS_VALUE
-  cci:
-    - None
 odv:
   hint: Number of minutes.
   recommended: 0
@@ -54,6 +57,8 @@ os_specifics:
           - N/A
         srg:
           - N/A
+        sfr:
+          - N/A
         cis:
           benchmark:
             - 5.3 (level 1)
@@ -67,6 +72,8 @@ os_specifics:
           - N/A
         srg:
           - N/A
+        sfr:
+          - N/A
         cis:
           benchmark:
             - 5.3 (level 1)
@@ -79,6 +86,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
         cis:
           benchmark:

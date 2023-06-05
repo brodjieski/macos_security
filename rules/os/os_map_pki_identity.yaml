@@ -7,20 +7,25 @@ check: |
 fix: |
   For directory bound systems, the technology inherently meets this requirement. No fix is required.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-000187
-  800-53r5:
-    - N/A
-  800-53r4:
-    - N/A
-  disa_stig:
-    - $OS_VALUE
-  srg:
-    - $OS_VALUE
+  disa:
+    cci:
+      - CCI-000187
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - N/A
+    800-53r4:
+      - N/A
 tags:
   - inherent
+  - cnssi-1253
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
@@ -33,6 +38,18 @@ os_specifics:
           - N/A
         srg:
           - SRG-OS-000068-GPOS-00036
+        sfr:
+          - N/A
+    '10.15':
+      references:
+        cce:
+          - CCE-84873-9
+        disa_stig:
+          - N/A
+        srg:
+          - SRG-OS-000068-GPOS-00036
+        sfr:
+          - N/A
     '12.0':
       references:
         cce:
@@ -41,6 +58,8 @@ os_specifics:
           - N/A
         srg:
           - N/A
+        sfr:
+          - N/A
     '13.0':
       references:
         cce:
@@ -48,4 +67,6 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A

@@ -3,31 +3,34 @@ title: Enable Gatekeeper
 discussion: "Gatekeeper _MUST_ be enabled. \n\nGatekeeper is a security feature that ensures that applications are digitally signed by an Apple-issued certificate before they are permitted to run. Digital signatures allow the macOS host to verify that the application has not been modified by a malicious third party.\n\nAdministrator users will still have the option to override these settings on a case-by-case basis.\n"
 check: |
   /usr/sbin/spctl --status | /usr/bin/grep -c "assessments enabled"
-result:
-  integer: 1
+result: 1
 fix: $OS_VALUE
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-001749
-  800-53r5:
-    - CM-14
-    - CM-5
-    - SI-7(1)
-    - SI-7(15)
-    - SI-3
-  800-53r4:
-    - CM-5(3)
-    - CM-5
-    - SI-3
-    - SI-7(15)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.4.5
+  disa:
+    cci:
+      - CCI-001749
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - CM-14
+      - CM-5
+      - SI-7(1)
+      - SI-7(15)
+      - SI-3
+    800-53r4:
+      - CM-5(3)
+      - CM-5
+      - SI-3
+      - SI-7(15)
+    800-171r2:
+      - 3.4.5
   cis:
     benchmark:
       - $OS_VALUE
@@ -40,10 +43,11 @@ tags:
   - 800-53r4_moderate
   - 800-53r4_high
   - 800-171
-  - stig
-  - cisv8
   - cis_lvl1
   - cis_lvl2
+  - cisv8
+  - stig
+  - cnssi-1253
 severity: high
 mobileconfig: true
 mobileconfig_info:
@@ -59,9 +63,33 @@ os_specifics:
           - APPL-11-002064
         srg:
           - SRG-OS-000366-GPOS-00153
+        sfr:
+          - N/A
         cis:
           benchmark:
             - 2.5.7 (level 1)
+          controls v8:
+            - 10.1
+            - 10.2
+            - 10.5
+      fix: |
+        [source,bash]
+        ----
+        /usr/sbin/spctl --master-enable
+        ----
+    '10.15':
+      references:
+        cce:
+          - CCE-84759-0
+        disa_stig:
+          - AOSX-15-002064
+        srg:
+          - SRG-OS-000366-GPOS-00153
+        sfr:
+          - N/A
+        cis:
+          benchmark:
+            - N/A
           controls v8:
             - 10.1
             - 10.2
@@ -79,6 +107,8 @@ os_specifics:
           - APPL-12-002064
         srg:
           - SRG-OS-000366-GPOS-00153
+        sfr:
+          - N/A
         cis:
           benchmark:
             - 2.5.7 (level 1)
@@ -98,6 +128,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
         cis:
           benchmark:

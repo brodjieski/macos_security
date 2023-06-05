@@ -6,25 +6,28 @@ check: |
   $.NSUserDefaults.alloc.initWithSuiteName('com.apple.SetupAssistant.managed')\
   .objectForKey('SkipCloudSetup').js
   EOS
-result:
-  string: 'true'
+result: 'true'
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-000381
-  800-53r5:
-    - AC-20
-  800-53r4:
-    - AC-20
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.1.20
+  disa:
+    cci:
+      - CCI-000381
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - AC-20
+    800-53r4:
+      - AC-20
+    800-171r2:
+      - 3.1.20
   cis:
     benchmark:
       - $OS_VALUE
@@ -38,8 +41,9 @@ tags:
   - 800-53r4_moderate
   - 800-53r4_high
   - 800-171
-  - stig
   - cisv8
+  - stig
+  - cnssi-1253
 severity: medium
 mobileconfig: true
 mobileconfig_info:
@@ -55,6 +59,24 @@ os_specifics:
           - APPL-11-002035
         srg:
           - SRG-OS-000095-GPOS-00049
+        sfr:
+          - N/A
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 4.1
+            - 4.8
+    '10.15':
+      references:
+        cce:
+          - CCE-84748-3
+        disa_stig:
+          - AOSX-15-002035
+        srg:
+          - SRG-OS-000095-GPOS-00049
+        sfr:
+          - N/A
         cis:
           benchmark:
             - N/A
@@ -69,6 +91,8 @@ os_specifics:
           - APPL-12-002035
         srg:
           - SRG-OS-000095-GPOS-00049
+        sfr:
+          - N/A
         cis:
           benchmark:
             - N/A
@@ -82,6 +106,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
         cis:
           benchmark:

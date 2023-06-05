@@ -6,33 +6,33 @@ check: ' '
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-002233
-    - CCI-002530
-  800-53r5:
-    - AC-3
-    - AC-5
-    - AC-6
-    - MP-2
-    - SC-39
-  sfr:
-    - 'FMT_SMF_EXT.1.1 #42'
-    - FDP_ACF_EXT.1.2
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - N/A
+  disa:
+    cci:
+      - CCI-002233
+      - CCI-002530
+    sfr:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - AC-3
+      - MP-2
+      - SC-7(10)
+      - SC-39
+    800-171r2:
+      - N/A
+    800-53r4:
+      - None
   cis:
     benchmark:
       - $OS_VALUE
     controls v8:
       - $OS_VALUE
-  800-53r4:
-    - None
-  srg:
-    - $OS_VALUE
 tags:
   - ios
   - 800-53r5_low
@@ -51,7 +51,7 @@ mobileconfig_info:
   com.apple.applicationaccess:
     allowOpenFromManagedToUnmanaged: false
 os_specifics:
-  ios:
+  iOS:
     '16.0':
       references:
         cce:
@@ -60,6 +60,9 @@ os_specifics:
           - AIOS-16-009700
         srg:
           - None
+        sfr:
+          - 'FMT_SMF_EXT.1.1 #42'
+          - FDP_ACF_EXT.1.2
         cis:
           benchmark:
             - 2.2.1.8 (level 1 - End-User Owned Devices)

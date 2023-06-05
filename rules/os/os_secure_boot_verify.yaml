@@ -3,26 +3,29 @@ title: Ensure Secure Boot Level Set to Full
 discussion: "The Secure Boot security setting _MUST_ be set to full.\n\nFull security is the default Secure Boot setting in macOS. During startup, when Secure Boot is set to full security, the Mac will verify the integrity of the operating system before allowing the operating system to boot. \n\nNOTE: This will only return a proper result on a T2 or Apple Silicon Macs.\n"
 check: |
   /usr/libexec/mdmclient QuerySecurityInfo | /usr/bin/grep -c "SecureBootLevel = full"
-result:
-  integer: 1
+result: 1
 fix: |
   NOTE: Boot into Recovery Mode and enable Full Secure Boot
 references:
-  cce:
-    - $OS_VALUE
-  800-53r5:
-    - SI-7
-    - SI-7(1)
-    - SI-7(5)
-    - SI-6
-  800-53r4:
-    - SI-6
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  cci:
-    - N/A
+  disa:
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    cci:
+      - N/A
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - SI-7
+      - SI-7(1)
+      - SI-7(5)
+      - SI-6
+    800-53r4:
+      - SI-6
 tags:
   - 800-53r5_high
   - 800-53r5_moderate
@@ -39,6 +42,18 @@ os_specifics:
           - N/A
         srg:
           - SRG-OS-000446-GPOS-00200
+        sfr:
+          - N/A
+    '10.15':
+      references:
+        cce:
+          - CCE-84789-7
+        disa_stig:
+          - N/A
+        srg:
+          - SRG-OS-000446-GPOS-00200
+        sfr:
+          - N/A
     '12.0':
       references:
         cce:
@@ -47,6 +62,8 @@ os_specifics:
           - N/A
         srg:
           - N/A
+        sfr:
+          - N/A
     '13.0':
       references:
         cce:
@@ -54,4 +71,6 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A

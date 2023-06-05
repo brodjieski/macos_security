@@ -7,27 +7,30 @@ check: |
   $.NSUserDefaults.alloc.initWithSuiteName('com.apple.mDNSResponder')\
   .objectForKey('NoMulticastAdvertisements').js
   EOS
-result:
-  string: 'true'
+result: 'true'
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-000381
-  800-53r5:
-    - CM-7
-    - CM-7(1)
-  800-53r4:
-    - CM-7
-    - CM-7(1)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.4.6
+  disa:
+    cci:
+      - CCI-000381
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - CM-7
+      - CM-7(1)
+    800-53r4:
+      - CM-7
+      - CM-7(1)
+    800-171r2:
+      - 3.4.6
   cis:
     benchmark:
       - $OS_VALUE
@@ -41,9 +44,10 @@ tags:
   - 800-53r4_moderate
   - 800-53r4_high
   - 800-171
-  - stig
-  - cisv8
   - cis_lvl2
+  - cisv8
+  - stig
+  - cnssi-1253
 severity: medium
 mobileconfig: true
 mobileconfig_info:
@@ -59,9 +63,27 @@ os_specifics:
           - APPL-11-002005
         srg:
           - SRG-OS-000095-GPOS-00049
+        sfr:
+          - N/A
         cis:
           benchmark:
             - 4.1 (level 2)
+          controls v8:
+            - 4.1
+            - 4.8
+    '10.15':
+      references:
+        cce:
+          - CCE-84749-1
+        disa_stig:
+          - AOSX-15-002005
+        srg:
+          - SRG-OS-000095-GPOS-00049
+        sfr:
+          - N/A
+        cis:
+          benchmark:
+            - N/A
           controls v8:
             - 4.1
             - 4.8
@@ -73,6 +95,8 @@ os_specifics:
           - APPL-12-002005
         srg:
           - SRG-OS-000095-GPOS-00049
+        sfr:
+          - N/A
         cis:
           benchmark:
             - 4.1 (level 2)
@@ -86,6 +110,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
         cis:
           benchmark:

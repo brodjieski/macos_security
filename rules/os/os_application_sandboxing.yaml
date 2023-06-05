@@ -6,18 +6,22 @@ check: |
 fix: |
   The technology inherently meets this requirement. No fix is required.
 references:
-  cce:
-    - $OS_VALUE
-  800-53r5:
-    - SC-39
-  800-53r4:
-    - N/A
-  disa_stig:
-    - $OS_VALUE
-  srg:
-    - $OS_VALUE
-  cci:
-    - None
+  disa:
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+    cci:
+      - None
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - SC-39
+    800-53r4:
+      - N/A
 tags:
   - inherent
   - 800-53r5_low
@@ -35,6 +39,18 @@ os_specifics:
           - N/A
         srg:
           - N/A
+        sfr:
+          - N/A
+    '10.15':
+      references:
+        cce:
+          - CCE-84943-0
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        sfr:
+          - N/A
     '12.0':
       references:
         cce:
@@ -43,6 +59,8 @@ os_specifics:
           - N/A
         srg:
           - N/A
+        sfr:
+          - N/A
     '13.0':
       references:
         cce:
@@ -50,4 +68,6 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A

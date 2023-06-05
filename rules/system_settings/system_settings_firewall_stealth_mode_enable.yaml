@@ -6,39 +6,42 @@ check: |
   $.NSUserDefaults.alloc.initWithSuiteName('com.apple.security.firewall')\
   .objectForKey('EnableStealthMode').js
   EOS
-result:
-  string: 'true'
+result: 'true'
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - $OS_VALUE
-  800-53r5:
-    - CM-7
-    - CM-7(1)
-    - SC-7(16)
-    - SC-7
-  800-53r4:
-    - SC-7
-    - CM-7
-    - CM-7(1)
-    - SC-7(16)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.4.6
-    - 3.13.1
-    - 3.13.2
-    - 3.13.5
+  disa:
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    cci:
+      - None
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - CM-7
+      - CM-7(1)
+      - SC-7(16)
+      - SC-7
+    800-53r4:
+      - SC-7
+      - CM-7
+      - CM-7(1)
+      - SC-7(16)
+    800-171r2:
+      - 3.4.6
+      - 3.13.1
+      - 3.13.2
+      - 3.13.5
   cis:
     benchmark:
       - $OS_VALUE
     controls v8:
       - $OS_VALUE
-  cci:
-    - None
 tags:
   - 800-53r5_low
   - 800-53r5_moderate
@@ -64,6 +67,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
         cis:
           benchmark:

@@ -9,28 +9,31 @@ discussion: |
   ====
 check: |
   /usr/bin/profiles show -output stdout-xml | /usr/bin/xmllint --xpath '//key[text()="HiddenPreferencePanes"]/following-sibling::*[1]' - | /usr/bin/grep -c com.apple.preferences.internetaccounts
-result:
-  integer: 1
+result: 1
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-001774
-    - CCI-000381
-  800-53r5:
-    - CM-7(5)
-    - AC-20
-  800-53r4:
-    - AC-20
-    - CM-7(5)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.1.20
+  disa:
+    cci:
+      - CCI-001774
+      - CCI-000381
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - CM-7(5)
+      - AC-20
+    800-53r4:
+      - AC-20
+      - CM-7(5)
+    800-171r2:
+      - 3.1.20
 tags:
   - stig
 severity: medium
@@ -50,6 +53,8 @@ os_specifics:
         srg:
           - SRG-OS-000095-GPOS-00049
           - SRG-OS-000370-GPOS-00155
+        sfr:
+          - N/A
     '12.0':
       references:
         cce:
@@ -59,3 +64,5 @@ os_specifics:
         srg:
           - SRG-OS-000095-GPOS-00049
           - SRG-OS-000370-GPOS-00155
+        sfr:
+          - N/A

@@ -6,28 +6,31 @@ discussion: |
   Audit logs contain sensitive data about the system and users. This rule ensures that the audit service is configured to create log folders that are readable and writable only by system administrators in order to prevent normal users from reading audit logs.
 check: |
   /bin/ls -lde $(/usr/bin/grep '^dir' /etc/security/audit_control | /usr/bin/awk -F: '{print $2}') | /usr/bin/awk '{print $1}' | /usr/bin/grep -c ":"
-result:
-  integer: 0
+result: 0
 fix: |
   [source,bash]
   ----
   /bin/chmod -N $(/usr/bin/grep '^dir' /etc/security/audit_control | /usr/bin/awk -F: '{print $2}')
   ----
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-000162
-  800-53r5:
-    - AU-9
-  800-53r4:
-    - AU-9
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.3.8
+  disa:
+    cci:
+      - CCI-000162
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - AU-9
+    800-53r4:
+      - AU-9
+    800-171r2:
+      - 3.3.8
   cis:
     benchmark:
       - $OS_VALUE
@@ -41,9 +44,11 @@ tags:
   - 800-53r4_moderate
   - 800-53r4_high
   - 800-171
-  - stig
+  - cnssi-1253
   - cis_lvl1
   - cis_lvl2
+  - cisv8
+  - stig
 severity: medium
 mobileconfig: false
 mobileconfig_info: null
@@ -57,11 +62,23 @@ os_specifics:
           - APPL-11-000031
         srg:
           - SRG-OS-000057-GPOS-00027
+        sfr:
+          - N/A
         cis:
           benchmark:
             - 3.5 (level 1)
           controls v8:
             - 3.3
+    '10.15':
+      references:
+        cce:
+          - CCE-84704-6
+        disa_stig:
+          - AOSX-15-000031
+        srg:
+          - SRG-OS-000057-GPOS-00027
+        sfr:
+          - N/A
     '12.0':
       references:
         cce:
@@ -70,6 +87,8 @@ os_specifics:
           - APPL-12-000031
         srg:
           - SRG-OS-000057-GPOS-00027
+        sfr:
+          - N/A
         cis:
           benchmark:
             - 3.5 (level 1)
@@ -80,8 +99,10 @@ os_specifics:
         cce:
           - CCE-91702-1
         disa_stig:
-          - N/A
+          - APPL-13-000031
         srg:
+          - SRG-OS-000057-GPOS-00027
+        sfr:
           - N/A
         cis:
           benchmark:

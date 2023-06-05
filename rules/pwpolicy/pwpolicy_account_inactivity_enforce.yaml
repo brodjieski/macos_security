@@ -3,8 +3,7 @@ title: Disable Accounts after $ODV Days of Inactivity
 discussion: "The macOS _MUST_ be configured to disable accounts after $ODV days of inactivity.\n\nThis rule prevents malicious users from making use of unused accounts to gain access to the system while avoiding detection. \n"
 check: |
   /usr/bin/pwpolicy -getaccountpolicies 2> /dev/null | /usr/bin/tail +2 | /usr/bin/xmllint --xpath '//dict/key[text()="policyAttributeInactiveDays"]/following-sibling::integer[1]/text()' -
-result:
-  integer: $ODV
+result: $ODV
 fix: |
   This setting may be enforced using local policy or by a directory service.
 
@@ -32,21 +31,25 @@ fix: |
   ----
   NOTE: See the password policy supplemental on more information on how to implement password policies on macOS.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-000795
-  800-53r5:
-    - AC-2(3)
-  800-53r4:
-    - IA-4
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.5.5
-    - 3.5.6
+  disa:
+    cci:
+      - CCI-000795
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - AC-2(3)
+    800-53r4:
+      - IA-4
+    800-171r2:
+      - 3.5.5
+      - 3.5.6
   cis:
     benchmark:
       - $OS_VALUE
@@ -63,6 +66,7 @@ tags:
   - 800-53r5_moderate
   - 800-53r5_high
   - cisv8
+  - cnssi-1253
 mobileconfig: false
 mobileconfig_info: null
 os_specifics:
@@ -75,6 +79,23 @@ os_specifics:
           - N/A
         srg:
           - SRG-OS-000118-GPOS-00060
+        sfr:
+          - N/A
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 5.3
+    '10.15':
+      references:
+        cce:
+          - CCE-84808-5
+        disa_stig:
+          - N/A
+        srg:
+          - SRG-OS-000118-GPOS-00060
+        sfr:
+          - N/A
         cis:
           benchmark:
             - N/A
@@ -88,6 +109,8 @@ os_specifics:
           - N/A
         srg:
           - N/A
+        sfr:
+          - N/A
         cis:
           benchmark:
             - N/A
@@ -100,6 +123,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
         cis:
           benchmark:

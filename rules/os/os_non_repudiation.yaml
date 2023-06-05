@@ -9,20 +9,24 @@ check: |
 fix: |
   The requirement is NA. No fix is required.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - AU-10
-  800-53r4:
-    - N/A
-  800-171r2:
-    - N/A
-  disa_stig:
-    - $OS_VALUE
-  srg:
-    - $OS_VALUE
+  disa:
+    cci:
+      - N/A
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - AU-10
+    800-53r4:
+      - N/A
+    800-171r2:
+      - N/A
 tags:
   - 800-53r5_high
   - n_a
@@ -38,6 +42,18 @@ os_specifics:
           - N/A
         srg:
           - N/A
+        sfr:
+          - N/A
+    '10.15':
+      references:
+        cce:
+          - CCE-84947-1
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        sfr:
+          - N/A
     '12.0':
       references:
         cce:
@@ -46,6 +62,8 @@ os_specifics:
           - N/A
         srg:
           - N/A
+        sfr:
+          - N/A
     '13.0':
       references:
         cce:
@@ -53,4 +71,6 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A

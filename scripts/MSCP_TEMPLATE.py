@@ -13,7 +13,7 @@ import os
 import pprint
 from optparse import OptionParser
 import logging
-import platform
+#import platform
 
 # import mscp modules
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
@@ -37,17 +37,20 @@ if __name__ == "__main__":
     # Supplied benchmark
     parser.add_option("-b", action="store", dest='benchmark', default="recommended", help="Use the organization defined values from the supplied benchmark, defaults to recommended values")
 
-    # Supplied OS
-    parser.add_option("-o", action="store", dest='os', default="", help="Build the compliance info for the specified OS version, defaults to currently running OS")
+    # Supplied platform
+    parser.add_option("-p", action="store", dest='os_platform', default="macOS", help="Build the compliance info for the specified platform, defaults to macOS")
+
+    # Supplied OS version
+    parser.add_option("-o", action="store", dest='os_version', default="13.0", help="Build the compliance info for the specified OS version, defaults to currently running OS")
       
     # Process command line
     (options, args) = parser.parse_args()
 
-    if not options.os:
-        v, _, _ = platform.mac_ver()
-        macos = v.split(".")[0]
-    else:
-        macos = options.os
+    # if not options.os_version:
+    #     v, _, _ = platform.mac_ver()
+    #     os_version = v.split(".")[0]
+    # else:
+    #     os_version = options.os_version
 
     # Pull in the yaml functions
     _yaml = mscp.Yaml()
@@ -79,7 +82,7 @@ if __name__ == "__main__":
     logging.debug("\n".join(["**** CUSTOM RULESET ****", pprint.pformat(custom_ruleset, indent=1, sort_dicts=False), "**** CUSTOM RULESET ****"]))
 
     # merge original and custom rules for entire list in db
-    rule_list = _yaml.compileRules(ruleset, custom_ruleset, options.benchmark, macos)
+    rule_list = _yaml.compileRules(ruleset, custom_ruleset, options.benchmark, options.os_platform, options.os_version)
 
     ### rule_list now contains the full library of rules including custom rule files found
     ### ODV values are included

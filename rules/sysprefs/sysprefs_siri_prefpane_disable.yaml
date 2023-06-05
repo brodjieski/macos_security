@@ -2,28 +2,31 @@ id: sysprefs_siri_prefpane_disable
 title: Disable the System Preference Pane for Siri
 discussion: "The system preference pane for Siri _MUST_ be disabled.\n\nDisabling the system preference pane prevents the users from configuring Siri. \n"
 check: $OS_VALUE
-result:
-  integer: 1
+result: 1
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-001774
-    - CCI-000381
-  800-53r5:
-    - CM-7
-    - CM-7(5)
-  800-53r4:
-    - CM-7
-    - CM-7(5)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - N/A
+  disa:
+    cci:
+      - CCI-001774
+      - CCI-000381
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - CM-7
+      - CM-7(5)
+    800-53r4:
+      - CM-7
+      - CM-7(5)
+    800-171r2:
+      - N/A
 tags:
   - stig
 severity: medium
@@ -42,6 +45,8 @@ os_specifics:
           - APPL-11-002053
         srg:
           - SRG-OS-000095-GPOS-00049
+        sfr:
+          - N/A
       check: |
         /usr/bin/profiles show -output stdout-xml | /usr/bin/xmllint --xpath '//key[text()="HiddenPreferencePanes"]/following-sibling::*[1]' - | /usr/bin/grep -c com.apple.preference.speech
     '12.0':
@@ -52,5 +57,7 @@ os_specifics:
           - APPL-12-002053
         srg:
           - SRG-OS-000095-GPOS-00049
+        sfr:
+          - N/A
       check: |
         /usr/bin/profiles show -output stdout-xml | /usr/bin/xmllint --xpath '//key[text()="DisabledPreferencePanes"]/following-sibling::*[1]' - | /usr/bin/grep -c com.apple.preference.speech

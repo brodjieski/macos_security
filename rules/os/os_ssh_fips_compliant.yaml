@@ -11,36 +11,39 @@ check: |
   PubkeyAcceptedAlgorithms ecdsa-sha2-nistp256,ecdsa-sha2-nistp256-cert-v01@openssh.com
   CASignatureAlgorithms ecdsa-sha2-nistp256"
   /usr/bin/grep -c "$fips_ssh_config" /etc/ssh/ssh_config.d/fips_ssh_config
-result:
-  integer: 8
+result: 8
 fix: "[source,bash]\n----\nfips_ssh_config=\"Host *\nCiphers aes128-gcm@openssh.com\nHostbasedAcceptedAlgorithms ecdsa-sha2-nistp256,ecdsa-sha2-nistp256-cert-v01@openssh.com\nHostKeyAlgorithms ecdsa-sha2-nistp256,ecdsa-sha2-nistp256-cert-v01@openssh.com\nKexAlgorithms ecdh-sha2-nistp256\nMACs hmac-sha2-256\nPubkeyAcceptedAlgorithms ecdsa-sha2-nistp256,ecdsa-sha2-nistp256-cert-v01@openssh.com\nCASignatureAlgorithms ecdsa-sha2-nistp256\"\n/bin/echo \"${fips_ssh_config}\" > /etc/ssh/ssh_config.d/fips_ssh_config\n----   \n"
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-000087
-    - CCI-000068
-    - CCI-000803
-    - CCI-002890
-    - CCI-003123
-  800-53r5:
-    - AC-17(2)
-    - IA-7
-    - SC-13
-    - SC-8(1)
-  800-53r4:
-    - AC-17(2)
-    - IA-7
-    - SC-8(1)
-    - SC-13
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.1.13
-    - 3.13.8
-    - 3.13.11
+  disa:
+    cci:
+      - CCI-000087
+      - CCI-000068
+      - CCI-000803
+      - CCI-002890
+      - CCI-003123
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - AC-17(2)
+      - IA-7
+      - SC-13
+      - SC-8(1)
+    800-53r4:
+      - AC-17(2)
+      - IA-7
+      - SC-8(1)
+      - SC-13
+    800-171r2:
+      - 3.1.13
+      - 3.13.8
+      - 3.13.11
 tags:
   - 800-53r5_moderate
   - 800-53r5_high
@@ -61,6 +64,8 @@ os_specifics:
           - N/A
         srg:
           - N/A
+        sfr:
+          - N/A
     '13.0':
       references:
         cce:
@@ -68,4 +73,6 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A

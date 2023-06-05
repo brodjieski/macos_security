@@ -2,26 +2,36 @@ id: os_policy_banner_ssh_enforce
 title: Enforce SSH to Display Policy Banner
 discussion: "SSH _MUST_ be configured to display a policy banner. \n\nDisplaying a standardized and approved use notification before granting access to the operating system ensures that users are provided with privacy and security notification verbiage that is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.\n\nSystem use notifications are required only for access via login interfaces with human users and are not required when such human interfaces do not exist\n\nNOTE: /etc/ssh/sshd_config will be automatically modified to its original state following any update or major upgrade to the operating system.\n"
 check: $OS_VALUE
-result:
-  integer: 1
+result: 1
 fix: $OS_VALUE
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-000048
-    - CCI-000050
-  800-53r5:
-    - AC-8
-  800-53r4:
-    - AC-8
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.1.9
+  disa:
+    cci:
+      - CCI-000048
+      - CCI-000050
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - AC-8
+    800-53r4:
+      - AC-8
+    800-171r2:
+      - 3.1.9
 tags:
+  - 800-53r5_low
+  - 800-53r5_moderate
+  - 800-53r5_high
+  - 800-53r4_low
+  - 800-53r4_moderate
+  - 800-53r4_high
+  - 800-171
   - stig
 severity: medium
 mobileconfig: false
@@ -36,6 +46,25 @@ os_specifics:
           - APPL-11-000024
         srg:
           - SRG-OS-000023-GPOS-00006
+        sfr:
+          - N/A
+      check: "/usr/bin/grep -c \"^Banner /etc/banner\" /etc/ssh/sshd_config \n"
+      fix: |
+        [source,bash]
+        ----
+        /usr/bin/sed -i.bak 's/^[\#]*Banner.*/Banner \/etc\/banner/' /etc/ssh/sshd_config
+        ----
+    '10.15':
+      references:
+        cce:
+          - CCE-84779-8
+        disa_stig:
+          - AOSX-15-000024
+        srg:
+          - SRG-OS-000023-GPOS-00006
+          - SRG-OS-000024-GPOS-00007
+        sfr:
+          - N/A
       check: "/usr/bin/grep -c \"^Banner /etc/banner\" /etc/ssh/sshd_config \n"
       fix: |
         [source,bash]
@@ -51,6 +80,8 @@ os_specifics:
         srg:
           - SRG-OS-000023-GPOS-00006
           - SRG-OS-000024-GPOS-00007
+        sfr:
+          - N/A
       check: |
         /usr/sbin/sshd -T | /usr/bin/grep -c "^banner /etc/banner"
       fix: |
@@ -80,6 +111,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
       check: |
         /usr/sbin/sshd -T | /usr/bin/grep -c "^banner /etc/banner"

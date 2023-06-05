@@ -6,29 +6,35 @@ check: ' '
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-000366
-  800-53r5:
-    - N/A
-  sfr:
-    - 'FMT_SMF_EXT.1.1 #8b'
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - N/A
+  disa:
+    cci:
+      - CCI-000366
+    sfr:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - CM-7
+      - CM-7(1)
+    800-171r2:
+      - N/A
+    800-53r4:
+      - None
   cis:
     benchmark:
       - $OS_VALUE
     controls v8:
       - $OS_VALUE
-  800-53r4:
-    - None
-  srg:
-    - $OS_VALUE
 tags:
   - ios
+  - 800-53r5_low
+  - 800-53r5_moderate
+  - 800-53r5_high
   - cis_lvl1_byod
   - cis_lvl2_byod
   - cis_lvl1_enterprise
@@ -42,7 +48,7 @@ mobileconfig_info:
   com.apple.applicationaccess:
     allowVoiceDialing: false
 os_specifics:
-  ios:
+  iOS:
     '16.0':
       references:
         cce:
@@ -51,6 +57,8 @@ os_specifics:
           - AIOS-16-007300
         srg:
           - None
+        sfr:
+          - 'FMT_SMF_EXT.1.1 #8b'
         cis:
           benchmark:
             - 2.2.1.1 (level 1 - End-User Owned Devices)

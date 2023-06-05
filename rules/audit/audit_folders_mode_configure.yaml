@@ -3,30 +3,33 @@ title: Configure Audit Log Folders to Mode 700 or Less Permissive
 discussion: "The audit log folder _MUST_ be configured to mode 700 or less permissive so that only the root user is able to read, write, and execute changes to folders. \n\nBecause audit logs contain sensitive data about the system and users, the audit service _MUST_ be configured to mode 700 or less permissive; thereby preventing normal users from reading, modifying or deleting audit logs. \n"
 check: |
   /usr/bin/stat -f %A $(/usr/bin/grep '^dir' /etc/security/audit_control | /usr/bin/awk -F: '{print $2}')
-result:
-  integer: 700
+result: 700
 fix: |
   [source,bash]
   ----
   /bin/chmod 700 $(/usr/bin/grep '^dir' /etc/security/audit_control | /usr/bin/awk -F: '{print $2}')
   ----
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-000162
-    - CCI-000163
-    - CCI-000164
-  800-53r5:
-    - AU-9
-  800-53r4:
-    - AU-9
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.3.8
+  disa:
+    cci:
+      - CCI-000162
+      - CCI-000163
+      - CCI-000164
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - AU-9
+    800-53r4:
+      - AU-9
+    800-171r2:
+      - 3.3.8
   cis:
     benchmark:
       - $OS_VALUE
@@ -40,9 +43,11 @@ tags:
   - 800-53r4_moderate
   - 800-53r4_high
   - 800-171
-  - stig
+  - cnssi-1253
   - cis_lvl1
   - cis_lvl2
+  - cisv8
+  - stig
 severity: medium
 mobileconfig: false
 mobileconfig_info: null
@@ -58,11 +63,25 @@ os_specifics:
           - SRG-OS-000058-GPOS-00028
           - SRG-OS-000059-GPOS-00029
           - SRG-OS-000057-GPOS-00027
+        sfr:
+          - N/A
         cis:
           benchmark:
             - 3.5 (level 1)
           controls v8:
             - 3.3
+    '10.15':
+      references:
+        cce:
+          - CCE-84705-3
+        disa_stig:
+          - AOSX-15-001017
+        srg:
+          - SRG-OS-000058-GPOS-00028
+          - SRG-OS-000059-GPOS-00029
+          - SRG-OS-000057-GPOS-00027
+        sfr:
+          - N/A
     '12.0':
       references:
         cce:
@@ -73,6 +92,8 @@ os_specifics:
           - SRG-OS-000057-GPOS-00027
           - SRG-OS-000058-GPOS-00028
           - SRG-OS-000059-GPOS-00029
+        sfr:
+          - N/A
         cis:
           benchmark:
             - 3.5 (level 1)
@@ -83,8 +104,12 @@ os_specifics:
         cce:
           - CCE-91727-8
         disa_stig:
-          - N/A
+          - APPL-13-001017
         srg:
+          - SRG-OS-000057-GPOS-00027
+          - SRG-OS-000058-GPOS-00028
+          - SRG-OS-000059-GPOS-00029
+        sfr:
           - N/A
         cis:
           benchmark:

@@ -3,22 +3,25 @@ title: Configure Audit Capacity Warning
 discussion: "The audit service _MUST_ be configured to notify the system administrator when the amount of free disk space remaining reaches an organization defined value. \n\nThis rule ensures that the system administrator is notified in advance that action is required to free up more disk space for audit logs.\n"
 check: |
   /usr/bin/awk -F: '/^minfree/{print $2}' /etc/security/audit_control
-result:
-  integer: $ODV
+result: $ODV
 fix: "[source,bash]\n----\n/usr/bin/sed -i.bak 's/.*minfree.*/minfree:$ODV/' /etc/security/audit_control; /usr/sbin/audit -s \n----\n"
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-001855
-  800-53r5:
-    - AU-5(1)
-  800-53r4:
-    - AU-5(1)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
+  disa:
+    cci:
+      - CCI-001855
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - AU-5(1)
+    800-53r4:
+      - AU-5(1)
 odv:
   hint: Percentage of free space.
   recommended: 25
@@ -40,6 +43,18 @@ os_specifics:
           - APPL-11-001030
         srg:
           - SRG-OS-000343-GPOS-00134
+        sfr:
+          - N/A
+    '10.15':
+      references:
+        cce:
+          - CCE-84707-9
+        disa_stig:
+          - AOSX-15-001030
+        srg:
+          - SRG-OS-000343-GPOS-00134
+        sfr:
+          - N/A
     '12.0':
       references:
         cce:
@@ -48,11 +63,15 @@ os_specifics:
           - APPL-12-001030
         srg:
           - SRG-OS-000343-GPOS-00134
+        sfr:
+          - N/A
     '13.0':
       references:
         cce:
           - CCE-91705-4
         disa_stig:
-          - N/A
+          - APPL-13-001030
         srg:
+          - SRG-OS-000343-GPOS-00134
+        sfr:
           - N/A

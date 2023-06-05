@@ -3,32 +3,35 @@ title: Disable the System Setting for Apple ID
 discussion: "The system setting for Apple ID _MUST_ be disabled.\n\nDisabling the system setting prevents login to Apple ID and iCloud. \n"
 check: |
   /usr/bin/profiles show -output stdout-xml | /usr/bin/xmllint --xpath '//key[text()="DisabledSystemSettings"]/following-sibling::*[1]' - | /usr/bin/grep -c com.apple.systempreferences.AppleIDSettings
-result:
-  integer: 1
+result: 1
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - AC-20
-    - AC-20(1)
-    - CM-7
-    - CM-7(1)
-  800-53r4:
-    - CM-7
-    - CM-7(1)
-    - AC-20
-    - AC-20(1)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.1.20
-    - 3.4.6
+  disa:
+    cci:
+      - N/A
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - AC-20
+      - AC-20(1)
+      - CM-7
+      - CM-7(1)
+    800-53r4:
+      - CM-7
+      - CM-7(1)
+      - AC-20
+      - AC-20(1)
+    800-171r2:
+      - 3.1.20
+      - 3.4.6
   cis:
     benchmark:
       - $OS_VALUE
@@ -58,6 +61,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
         cis:
           benchmark:

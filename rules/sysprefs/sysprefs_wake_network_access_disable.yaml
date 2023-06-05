@@ -4,28 +4,31 @@ discussion: |
   Wake for network access _MUST_ be disabled.
 check: |
   /usr/bin/pmset -g custom | /usr/bin/awk '/womp/{print $2}'
-result:
-  integer: 0
+result: 0
 fix: |
   [source,bash]
   ----
   /usr/bin/pmset -a womp 0
   ----
 references:
-  cce:
-    - $OS_VALUE
-  800-53r5:
-    - N/A
-  800-53r4:
-    - N/A
-  disa_stig:
-    - $OS_VALUE
-  srg:
-    - $OS_VALUE
-  cci:
-    - N/A
-  800-171r2:
-    - N/A
+  disa:
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+    cci:
+      - N/A
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - N/A
+    800-53r4:
+      - N/A
+    800-171r2:
+      - N/A
   cis:
     benchmark:
       - $OS_VALUE
@@ -47,6 +50,8 @@ os_specifics:
           - N/A
         srg:
           - N/A
+        sfr:
+          - N/A
         cis:
           benchmark:
             - 2.8.1 (level 1)
@@ -59,6 +64,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
         cis:
           benchmark:

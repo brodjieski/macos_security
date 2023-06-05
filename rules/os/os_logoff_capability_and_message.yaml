@@ -9,20 +9,24 @@ check: |
 fix: |
   The technology inherently meets this requirement. No fix is required.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-002363
-    - CCI-002364
-  800-53r5:
-    - AC-12(1)
-    - AC-12(2)
-  800-53r4:
-    - AC-12(1)
-  disa_stig:
-    - $OS_VALUE
-  srg:
-    - $OS_VALUE
+  disa:
+    cci:
+      - CCI-002363
+      - CCI-002364
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - AC-12(1)
+      - AC-12(2)
+    800-53r4:
+      - AC-12(1)
 tags:
   - inherent
 mobileconfig: false
@@ -38,6 +42,19 @@ os_specifics:
         srg:
           - SRG-OS-000280-GPOS-00110
           - SRG-OS-000281-GPOS-00111
+        sfr:
+          - N/A
+    '10.15':
+      references:
+        cce:
+          - CCE-84859-8
+        disa_stig:
+          - N/A
+        srg:
+          - SRG-OS-000280-GPOS-00110
+          - SRG-OS-000281-GPOS-00111
+        sfr:
+          - N/A
     '12.0':
       references:
         cce:
@@ -46,6 +63,8 @@ os_specifics:
           - N/A
         srg:
           - N/A
+        sfr:
+          - N/A
     '13.0':
       references:
         cce:
@@ -53,4 +72,6 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A

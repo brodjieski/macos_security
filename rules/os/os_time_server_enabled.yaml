@@ -6,30 +6,33 @@ discussion: |
   NOTE: The time synchronization daemon is enabled by default on macOS.
 check: |
   /bin/launchctl list | /usr/bin/grep -c com.apple.timed
-result:
-  integer: 1
+result: 1
 fix: |
   [source,bash]
   ----
   /bin/launchctl load -w /System/Library/LaunchDaemons/com.apple.timed.plist
   ----
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-001891
-    - CCI-002046
-  800-53r5:
-    - AU-12(1)
-    - SC-45(1)
-  800-53r4:
-    - AU-8(1)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.3.7
+  disa:
+    cci:
+      - CCI-001891
+      - CCI-002046
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - AU-12(1)
+      - SC-45(1)
+    800-53r4:
+      - AU-8(1)
+    800-171r2:
+      - 3.3.7
   cis:
     benchmark:
       - $OS_VALUE
@@ -42,8 +45,9 @@ tags:
   - 800-53r5_high
   - 800-53r4_moderate
   - 800-53r4_high
-  - stig
   - cisv8
+  - stig
+  - cnssi-1253
 severity: medium
 mobileconfig: false
 mobileconfig_info: null
@@ -58,6 +62,24 @@ os_specifics:
         srg:
           - SRG-OS-000355-GPOS-00143
           - SRG-OS-000356-GPOS-00144
+        sfr:
+          - N/A
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 8.4
+    '10.15':
+      references:
+        cce:
+          - CCE-84801-0
+        disa_stig:
+          - AOSX-15-000014
+        srg:
+          - SRG-OS-000355-GPOS-00143
+          - SRG-OS-000356-GPOS-00144
+        sfr:
+          - N/A
         cis:
           benchmark:
             - N/A
@@ -72,6 +94,8 @@ os_specifics:
         srg:
           - SRG-OS-000355-GPOS-00143
           - SRG-OS-000356-GPOS-00144
+        sfr:
+          - N/A
         cis:
           benchmark:
             - N/A
@@ -84,6 +108,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
         cis:
           benchmark:

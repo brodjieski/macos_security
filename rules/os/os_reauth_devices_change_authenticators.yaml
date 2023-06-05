@@ -6,18 +6,22 @@ check: |
 fix: |
   This requirement is a permanent finding and cannot be fixed. An appropriate mitigation for the system must be implemented, but this finding cannot be considered fixed.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-002039
-  800-53r5:
-    - IA-11
-  800-53r4:
-    - IA-11
-  disa_stig:
-    - $OS_VALUE
-  srg:
-    - $OS_VALUE
+  disa:
+    cci:
+      - CCI-002039
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - IA-11
+    800-53r4:
+      - IA-11
 tags:
   - 800-53r5_low
   - 800-53r5_moderate
@@ -35,6 +39,18 @@ os_specifics:
           - N/A
         srg:
           - SRG-OS-000374-GPOS-00159
+        sfr:
+          - N/A
+    '10.15':
+      references:
+        cce:
+          - CCE-84896-0
+        disa_stig:
+          - N/A
+        srg:
+          - SRG-OS-000374-GPOS-00159
+        sfr:
+          - N/A
     '12.0':
       references:
         cce:
@@ -43,6 +59,8 @@ os_specifics:
           - N/A
         srg:
           - N/A
+        sfr:
+          - N/A
     '13.0':
       references:
         cce:
@@ -50,4 +68,6 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A

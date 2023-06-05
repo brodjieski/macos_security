@@ -6,31 +6,34 @@ discussion: |
   This rule ensures that audit information and audit files are configured to be readable and writable only by system administrators, thereby preventing unauthorized access, modification, and deletion of files.
 check: |
   /bin/ls -le $(/usr/bin/grep '^dir' /etc/security/audit_control | /usr/bin/awk -F: '{print $2}') | /usr/bin/awk '{print $1}' | /usr/bin/grep -c ":"
-result:
-  integer: 0
+result: 0
 fix: |
   [source,bash]
   ----
   /bin/chmod -RN $(/usr/bin/awk -F: '/^dir/{print $2}' /etc/security/audit_control)
   ----
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-000162
-    - CCI-001314
-  800-53r5:
-    - SI-11
-    - AU-9
-  800-53r4:
-    - AU-9
-    - SI-11
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.3.8
+  disa:
+    cci:
+      - CCI-000162
+      - CCI-001314
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - SI-11
+      - AU-9
+    800-53r4:
+      - AU-9
+      - SI-11
+    800-171r2:
+      - 3.3.8
   cis:
     benchmark:
       - $OS_VALUE
@@ -44,9 +47,11 @@ tags:
   - 800-53r5_moderate
   - 800-53r5_high
   - 800-171
-  - stig
+  - cnssi-1253
   - cis_lvl1
   - cis_lvl2
+  - cisv8
+  - stig
 severity: medium
 mobileconfig: false
 mobileconfig_info: null
@@ -61,11 +66,24 @@ os_specifics:
         srg:
           - SRG-OS-000057-GPOS-00027
           - SRG-OS-000206-GPOS-00084
+        sfr:
+          - N/A
         cis:
           benchmark:
             - 3.5 (level 1)
           controls v8:
             - 3.3
+    '10.15':
+      references:
+        cce:
+          - CCE-84701-2
+        disa_stig:
+          - AOSX-15-000030
+        srg:
+          - SRG-OS-000057-GPOS-00027
+          - SRG-OS-000206-GPOS-00084
+        sfr:
+          - N/A
     '12.0':
       references:
         cce:
@@ -75,6 +93,8 @@ os_specifics:
         srg:
           - SRG-OS-000057-GPOS-00027
           - SRG-OS-000206-GPOS-00084
+        sfr:
+          - N/A
         cis:
           benchmark:
             - 3.5 (level 1)
@@ -85,8 +105,11 @@ os_specifics:
         cce:
           - CCE-91701-3
         disa_stig:
-          - N/A
+          - APPL-13-000030
         srg:
+          - SRG-OS-000057-GPOS-00027
+          - SRG-OS-000206-GPOS-00084
+        sfr:
           - N/A
         cis:
           benchmark:

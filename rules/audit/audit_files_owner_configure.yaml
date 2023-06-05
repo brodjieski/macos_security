@@ -7,28 +7,31 @@ discussion: |
 
   Audit logs contain sensitive data about the system and users. If log files are set to only be readable and writable by system administrators, the risk is mitigated.
 check: "/bin/ls -n $(/usr/bin/grep '^dir' /etc/security/audit_control | /usr/bin/awk -F: '{print $2}') | /usr/bin/awk '{s+=$3} END {print s}'  \n"
-result:
-  integer: 0
+result: 0
 fix: |
   [source,bash]
   ----
   /usr/sbin/chown -R root $(/usr/bin/grep '^dir' /etc/security/audit_control | /usr/bin/awk -F: '{print $2}')/*
   ----
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-000162
-  800-53r5:
-    - AU-9
-  800-53r4:
-    - AU-9
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.3.8
+  disa:
+    cci:
+      - CCI-000162
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - AU-9
+    800-53r4:
+      - AU-9
+    800-171r2:
+      - 3.3.8
   cis:
     benchmark:
       - $OS_VALUE
@@ -42,9 +45,11 @@ tags:
   - 800-53r4_moderate
   - 800-53r4_high
   - 800-171
-  - stig
+  - cnssi-1253
   - cis_lvl1
   - cis_lvl2
+  - cisv8
+  - stig
 severity: medium
 mobileconfig: false
 mobileconfig_info: null
@@ -58,11 +63,23 @@ os_specifics:
           - APPL-11-001012
         srg:
           - SRG-OS-000057-GPOS-00027
+        sfr:
+          - N/A
         cis:
           benchmark:
             - 3.5 (level 1)
           controls v8:
             - 3.3
+    '10.15':
+      references:
+        cce:
+          - CCE-84710-3
+        disa_stig:
+          - AOSX-15-001012
+        srg:
+          - SRG-OS-000057-GPOS-00027
+        sfr:
+          - N/A
     '12.0':
       references:
         cce:
@@ -71,6 +88,8 @@ os_specifics:
           - APPL-12-001012
         srg:
           - SRG-OS-000057-GPOS-00027
+        sfr:
+          - N/A
         cis:
           benchmark:
             - 3.5 (level 1)
@@ -81,8 +100,10 @@ os_specifics:
         cce:
           - CCE-91714-6
         disa_stig:
-          - N/A
+          - APPL-13-001012
         srg:
+          - SRG-OS-000057-GPOS-00027
+        sfr:
           - N/A
         cis:
           benchmark:

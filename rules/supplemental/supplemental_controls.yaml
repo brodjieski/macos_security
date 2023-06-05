@@ -4,18 +4,22 @@ discussion: "There are several requirements defined in National Institute of Sta
 check: ''
 fix: ''
 references:
-  cci:
-    - N/A
-  800-53r5:
-    - N/A
-  800-53r4:
-    - N/A
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  cce:
-    - $OS_VALUE
+  disa:
+    cci:
+      - N/A
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    800-53r5:
+      - N/A
+    800-53r4:
+      - N/A
+    cce:
+      - $OS_VALUE
 tags:
   - supplemental
 mobileconfig: false
@@ -30,6 +34,18 @@ os_specifics:
           - N/A
         srg:
           - N/A
+        sfr:
+          - N/A
+    '10.15':
+      references:
+        cce:
+          - None
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        sfr:
+          - N/A
     '13.0':
       references:
         cce:
@@ -38,6 +54,8 @@ os_specifics:
           - N/A
         srg:
           - N/A
+        sfr:
+          - N/A
     '12.0':
       references:
         cce:
@@ -45,4 +63,6 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A

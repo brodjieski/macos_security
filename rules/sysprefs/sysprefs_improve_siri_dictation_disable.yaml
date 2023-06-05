@@ -6,37 +6,40 @@ check: |
   $.NSUserDefaults.alloc.initWithSuiteName('com.apple.assistant.support')\
   .objectForKey('Siri Data Sharing Opt-In Status').js
   EOS
-result:
-  integer: 2
+result: 2
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - AC-20
-    - CM-7
-    - CM-7(1)
-    - SC-7(10)
-  800-53r4:
-    - CM-7
-    - CM-7(1)
-    - AC-20
-    - SC-7(10)
-  800-171r2:
-    - 3.1.20
-    - 3.4.6
+  disa:
+    cci:
+      - N/A
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - AC-20
+      - CM-7
+      - CM-7(1)
+      - SC-7(10)
+    800-53r4:
+      - CM-7
+      - CM-7(1)
+      - AC-20
+      - SC-7(10)
+    800-171r2:
+      - 3.1.20
+      - 3.4.6
   cis:
     benchmark:
       - $OS_VALUE
     controls v8:
       - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  srg:
-    - $OS_VALUE
 tags:
   - 800-53r5_low
   - 800-53r5_moderate
@@ -46,6 +49,7 @@ tags:
   - 800-53r4_high
   - 800-171
   - cisv8
+  - cnssi-1253
 mobileconfig: true
 mobileconfig_info:
   com.apple.assistant.support:
@@ -60,6 +64,24 @@ os_specifics:
           - None
         srg:
           - None
+        sfr:
+          - N/A
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 4.1
+            - 4.8
+    '10.15':
+      references:
+        cce:
+          - CCE-84912-5
+        disa_stig:
+          - None
+        srg:
+          - None
+        sfr:
+          - N/A
         cis:
           benchmark:
             - N/A
@@ -74,6 +96,8 @@ os_specifics:
           - None
         srg:
           - None
+        sfr:
+          - N/A
         cis:
           benchmark:
             - N/A

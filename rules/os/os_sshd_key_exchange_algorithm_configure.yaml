@@ -2,34 +2,44 @@ id: os_sshd_key_exchange_algorithm_configure
 title: Configure SSHD to Use Secure Key Exchange Algorithms
 discussion: $OS_VALUE
 check: $OS_VALUE
-result:
-  integer: 1
+result: 1
 fix: $OS_VALUE
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-000803
-    - CCI-000068
-    - CCI-000087
-    - CCI-003123
-    - CCI-002890
-  800-53r5:
-    - AC-17(2)
-    - IA-7
-    - MA-4(6)
-  800-53r4:
-    - IA-7
-    - AC-17(2)
-    - MA-4(6)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - N/A
+  disa:
+    cci:
+      - CCI-000803
+      - CCI-000068
+      - CCI-000087
+      - CCI-003123
+      - CCI-002890
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - AC-17(2)
+      - IA-7
+      - MA-4(6)
+    800-53r4:
+      - IA-7
+      - AC-17(2)
+      - MA-4(6)
+    800-171r2:
+      - N/A
 tags:
+  - none
+  - 800-53r5_moderate
+  - 800-53r5_low
+  - 800-53r4_moderate
+  - 800-53r4_low
+  - 800-53r4_high
   - stig
+  - 800-53r5_high
 severity: medium
 mobileconfig: false
 mobileconfig_info: null
@@ -48,6 +58,31 @@ os_specifics:
           - SRG-OS-000250-GPOS-00093
           - SRG-OS-000393-GPOS-00173
           - SRG-OS-000394-GPOS-00174
+        sfr:
+          - N/A
+      discussion: "Unapproved mechanisms for authentication to the cryptographic module are not verified, and therefore cannot be relied upon to provide confidentiality or integrity, resulting in the compromise of DoD data.\n\nOperating systems using encryption are required to use FIPS-compliant mechanisms for authenticating to cryptographic modules.\n\nThe implementation of OpenSSH that is included with macOS does not utilize a FIPS 140-2 validated cryptographic module. While the listed Key Exchange Algorithms are FIPS 140-2 approved, the module implementing them has not been validated.\n\nBy specifying a Key Exchange Algorithm list with the order of hashes being in a \u201Cstrongest to weakest\u201D orientation, the system will automatically attempt to use the strongest Key Exchange Algorithm for securing SSH connections.\n\nNOTE: /etc/ssh/sshd_config will be automatically modified to its original state following any update or major upgrade to the operating system.\n"
+      check: |
+        /usr/bin/grep -c "^KexAlgorithms diffie-hellman-group-exchange-sha256" /etc/ssh/sshd_config
+      fix: |
+        [source,bash]
+        ----
+        /usr/bin/grep -q '^KexAlgorithms' /etc/ssh/sshd_config && /usr/bin/sed -i.bak 's/.*KexAlgorithms.*/KexAlgorithms diffie-hellman-group-exchange-sha256/' /etc/ssh/sshd_config || /bin/echo 'KexAlgorithms diffie-hellman-group-exchange-sha256' >> /etc/ssh/sshd_config; /bin/launchctl kickstart -k system/com.openssh.sshd
+        ----
+    '10.15':
+      references:
+        cce:
+          - CCE-84935-6
+        disa_stig:
+          - AOSX-15-000056
+        srg:
+          - SRG-OS-000033-GPOS-00014
+          - SRG-OS-000120-GPOS-00061
+          - SRG-OS-000125-GPOS-00065
+          - SRG-OS-000250-GPOS-00093
+          - SRG-OS-000393-GPOS-00173
+          - SRG-OS-000394-GPOS-00174
+        sfr:
+          - N/A
       discussion: "Unapproved mechanisms for authentication to the cryptographic module are not verified, and therefore cannot be relied upon to provide confidentiality or integrity, resulting in the compromise of DoD data.\n\nOperating systems using encryption are required to use FIPS-compliant mechanisms for authenticating to cryptographic modules.\n\nThe implementation of OpenSSH that is included with macOS does not utilize a FIPS 140-2 validated cryptographic module. While the listed Key Exchange Algorithms are FIPS 140-2 approved, the module implementing them has not been validated.\n\nBy specifying a Key Exchange Algorithm list with the order of hashes being in a \u201Cstrongest to weakest\u201D orientation, the system will automatically attempt to use the strongest Key Exchange Algorithm for securing SSH connections.\n\nNOTE: /etc/ssh/sshd_config will be automatically modified to its original state following any update or major upgrade to the operating system.\n"
       check: |
         /usr/bin/grep -c "^KexAlgorithms diffie-hellman-group-exchange-sha256" /etc/ssh/sshd_config
@@ -69,6 +104,8 @@ os_specifics:
           - SRG-OS-000250-GPOS-00093
           - SRG-OS-000393-GPOS-00173
           - SRG-OS-000394-GPOS-00174
+        sfr:
+          - N/A
       discussion: |
         Unapproved mechanisms for authentication to the cryptographic module are not verified, and therefore cannot be relied upon to provide confidentiality or integrity, resulting in the compromise of DoD data.
 
@@ -89,6 +126,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
       discussion: |
         Unapproved mechanisms for authentication to the cryptographic module are not verified, and therefore cannot be relied upon to provide confidentiality or integrity, resulting in the compromise of DoD data.

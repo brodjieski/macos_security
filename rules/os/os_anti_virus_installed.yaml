@@ -5,24 +5,29 @@ discussion: |
 
   Malicious software can establish a base on individual desktops and servers. Employing an automated mechanism to detect this type of software will aid in elimination of the software from the operating system.'
 check: $OS_VALUE
-result:
-  integer: 1
+result: 1
 fix: $OS_VALUE
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-000366
-  800-53r5:
-    - N/A
-  800-53r4:
-    - SI-2
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
+  disa:
+    cci:
+      - CCI-000366
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - N/A
+    800-53r4:
+      - SI-2
 tags:
+  - none
   - stig
+  - manual
 severity: high
 mobileconfig: false
 mobileconfig_info: null
@@ -36,6 +41,8 @@ os_specifics:
           - APPL-11-002070
         srg:
           - SRG-OS-000480-GPOS-00227
+        sfr:
+          - N/A
       check: |
         /bin/launchctl print-disabled system | /usr/bin/grep -c '"com.apple.mrt" => false'
       fix: |
@@ -43,6 +50,19 @@ os_specifics:
         ----
         /bin/launchctl enable system/com.apple.mrt
         ----
+    '10.15':
+      references:
+        cce:
+          - CCE-84894-5
+        disa_stig:
+          - AOSX-15-002070
+        srg:
+          - SRG-OS-000480-GPOS-00227
+        sfr:
+          - N/A
+      check: "Ask the System Administrator (SA) or Information System Security Officer (ISSO) if an approved antivirus solution is loaded on the system. The antivirus solution may be bundled with an approved host-based security solution. \nIf there is no local antivirus solution installed on the system, this is a finding.\n"
+      fix: |
+        Install an approved antivirus solution onto the system.
     '12.0':
       references:
         cce:
@@ -51,6 +71,8 @@ os_specifics:
           - APPL-12-002070
         srg:
           - SRG-OS-000480-GPOS-00227
+        sfr:
+          - N/A
       check: |
         /bin/launchctl list | /usr/bin/grep -cE "(com.apple.XprotectFramework.PluginService$|com.apple.XProtect.daemon.scan$)"
       fix: |
@@ -66,6 +88,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
       check: |
         /bin/launchctl list | /usr/bin/grep -cE "(com.apple.XprotectFramework.PluginService$|com.apple.XProtect.daemon.scan$)"

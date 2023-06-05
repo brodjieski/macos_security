@@ -6,34 +6,37 @@ check: |
   $.NSUserDefaults.alloc.initWithSuiteName('com.apple.applicationaccess')\
   .objectForKey('allowActivityContinuation').js
   EOS
-result:
-  string: 'false'
+result: 'false'
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - $OS_VALUE
-  800-53r5:
-    - AC-3
-    - AC-20
-    - CM-7
-    - CM-7(1)
-  800-53r4:
-    - AC-3
-    - AC-20
-    - CM-7
-    - CM-7(1)
-  disa_stig:
-    - $OS_VALUE
-  srg:
-    - $OS_VALUE
-  cci:
-    - N/A
-  800-171r2:
-    - 3.1.1
-    - 3.1.2
-    - 3.1.20
-    - 3.4.6
+  disa:
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+    cci:
+      - N/A
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - AC-3
+      - AC-20
+      - CM-7
+      - CM-7(1)
+    800-53r4:
+      - AC-3
+      - AC-20
+      - CM-7
+      - CM-7(1)
+    800-171r2:
+      - 3.1.1
+      - 3.1.2
+      - 3.1.20
+      - 3.4.6
   cis:
     benchmark:
       - $OS_VALUE
@@ -48,6 +51,8 @@ tags:
   - 800-53r4_high
   - 800-171
   - cisv8
+  - stig
+  - cnssi-1253
 mobileconfig: true
 mobileconfig_info:
   com.apple.applicationaccess:
@@ -61,6 +66,24 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
+          - N/A
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 4.1
+            - 4.8
+    '10.15':
+      references:
+        cce:
+          - CCE-84763-2
+        disa_stig:
+          - N/A
+        srg:
+          - N/A
+        sfr:
           - N/A
         cis:
           benchmark:
@@ -76,6 +99,8 @@ os_specifics:
           - APPL-12-005058
         srg:
           - SRG-OS-000095-GPOS-00049
+        sfr:
+          - N/A
         cis:
           benchmark:
             - N/A
@@ -89,6 +114,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
         cis:
           benchmark:

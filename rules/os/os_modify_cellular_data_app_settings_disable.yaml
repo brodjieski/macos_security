@@ -6,28 +6,25 @@ check: ' '
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - CM-1
-    - CM-2
-    - CM-6
-    - CM-7
-    - CM-7(1)
-    - CM-9
-    - SA-3
-    - SA-8
-    - SA-10
-  800-53r4:
-    - N/A
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - N/A
+  disa:
+    cci:
+      - N/A
+    sfr:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - CM-7
+      - CM-7(1)
+    800-171r2:
+      - N/A
+    800-53r4:
+      - None
   cis:
     benchmark:
       - $OS_VALUE
@@ -35,9 +32,11 @@ references:
       - $OS_VALUE
 tags:
   - ios
+  - 800-53r5_low
+  - 800-53r5_moderate
+  - 800-53r5_high
   - cis_lvl2_enterprise
   - cisv8
-  - 800-53r5
 severity: ''
 supervised: true
 mobileconfig: true
@@ -45,7 +44,7 @@ mobileconfig_info:
   com.apple.applicationaccess:
     allowAppCellularDataModification: false
 os_specifics:
-  ios:
+  iOS:
     '16.0':
       references:
         cce:
@@ -53,6 +52,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - None
+        sfr:
           - N/A
         cis:
           benchmark:

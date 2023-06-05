@@ -3,8 +3,7 @@ title: Secure User's Home Folders
 discussion: $OS_VALUE
 check: |
   /usr/bin/find /System/Volumes/Data/Users -mindepth 1 -maxdepth 1 -type d -perm -1 | /usr/bin/grep -v "Shared" | /usr/bin/grep -v "Guest" | /usr/bin/wc -l | /usr/bin/xargs
-result:
-  integer: 0
+result: 0
 fix: |
   [source,bash]
   ----
@@ -15,20 +14,24 @@ fix: |
   unset IFS
   ----
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-000366
-  800-53r5:
-    - AC-6
-  800-53r4:
-    - AC-6
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.1.5
+  disa:
+    cci:
+      - CCI-000366
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - AC-6
+    800-53r4:
+      - AC-6
+    800-171r2:
+      - 3.1.5
   cis:
     benchmark:
       - $OS_VALUE
@@ -40,9 +43,10 @@ tags:
   - 800-53r4_moderate
   - 800-53r4_high
   - 800-171
-  - stig
   - cis_lvl1
   - cis_lvl2
+  - stig
+  - cnssi-1253
 severity: medium
 mobileconfig: false
 mobileconfig_info: null
@@ -57,11 +61,24 @@ os_specifics:
         srg:
           - SRG-OS-000480-GPOS-00228
           - SRG-OS-000480-GPOS-00230
+        sfr:
+          - N/A
         cis:
           benchmark:
             - 5.1.1 (level 1)
           controls v8:
             - N/A
+      discussion: "The system _MUST_ be configured to prevent access to other users' home folders.\n\nThe default behavior of macOS is to allow all valid users access to the the top level of every other user's home folder while restricting access only to the Apple default folders within. \n"
+    '10.15':
+      references:
+        cce:
+          - CCE-84764-0
+        disa_stig:
+          - AOSX-15-002068
+        srg:
+          - SRG-OS-000480-GPOS-00228
+        sfr:
+          - N/A
       discussion: "The system _MUST_ be configured to prevent access to other users' home folders.\n\nThe default behavior of macOS is to allow all valid users access to the the top level of every other user's home folder while restricting access only to the Apple default folders within. \n"
     '12.0':
       references:
@@ -72,6 +89,8 @@ os_specifics:
         srg:
           - SRG-OS-000480-GPOS-00228
           - SRG-OS-000480-GPOS-00230
+        sfr:
+          - N/A
         cis:
           benchmark:
             - 5.1.1 (level 1)
@@ -85,6 +104,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
         cis:
           benchmark:

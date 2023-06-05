@@ -4,8 +4,7 @@ discussion: |
   macOS _MUST_ be configured to only allow authorized users to unlock FileVault upon startup.
 check: |
   /usr/bin/fdesetup list | /usr/bin/awk -F',' '{print $1}'
-result:
-  string: a list containing authorized users that can unlock FileVault
+result: a list containing authorized users that can unlock FileVault
 fix: |
   Remove the user that is not authorized to unlock FileVault using the fdesetup command.
 
@@ -14,22 +13,26 @@ fix: |
   /usr/bin/fdesetup remove -user NOT_AUTHORIZED_USERNAME
   ----
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-002143
-  800-53r5:
-    - AC-2(11)
-  800-53r4:
-    - N/A
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
+  disa:
+    cci:
+      - CCI-002143
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - AC-2(11)
+    800-53r4:
+      - N/A
 tags:
   - 800-53r5_high
-  - stig
   - manual
+  - stig
 severity: medium
 mobileconfig: false
 mobileconfig_info: null
@@ -43,6 +46,18 @@ os_specifics:
           - APPL-11-000032
         srg:
           - SRG-OS-000480-GPOS-00227
+        sfr:
+          - N/A
+    '10.15':
+      references:
+        cce:
+          - CCE-84932-3
+        disa_stig:
+          - AOSX-15-000032
+        srg:
+          - SRG-OS-000480-GPOS-00227
+        sfr:
+          - N/A
     '12.0':
       references:
         cce:
@@ -51,6 +66,8 @@ os_specifics:
           - APPL-12-000032
         srg:
           - SRG-OS-000480-GPOS-00227
+        sfr:
+          - N/A
     '13.0':
       references:
         cce:
@@ -58,4 +75,6 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A

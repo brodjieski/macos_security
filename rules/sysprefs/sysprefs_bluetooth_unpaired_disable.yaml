@@ -2,8 +2,7 @@ id: sysprefs_bluetooth_unpaired_disable
 title: Disable Bluetooth When No Devices are Paired
 discussion: "Bluetooth _MUST_ be disabled when no devices are paired. \n"
 check: "isPaired=$(/usr/sbin/system_profiler SPBluetoothDataType 2>/dev/null | /usr/bin/grep -c 'Connected: Yes')\nif [[ \"$isPaired\" = \"0\" ]]; then \n    powerState=$(/usr/sbin/system_profiler SPBluetoothDataType 2>/dev/null | /usr/bin/grep -c 'State: On')\n    /bin/echo \"$powerState\"\nelse\n    /bin/echo \"0\"\nfi\n"
-result:
-  integer: 0
+result: 0
 fix: |
   [source,bash]
   ----
@@ -11,28 +10,32 @@ fix: |
   /usr/bin/killall -HUP bluetoothd
   ----
 references:
-  cce:
-    - $OS_VALUE
-  800-53r5:
-    - AC-18
-    - SC-8
-    - AC-18(3)
-  800-53r4:
-    - AC-18(3)
-    - SC-8
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - N/A
+  disa:
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    cci:
+      - None
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - AC-18
+      - SC-8
+      - AC-18(3)
+    800-53r4:
+      - AC-18(3)
+      - SC-8
+    800-171r2:
+      - N/A
   cis:
     benchmark:
       - $OS_VALUE
     controls v8:
       - $OS_VALUE
-  cci:
-    - None
 tags:
   - none
 mobileconfig: false
@@ -47,6 +50,8 @@ os_specifics:
           - N/A
         srg:
           - N/A
+        sfr:
+          - N/A
         cis:
           benchmark:
             - N/A
@@ -59,6 +64,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
         cis:
           benchmark:

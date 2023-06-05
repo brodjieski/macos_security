@@ -6,19 +6,23 @@ check: |
 fix: |
   The technology inherently meets this requirement. No fix is required.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-001190
-    - CCI-001665
-  800-53r5:
-    - SC-24
-  800-53r4:
-    - SC-24
-  disa_stig:
-    - $OS_VALUE
-  srg:
-    - $OS_VALUE
+  disa:
+    cci:
+      - CCI-001190
+      - CCI-001665
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - SC-24
+    800-53r4:
+      - SC-24
 tags:
   - 800-53r5_high
   - 800-53r4_high
@@ -36,6 +40,19 @@ os_specifics:
         srg:
           - SRG-OS-000184-GPOS-00078
           - SRG-OS-000269-GPOS-00103
+        sfr:
+          - N/A
+    '10.15':
+      references:
+        cce:
+          - CCE-84860-6
+        disa_stig:
+          - N/A
+        srg:
+          - SRG-OS-000184-GPOS-00078
+          - SRG-OS-000269-GPOS-00103
+        sfr:
+          - N/A
     '12.0':
       references:
         cce:
@@ -44,6 +61,8 @@ os_specifics:
           - N/A
         srg:
           - N/A
+        sfr:
+          - N/A
     '13.0':
       references:
         cce:
@@ -51,4 +70,6 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A

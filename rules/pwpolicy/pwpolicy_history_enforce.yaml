@@ -3,28 +3,31 @@ title: Prohibit Password Reuse for a Minimum of $ODV Generations
 discussion: "The macOS _MUST_ be configured to enforce a password history of at least $ODV previous passwords when a password is created. \n\nThis rule ensures that users are  not allowed to re-use a password that was used in any of the $ODV previous password generations. \n\nLimiting password reuse protects against malicious users attempting to gain access to the system via brute-force hacking methods.\n\nNOTE: The guidance for password based authentication in NIST 800-53 (Rev 5) and NIST 800-63B state that complexity rules should be organizationally defined. The values defined are based off of common complexity values. But your organization may define its own password complexity rules.\n"
 check: |
   /usr/bin/pwpolicy -getaccountpolicies 2> /dev/null | /usr/bin/tail +2 | /usr/bin/xmllint --xpath '//dict/key[text()="policyAttributePasswordHistoryDepth"]/following-sibling::*[1]/text()' - | /usr/bin/awk '{ if ($1 >= $ODV ) {print "yes"} else {print "no"}}'
-result:
-  string: 'yes'
+result: 'yes'
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-000200
-  800-53r5:
-    - IA-5(1)
-  800-53r4:
-    - IA-5(1)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.5.7
-    - 3.5.8
-    - 3.5.9
-    - 3.5.10
+  disa:
+    cci:
+      - CCI-000200
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - IA-5(1)
+    800-53r4:
+      - IA-5(1)
+    800-171r2:
+      - 3.5.7
+      - 3.5.8
+      - 3.5.9
+      - 3.5.10
   cis:
     benchmark:
       - $OS_VALUE
@@ -44,10 +47,11 @@ tags:
   - 800-53r5_low
   - 800-53r5_moderate
   - 800-53r5_high
-  - stig
   - cis_lvl1
   - cis_lvl2
   - cisv8
+  - stig
+  - cnssi-1253
 severity: medium
 mobileconfig: true
 mobileconfig_info:
@@ -63,9 +67,26 @@ os_specifics:
           - APPL-11-003009
         srg:
           - SRG-OS-000077-GPOS-00045
+        sfr:
+          - N/A
         cis:
           benchmark:
             - 5.2.7 (level 1)
+          controls v8:
+            - 5.2
+    '10.15':
+      references:
+        cce:
+          - CCE-84814-3
+        disa_stig:
+          - AOSX-15-003009
+        srg:
+          - SRG-OS-000077-GPOS-00045
+        sfr:
+          - N/A
+        cis:
+          benchmark:
+            - N/A
           controls v8:
             - 5.2
     '12.0':
@@ -76,6 +97,8 @@ os_specifics:
           - APPL-12-003009
         srg:
           - SRG-OS-000077-GPOS-00045
+        sfr:
+          - N/A
         cis:
           benchmark:
             - 5.2.8 (level 1)
@@ -88,6 +111,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
         cis:
           benchmark:

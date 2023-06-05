@@ -6,22 +6,26 @@ check: ' '
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - CM-6
-    - CM-7
-    - CM-7(1)
-  800-53r4:
-    - N/A
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - N/A
+  disa:
+    cci:
+      - N/A
+    sfr:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - CM-6
+      - CM-7
+      - CM-7(1)
+    800-53r4:
+      - N/A
+    800-171r2:
+      - N/A
   cis:
     benchmark:
       - $OS_VALUE
@@ -40,7 +44,7 @@ mobileconfig_info:
   com.apple.applicationaccess:
     allowUIConfigurationProfileInstallation: false
 os_specifics:
-  ios:
+  iOS:
     '16.0':
       references:
         cce:
@@ -48,6 +52,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - None
+        sfr:
           - N/A
         cis:
           benchmark:

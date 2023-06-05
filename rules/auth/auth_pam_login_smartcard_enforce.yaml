@@ -3,8 +3,7 @@ title: Enforce Multifactor Authentication for Login
 discussion: $OS_VALUE
 check: |
   /usr/bin/grep -Ec '^(auth\s+sufficient\s+pam_smartcard.so|auth\s+required\s+pam_deny.so)' /etc/pam.d/login
-result:
-  integer: 2
+result: 2
 fix: |
   [source,bash]
   ----
@@ -29,24 +28,28 @@ fix: |
   /usr/sbin/chown root:wheel /etc/pam.d/login
   ----
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - CCI-000366
-  800-53r5:
-    - IA-2(1)
-    - IA-2(2)
-    - IA-2(8)
-  800-53r4:
-    - IA-2(3)
-    - IA-2(4)
-    - IA-5(11)
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - 3.5.3
+  disa:
+    cci:
+      - CCI-000366
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - IA-2(1)
+      - IA-2(2)
+      - IA-2(8)
+    800-53r4:
+      - IA-2(3)
+      - IA-2(4)
+      - IA-5(11)
+    800-171r2:
+      - 3.5.3
   cis:
     benchmark:
       - $OS_VALUE
@@ -60,8 +63,9 @@ tags:
   - 800-53r4_moderate
   - 800-53r4_high
   - 800-171
-  - stig
   - cisv8
+  - stig
+  - cnssi-1253
 severity: medium
 mobileconfig: false
 mobileconfig_info: null
@@ -75,6 +79,31 @@ os_specifics:
           - APPL-11-003050
         srg:
           - SRG-OS-000480-GPOS-00227
+        sfr:
+          - N/A
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - 6.3
+            - 6.4
+            - 6.5
+      discussion: |
+        The system _MUST_ be configured to enforce multifactor authentication.
+
+        All users _MUST_ go through multifactor authentication to prevent unauthenticated access and potential compromise to the system.
+
+        NOTE: /etc/pam.d/login will be automatically modified to its original state following any update or major upgrade to the operating system.
+    '10.15':
+      references:
+        cce:
+          - CCE-84721-0
+        disa_stig:
+          - AOSX-15-003050
+        srg:
+          - SRG-OS-000480-GPOS-00227
+        sfr:
+          - N/A
         cis:
           benchmark:
             - N/A
@@ -96,6 +125,8 @@ os_specifics:
           - APPL-12-003050
         srg:
           - SRG-OS-000480-GPOS-00227
+        sfr:
+          - N/A
         cis:
           benchmark:
             - N/A
@@ -118,6 +149,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - N/A
+        sfr:
           - N/A
         cis:
           benchmark:

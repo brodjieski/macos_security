@@ -1,0 +1,72 @@
+id: os_home_folders_default
+title: Configure User's Home Folders to Apple's Default
+discussion: "The system _MUST_ be configured to prevent access to other user's home folders.\n\nThe default behavior of macOS is to allow all valid users access to the the top level of every other user's home folder while restricting access only to the Apple default folders within. \n\nNOTE: This control includes an undocumented use of the `diskutil` command. In testing, this did not produce the expected results.\n"
+check: |
+  To verify that permissions are set correctly on user home directories, use the following commands:
+
+  ls -le /Users
+
+  Should return a listing of the permissions of the root of every user account configured on the system. For each of the users, the permissions should be:
+  "drwxr-xr-x+" with the user listed as the owner and the group listed as "staff". The plus(+) sign indicates an associated Access Control List, which should be:
+  0: group:everyone deny delete
+
+  For every authorized user account, also run the following command:
+  /usr/bin/sudo ls -le /Users/userid, where userid is an existing user.
+
+  This command will return the permissions of all of the objects under the users' home directory. The permissions for each of the subdirectories should be:
+  drwx------+
+  0: group:everyone deny delete
+
+  With the exception of the "Public" directory, whose permissions should match the following:
+  drwxr-xr-x+
+  0: group:everyone deny delete
+
+  If the permissions returned by either of these checks differ from what is shown, this is a finding.
+fix: "[source,bash]\n----\ndiskutil resetUserPermissions / userid, where userid is the user name for the user whose home directory permissions need to be repaired. \n----\n"
+references:
+  disa:
+    cci:
+      - CCI-000366
+    srg:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    sfr:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - AC-6
+    800-53r4:
+      - AC-6
+    800-171r2:
+      - N/A
+  cis:
+    benchmark:
+      - $OS_VALUE
+    controls v8:
+      - $OS_VALUE
+tags:
+  - manual
+  - stig
+severity: medium
+mobileconfig: false
+mobileconfig_info: null
+os_specifics:
+  macOS:
+    '13.0':
+      references:
+        cce:
+          - ''
+        disa_stig:
+          - APPL-13-002068
+        srg:
+          - SRG-OS-000480-GPOS-00228
+        sfr:
+          - N/A
+        cis:
+          benchmark:
+            - N/A
+          controls v8:
+            - N/A

@@ -6,20 +6,25 @@ check: ' '
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  cce:
-    - $OS_VALUE
-  cci:
-    - N/A
-  800-53r5:
-    - AU-8
-  800-53r4:
-    - N/A
-  srg:
-    - $OS_VALUE
-  disa_stig:
-    - $OS_VALUE
-  800-171r2:
-    - N/A
+  disa:
+    cci:
+      - N/A
+    sfr:
+      - $OS_VALUE
+    disa_stig:
+      - $OS_VALUE
+    srg:
+      - $OS_VALUE
+  nist:
+    cce:
+      - $OS_VALUE
+    800-53r5:
+      - AU-12(1)
+      - SC-45(1)
+    800-171r2:
+      - N/A
+    800-53r4:
+      - None
   cis:
     benchmark:
       - $OS_VALUE
@@ -27,6 +32,9 @@ references:
       - $OS_VALUE
 tags:
   - ios
+  - 800-53r5_low
+  - 800-53r5_moderate
+  - 800-53r5_high
   - cis_lvl1_byod
   - cis_lvl2_byod
   - cis_lvl1_enterprise
@@ -40,7 +48,7 @@ mobileconfig_info:
   com.apple.applicationaccess:
     forceAutomaticDateAndTime: true
 os_specifics:
-  ios:
+  iOS:
     '16.0':
       references:
         cce:
@@ -48,6 +56,8 @@ os_specifics:
         disa_stig:
           - N/A
         srg:
+          - None
+        sfr:
           - N/A
         cis:
           benchmark:
