@@ -57,14 +57,16 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85404-2
-        disa_stig:
-          - APPL-11-003007
-        srg:
-          - SRG-OS-000071-GPOS-00039
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-11-003007
+          srg:
+            - SRG-OS-000071-GPOS-00039
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85404-2
         cis:
           benchmark:
             - 5.2.3 (level 2)
@@ -73,14 +75,16 @@ os_specifics:
             - 5.2
     '10.15':
       references:
-        cce:
-          - CCE-84811-9
-        disa_stig:
-          - AOSX-15-003007
-        srg:
-          - SRG-OS-000071-GPOS-00039
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - AOSX-15-003007
+          srg:
+            - SRG-OS-000071-GPOS-00039
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84811-9
         cis:
           benchmark:
             - N/A
@@ -88,14 +92,16 @@ os_specifics:
             - 5.2
     '12.0':
       references:
-        cce:
-          - CCE-91031-5
-        disa_stig:
-          - APPL-12-003007
-        srg:
-          - SRG-OS-000071-GPOS-00039
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-12-003007
+          srg:
+            - SRG-OS-000071-GPOS-00039
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91031-5
         cis:
           benchmark:
             - 5.2.3 (level 2)
@@ -104,14 +110,16 @@ os_specifics:
             - 5.2
     '13.0':
       references:
-        cce:
-          - CCE-91917-5
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91917-5
         cis:
           benchmark:
             - 5.2.3 (level 2)

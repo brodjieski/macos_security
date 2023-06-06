@@ -63,15 +63,17 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85267-3
-        disa_stig:
-          - APPL-11-001002
-        srg:
-          - SRG-OS-000032-GPOS-00013
-          - SRG-OS-000462-GPOS-00206
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-11-001002
+          srg:
+            - SRG-OS-000032-GPOS-00013
+            - SRG-OS-000462-GPOS-00206
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85267-3
         cis:
           benchmark:
             - 3.2 (level 2)
@@ -82,15 +84,17 @@ os_specifics:
       discussion: "The audit system _MUST_ be configured to record all attempts to log in and out of the system (lo). \n\nFrequently, an attacker that successfully gains access to a system has only gained access to an account with limited privileges, such as a guest account or a service account. The attacker must attempt to change to another user account with normal or elevated privileges in order to proceed. Auditing both successful and unsuccessful attempts to switch to another user account (by way of monitoring login and logout events) mitigates this risk.\n\nThe information system monitors login and logout events.\n"
     '10.15':
       references:
-        cce:
-          - CCE-84716-0
-        disa_stig:
-          - AOSX-15-001002
-        srg:
-          - SRG-OS-000032-GPOS-00013
-          - SRG-OS-000462-GPOS-00206
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - AOSX-15-001002
+          srg:
+            - SRG-OS-000032-GPOS-00013
+            - SRG-OS-000462-GPOS-00206
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84716-0
         cis:
           benchmark:
             - N/A
@@ -101,15 +105,17 @@ os_specifics:
       discussion: "The audit system _MUST_ be configured to record all attempts to log in and out of the system (lo). \n\nFrequently, an attacker that successfully gains access to a system has only gained access to an account with limited privileges, such as a guest account or a service account. The attacker must attempt to change to another user account with normal or elevated privileges in order to proceed. Auditing both successful and unsuccessful attempts to switch to another user account (by way of monitoring login and logout events) mitigates this risk.\n\nThe information system monitors login and logout events.\n"
     '12.0':
       references:
-        cce:
-          - CCE-90868-1
-        disa_stig:
-          - APPL-12-001002
-        srg:
-          - SRG-OS-000032-GPOS-00013
-          - SRG-OS-000462-GPOS-00206
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-12-001002
+          srg:
+            - SRG-OS-000032-GPOS-00013
+            - SRG-OS-000462-GPOS-00206
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-90868-1
         cis:
           benchmark:
             - 3.2 (level 2)
@@ -120,15 +126,17 @@ os_specifics:
       discussion: "The audit system _MUST_ be configured to record all attempts to log in and out of the system (lo). \n\nFrequently, an attacker that successfully gains access to a system has only gained access to an account with limited privileges, such as a guest account or a service account. The attacker must attempt to change to another user account with normal or elevated privileges in order to proceed. Auditing both successful and unsuccessful attempts to switch to another user account (by way of monitoring login and logout events) mitigates this risk.\n\nThe information system monitors login and logout events.\n"
     '13.0':
       references:
-        cce:
-          - CCE-91724-5
-        disa_stig:
-          - APPL-13-001002
-        srg:
-          - SRG-OS-000032-GPOS-00013
-          - SRG-OS-000462-GPOS-00206
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-13-001002
+          srg:
+            - SRG-OS-000032-GPOS-00013
+            - SRG-OS-000462-GPOS-00206
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91724-5
         cis:
           benchmark:
             - 3.2 (level 2)

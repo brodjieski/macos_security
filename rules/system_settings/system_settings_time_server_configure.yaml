@@ -61,14 +61,16 @@ os_specifics:
   macOS:
     '13.0':
       references:
-        cce:
-          - CCE-91989-4
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91989-4
         cis:
           benchmark:
             - 2.3.2.1 (level 1)

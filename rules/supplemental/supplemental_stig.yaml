@@ -29,11 +29,13 @@ os_specifics:
   macOS:
     '13.0':
       references:
-        cce:
-          - None
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - None

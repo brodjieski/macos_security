@@ -57,14 +57,16 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85323-4
-        disa_stig:
-          - APPL-11-002008
-        srg:
-          - SRG-OS-000095-GPOS-00049
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-11-002008
+          srg:
+            - SRG-OS-000095-GPOS-00049
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85323-4
         cis:
           benchmark:
             - 4.2 (level 1)
@@ -75,14 +77,16 @@ os_specifics:
         /bin/launchctl print-disabled system | /usr/bin/grep -c '"org.apache.httpd" => true'
     '10.15':
       references:
-        cce:
-          - CCE-84765-7
-        disa_stig:
-          - AOSX-15-002008
-        srg:
-          - SRG-OS-000095-GPOS-00049
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - AOSX-15-002008
+          srg:
+            - SRG-OS-000095-GPOS-00049
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84765-7
         cis:
           benchmark:
             - N/A
@@ -93,14 +97,16 @@ os_specifics:
         /bin/launchctl print-disabled system | /usr/bin/grep -c '"org.apache.httpd" => true'
     '12.0':
       references:
-        cce:
-          - CCE-90932-5
-        disa_stig:
-          - APPL-12-002008
-        srg:
-          - SRG-OS-000095-GPOS-00049
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-12-002008
+          srg:
+            - SRG-OS-000095-GPOS-00049
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-90932-5
         cis:
           benchmark:
             - 4.2 (level 1)
@@ -111,14 +117,16 @@ os_specifics:
         /bin/launchctl print-disabled system | /usr/bin/grep -c '"org.apache.httpd" => true'
     '13.0':
       references:
-        cce:
-          - CCE-91801-1
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91801-1
         cis:
           benchmark:
             - 4.2 (level 1)

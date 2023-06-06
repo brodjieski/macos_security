@@ -59,15 +59,17 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85251-7
-        disa_stig:
-          - APPL-11-000030
-        srg:
-          - SRG-OS-000057-GPOS-00027
-          - SRG-OS-000206-GPOS-00084
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-11-000030
+          srg:
+            - SRG-OS-000057-GPOS-00027
+            - SRG-OS-000206-GPOS-00084
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85251-7
         cis:
           benchmark:
             - 3.5 (level 1)
@@ -75,26 +77,30 @@ os_specifics:
             - 3.3
     '10.15':
       references:
-        cce:
-          - CCE-84701-2
-        disa_stig:
-          - AOSX-15-000030
-        srg:
-          - SRG-OS-000057-GPOS-00027
-          - SRG-OS-000206-GPOS-00084
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - AOSX-15-000030
+          srg:
+            - SRG-OS-000057-GPOS-00027
+            - SRG-OS-000206-GPOS-00084
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84701-2
     '12.0':
       references:
-        cce:
-          - CCE-90851-7
-        disa_stig:
-          - APPL-12-000030
-        srg:
-          - SRG-OS-000057-GPOS-00027
-          - SRG-OS-000206-GPOS-00084
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-12-000030
+          srg:
+            - SRG-OS-000057-GPOS-00027
+            - SRG-OS-000206-GPOS-00084
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-90851-7
         cis:
           benchmark:
             - 3.5 (level 1)
@@ -102,15 +108,17 @@ os_specifics:
             - 3.3
     '13.0':
       references:
-        cce:
-          - CCE-91701-3
-        disa_stig:
-          - APPL-13-000030
-        srg:
-          - SRG-OS-000057-GPOS-00027
-          - SRG-OS-000206-GPOS-00084
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-13-000030
+          srg:
+            - SRG-OS-000057-GPOS-00027
+            - SRG-OS-000206-GPOS-00084
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91701-3
         cis:
           benchmark:
             - 3.5 (level 1)

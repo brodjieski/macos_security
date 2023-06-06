@@ -39,24 +39,28 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85488-5
-        disa_stig:
-          - APPL-11-002051
-        srg:
-          - SRG-OS-000095-GPOS-00049
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-11-002051
+          srg:
+            - SRG-OS-000095-GPOS-00049
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85488-5
       check: "/usr/bin/profiles show -output stdout-xml | /usr/bin/xmllint --xpath '//key[text()=\"DisabledPreferencePanes\"]/following-sibling::*[1]' - | /usr/bin/grep -c com.apple.preferences.password \n"
     '12.0':
       references:
-        cce:
-          - CCE-91144-6
-        disa_stig:
-          - APPL-12-002051
-        srg:
-          - SRG-OS-000095-GPOS-00049
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-12-002051
+          srg:
+            - SRG-OS-000095-GPOS-00049
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91144-6
       check: |
         /usr/bin/profiles show -output stdout-xml | /usr/bin/xmllint --xpath '//key[text()="DisabledPreferencePanes"]/following-sibling::*[1]' - | /usr/bin/grep -c com.apple.preferences.password

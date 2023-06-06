@@ -57,14 +57,16 @@ os_specifics:
   macOS:
     '13.0':
       references:
-        cce:
-          - CCE-91956-3
-        disa_stig:
-          - None
-        srg:
-          - None
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - None
+          srg:
+            - None
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91956-3
         cis:
           benchmark:
             - N/A

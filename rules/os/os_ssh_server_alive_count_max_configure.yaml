@@ -42,14 +42,16 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85380-4
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85380-4
       check: |
         /usr/bin/awk '/^ServerAliveCountMax/{print $2}' /etc/ssh/ssh_config
       fix: |
@@ -59,14 +61,16 @@ os_specifics:
         ----
     '10.15':
       references:
-        cce:
-          - CCE-84918-2
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84918-2
       check: |
         /usr/bin/awk '/^ServerAliveCountMax/{print $2}' /etc/ssh/ssh_config
       fix: |
@@ -76,14 +80,16 @@ os_specifics:
         ----
     '12.0':
       references:
-        cce:
-          - CCE-91005-9
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91005-9
       check: |
         ret="pass"
         for u in $(/usr/bin/dscl . -list /Users UniqueID | /usr/bin/awk '$2 > 500 {print $1}'); do
@@ -97,14 +103,16 @@ os_specifics:
       fix: "[source,bash]\n----\nfor u in $(/usr/bin/dscl . -list /Users UniqueID | /usr/bin/awk '$2 > 500 {print $1}'); do \n  config=$(/usr/bin/sudo -u $u /usr/bin/ssh -Gv . 2>&1 | /usr/bin/awk '/Reading configuration data/ {print $NF}'| /usr/bin/tr -d '\\r')\n  configarray=( ${(f)config} )\n  for c in $configarray; do\n    /usr/bin/sudo -u $u /usr/bin/grep -q '^ServerAliveCountMax' \"$c\" && /usr/bin/sed -i '' 's/.*ServerAliveCountMax.*/ServerAliveCountMax $ODV/' \"$c\" || /bin/echo 'ServerAliveCountMax $ODV' >> \"$c\"\n  done\ndone\n----\n"
     '13.0':
       references:
-        cce:
-          - CCE-91884-7
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91884-7
       check: |
         ret="pass"
         for u in $(/usr/bin/dscl . -list /Users UniqueID | /usr/bin/awk '$2 > 500 {print $1}'); do

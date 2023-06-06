@@ -40,14 +40,16 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85357-2
-        disa_stig:
-          - APPL-11-000024
-        srg:
-          - SRG-OS-000023-GPOS-00006
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-11-000024
+          srg:
+            - SRG-OS-000023-GPOS-00006
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85357-2
       check: "/usr/bin/grep -c \"^Banner /etc/banner\" /etc/ssh/sshd_config \n"
       fix: |
         [source,bash]
@@ -56,15 +58,17 @@ os_specifics:
         ----
     '10.15':
       references:
-        cce:
-          - CCE-84779-8
-        disa_stig:
-          - AOSX-15-000024
-        srg:
-          - SRG-OS-000023-GPOS-00006
-          - SRG-OS-000024-GPOS-00007
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - AOSX-15-000024
+          srg:
+            - SRG-OS-000023-GPOS-00006
+            - SRG-OS-000024-GPOS-00007
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84779-8
       check: "/usr/bin/grep -c \"^Banner /etc/banner\" /etc/ssh/sshd_config \n"
       fix: |
         [source,bash]
@@ -73,15 +77,17 @@ os_specifics:
         ----
     '12.0':
       references:
-        cce:
-          - CCE-90975-4
-        disa_stig:
-          - APPL-12-000024
-        srg:
-          - SRG-OS-000023-GPOS-00006
-          - SRG-OS-000024-GPOS-00007
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-12-000024
+          srg:
+            - SRG-OS-000023-GPOS-00006
+            - SRG-OS-000024-GPOS-00007
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-90975-4
       check: |
         /usr/sbin/sshd -T | /usr/bin/grep -c "^banner /etc/banner"
       fix: |
@@ -106,14 +112,16 @@ os_specifics:
         done
     '13.0':
       references:
-        cce:
-          - CCE-91847-4
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91847-4
       check: |
         /usr/sbin/sshd -T | /usr/bin/grep -c "^banner /etc/banner"
       fix: |

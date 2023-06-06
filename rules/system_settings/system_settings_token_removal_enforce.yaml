@@ -42,11 +42,13 @@ os_specifics:
   macOS:
     '13.0':
       references:
-        cce:
-          - CCE-91991-0
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91991-0

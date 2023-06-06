@@ -71,16 +71,18 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85280-6
-        disa_stig:
-          - APPL-11-003020
-        srg:
-          - SRG-OS-000068-GPOS-00036
-          - SRG-OS-000107-GPOS-00054
-          - SRG-OS-000108-GPOS-00055
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-11-003020
+          srg:
+            - SRG-OS-000068-GPOS-00036
+            - SRG-OS-000107-GPOS-00054
+            - SRG-OS-000108-GPOS-00055
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85280-6
         cis:
           benchmark:
             - N/A
@@ -91,20 +93,22 @@ os_specifics:
       discussion: "Smartcard authentication _MUST_ be enforced.\n\nThe use of smartcard credentials facilitates standardization and reduces the risk of unauthorized access.\n\nWhen enforceSmartCard is set to \u201Ctrue\u201D, the smartcard must be used for login, authorization, and unlocking the screensaver.\n\nCAUTION: enforceSmartCard will apply to the whole system. No users will be able to login with their password unless the profile is removed or a user is exempt from smartcard enforcement.\n\nNOTE: enforceSmartcard requires allowSmartcard to be set to true in order to work.\n"
     '10.15':
       references:
-        cce:
-          - CCE-84727-7
-        disa_stig:
-          - AOSX-15-003020
-        srg:
-          - SRG-OS-000068-GPOS-00036
-          - SRG-OS-000105-GPOS-00052
-          - SRG-OS-000106-GPOS-00053
-          - SRG-OS-000107-GPOS-00054
-          - SRG-OS-000108-GPOS-00055
-          - SRG-OS-000125-GPOS-00065
-          - SRG-OS-000375-GPOS-00160
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - AOSX-15-003020
+          srg:
+            - SRG-OS-000068-GPOS-00036
+            - SRG-OS-000105-GPOS-00052
+            - SRG-OS-000106-GPOS-00053
+            - SRG-OS-000107-GPOS-00054
+            - SRG-OS-000108-GPOS-00055
+            - SRG-OS-000125-GPOS-00065
+            - SRG-OS-000375-GPOS-00160
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84727-7
         cis:
           benchmark:
             - N/A
@@ -115,16 +119,18 @@ os_specifics:
       discussion: "Smartcard authentication _MUST_ be enforced.\n\nThe use of smartcard credentials facilitates standardization and reduces the risk of unauthorized access.\n\nWhen enforceSmartCard is set to \u201Ctrue\u201D, the smartcard must be used for login, authorization, and unlocking the screensaver.\n\nCAUTION: enforceSmartCard will apply to the whole system. No users will be able to login with their password unless the profile is removed or a user is exempt from smartcard enforcement.\n\nNOTE: enforceSmartcard requires allowSmartcard to be set to true in order to work.\n"
     '12.0':
       references:
-        cce:
-          - CCE-90883-0
-        disa_stig:
-          - APPL-12-003020
-        srg:
-          - SRG-OS-000107-GPOS-00054
-          - SRG-OS-000108-GPOS-00055
-          - SRG-OS-000068-GPOS-00036
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-12-003020
+          srg:
+            - SRG-OS-000107-GPOS-00054
+            - SRG-OS-000108-GPOS-00055
+            - SRG-OS-000068-GPOS-00036
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-90883-0
         cis:
           benchmark:
             - N/A
@@ -144,14 +150,16 @@ os_specifics:
         NOTE: enforceSmartcard requires allowSmartcard to be set to true in order to work.
     '13.0':
       references:
-        cce:
-          - CCE-91739-3
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91739-3
         cis:
           benchmark:
             - N/A

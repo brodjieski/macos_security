@@ -48,14 +48,16 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85505-6
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85505-6
         cis:
           benchmark:
             - 2.8.3 (level 2)
@@ -64,14 +66,16 @@ os_specifics:
       discussion: "Hibernate mode _MUST_ be enabled. \n\nNOTE: Hibernate mode will disable instate wake on Apple Silicon laptops.\n"
     '12.0':
       references:
-        cce:
-          - CCE-91106-5
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91106-5
         cis:
           benchmark:
             - 2.8.3 (level 2)
@@ -80,14 +84,16 @@ os_specifics:
       discussion: "Hibernate mode _MUST_ be enabled. \n\nNOTE: Hibernate mode will disable instate wake on Apple Silicon laptops.\n"
     '13.0':
       references:
-        cce:
-          - CCE-91799-7
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91799-7
         cis:
           benchmark:
             - 2.9.3 (level 2)

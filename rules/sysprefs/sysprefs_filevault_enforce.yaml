@@ -67,16 +67,18 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85425-7
-        disa_stig:
-          - APPL-11-005020
-        srg:
-          - SRG-OS-000185-GPOS-00079
-          - SRG-OS-000404-GPOS-00183
-          - SRG-OS-000405-GPOS-00184
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-11-005020
+          srg:
+            - SRG-OS-000185-GPOS-00079
+            - SRG-OS-000404-GPOS-00183
+            - SRG-OS-000405-GPOS-00184
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85425-7
         cis:
           benchmark:
             - 2.5.1.1 (level 1)
@@ -85,16 +87,18 @@ os_specifics:
             - 3.11
     '10.15':
       references:
-        cce:
-          - CCE-84830-9
-        disa_stig:
-          - AOSX-15-005020
-        srg:
-          - SRG-OS-000185-GPOS-00079
-          - SRG-OS-000404-GPOS-00183
-          - SRG-OS-000405-GPOS-00184
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - AOSX-15-005020
+          srg:
+            - SRG-OS-000185-GPOS-00079
+            - SRG-OS-000404-GPOS-00183
+            - SRG-OS-000405-GPOS-00184
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84830-9
         cis:
           benchmark:
             - N/A
@@ -103,16 +107,18 @@ os_specifics:
             - 3.11
     '12.0':
       references:
-        cce:
-          - CCE-91053-9
-        disa_stig:
-          - APPL-12-005020
-        srg:
-          - SRG-OS-000185-GPOS-00079
-          - SRG-OS-000404-GPOS-00183
-          - SRG-OS-000405-GPOS-00184
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-12-005020
+          srg:
+            - SRG-OS-000185-GPOS-00079
+            - SRG-OS-000404-GPOS-00183
+            - SRG-OS-000405-GPOS-00184
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91053-9
         cis:
           benchmark:
             - 2.5.1.1 (level 1)

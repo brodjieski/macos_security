@@ -68,14 +68,16 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85275-6
-        disa_stig:
-          - APPL-11-003051
-        srg:
-          - SRG-OS-000480-GPOS-00227
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-11-003051
+          srg:
+            - SRG-OS-000480-GPOS-00227
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85275-6
         cis:
           benchmark:
             - N/A
@@ -91,14 +93,16 @@ os_specifics:
         NOTE: /etc/pam.d/su will be automatically modified to its original state following any update or major upgrade to the operating system.
     '10.15':
       references:
-        cce:
-          - CCE-84722-8
-        disa_stig:
-          - AOSX-15-003051
-        srg:
-          - SRG-OS-000480-GPOS-00227
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - AOSX-15-003051
+          srg:
+            - SRG-OS-000480-GPOS-00227
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84722-8
         cis:
           benchmark:
             - N/A
@@ -114,14 +118,16 @@ os_specifics:
         NOTE: /etc/pam.d/su will be automatically modified to its original state following any update or major upgrade to the operating system.
     '12.0':
       references:
-        cce:
-          - CCE-90878-0
-        disa_stig:
-          - APPL-12-003051
-        srg:
-          - SRG-OS-000480-GPOS-00227
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-12-003051
+          srg:
+            - SRG-OS-000480-GPOS-00227
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-90878-0
         cis:
           benchmark:
             - N/A
@@ -139,14 +145,16 @@ os_specifics:
         NOTE: /etc/pam.d/su will be automatically modified to its original state following any update or major upgrade to the operating system.
     '13.0':
       references:
-        cce:
-          - CCE-91734-4
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91734-4
         cis:
           benchmark:
             - N/A

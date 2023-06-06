@@ -73,14 +73,16 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85274-9
-        disa_stig:
-          - APPL-11-003050
-        srg:
-          - SRG-OS-000480-GPOS-00227
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-11-003050
+          srg:
+            - SRG-OS-000480-GPOS-00227
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85274-9
         cis:
           benchmark:
             - N/A
@@ -96,14 +98,16 @@ os_specifics:
         NOTE: /etc/pam.d/login will be automatically modified to its original state following any update or major upgrade to the operating system.
     '10.15':
       references:
-        cce:
-          - CCE-84721-0
-        disa_stig:
-          - AOSX-15-003050
-        srg:
-          - SRG-OS-000480-GPOS-00227
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - AOSX-15-003050
+          srg:
+            - SRG-OS-000480-GPOS-00227
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84721-0
         cis:
           benchmark:
             - N/A
@@ -119,14 +123,16 @@ os_specifics:
         NOTE: /etc/pam.d/login will be automatically modified to its original state following any update or major upgrade to the operating system.
     '12.0':
       references:
-        cce:
-          - CCE-90877-2
-        disa_stig:
-          - APPL-12-003050
-        srg:
-          - SRG-OS-000480-GPOS-00227
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-12-003050
+          srg:
+            - SRG-OS-000480-GPOS-00227
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-90877-2
         cis:
           benchmark:
             - N/A
@@ -144,14 +150,16 @@ os_specifics:
         NOTE: /etc/pam.d/login will be automatically modified to its original state following any update or major upgrade to the operating system.
     '13.0':
       references:
-        cce:
-          - CCE-91733-6
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91733-6
         cis:
           benchmark:
             - N/A

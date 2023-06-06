@@ -60,23 +60,25 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85264-0
-        disa_stig:
-          - APPL-11-001020
-        srg:
-          - SRG-OS-000365-GPOS-00152
-          - SRG-OS-000458-GPOS-00203
-          - SRG-OS-000461-GPOS-00205
-          - SRG-OS-000463-GPOS-00207
-          - SRG-OS-000465-GPOS-00209
-          - SRG-OS-000466-GPOS-00210
-          - SRG-OS-000467-GPOS-00211
-          - SRG-OS-000468-GPOS-00212
-          - SRG-OS-000474-GPOS-00219
-          - SRG-OS-000057-GPOS-00027
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-11-001020
+          srg:
+            - SRG-OS-000365-GPOS-00152
+            - SRG-OS-000458-GPOS-00203
+            - SRG-OS-000461-GPOS-00205
+            - SRG-OS-000463-GPOS-00207
+            - SRG-OS-000465-GPOS-00209
+            - SRG-OS-000466-GPOS-00210
+            - SRG-OS-000467-GPOS-00211
+            - SRG-OS-000468-GPOS-00212
+            - SRG-OS-000474-GPOS-00219
+            - SRG-OS-000057-GPOS-00027
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85264-0
         cis:
           benchmark:
             - 3.2 (level 2)
@@ -95,23 +97,25 @@ os_specifics:
         ----
     '10.15':
       references:
-        cce:
-          - CCE-84715-2
-        disa_stig:
-          - AOSX-15-001020
-        srg:
-          - SRG-OS-000064-GPOS-00033
-          - SRG-OS-000365-GPOS-00152
-          - SRG-OS-000458-GPOS-00203
-          - SRG-OS-000461-GPOS-00205
-          - SRG-OS-000463-GPOS-00207
-          - SRG-OS-000465-GPOS-00209
-          - SRG-OS-000466-GPOS-00210
-          - SRG-OS-000467-GPOS-00211
-          - SRG-OS-000468-GPOS-00212
-          - SRG-OS-000474-GPOS-00219
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - AOSX-15-001020
+          srg:
+            - SRG-OS-000064-GPOS-00033
+            - SRG-OS-000365-GPOS-00152
+            - SRG-OS-000458-GPOS-00203
+            - SRG-OS-000461-GPOS-00205
+            - SRG-OS-000463-GPOS-00207
+            - SRG-OS-000465-GPOS-00209
+            - SRG-OS-000466-GPOS-00210
+            - SRG-OS-000467-GPOS-00211
+            - SRG-OS-000468-GPOS-00212
+            - SRG-OS-000474-GPOS-00219
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84715-2
         cis:
           benchmark:
             - N/A
@@ -130,23 +134,25 @@ os_specifics:
         ----
     '12.0':
       references:
-        cce:
-          - CCE-91086-9
-        disa_stig:
-          - APPL-12-001020
-        srg:
-          - SRG-OS-000064-GPOS-00033
-          - SRG-OS-000365-GPOS-00152
-          - SRG-OS-000458-GPOS-00203
-          - SRG-OS-000461-GPOS-00205
-          - SRG-OS-000463-GPOS-00207
-          - SRG-OS-000465-GPOS-00209
-          - SRG-OS-000466-GPOS-00210
-          - SRG-OS-000467-GPOS-00211
-          - SRG-OS-000468-GPOS-00212
-          - SRG-OS-000474-GPOS-00219
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-12-001020
+          srg:
+            - SRG-OS-000064-GPOS-00033
+            - SRG-OS-000365-GPOS-00152
+            - SRG-OS-000458-GPOS-00203
+            - SRG-OS-000461-GPOS-00205
+            - SRG-OS-000463-GPOS-00207
+            - SRG-OS-000465-GPOS-00209
+            - SRG-OS-000466-GPOS-00210
+            - SRG-OS-000467-GPOS-00211
+            - SRG-OS-000468-GPOS-00212
+            - SRG-OS-000474-GPOS-00219
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91086-9
       discussion: "The audit system _MUST_ be configured to record enforcement actions of attempts to modify file attributes (fm). \n\nEnforcement actions are the methods or mechanisms used to prevent unauthorized changes to configuration settings. One common and effective enforcement action method is using access restrictions (i.e., modifications to a file by applying file permissions). \n\nThis configuration ensures that audit lists include events in which enforcement actions attempts to modify a file. \n\nWithout auditing the enforcement of access restrictions, it is difficult to identify attempted attacks, as there is no audit trail available for forensic investigation.\n"
       title: Configure System to Audit All Changes of Object Attributes
       check: |
@@ -158,23 +164,25 @@ os_specifics:
         ----
     '13.0':
       references:
-        cce:
-          - CCE-91720-3
-        disa_stig:
-          - APPL-13-001020
-        srg:
-          - SRG-OS-000064-GPOS-00033
-          - SRG-OS-000365-GPOS-00152
-          - SRG-OS-000458-GPOS-00203
-          - SRG-OS-000461-GPOS-00205
-          - SRG-OS-000463-GPOS-00207
-          - SRG-OS-000465-GPOS-00209
-          - SRG-OS-000466-GPOS-00210
-          - SRG-OS-000467-GPOS-00211
-          - SRG-OS-000468-GPOS-00212
-          - SRG-OS-000474-GPOS-00219
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-13-001020
+          srg:
+            - SRG-OS-000064-GPOS-00033
+            - SRG-OS-000365-GPOS-00152
+            - SRG-OS-000458-GPOS-00203
+            - SRG-OS-000461-GPOS-00205
+            - SRG-OS-000463-GPOS-00207
+            - SRG-OS-000465-GPOS-00209
+            - SRG-OS-000466-GPOS-00210
+            - SRG-OS-000467-GPOS-00211
+            - SRG-OS-000468-GPOS-00212
+            - SRG-OS-000474-GPOS-00219
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91720-3
       discussion: "The audit system _MUST_ be configured to record enforcement actions of attempts to modify file attributes (fm). \n\nEnforcement actions are the methods or mechanisms used to prevent unauthorized changes to configuration settings. One common and effective enforcement action method is using access restrictions (i.e., modifications to a file by applying file permissions).\n\nThis configuration ensures that audit lists include events in which enforcement actions attempts to modify a file. \n\nWithout auditing the enforcement of access restrictions, it is difficult to identify attempted attacks, as there is no audit trail available for forensic investigation.\n"
       title: Configure System to Audit All Changes of Object Attributes
       check: |

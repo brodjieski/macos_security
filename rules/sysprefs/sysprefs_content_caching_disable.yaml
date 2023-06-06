@@ -54,14 +54,16 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85422-4
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85422-4
         cis:
           benchmark:
             - 2.4.10 (level 2)
@@ -70,14 +72,16 @@ os_specifics:
             - 4.8
     '10.15':
       references:
-        cce:
-          - CCE-84828-3
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84828-3
         cis:
           benchmark:
             - N/A
@@ -86,14 +90,16 @@ os_specifics:
             - 4.8
     '12.0':
       references:
-        cce:
-          - CCE-91050-5
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91050-5
         cis:
           benchmark:
             - 2.4.10 (level 2)

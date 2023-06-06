@@ -41,26 +41,30 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85467-9
-        disa_stig:
-          - APPL-11-000015
-        srg:
-          - SRG-OS-000191-GPOS-00080
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-11-000015
+          srg:
+            - SRG-OS-000191-GPOS-00080
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85467-9
       discussion: "The approved Endpoint Security Solutions (ESS) _MUST_ be installed and configured to run. \n\nThe macOS system must employ automated mechanisms to determine the state of system components. The DoD requires the installation and use of an approved ESS solution to be implemented on the operating system. For additional information, reference all applicable ESS OPORDs and FRAGOs on SIPRNET.\n"
       title: Must Use Endpoint Security Solutions
     '10.15':
       references:
-        cce:
-          - CCE-84931-5
-        disa_stig:
-          - AOSX-15-000015
-        srg:
-          - SRG-OS-000191-GPOS-00080
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - AOSX-15-000015
+          srg:
+            - SRG-OS-000191-GPOS-00080
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84931-5
         cis:
           benchmark:
             - N/A
@@ -73,25 +77,29 @@ os_specifics:
       title: Must Use ESS
     '12.0':
       references:
-        cce:
-          - CCE-90930-9
-        disa_stig:
-          - APPL-12-000015
-        srg:
-          - SRG-OS-000191-GPOS-00080
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-12-000015
+          srg:
+            - SRG-OS-000191-GPOS-00080
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-90930-9
       discussion: "The approved ESS solution _MUST_ be installed and configured to run. \n\nThe macOS system must employ automated mechanisms to determine the state of system components. The DoD requires the installation and use of an approved ESS solution to be implemented on the operating system. For additional information, reference all applicable ESS OPORDs and FRAGOs on SIPRNET.\n"
       title: Must Use ESS
     '13.0':
       references:
-        cce:
-          - CCE-91785-6
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91785-6
       discussion: "The approved ESS solution _MUST_ be installed and configured to run. \n\nThe macOS system must employ automated mechanisms to determine the state of system components. The DoD requires the installation and use of an approved ESS solution to be implemented on the operating system. For additional information, reference all applicable ESS OPORDs and FRAGOs on SIPRNET.\n"
       title: Must Use ESS

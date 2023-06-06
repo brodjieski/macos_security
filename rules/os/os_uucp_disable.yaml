@@ -53,14 +53,16 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85397-8
-        disa_stig:
-          - APPL-11-002006
-        srg:
-          - SRG-OS-000095-GPOS-00049
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-11-002006
+          srg:
+            - SRG-OS-000095-GPOS-00049
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85397-8
         cis:
           benchmark:
             - N/A
@@ -72,14 +74,16 @@ os_specifics:
         /bin/launchctl print-disabled system | /usr/bin/grep -c '"com.apple.uucp" => true'
     '10.15':
       references:
-        cce:
-          - CCE-84806-9
-        disa_stig:
-          - AOSX-15-002006
-        srg:
-          - SRG-OS-000095-GPOS-00049
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - AOSX-15-002006
+          srg:
+            - SRG-OS-000095-GPOS-00049
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84806-9
         cis:
           benchmark:
             - N/A
@@ -91,14 +95,16 @@ os_specifics:
         /bin/launchctl print-disabled system | /usr/bin/grep -c '"com.apple.uucp" => true'
     '12.0':
       references:
-        cce:
-          - CCE-91024-0
-        disa_stig:
-          - APPL-12-002006
-        srg:
-          - SRG-OS-000095-GPOS-00049
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-12-002006
+          srg:
+            - SRG-OS-000095-GPOS-00049
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91024-0
         cis:
           benchmark:
             - N/A
@@ -110,14 +116,16 @@ os_specifics:
         /bin/launchctl print-disabled system | /usr/bin/grep -c '"com.apple.uucp" => true'
     '13.0':
       references:
-        cce:
-          - CCE-91909-2
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91909-2
         cis:
           benchmark:
             - N/A

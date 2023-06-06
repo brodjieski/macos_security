@@ -35,14 +35,16 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85501-5
-        disa_stig:
-          - APPL-11-002070
-        srg:
-          - SRG-OS-000480-GPOS-00227
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-11-002070
+          srg:
+            - SRG-OS-000480-GPOS-00227
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85501-5
       check: |
         /bin/launchctl print-disabled system | /usr/bin/grep -c '"com.apple.mrt" => false'
       fix: |
@@ -52,27 +54,31 @@ os_specifics:
         ----
     '10.15':
       references:
-        cce:
-          - CCE-84894-5
-        disa_stig:
-          - AOSX-15-002070
-        srg:
-          - SRG-OS-000480-GPOS-00227
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - AOSX-15-002070
+          srg:
+            - SRG-OS-000480-GPOS-00227
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84894-5
       check: "Ask the System Administrator (SA) or Information System Security Officer (ISSO) if an approved antivirus solution is loaded on the system. The antivirus solution may be bundled with an approved host-based security solution. \nIf there is no local antivirus solution installed on the system, this is a finding.\n"
       fix: |
         Install an approved antivirus solution onto the system.
     '12.0':
       references:
-        cce:
-          - CCE-90900-2
-        disa_stig:
-          - APPL-12-002070
-        srg:
-          - SRG-OS-000480-GPOS-00227
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-12-002070
+          srg:
+            - SRG-OS-000480-GPOS-00227
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-90900-2
       check: |
         /bin/launchctl list | /usr/bin/grep -cE "(com.apple.XprotectFramework.PluginService$|com.apple.XProtect.daemon.scan$)"
       fix: |
@@ -83,14 +89,16 @@ os_specifics:
         ----
     '13.0':
       references:
-        cce:
-          - CCE-91756-7
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91756-7
       check: |
         /bin/launchctl list | /usr/bin/grep -cE "(com.apple.XprotectFramework.PluginService$|com.apple.XProtect.daemon.scan$)"
       fix: |

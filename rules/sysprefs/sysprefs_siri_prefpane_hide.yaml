@@ -40,23 +40,27 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85491-9
-        disa_stig:
-          - APPL-11-002053
-        srg:
-          - SRG-OS-000095-GPOS-00049
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-11-002053
+          srg:
+            - SRG-OS-000095-GPOS-00049
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85491-9
       discussion: "The system preference pane for Siri _MUST_ be hidden.\n\nHiding the system preference pane prevents the users from configuring Siri. \n"
     '12.0':
       references:
-        cce:
-          - CCE-91137-0
-        disa_stig:
-          - APPL-12-002053
-        srg:
-          - SRG-OS-000095-GPOS-00049
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-12-002053
+          srg:
+            - SRG-OS-000095-GPOS-00049
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91137-0
       discussion: "The system preference pane for Siri _MUST_ be hidden.\n\nHIding the system preference pane prevents the users from configuring Siri. \n"

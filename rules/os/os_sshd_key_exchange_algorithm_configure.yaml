@@ -47,19 +47,21 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85472-9
-        disa_stig:
-          - APPL-11-000056
-        srg:
-          - SRG-OS-000033-GPOS-00014
-          - SRG-OS-000120-GPOS-00061
-          - SRG-OS-000125-GPOS-00065
-          - SRG-OS-000250-GPOS-00093
-          - SRG-OS-000393-GPOS-00173
-          - SRG-OS-000394-GPOS-00174
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-11-000056
+          srg:
+            - SRG-OS-000033-GPOS-00014
+            - SRG-OS-000120-GPOS-00061
+            - SRG-OS-000125-GPOS-00065
+            - SRG-OS-000250-GPOS-00093
+            - SRG-OS-000393-GPOS-00173
+            - SRG-OS-000394-GPOS-00174
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85472-9
       discussion: "Unapproved mechanisms for authentication to the cryptographic module are not verified, and therefore cannot be relied upon to provide confidentiality or integrity, resulting in the compromise of DoD data.\n\nOperating systems using encryption are required to use FIPS-compliant mechanisms for authenticating to cryptographic modules.\n\nThe implementation of OpenSSH that is included with macOS does not utilize a FIPS 140-2 validated cryptographic module. While the listed Key Exchange Algorithms are FIPS 140-2 approved, the module implementing them has not been validated.\n\nBy specifying a Key Exchange Algorithm list with the order of hashes being in a \u201Cstrongest to weakest\u201D orientation, the system will automatically attempt to use the strongest Key Exchange Algorithm for securing SSH connections.\n\nNOTE: /etc/ssh/sshd_config will be automatically modified to its original state following any update or major upgrade to the operating system.\n"
       check: |
         /usr/bin/grep -c "^KexAlgorithms diffie-hellman-group-exchange-sha256" /etc/ssh/sshd_config
@@ -70,19 +72,21 @@ os_specifics:
         ----
     '10.15':
       references:
-        cce:
-          - CCE-84935-6
-        disa_stig:
-          - AOSX-15-000056
-        srg:
-          - SRG-OS-000033-GPOS-00014
-          - SRG-OS-000120-GPOS-00061
-          - SRG-OS-000125-GPOS-00065
-          - SRG-OS-000250-GPOS-00093
-          - SRG-OS-000393-GPOS-00173
-          - SRG-OS-000394-GPOS-00174
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - AOSX-15-000056
+          srg:
+            - SRG-OS-000033-GPOS-00014
+            - SRG-OS-000120-GPOS-00061
+            - SRG-OS-000125-GPOS-00065
+            - SRG-OS-000250-GPOS-00093
+            - SRG-OS-000393-GPOS-00173
+            - SRG-OS-000394-GPOS-00174
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84935-6
       discussion: "Unapproved mechanisms for authentication to the cryptographic module are not verified, and therefore cannot be relied upon to provide confidentiality or integrity, resulting in the compromise of DoD data.\n\nOperating systems using encryption are required to use FIPS-compliant mechanisms for authenticating to cryptographic modules.\n\nThe implementation of OpenSSH that is included with macOS does not utilize a FIPS 140-2 validated cryptographic module. While the listed Key Exchange Algorithms are FIPS 140-2 approved, the module implementing them has not been validated.\n\nBy specifying a Key Exchange Algorithm list with the order of hashes being in a \u201Cstrongest to weakest\u201D orientation, the system will automatically attempt to use the strongest Key Exchange Algorithm for securing SSH connections.\n\nNOTE: /etc/ssh/sshd_config will be automatically modified to its original state following any update or major upgrade to the operating system.\n"
       check: |
         /usr/bin/grep -c "^KexAlgorithms diffie-hellman-group-exchange-sha256" /etc/ssh/sshd_config
@@ -93,19 +97,21 @@ os_specifics:
         ----
     '12.0':
       references:
-        cce:
-          - CCE-91011-7
-        disa_stig:
-          - APPL-12-000056
-        srg:
-          - SRG-OS-000033-GPOS-00014
-          - SRG-OS-000120-GPOS-00061
-          - SRG-OS-000125-GPOS-00065
-          - SRG-OS-000250-GPOS-00093
-          - SRG-OS-000393-GPOS-00173
-          - SRG-OS-000394-GPOS-00174
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-12-000056
+          srg:
+            - SRG-OS-000033-GPOS-00014
+            - SRG-OS-000120-GPOS-00061
+            - SRG-OS-000125-GPOS-00065
+            - SRG-OS-000250-GPOS-00093
+            - SRG-OS-000393-GPOS-00173
+            - SRG-OS-000394-GPOS-00174
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91011-7
       discussion: |
         Unapproved mechanisms for authentication to the cryptographic module are not verified, and therefore cannot be relied upon to provide confidentiality or integrity, resulting in the compromise of DoD data.
 
@@ -121,14 +127,16 @@ os_specifics:
       fix: "[source,bash]\n----\ninclude_dir=$(/usr/bin/awk '/^Include/ {print $2}' /etc/ssh/sshd_config | /usr/bin/tr -d '*')\n\nif [[ -z $include_dir ]]; then\n  /usr/bin/sed -i.bk \"1s/.*/Include \\/etc\\/ssh\\/sshd_config.d\\/\\*/\" /etc/ssh/sshd_config\nfi\n\necho \"KexAlgorithms diffie-hellman-group-exchange-sha256\" >> \"${include_dir}01-mscp-sshd.conf\"\n\nfor file in $(ls ${include_dir}); do\n  if [[ \"$file\" == \"100-macos.conf\" ]]; then\n      continue\n  fi\n  if [[ \"$file\" == \"01-mscp-sshd.conf\" ]]; then\n      break\n  fi\n  /bin/mv ${include_dir}${file} ${include_dir}20-${file}\ndone\n----  \n"
     '13.0':
       references:
-        cce:
-          - CCE-91891-2
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91891-2
       discussion: |
         Unapproved mechanisms for authentication to the cryptographic module are not verified, and therefore cannot be relied upon to provide confidentiality or integrity, resulting in the compromise of DoD data.
 

@@ -47,31 +47,37 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85424-0
-        disa_stig:
-          - N/A
-        srg:
-          - SRG-OS-000279-GPOS-00109
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - SRG-OS-000279-GPOS-00109
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85424-0
     '10.15':
       references:
-        cce:
-          - CCE-84870-5
-        disa_stig:
-          - N/A
-        srg:
-          - SRG-OS-000279-GPOS-00109
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - SRG-OS-000279-GPOS-00109
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84870-5
     '12.0':
       references:
-        cce:
-          - CCE-91047-1
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91047-1

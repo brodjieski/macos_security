@@ -39,39 +39,45 @@ os_specifics:
   macOS:
     '11.5':
       references:
-        cce:
-          - CCE-85483-6
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85483-6
       discussion: "A recovery lock password _MUST_ be enabled and set. \n\nSingle user mode, recovery mode, the Startup Manager, and several other tools are available on macOS by holding down specific key combinations during startup. Setting a recovery lock restricts access to these tools.\n\nNOTE: Recovery lock passwords are not supported on Intel devices. This rule is only applicable to Apple Silicon devices.\n\nNOTE: This feature was added in macOS Big Sur version 11.5.\n"
       fix: |
         NOTE: The SetRecoveryLock command can be used to set a Recovery Lock password.
     '12.0':
       references:
-        cce:
-          - CCE-90989-5
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-90989-5
       discussion: "A recovery lock password _MUST_ be enabled and set. \n\nSingle user mode, recovery mode, the Startup Manager, and several other tools are available on macOS by holding down specific key combinations during startup. Setting a recovery lock restricts access to these tools.\n\nNOTE: Recovery lock passwords are not supported on Intel devices. This rule is only applicable to Apple Silicon devices.\n"
       fix: |
         NOTE: The SetRecoveryLock command can be used to set a Recovery Lock password.
     '13.0':
       references:
-        cce:
-          - CCE-91865-6
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91865-6
       discussion: "A recovery lock password _MUST_ be enabled and set. \n\nSingle user mode, recovery mode, the Startup Manager, and several other tools are available on macOS by holding down specific key combinations during startup. Setting a recovery lock restricts access to these tools.\n\nIMPORTANT: Recovery lock passwords are not supported on Intel devices. This rule is only applicable to Apple Silicon devices.\n"
       fix: "NOTE: The SetRecoveryLock command can be used to set a Recovery Lock password and must be from your MDM. \n"

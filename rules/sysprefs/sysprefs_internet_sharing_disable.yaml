@@ -61,14 +61,16 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85433-1
-        disa_stig:
-          - APPL-11-002007
-        srg:
-          - SRG-OS-000095-GPOS-00049
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-11-002007
+          srg:
+            - SRG-OS-000095-GPOS-00049
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85433-1
         cis:
           benchmark:
             - 2.4.2 (level 1)
@@ -77,14 +79,16 @@ os_specifics:
             - 4.8
     '10.15':
       references:
-        cce:
-          - CCE-84837-4
-        disa_stig:
-          - AOSX-15-002007
-        srg:
-          - SRG-OS-000095-GPOS-00049
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - AOSX-15-002007
+          srg:
+            - SRG-OS-000095-GPOS-00049
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84837-4
         cis:
           benchmark:
             - N/A
@@ -93,14 +97,16 @@ os_specifics:
             - 4.8
     '12.0':
       references:
-        cce:
-          - CCE-91063-8
-        disa_stig:
-          - APPL-12-002007
-        srg:
-          - SRG-OS-000095-GPOS-00049
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-12-002007
+          srg:
+            - SRG-OS-000095-GPOS-00049
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91063-8
         cis:
           benchmark:
             - 2.4.2 (level 1)

@@ -64,14 +64,16 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85400-0
-        disa_stig:
-          - APPL-11-003008
-        srg:
-          - SRG-OS-000076-GPOS-00044
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-11-003008
+          srg:
+            - SRG-OS-000076-GPOS-00044
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85400-0
         cis:
           benchmark:
             - 5.2.7
@@ -79,14 +81,16 @@ os_specifics:
             - 5.3
     '10.15':
       references:
-        cce:
-          - CCE-84807-7
-        disa_stig:
-          - AOSX-15-003008
-        srg:
-          - SRG-OS-000076-GPOS-00044
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - AOSX-15-003008
+          srg:
+            - SRG-OS-000076-GPOS-00044
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84807-7
         cis:
           benchmark:
             - N/A
@@ -94,14 +98,16 @@ os_specifics:
             - 4.7
     '12.0':
       references:
-        cce:
-          - CCE-91027-3
-        disa_stig:
-          - APPL-12-003008
-        srg:
-          - SRG-OS-000076-GPOS-00044
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-12-003008
+          srg:
+            - SRG-OS-000076-GPOS-00044
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91027-3
         cis:
           benchmark:
             - 5.2.7
@@ -109,14 +115,16 @@ os_specifics:
             - 5.3
     '13.0':
       references:
-        cce:
-          - CCE-91922-5
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91922-5
         cis:
           benchmark:
             - 5.2.7 (level 1)

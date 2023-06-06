@@ -44,14 +44,16 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85297-0
-        disa_stig:
-          - N/A
-        srg:
-          - SRG-OS-000378-GPOS-00163
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - SRG-OS-000378-GPOS-00163
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85297-0
         cis:
           benchmark:
             - N/A
@@ -60,14 +62,16 @@ os_specifics:
       title: Must authenticate peripherals before establishing a connection
     '10.15':
       references:
-        cce:
-          - CCE-84741-8
-        disa_stig:
-          - N/A
-        srg:
-          - SRG-OS-000378-GPOS-00163
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - SRG-OS-000378-GPOS-00163
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84741-8
         cis:
           benchmark:
             - N/A
@@ -76,14 +80,16 @@ os_specifics:
       title: Must authenticate peripherals before establishing a connection
     '12.0':
       references:
-        cce:
-          - CCE-90906-9
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-90906-9
         cis:
           benchmark:
             - N/A
@@ -92,14 +98,16 @@ os_specifics:
       title: Must authenticate peripherals before establishing a connection
     '13.0':
       references:
-        cce:
-          - CCE-91761-7
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91761-7
         cis:
           benchmark:
             - N/A

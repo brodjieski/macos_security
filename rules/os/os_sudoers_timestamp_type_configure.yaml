@@ -46,14 +46,16 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85513-0
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85513-0
         cis:
           benchmark:
             - 5.4 (level 1)
@@ -65,14 +67,16 @@ os_specifics:
         This rule ensures that the "sudo" command will prompt for the administrator's password at least once in each newly opened terminal window. This prevents a malicious user from taking advantage of an unlocked computer or an abandoned logon session by bypassing the normal password prompt requirement.
     '12.0':
       references:
-        cce:
-          - CCE-91015-8
-        disa_stig:
-          - APPL-12-004021
-        srg:
-          - SRG-OS-000480-GPOS-00227
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-12-004021
+          srg:
+            - SRG-OS-000480-GPOS-00227
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91015-8
         cis:
           benchmark:
             - 5.4 (level 1)
@@ -84,14 +88,16 @@ os_specifics:
         This rule ensures that the "sudo" command will prompt for the administrator's password at least once in each newly opened terminal window. This prevents a malicious user from taking advantage of an unlocked computer or an abandoned logon session by bypassing the normal password prompt requirement.
     '13.0':
       references:
-        cce:
-          - CCE-91896-1
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91896-1
         cis:
           benchmark:
             - 5.5 (level 1)

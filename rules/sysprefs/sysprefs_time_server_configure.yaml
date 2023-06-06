@@ -65,15 +65,17 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85448-9
-        disa_stig:
-          - APPL-11-000014
-        srg:
-          - SRG-OS-000355-GPOS-00143
-          - SRG-OS-000356-GPOS-00144
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-11-000014
+          srg:
+            - SRG-OS-000355-GPOS-00143
+            - SRG-OS-000356-GPOS-00144
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85448-9
         cis:
           benchmark:
             - 2.2.1 (level 1)
@@ -81,15 +83,17 @@ os_specifics:
             - 8.4
     '10.15':
       references:
-        cce:
-          - CCE-84846-5
-        disa_stig:
-          - AOSX-15-000014
-        srg:
-          - SRG-OS-000355-GPOS-00143
-          - SRG-OS-000356-GPOS-00144
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - AOSX-15-000014
+          srg:
+            - SRG-OS-000355-GPOS-00143
+            - SRG-OS-000356-GPOS-00144
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84846-5
         cis:
           benchmark:
             - N/A
@@ -97,15 +101,17 @@ os_specifics:
             - 8.4
     '12.0':
       references:
-        cce:
-          - CCE-91080-2
-        disa_stig:
-          - APPL-12-000014
-        srg:
-          - SRG-OS-000355-GPOS-00143
-          - SRG-OS-000356-GPOS-00144
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-12-000014
+          srg:
+            - SRG-OS-000355-GPOS-00143
+            - SRG-OS-000356-GPOS-00144
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91080-2
         cis:
           benchmark:
             - 2.2.1 (level 1)

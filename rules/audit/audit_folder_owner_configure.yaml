@@ -53,14 +53,16 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85269-9
-        disa_stig:
-          - APPL-11-001013
-        srg:
-          - SRG-OS-000057-GPOS-00027
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-11-001013
+          srg:
+            - SRG-OS-000057-GPOS-00027
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85269-9
         cis:
           benchmark:
             - 3.5 (level 1)
@@ -74,14 +76,16 @@ os_specifics:
         Audit logs contain sensitive data about the system and users. If log files are set to only be readable and writable by system administrators, the risk is mitigated.
     '10.15':
       references:
-        cce:
-          - CCE-84718-6
-        disa_stig:
-          - AOSX-15-001013
-        srg:
-          - SRG-OS-000057-GPOS-00027
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - AOSX-15-001013
+          srg:
+            - SRG-OS-000057-GPOS-00027
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84718-6
       discussion: |
         Audit log files _MUST_ be owned by root.
 
@@ -90,14 +94,16 @@ os_specifics:
         Audit logs contain sensitive data about the system and users. If log files are set to only be readable and writable by system administrators, the risk is mitigated.
     '12.0':
       references:
-        cce:
-          - CCE-90870-7
-        disa_stig:
-          - APPL-12-001013
-        srg:
-          - SRG-OS-000057-GPOS-00027
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-12-001013
+          srg:
+            - SRG-OS-000057-GPOS-00027
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-90870-7
         cis:
           benchmark:
             - 3.5 (level 1)
@@ -111,14 +117,16 @@ os_specifics:
         Audit logs contain sensitive data about the system and users. If log files are set to only be readable and writable by system administrators, the risk is mitigated.
     '13.0':
       references:
-        cce:
-          - CCE-91726-0
-        disa_stig:
-          - APPL-13-001013
-        srg:
-          - SRG-OS-000057-GPOS-00027
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-13-001013
+          srg:
+            - SRG-OS-000057-GPOS-00027
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91726-0
         cis:
           benchmark:
             - 3.5 (level 1)

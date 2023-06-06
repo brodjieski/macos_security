@@ -88,28 +88,30 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85378-8
-        disa_stig:
-          - APPL-11-005001
-        srg:
-          - SRG-OS-000051-GPOS-00024
-          - SRG-OS-000054-GPOS-00025
-          - SRG-OS-000062-GPOS-00031
-          - SRG-OS-000122-GPOS-00063
-          - SRG-OS-000256-GPOS-00097
-          - SRG-OS-000257-GPOS-00098
-          - SRG-OS-000258-GPOS-00099
-          - SRG-OS-000259-GPOS-00100
-          - SRG-OS-000348-GPOS-00136
-          - SRG-OS-000349-GPOS-00137
-          - SRG-OS-000350-GPOS-00138
-          - SRG-OS-000351-GPOS-00139
-          - SRG-OS-000352-GPOS-00140
-          - SRG-OS-000353-GPOS-00141
-          - SRG-OS-000354-GPOS-00142
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-11-005001
+          srg:
+            - SRG-OS-000051-GPOS-00024
+            - SRG-OS-000054-GPOS-00025
+            - SRG-OS-000062-GPOS-00031
+            - SRG-OS-000122-GPOS-00063
+            - SRG-OS-000256-GPOS-00097
+            - SRG-OS-000257-GPOS-00098
+            - SRG-OS-000258-GPOS-00099
+            - SRG-OS-000259-GPOS-00100
+            - SRG-OS-000348-GPOS-00136
+            - SRG-OS-000349-GPOS-00137
+            - SRG-OS-000350-GPOS-00138
+            - SRG-OS-000351-GPOS-00139
+            - SRG-OS-000352-GPOS-00140
+            - SRG-OS-000353-GPOS-00141
+            - SRG-OS-000354-GPOS-00142
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85378-8
         cis:
           benchmark:
             - 5.1.2 (level 1)
@@ -119,31 +121,33 @@ os_specifics:
             - 10.5
     '10.15':
       references:
-        cce:
-          - CCE-84790-5
-        disa_stig:
-          - AOSX-15-005001
-        srg:
-          - SRG-OS-000051-GPOS-00024
-          - SRG-OS-000054-GPOS-00025
-          - SRG-OS-000062-GPOS-00031
-          - SRG-OS-000122-GPOS-00063
-          - SRG-OS-000138-GPOS-00069
-          - SRG-OS-000256-GPOS-00097
-          - SRG-OS-000257-GPOS-00098
-          - SRG-OS-000258-GPOS-00099
-          - SRG-OS-000259-GPOS-00100
-          - SRG-OS-000348-GPOS-00136
-          - SRG-OS-000349-GPOS-00137
-          - SRG-OS-000350-GPOS-00138
-          - SRG-OS-000351-GPOS-00139
-          - SRG-OS-000352-GPOS-00140
-          - SRG-OS-000353-GPOS-00141
-          - SRG-OS-000354-GPOS-00142
-          - SRG-OS-000480-GPOS-00228
-          - SRG-OS-000480-GPOS-00230
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - AOSX-15-005001
+          srg:
+            - SRG-OS-000051-GPOS-00024
+            - SRG-OS-000054-GPOS-00025
+            - SRG-OS-000062-GPOS-00031
+            - SRG-OS-000122-GPOS-00063
+            - SRG-OS-000138-GPOS-00069
+            - SRG-OS-000256-GPOS-00097
+            - SRG-OS-000257-GPOS-00098
+            - SRG-OS-000258-GPOS-00099
+            - SRG-OS-000259-GPOS-00100
+            - SRG-OS-000348-GPOS-00136
+            - SRG-OS-000349-GPOS-00137
+            - SRG-OS-000350-GPOS-00138
+            - SRG-OS-000351-GPOS-00139
+            - SRG-OS-000352-GPOS-00140
+            - SRG-OS-000353-GPOS-00141
+            - SRG-OS-000354-GPOS-00142
+            - SRG-OS-000480-GPOS-00228
+            - SRG-OS-000480-GPOS-00230
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84790-5
         cis:
           benchmark:
             - N/A
@@ -153,28 +157,30 @@ os_specifics:
             - 10.5
     '12.0':
       references:
-        cce:
-          - CCE-91000-0
-        disa_stig:
-          - APPL-12-005001
-        srg:
-          - SRG-OS-000051-GPOS-00024
-          - SRG-OS-000054-GPOS-00025
-          - SRG-OS-000062-GPOS-00031
-          - SRG-OS-000122-GPOS-00063
-          - SRG-OS-000256-GPOS-00097
-          - SRG-OS-000257-GPOS-00098
-          - SRG-OS-000258-GPOS-00099
-          - SRG-OS-000259-GPOS-00100
-          - SRG-OS-000348-GPOS-00136
-          - SRG-OS-000349-GPOS-00137
-          - SRG-OS-000350-GPOS-00138
-          - SRG-OS-000351-GPOS-00139
-          - SRG-OS-000352-GPOS-00140
-          - SRG-OS-000353-GPOS-00141
-          - SRG-OS-000354-GPOS-00142
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-12-005001
+          srg:
+            - SRG-OS-000051-GPOS-00024
+            - SRG-OS-000054-GPOS-00025
+            - SRG-OS-000062-GPOS-00031
+            - SRG-OS-000122-GPOS-00063
+            - SRG-OS-000256-GPOS-00097
+            - SRG-OS-000257-GPOS-00098
+            - SRG-OS-000258-GPOS-00099
+            - SRG-OS-000259-GPOS-00100
+            - SRG-OS-000348-GPOS-00136
+            - SRG-OS-000349-GPOS-00137
+            - SRG-OS-000350-GPOS-00138
+            - SRG-OS-000351-GPOS-00139
+            - SRG-OS-000352-GPOS-00140
+            - SRG-OS-000353-GPOS-00141
+            - SRG-OS-000354-GPOS-00142
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91000-0
         cis:
           benchmark:
             - 5.1.2 (level 1)
@@ -184,14 +190,16 @@ os_specifics:
             - 10.5
     '13.0':
       references:
-        cce:
-          - CCE-91878-9
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91878-9
         cis:
           benchmark:
             - 5.1.2 (level 1)

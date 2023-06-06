@@ -68,14 +68,16 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85300-2
-        disa_stig:
-          - APPL-11-002023
-        srg:
-          - SRG-OS-000095-GPOS-00049
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-11-002023
+          srg:
+            - SRG-OS-000095-GPOS-00049
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85300-2
         cis:
           benchmark:
             - N/A
@@ -85,14 +87,16 @@ os_specifics:
       check: /usr/bin/profiles -P -o stdout | /usr/bin/grep -A 20 familyControlsEnabled | /usr/bin/grep -c "/Applications/Calendar.app"
     '10.15':
       references:
-        cce:
-          - CCE-84750-9
-        disa_stig:
-          - AOSX-15-002023
-        srg:
-          - SRG-OS-000095-GPOS-00049
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - AOSX-15-002023
+          srg:
+            - SRG-OS-000095-GPOS-00049
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84750-9
         cis:
           benchmark:
             - N/A
@@ -102,14 +106,16 @@ os_specifics:
       check: /usr/bin/profiles -P -o stdout | /usr/bin/grep -A 20 familyControlsEnabled | /usr/bin/grep -c "/Applications/Calendar.app"
     '12.0':
       references:
-        cce:
-          - CCE-90909-3
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-90909-3
         cis:
           benchmark:
             - N/A
@@ -133,14 +139,16 @@ os_specifics:
         EOS
     '13.0':
       references:
-        cce:
-          - CCE-91769-0
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91769-0
         cis:
           benchmark:
             - N/A

@@ -54,14 +54,16 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85534-6
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85534-6
         cis:
           benchmark:
             - 1.1 (level 1)
@@ -70,14 +72,16 @@ os_specifics:
             - 7.4
     '12.0':
       references:
-        cce:
-          - CCE-91141-2
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91141-2
         cis:
           benchmark:
             - 1.1 (level 1)

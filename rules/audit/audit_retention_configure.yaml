@@ -59,14 +59,16 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85272-3
-        disa_stig:
-          - APPL-11-001029
-        srg:
-          - SRG-OS-000341-GPOS-00132
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-11-001029
+          srg:
+            - SRG-OS-000341-GPOS-00132
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85272-3
         cis:
           benchmark:
             - 3.4 (level 1)
@@ -76,14 +78,16 @@ os_specifics:
       discussion: "The audit service _MUST_ be configured to require records be kept for seven days or longer before deletion, unless the system uses a central audit record storage facility. \n\nWhen \"expire-after\" is set to \"$ODV\", the audit service will not delete audit logs until the log data is at least seven days old.\n"
     '10.15':
       references:
-        cce:
-          - CCE-84719-4
-        disa_stig:
-          - AOSX-15-001029
-        srg:
-          - SRG-OS-000341-GPOS-00132
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - AOSX-15-001029
+          srg:
+            - SRG-OS-000341-GPOS-00132
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84719-4
         cis:
           benchmark:
             - N/A
@@ -93,14 +97,16 @@ os_specifics:
       discussion: "The audit service _MUST_ be configured to require records be kept for a organizational defined value before deletion, unless the system uses a central audit record storage facility. \n\nWhen \"expire-after\" is set to \"$ODV\", the audit service will not delete audit logs until the log data is at least seven days old.\n"
     '12.0':
       references:
-        cce:
-          - CCE-90875-6
-        disa_stig:
-          - APPL-12-001029
-        srg:
-          - SRG-OS-000341-GPOS-00132
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-12-001029
+          srg:
+            - SRG-OS-000341-GPOS-00132
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-90875-6
         cis:
           benchmark:
             - 3.4 (level 1)
@@ -110,14 +116,16 @@ os_specifics:
       discussion: "The audit service _MUST_ be configured to require records be kept for a organizational defined value before deletion, unless the system uses a central audit record storage facility. \n\nWhen \"expire-after\" is set to \"$ODV\", the audit service will not delete audit logs until the log data criteria is met.\n"
     '13.0':
       references:
-        cce:
-          - CCE-91731-0
-        disa_stig:
-          - APPL-13-001029
-        srg:
-          - SRG-OS-000341-GPOS-00132
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-13-001029
+          srg:
+            - SRG-OS-000341-GPOS-00132
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91731-0
         cis:
           benchmark:
             - 3.4 (level 1)

@@ -40,14 +40,16 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85384-6
-        disa_stig:
-          - APPL-11-000053
-        srg:
-          - SRG-OS-000163-GPOS-00072
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-11-000053
+          srg:
+            - SRG-OS-000163-GPOS-00072
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85384-6
       check: |
         /usr/bin/grep -c "^LoginGraceTime $ODV" /etc/ssh/sshd_config
       fix: |
@@ -57,14 +59,16 @@ os_specifics:
         ----
     '10.15':
       references:
-        cce:
-          - CCE-84796-2
-        disa_stig:
-          - AOSX-15-000053
-        srg:
-          - SRG-OS-000163-GPOS-00072
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - AOSX-15-000053
+          srg:
+            - SRG-OS-000163-GPOS-00072
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84796-2
       check: |
         /usr/bin/grep -c "^LoginGraceTime 30" /etc/ssh/sshd_config
       fix: |
@@ -74,27 +78,31 @@ os_specifics:
         ----
     '12.0':
       references:
-        cce:
-          - CCE-91012-5
-        disa_stig:
-          - APPL-12-000053
-        srg:
-          - SRG-OS-000163-GPOS-00072
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-12-000053
+          srg:
+            - SRG-OS-000163-GPOS-00072
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91012-5
       check: |
         /usr/sbin/sshd -T | /usr/bin/awk '/logingracetime/{print $2}'
       fix: "[source,bash]\n----\ninclude_dir=$(/usr/bin/awk '/^Include/ {print $2}' /etc/ssh/sshd_config | /usr/bin/tr -d '*')\n\nif [[ -z $include_dir ]]; then\n  /usr/bin/sed -i.bk \"1s/.*/Include \\/etc\\/ssh\\/sshd_config.d\\/\\*/\" /etc/ssh/sshd_config\nfi\n\necho \"logingracetime $ODV\" >> \"${include_dir}01-mscp-sshd.conf\"\n\nfor file in $(ls ${include_dir}); do\n  if [[ \"$file\" == \"100-macos.conf\" ]]; then\n      continue\n  fi\n  if [[ \"$file\" == \"01-mscp-sshd.conf\" ]]; then\n      break\n  fi\n  /bin/mv ${include_dir}${file} ${include_dir}20-${file}\ndone\n----  \n"
     '13.0':
       references:
-        cce:
-          - CCE-91892-0
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91892-0
       check: |
         /usr/sbin/sshd -T | /usr/bin/awk '/logingracetime/{print $2}'
       fix: "[source,bash]\n----\ninclude_dir=$(/usr/bin/awk '/^Include/ {print $2}' /etc/ssh/sshd_config | /usr/bin/tr -d '*')\n\nif [[ -z $include_dir ]]; then\n  /usr/bin/sed -i.bk \"1s/.*/Include \\/etc\\/ssh\\/sshd_config.d\\/\\*/\" /etc/ssh/sshd_config\nfi\n\necho \"logingracetime $ODV\" >> \"${include_dir}01-mscp-sshd.conf\"\n\nfor file in $(ls ${include_dir}); do\n  if [[ \"$file\" == \"100-macos.conf\" ]]; then\n      continue\n  fi\n  if [[ \"$file\" == \"01-mscp-sshd.conf\" ]]; then\n      break\n  fi\n  /bin/mv ${include_dir}${file} ${include_dir}20-${file}\ndone\n----  \n"

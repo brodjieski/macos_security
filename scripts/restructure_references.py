@@ -46,8 +46,27 @@ def main():
             else:
                 new_refs[k] = v
         rule['references'] = new_refs
-        _yaml.dumpToYaml(rule['id'], rule, build_path)
 
+        
+        for macos in rule['os_specifics'].keys():
+            
+            for version in rule['os_specifics'][macos].keys():
+                new_os_specs = {}
+                new_os_specs["disa"] = {}
+                new_os_specs["nist"] = {}
+                for k, v in rule['os_specifics'][macos][version]['references'].items():
+                    if k in disa_fields_to_move:
+                        new_os_specs['disa'][k] = v
+                    elif k in nist_fields_to_move:
+                        new_os_specs['nist'][k] = v
+                    else:
+                        new_os_specs[k] = v
+                rule['os_specifics'][macos][version]['references'] = new_os_specs 
+        #pprint.pprint(rule)
+        
+        folder_name=rule['id'].split("_")[0]
+        output = os.path.join(build_path, folder_name)
+        _yaml.dumpToYaml(rule['id'], rule, output)
 if __name__ == "__main__":
     # Configure command line arguments
     _usage = "usage: %prog [options]"

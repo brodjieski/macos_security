@@ -43,12 +43,14 @@ os_specifics:
   macOS:
     '12.0':
       references:
-        cce:
-          - N/A
-        disa_stig:
-          - APPL-13-002062
-        srg:
-          - SRG-OS-000379-GPOS-00164
-          - SRG-OS-000481-GPOS-00481
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-13-002062
+          srg:
+            - SRG-OS-000379-GPOS-00164
+            - SRG-OS-000481-GPOS-00481
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - N/A

@@ -70,6 +70,15 @@ class Yaml:
                         ) from exc
         return rule_dict
 
+    def getPlatformRules(self, rules, platform, os_version):
+        """Takes a dictionary of rules and returns rules that match platform and os_version"""
+        rule_dict = {}
+        for id, rule in rules.items():
+            if platform in rule['os_specifics'].keys():
+                if os_version in rule['os_specifics'][platform]:
+                    rule_dict[id] = rule
+        return rule_dict
+
     def compileRules(self, original_rules, custom_rules, benchmark, platform, os_version):
         """Takes the orginal rules and the custom rules and returns a list of rules with usable values"""
         rule_list = []
@@ -115,14 +124,14 @@ class Yaml:
                 _has_odv = True
 
         if _has_odv:
+            logger.info(f"ODV Found for {rule['id']}")
             for field in fields_to_process:
                 if "$ODV" in rule[field]:
                     rule[field]=rule[field].replace("$ODV", odv)
 
             if 'result' in rule.keys():
-                for result_value in rule['result']:
-                    if "$ODV" in str(rule['result'][result_value]):
-                        rule['result'][result_value] = odv
+                if "$ODV" in str(rule['result']):
+                    rule['result'] = odv
 
             if rule['mobileconfig_info']:
                 for mobileconfig_type in rule['mobileconfig_info']:
@@ -138,7 +147,7 @@ class Yaml:
         except KeyError:
             logging.info(f"fill_in_OS_specs:  Rule {rule['id']} has no values for OS {platform} {os_version}, skipping...")
             return False
-
+        
         _included_keys = []
         for key, value in recursive_items(os_version_specs):
             _included_keys.append(key)
@@ -157,7 +166,7 @@ class Yaml:
                 rule[key]=rule["os_specifics"][platform][os_version][key]
             except:
                 pass
-        
+        logger.info(f"Adding OS Specifics for {rule['id']}")
         return True
     
     def add_new_OS(self, rule, os_specs, newos, copy_stig):

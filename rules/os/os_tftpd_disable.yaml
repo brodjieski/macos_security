@@ -55,14 +55,16 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85391-1
-        disa_stig:
-          - APPL-11-002038
-        srg:
-          - SRG-OS-000074-GPOS-00042
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-11-002038
+          srg:
+            - SRG-OS-000074-GPOS-00042
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85391-1
         cis:
           benchmark:
             - N/A
@@ -74,14 +76,16 @@ os_specifics:
         /bin/launchctl print-disabled system | /usr/bin/grep -c '"com.apple.tftpd" => true'
     '10.15':
       references:
-        cce:
-          - CCE-84853-1
-        disa_stig:
-          - AOSX-15-002038
-        srg:
-          - SRG-OS-000074-GPOS-00042
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - AOSX-15-002038
+          srg:
+            - SRG-OS-000074-GPOS-00042
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84853-1
         cis:
           benchmark:
             - N/A
@@ -93,14 +97,16 @@ os_specifics:
         /bin/launchctl print-disabled system | /usr/bin/grep -c '"com.apple.tftpd" => true'
     '12.0':
       references:
-        cce:
-          - CCE-91018-2
-        disa_stig:
-          - APPL-12-002038
-        srg:
-          - SRG-OS-000074-GPOS-00042
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-12-002038
+          srg:
+            - SRG-OS-000074-GPOS-00042
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91018-2
         cis:
           benchmark:
             - N/A
@@ -112,14 +118,16 @@ os_specifics:
         /bin/launchctl print-disabled system | /usr/bin/grep -c '"com.apple.tftpd" => true'
     '13.0':
       references:
-        cce:
-          - CCE-91902-7
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91902-7
         cis:
           benchmark:
             - N/A

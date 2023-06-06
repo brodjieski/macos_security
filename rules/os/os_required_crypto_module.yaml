@@ -37,14 +37,16 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85373-9
-        disa_stig:
-          - N/A
-        srg:
-          - SRG-OS-000120-GPOS-00061
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - SRG-OS-000120-GPOS-00061
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85373-9
       discussion: |
         The inherent configuration of the macOS _IS_ in compliance by implementing mechanisms for authentication to a cryptographic module that meet the requirements of all applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance for such authentication
 
@@ -57,14 +59,16 @@ os_specifics:
         link:https://support.apple.com/en-us/HT201159[]
     '10.15':
       references:
-        cce:
-          - CCE-84877-0
-        disa_stig:
-          - N/A
-        srg:
-          - SRG-OS-000120-GPOS-00061
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - SRG-OS-000120-GPOS-00061
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84877-0
       discussion: |
         The inherent configuration of the macOS _IS_ in compliance by implementing mechanisms for authentication to a cryptographic module that meet the requirements of all applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance for such authentication
 
@@ -79,14 +83,16 @@ os_specifics:
         link:https://support.apple.com/en-us/HT201159[]
     '12.0':
       references:
-        cce:
-          - CCE-90993-7
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-90993-7
       discussion: |
         The inherent configuration of the macOS _IS_ in compliance by implementing mechanisms for authentication to a cryptographic module that meet the requirements of all applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance for such authentication
 
@@ -99,14 +105,16 @@ os_specifics:
         link:https://support.apple.com/en-us/HT201159[]
     '13.0':
       references:
-        cce:
-          - CCE-91869-8
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91869-8
       discussion: |
         The inherent configuration of the macOS _IS_ in compliance by implementing mechanisms for authentication to a cryptographic module that meet the requirements of all applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance for such authentication
 

@@ -52,14 +52,16 @@ os_specifics:
   macOS:
     '13.0':
       references:
-        cce:
-          - N/A
-        disa_stig:
-          - APPL-13-002032
-        srg:
-          - SRG-OS-000095-GPOS-00049
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-13-002032
+          srg:
+            - SRG-OS-000095-GPOS-00049
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - N/A
         cis:
           benchmark:
             - N/A

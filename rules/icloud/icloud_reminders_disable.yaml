@@ -62,15 +62,17 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85291-3
-        disa_stig:
-          - APPL-11-002013
-        srg:
-          - SRG-OS-000095-GPOS-00049
-          - SRG-OS-000370-GPOS-00155
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-11-002013
+          srg:
+            - SRG-OS-000095-GPOS-00049
+            - SRG-OS-000370-GPOS-00155
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85291-3
         cis:
           benchmark:
             - N/A
@@ -80,15 +82,17 @@ os_specifics:
             - 15.3
     '10.15':
       references:
-        cce:
-          - CCE-84739-2
-        disa_stig:
-          - AOSX-15-002013
-        srg:
-          - SRG-OS-000095-GPOS-00049
-          - SRG-OS-000370-GPOS-00155
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - AOSX-15-002013
+          srg:
+            - SRG-OS-000095-GPOS-00049
+            - SRG-OS-000370-GPOS-00155
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84739-2
         cis:
           benchmark:
             - N/A
@@ -98,15 +102,17 @@ os_specifics:
             - 15.3
     '12.0':
       references:
-        cce:
-          - CCE-90895-4
-        disa_stig:
-          - APPL-12-002013
-        srg:
-          - SRG-OS-000095-GPOS-00049
-          - SRG-OS-000370-GPOS-00155
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-12-002013
+          srg:
+            - SRG-OS-000095-GPOS-00049
+            - SRG-OS-000370-GPOS-00155
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-90895-4
         cis:
           benchmark:
             - N/A
@@ -116,14 +122,16 @@ os_specifics:
             - 15.3
     '13.0':
       references:
-        cce:
-          - CCE-91751-8
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91751-8
         cis:
           benchmark:
             - N/A

@@ -43,11 +43,13 @@ os_specifics:
   macOS:
     '10.15':
       references:
-        cce:
-          - CCE-84799-6
-        disa_stig:
-          - AOSX-15-004021
-        srg:
-          - SRG-OS-000480-GPOS-00227
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - AOSX-15-004021
+          srg:
+            - SRG-OS-000480-GPOS-00227
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84799-6

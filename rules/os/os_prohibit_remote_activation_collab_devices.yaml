@@ -34,36 +34,42 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85480-2
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85480-2
       discussion: "The inherent configuration of the macOS _IS_ in partial compliance as Apple has implemented a green light physically next to your camera that will glow when the camera is activated.\n\nThere are no indicators when the system's microphone is listening or activated. This requires additional software to be installed. \n\nThe macOS has built into the system, the ability to grant or deny access to the camera and microphone which requires the application to have an entitlement to use the device.\n\nlink:https://support.apple.com/guide/mac-help/use-the-built-in-camera-mchlp2980/mac[]\n\nlink:https://support.apple.com/guide/mac-help/control-access-to-your-camera-mchlf6d108da/mac[]\n\nlink:https://support.apple.com/guide/mac-help/control-access-to-your-microphone-on-mac-mchla1b1e1fe/11.0/mac/11.0[]\n"
     '10.15':
       references:
-        cce:
-          - CCE-84950-5
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84950-5
       discussion: "The inherent configuration of the macOS _IS_ in partial compliance as Apple has implemented a green light physically next to your camera that will glow when the camera is activated.\n\nThere are no indicators when the system's microphone is listening or activated. This requires additional software to be installed. \n\nThe macOS has built into the system, the ability to grant or deny access to the camera and microphone which requires the application to have an entitlement to use the device.\n\nlink:https://support.apple.com/guide/mac-help/use-the-built-in-camera-mchlp2980/mac[]\n\nlink:https://support.apple.com/guide/mac-help/control-access-to-your-camera-mchlf6d108da/mac[]\n\nlink:https://support.apple.com/guide/mac-help/control-access-to-your-microphone-on-mac-mchla1b1e1fe/11.0/mac/11.0[]\n"
     '12.0':
       references:
-        cce:
-          - CCE-90982-0
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-90982-0
       discussion: |
         The inherent configuration of the macOS _IS_ in compliance.
 
@@ -78,14 +84,16 @@ os_specifics:
         link:https://support.apple.com/guide/mac-help/control-access-to-your-microphone-on-mac-mchla1b1e1fe/12.0/mac/12.0[]
     '13.0':
       references:
-        cce:
-          - CCE-91856-5
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91856-5
       discussion: |
         The inherent configuration of the macOS _IS_ in compliance.
 

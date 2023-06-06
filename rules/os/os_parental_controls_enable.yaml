@@ -51,15 +51,17 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85350-7
-        disa_stig:
-          - N/A
-        srg:
-          - SRG-OS-000362-GPOS-00149
-          - SRG-OS-000368-GPOS-00154
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - SRG-OS-000362-GPOS-00149
+            - SRG-OS-000368-GPOS-00154
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85350-7
         cis:
           benchmark:
             - N/A
@@ -68,15 +70,17 @@ os_specifics:
       discussion: "Parental Controls _MUST_ be enabled. \n\nControl of program execution is a mechanism used to prevent program execution of unauthorized programs, which is critical to maintaining a secure system baseline.\n\nParental Controls on the macOS consist of many different payloads, which are set individually depending on the type of control required. Enabling parental controls allows for further configuration of these restrictions.\n"
     '10.15':
       references:
-        cce:
-          - CCE-84773-1
-        disa_stig:
-          - N/A
-        srg:
-          - SRG-OS-000362-GPOS-00149
-          - SRG-OS-000368-GPOS-00154
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - SRG-OS-000362-GPOS-00149
+            - SRG-OS-000368-GPOS-00154
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84773-1
         cis:
           benchmark:
             - N/A
@@ -85,14 +89,16 @@ os_specifics:
       discussion: "Parental Controls _MUST_ be enabled. \n\nControl of program execution is a mechanism used to prevent program execution of unauthorized programs, which is critical to maintaining a secure system baseline.\n\nParental Controls on the macOS consist of many different payloads, which are set individually depending on the type of control required. Enabling parental controls allows for further configuration of these restrictions.\n"
     '12.0':
       references:
-        cce:
-          - CCE-90966-3
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-90966-3
         cis:
           benchmark:
             - N/A
@@ -101,14 +107,16 @@ os_specifics:
       discussion: "Parental Controls _MUST_ be enabled. \n\nControl of program execution is a mechanism used to prevent program execution of unauthorized programs, which is critical to maintaining a secure system baseline.\n\nParental Controls on the macOS consist of many different payloads, which are set individually depending on the type of control required. Enabling parental controls allows for further configuration of these restrictions.\n"
     '13.0':
       references:
-        cce:
-          - CCE-91837-5
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91837-5
         cis:
           benchmark:
             - N/A

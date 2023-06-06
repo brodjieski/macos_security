@@ -59,43 +59,47 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85264-0
-        disa_stig:
-          - APPL-11-001020
-        srg:
-          - SRG-OS-000365-GPOS-00152
-          - SRG-OS-000458-GPOS-00203
-          - SRG-OS-000461-GPOS-00205
-          - SRG-OS-000463-GPOS-00207
-          - SRG-OS-000465-GPOS-00209
-          - SRG-OS-000466-GPOS-00210
-          - SRG-OS-000467-GPOS-00211
-          - SRG-OS-000468-GPOS-00212
-          - SRG-OS-000474-GPOS-00219
-          - SRG-OS-000057-GPOS-00027
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-11-001020
+          srg:
+            - SRG-OS-000365-GPOS-00152
+            - SRG-OS-000458-GPOS-00203
+            - SRG-OS-000461-GPOS-00205
+            - SRG-OS-000463-GPOS-00207
+            - SRG-OS-000465-GPOS-00209
+            - SRG-OS-000466-GPOS-00210
+            - SRG-OS-000467-GPOS-00211
+            - SRG-OS-000468-GPOS-00212
+            - SRG-OS-000474-GPOS-00219
+            - SRG-OS-000057-GPOS-00027
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85264-0
       discussion: "The audit system _MUST_ be configured to record enforcement actions of attempts to delete file attributes (fd). \n\n***Enforcement actions are the methods or mechanisms used to prevent unauthorized changes to configuration settings. One common and effective enforcement action method is using access restrictions (i.e., denying modifications to a file by applying file permissions). \n\nThis configuration ensures that audit lists include events in which enforcement actions prevent attempts to delete a file. \n\nWithout auditing the enforcement of access restrictions, it is difficult to identify attempted attacks, as there is no audit trail available for forensic investigation.\n"
     '10.15':
       references:
-        cce:
-          - CCE-84922-4
-        disa_stig:
-          - AOSX-15-001020
-        srg:
-          - SRG-OS-000064-GPOS-00033
-          - SRG-OS-000365-GPOS-00152
-          - SRG-OS-000458-GPOS-00203
-          - SRG-OS-000461-GPOS-00205
-          - SRG-OS-000463-GPOS-00207
-          - SRG-OS-000465-GPOS-00209
-          - SRG-OS-000466-GPOS-00210
-          - SRG-OS-000467-GPOS-00211
-          - SRG-OS-000468-GPOS-00212
-          - SRG-OS-000474-GPOS-00219
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - AOSX-15-001020
+          srg:
+            - SRG-OS-000064-GPOS-00033
+            - SRG-OS-000365-GPOS-00152
+            - SRG-OS-000458-GPOS-00203
+            - SRG-OS-000461-GPOS-00205
+            - SRG-OS-000463-GPOS-00207
+            - SRG-OS-000465-GPOS-00209
+            - SRG-OS-000466-GPOS-00210
+            - SRG-OS-000467-GPOS-00211
+            - SRG-OS-000468-GPOS-00212
+            - SRG-OS-000474-GPOS-00219
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84922-4
         cis:
           benchmark:
             - N/A
@@ -106,43 +110,47 @@ os_specifics:
       discussion: "The audit system _MUST_ be configured to record enforcement actions of attempts to delete file attributes (fd). \n\n***Enforcement actions are the methods or mechanisms used to prevent unauthorized changes to configuration settings. One common and effective enforcement action method is using access restrictions (i.e., denying modifications to a file by applying file permissions). \n\nThis configuration ensures that audit lists include events in which enforcement actions prevent attempts to delete a file. \n\nWithout auditing the enforcement of access restrictions, it is difficult to identify attempted attacks, as there is no audit trail available for forensic investigation.\n"
     '12.0':
       references:
-        cce:
-          - CCE-90864-0
-        disa_stig:
-          - APPL-12-001020
-        srg:
-          - SRG-OS-000064-GPOS-00033
-          - SRG-OS-000365-GPOS-00152
-          - SRG-OS-000458-GPOS-00203
-          - SRG-OS-000461-GPOS-00205
-          - SRG-OS-000463-GPOS-00207
-          - SRG-OS-000465-GPOS-00209
-          - SRG-OS-000466-GPOS-00210
-          - SRG-OS-000467-GPOS-00211
-          - SRG-OS-000468-GPOS-00212
-          - SRG-OS-000474-GPOS-00219
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-12-001020
+          srg:
+            - SRG-OS-000064-GPOS-00033
+            - SRG-OS-000365-GPOS-00152
+            - SRG-OS-000458-GPOS-00203
+            - SRG-OS-000461-GPOS-00205
+            - SRG-OS-000463-GPOS-00207
+            - SRG-OS-000465-GPOS-00209
+            - SRG-OS-000466-GPOS-00210
+            - SRG-OS-000467-GPOS-00211
+            - SRG-OS-000468-GPOS-00212
+            - SRG-OS-000474-GPOS-00219
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-90864-0
       discussion: "The audit system _MUST_ be configured to record enforcement actions of attempts to delete file attributes (fd). \n\n***Enforcement actions are the methods or mechanisms used to prevent unauthorized changes to configuration settings. One common and effective enforcement action method is using access restrictions (i.e., denying modifications to a file by applying file permissions). \n\nThis configuration ensures that audit lists include events in which enforcement actions prevent attempts to delete a file. \n\nWithout auditing the enforcement of access restrictions, it is difficult to identify attempted attacks, as there is no audit trail available for forensic investigation.\n"
     '13.0':
       references:
-        cce:
-          - CCE-91719-5
-        disa_stig:
-          - APPL-13-001020
-        srg:
-          - SRG-OS-000064-GPOS-00033
-          - SRG-OS-000365-GPOS-00152
-          - SRG-OS-000458-GPOS-00203
-          - SRG-OS-000461-GPOS-00205
-          - SRG-OS-000463-GPOS-00207
-          - SRG-OS-000465-GPOS-00209
-          - SRG-OS-000466-GPOS-00210
-          - SRG-OS-000467-GPOS-00211
-          - SRG-OS-000468-GPOS-00212
-          - SRG-OS-000474-GPOS-00219
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-13-001020
+          srg:
+            - SRG-OS-000064-GPOS-00033
+            - SRG-OS-000365-GPOS-00152
+            - SRG-OS-000458-GPOS-00203
+            - SRG-OS-000461-GPOS-00205
+            - SRG-OS-000463-GPOS-00207
+            - SRG-OS-000465-GPOS-00209
+            - SRG-OS-000466-GPOS-00210
+            - SRG-OS-000467-GPOS-00211
+            - SRG-OS-000468-GPOS-00212
+            - SRG-OS-000474-GPOS-00219
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91719-5
       discussion: |
         The audit system _MUST_ be configured to record enforcement actions of attempts to delete file attributes (fd).
 

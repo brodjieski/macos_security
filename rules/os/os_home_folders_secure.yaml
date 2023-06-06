@@ -54,15 +54,17 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85322-6
-        disa_stig:
-          - APPL-11-002068
-        srg:
-          - SRG-OS-000480-GPOS-00228
-          - SRG-OS-000480-GPOS-00230
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-11-002068
+          srg:
+            - SRG-OS-000480-GPOS-00228
+            - SRG-OS-000480-GPOS-00230
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85322-6
         cis:
           benchmark:
             - 5.1.1 (level 1)
@@ -71,26 +73,30 @@ os_specifics:
       discussion: "The system _MUST_ be configured to prevent access to other users' home folders.\n\nThe default behavior of macOS is to allow all valid users access to the the top level of every other user's home folder while restricting access only to the Apple default folders within. \n"
     '10.15':
       references:
-        cce:
-          - CCE-84764-0
-        disa_stig:
-          - AOSX-15-002068
-        srg:
-          - SRG-OS-000480-GPOS-00228
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - AOSX-15-002068
+          srg:
+            - SRG-OS-000480-GPOS-00228
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84764-0
       discussion: "The system _MUST_ be configured to prevent access to other users' home folders.\n\nThe default behavior of macOS is to allow all valid users access to the the top level of every other user's home folder while restricting access only to the Apple default folders within. \n"
     '12.0':
       references:
-        cce:
-          - CCE-90931-7
-        disa_stig:
-          - APPL-12-002068
-        srg:
-          - SRG-OS-000480-GPOS-00228
-          - SRG-OS-000480-GPOS-00230
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-12-002068
+          srg:
+            - SRG-OS-000480-GPOS-00228
+            - SRG-OS-000480-GPOS-00230
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-90931-7
         cis:
           benchmark:
             - 5.1.1 (level 1)
@@ -99,14 +105,16 @@ os_specifics:
       discussion: "The system _MUST_ be configured to prevent access to other user's home folders.\n\nThe default behavior of macOS is to allow all valid users access to the the top level of every other user's home folder while restricting access only to the Apple default folders within. \n"
     '13.0':
       references:
-        cce:
-          - CCE-91800-3
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91800-3
         cis:
           benchmark:
             - 5.1.1 (level 1)

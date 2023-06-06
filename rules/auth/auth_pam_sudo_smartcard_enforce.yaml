@@ -67,15 +67,17 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85276-4
-        disa_stig:
-          - APPL-11-003052
-        srg:
-          - SRG-OS-000107-GPOS-00054
-          - SRG-OS-000480-GPOS-00227
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-11-003052
+          srg:
+            - SRG-OS-000107-GPOS-00054
+            - SRG-OS-000480-GPOS-00227
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85276-4
         cis:
           benchmark:
             - N/A
@@ -86,14 +88,16 @@ os_specifics:
       discussion: "The system _MUST_ be configured to enforce multifactor authentication when the sudo command is used to elevate privilege. \n\nAll users _MUST_ go through multifactor authentication to prevent unauthenticated access and potential compromise to the system.\n\nNOTE: /etc/pam.d/sudo will be automatically modified to its original state following any update or major upgrade to the operating system.\n"
     '10.15':
       references:
-        cce:
-          - CCE-84723-6
-        disa_stig:
-          - AOSX-15-003052
-        srg:
-          - SRG-OS-000480-GPOS-00227
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - AOSX-15-003052
+          srg:
+            - SRG-OS-000480-GPOS-00227
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84723-6
         cis:
           benchmark:
             - N/A
@@ -104,14 +108,16 @@ os_specifics:
       discussion: "The system _MUST_ be configured to enforce multifactor authentication when the sudo command is used to elevate privilege. \n\nAll users _MUST_ go through multifactor authentication to prevent unauthenticated access and potential compromise to the system.\n\nNOTE: /etc/pam.d/sudo will be automatically modified to its original state following any update or major upgrade to the operating system.\n"
     '12.0':
       references:
-        cce:
-          - CCE-90879-8
-        disa_stig:
-          - APPL-12-003052
-        srg:
-          - SRG-OS-000480-GPOS-00227
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-12-003052
+          srg:
+            - SRG-OS-000480-GPOS-00227
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-90879-8
         cis:
           benchmark:
             - N/A
@@ -122,14 +128,16 @@ os_specifics:
       discussion: "The system _MUST_ be configured to enforce multifactor authentication when the sudo command is used to elevate privilege. \n\nAll users _MUST_ go through multifactor authentication to prevent unauthenticated access and potential compromise to the system.\n\nIMPORTANT: Modification of Pluggable Authentication Modules (PAM) now require user authorization, or use of a Privacy Preferences Policy Control (PPPC) profile from MDM that authorizes modifying system administrator files or full disk access.\n\nNOTE: /etc/pam.d/sudo will be automatically modified to its original state following any update or major upgrade to the operating system.\n"
     '13.0':
       references:
-        cce:
-          - CCE-91735-1
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91735-1
         cis:
           benchmark:
             - N/A

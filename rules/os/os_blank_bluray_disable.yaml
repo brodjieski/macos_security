@@ -43,15 +43,17 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85540-3
-        disa_stig:
-          - APPL-12-005051
-        srg:
-          - SRG-OS-000480-GPOS-00227
-          - SRG-OS-000319-GPOS-00164
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-12-005051
+          srg:
+            - SRG-OS-000480-GPOS-00227
+            - SRG-OS-000319-GPOS-00164
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85540-3
       discussion: |
         Blank Blu Ray media _MUST_ be disabled.
 
@@ -66,15 +68,17 @@ os_specifics:
         ====
     '12.0':
       references:
-        cce:
-          - CCE-91094-3
-        disa_stig:
-          - APPL-12-005051
-        srg:
-          - SRG-OS-000480-GPOS-00227
-          - SRG-OS-000319-GPOS-00164
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-12-005051
+          srg:
+            - SRG-OS-000480-GPOS-00227
+            - SRG-OS-000319-GPOS-00164
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91094-3
       discussion: |
         Blank Blu Ray media _MUST_ be disabled.
 
@@ -89,14 +93,16 @@ os_specifics:
         ====
     '13.0':
       references:
-        cce:
-          - CCE-91763-3
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91763-3
       discussion: |
         Blank Blu Ray media _MUST_ be disabled.
 

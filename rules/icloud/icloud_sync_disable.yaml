@@ -64,15 +64,17 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85292-1
-        disa_stig:
-          - N/A
-        srg:
-          - SRG-OS-000095-GPOS-00049
-          - SRG-OS-000370-GPOS-00155
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - SRG-OS-000095-GPOS-00049
+            - SRG-OS-000370-GPOS-00155
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85292-1
         cis:
           benchmark:
             - 2.6.1.3 (level 2)
@@ -82,15 +84,17 @@ os_specifics:
             - 15.3
     '10.15':
       references:
-        cce:
-          - CCE-84740-0
-        disa_stig:
-          - N/A
-        srg:
-          - SRG-OS-000095-GPOS-00049
-          - SRG-OS-000370-GPOS-00155
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - SRG-OS-000095-GPOS-00049
+            - SRG-OS-000370-GPOS-00155
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84740-0
         cis:
           benchmark:
             - N/A
@@ -100,14 +104,16 @@ os_specifics:
             - 15.3
     '12.0':
       references:
-        cce:
-          - CCE-90896-2
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-90896-2
         cis:
           benchmark:
             - 2.6.1.3 (level 2)
@@ -117,14 +123,16 @@ os_specifics:
             - 15.3
     '13.0':
       references:
-        cce:
-          - CCE-91752-6
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91752-6
         cis:
           benchmark:
             - 2.1.1.3 (level 2)
@@ -135,14 +143,16 @@ os_specifics:
   iOS:
     '16.0':
       references:
-        cce:
-          - N/A
-        disa_stig:
-          - AIOS-16-003200
-        srg:
-          - None
-        sfr:
-          - 'FMT_MOF_EXT.1.2 #40'
+        disa:
+          disa_stig:
+            - AIOS-16-003200
+          srg:
+            - None
+          sfr:
+            - 'FMT_MOF_EXT.1.2 #40'
+        nist:
+          cce:
+            - N/A
         cis:
           benchmark:
             - 3.2.1.5 (level 1 - Institutionally-Owned Devices)

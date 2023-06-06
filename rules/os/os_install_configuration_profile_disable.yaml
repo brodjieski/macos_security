@@ -47,14 +47,16 @@ os_specifics:
   iOS:
     '16.0':
       references:
-        cce:
-          - N/A
-        disa_stig:
-          - N/A
-        srg:
-          - None
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - None
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - N/A
         cis:
           benchmark:
             - 3.2.1.15 (level 1 - Institutionally-Owned Devices)

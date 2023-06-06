@@ -52,14 +52,16 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85313-5
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85313-5
         cis:
           benchmark:
             - 3.6 (level 1)
@@ -77,14 +79,16 @@ os_specifics:
         ----
     '10.15':
       references:
-        cce:
-          - CCE-84757-4
-        disa_stig:
-          - N/A
-        srg:
-          - SRG-OS-000480-GPOS-00232
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - SRG-OS-000480-GPOS-00232
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84757-4
         cis:
           benchmark:
             - N/A
@@ -102,14 +106,16 @@ os_specifics:
         ----
     '12.0':
       references:
-        cce:
-          - CCE-90924-2
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-90924-2
         cis:
           benchmark:
             - 3.6 (level 1)
@@ -136,14 +142,16 @@ os_specifics:
         This is implemented by a Configuration Profile.
     '13.0':
       references:
-        cce:
-          - CCE-91791-4
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91791-4
         cis:
           benchmark:
             - 3.6 (level 1)

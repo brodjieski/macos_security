@@ -48,14 +48,16 @@ os_specifics:
   macOS:
     '10.15':
       references:
-        cce:
-          - CCE-84926-5
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84926-5
         cis:
           benchmark:
             - N/A

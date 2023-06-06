@@ -56,14 +56,16 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85342-4
-        disa_stig:
-          - APPL-11-002003
-        srg:
-          - SRG-OS-000095-GPOS-00049
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-11-002003
+          srg:
+            - SRG-OS-000095-GPOS-00049
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85342-4
         cis:
           benchmark:
             - 4.3 (level 1)
@@ -74,14 +76,16 @@ os_specifics:
         /bin/launchctl print-disabled system | /usr/bin/grep -c '"com.apple.nfsd" => true'
     '10.15':
       references:
-        cce:
-          - CCE-84772-3
-        disa_stig:
-          - AOSX-15-002003
-        srg:
-          - SRG-OS-000095-GPOS-00049
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - AOSX-15-002003
+          srg:
+            - SRG-OS-000095-GPOS-00049
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84772-3
         cis:
           benchmark:
             - N/A
@@ -92,14 +96,16 @@ os_specifics:
         /bin/launchctl print-disabled system | /usr/bin/grep -c '"com.apple.nfsd" => true'
     '12.0':
       references:
-        cce:
-          - CCE-90956-4
-        disa_stig:
-          - APPL-12-002003
-        srg:
-          - SRG-OS-000095-GPOS-00049
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-12-002003
+          srg:
+            - SRG-OS-000095-GPOS-00049
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-90956-4
         cis:
           benchmark:
             - 4.3 (level 1)
@@ -110,14 +116,16 @@ os_specifics:
         /bin/launchctl print-disabled system | /usr/bin/grep -c '"com.apple.nfsd" => true'
     '13.0':
       references:
-        cce:
-          - CCE-91827-6
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91827-6
         cis:
           benchmark:
             - 4.3 (level 1)

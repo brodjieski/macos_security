@@ -44,47 +44,55 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85273-1
-        disa_stig:
-          - APPL-11-001031
-        srg:
-          - SRG-OS-000344-GPOS-00135
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-11-001031
+          srg:
+            - SRG-OS-000344-GPOS-00135
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85273-1
       discussion: "The audit service _MUST_ be configured to immediately print messages to the console or email administrator users when an auditing failure occurs. \n\nIt is critical for the appropriate personnel to be made aware immediately if a system is at risk of failing to process audit logs as required. Without a real-time alert, security personnel may be unaware of a potentially harmful failure in the auditing system's capability, and system operation may be adversely affected. \n"
     '10.15':
       references:
-        cce:
-          - CCE-84720-2
-        disa_stig:
-          - AOSX-15-001031
-        srg:
-          - SRG-OS-000344-GPOS-00135
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - AOSX-15-001031
+          srg:
+            - SRG-OS-000344-GPOS-00135
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84720-2
       discussion: "The audit service _MUST_ be configured to immediately print messages to the console or email administrator users when an auditing failure occurs. \n\nIt is critical for the appropriate personnel to be made aware immediately if a system is at risk of failing to process audit logs as required. Without a real-time alert, security personnel may be unaware of a potentially harmful failure in the auditing system's capability, and system operation may be adversely affected. \n"
     '12.0':
       references:
-        cce:
-          - CCE-90876-4
-        disa_stig:
-          - APPL-12-001031
-        srg:
-          - SRG-OS-000344-GPOS-00135
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-12-001031
+          srg:
+            - SRG-OS-000344-GPOS-00135
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-90876-4
       discussion: "The audit service _MUST_ be configured to immediately print messages to the console or email administrator users when an auditing failure occurs. \n\nIt is critical for the appropriate personnel to be made aware immediately if a system is at risk of failing to process audit logs as required. Without a real-time alert, security personnel may be unaware of a potentially harmful failure in the auditing system's capability, and system operation may be adversely affected. \n"
     '13.0':
       references:
-        cce:
-          - CCE-91732-8
-        disa_stig:
-          - APPL-13-001031
-        srg:
-          - SRG-OS-000344-GPOS-00135
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-13-001031
+          srg:
+            - SRG-OS-000344-GPOS-00135
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91732-8
       discussion: |
         The audit service _MUST_ be configured to immediately print messages to the console or email administrator users when an auditing failure occurs.
 

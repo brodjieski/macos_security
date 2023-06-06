@@ -54,44 +54,52 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85414-1
-        disa_stig:
-          - APPL-11-000012
-        srg:
-          - SRG-OS-000002-GPOS-00002
-          - SRG-OS-000123-GPOS-00064
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-11-000012
+          srg:
+            - SRG-OS-000002-GPOS-00002
+            - SRG-OS-000123-GPOS-00064
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85414-1
     '10.15':
       references:
-        cce:
-          - CCE-84940-6
-        disa_stig:
-          - AOSX-15-000012
-        srg:
-          - SRG-OS-000002-GPOS-00002
-          - SRG-OS-000123-GPOS-00064
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - AOSX-15-000012
+          srg:
+            - SRG-OS-000002-GPOS-00002
+            - SRG-OS-000123-GPOS-00064
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84940-6
     '12.0':
       references:
-        cce:
-          - CCE-91042-2
-        disa_stig:
-          - APPL-12-000012
-        srg:
-          - SRG-OS-000002-GPOS-00002
-          - SRG-OS-000123-GPOS-00064
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-12-000012
+          srg:
+            - SRG-OS-000002-GPOS-00002
+            - SRG-OS-000123-GPOS-00064
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91042-2
     '13.0':
       references:
-        cce:
-          - CCE-91929-0
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91929-0

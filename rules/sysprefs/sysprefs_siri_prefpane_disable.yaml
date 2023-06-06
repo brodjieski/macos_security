@@ -39,25 +39,29 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85539-5
-        disa_stig:
-          - APPL-11-002053
-        srg:
-          - SRG-OS-000095-GPOS-00049
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-11-002053
+          srg:
+            - SRG-OS-000095-GPOS-00049
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85539-5
       check: |
         /usr/bin/profiles show -output stdout-xml | /usr/bin/xmllint --xpath '//key[text()="HiddenPreferencePanes"]/following-sibling::*[1]' - | /usr/bin/grep -c com.apple.preference.speech
     '12.0':
       references:
-        cce:
-          - CCE-91136-2
-        disa_stig:
-          - APPL-12-002053
-        srg:
-          - SRG-OS-000095-GPOS-00049
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-12-002053
+          srg:
+            - SRG-OS-000095-GPOS-00049
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91136-2
       check: |
         /usr/bin/profiles show -output stdout-xml | /usr/bin/xmllint --xpath '//key[text()="DisabledPreferencePanes"]/following-sibling::*[1]' - | /usr/bin/grep -c com.apple.preference.speech

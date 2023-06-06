@@ -54,15 +54,17 @@ os_specifics:
   iOS:
     '16.0':
       references:
-        cce:
-          - N/A
-        disa_stig:
-          - AIOS-16-009700
-        srg:
-          - None
-        sfr:
-          - 'FMT_SMF_EXT.1.1 #42'
-          - FDP_ACF_EXT.1.2
+        disa:
+          disa_stig:
+            - AIOS-16-009700
+          srg:
+            - None
+          sfr:
+            - 'FMT_SMF_EXT.1.1 #42'
+            - FDP_ACF_EXT.1.2
+        nist:
+          cce:
+            - N/A
         cis:
           benchmark:
             - 2.2.1.8 (level 1 - End-User Owned Devices)

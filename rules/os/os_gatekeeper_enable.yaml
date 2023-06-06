@@ -57,14 +57,16 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85315-0
-        disa_stig:
-          - APPL-11-002064
-        srg:
-          - SRG-OS-000366-GPOS-00153
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-11-002064
+          srg:
+            - SRG-OS-000366-GPOS-00153
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85315-0
         cis:
           benchmark:
             - 2.5.7 (level 1)
@@ -79,14 +81,16 @@ os_specifics:
         ----
     '10.15':
       references:
-        cce:
-          - CCE-84759-0
-        disa_stig:
-          - AOSX-15-002064
-        srg:
-          - SRG-OS-000366-GPOS-00153
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - AOSX-15-002064
+          srg:
+            - SRG-OS-000366-GPOS-00153
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84759-0
         cis:
           benchmark:
             - N/A
@@ -101,14 +105,16 @@ os_specifics:
         ----
     '12.0':
       references:
-        cce:
-          - CCE-90926-7
-        disa_stig:
-          - APPL-12-002064
-        srg:
-          - SRG-OS-000366-GPOS-00153
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - APPL-12-002064
+          srg:
+            - SRG-OS-000366-GPOS-00153
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-90926-7
         cis:
           benchmark:
             - 2.5.7 (level 1)
@@ -123,14 +129,16 @@ os_specifics:
         ----
     '13.0':
       references:
-        cce:
-          - CCE-91793-0
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91793-0
         cis:
           benchmark:
             - 2.6.4 (level 1)

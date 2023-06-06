@@ -65,14 +65,16 @@ os_specifics:
   macOS:
     '11.0':
       references:
-        cce:
-          - CCE-85412-5
-        disa_stig:
-          - N/A
-        srg:
-          - SRG-OS-000266-GPOS-00101
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - SRG-OS-000266-GPOS-00101
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-85412-5
         cis:
           benchmark:
             - N/A
@@ -80,14 +82,16 @@ os_specifics:
             - 5.2
     '10.15':
       references:
-        cce:
-          - CCE-84818-4
-        disa_stig:
-          - N/A
-        srg:
-          - SRG-OS-000266-GPOS-00101
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - SRG-OS-000266-GPOS-00101
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-84818-4
         cis:
           benchmark:
             - N/A
@@ -95,14 +99,16 @@ os_specifics:
             - 5.2
     '12.0':
       references:
-        cce:
-          - CCE-91039-8
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91039-8
         cis:
           benchmark:
             - N/A
@@ -110,14 +116,16 @@ os_specifics:
             - 5.2
     '13.0':
       references:
-        cce:
-          - CCE-91926-6
-        disa_stig:
-          - N/A
-        srg:
-          - N/A
-        sfr:
-          - N/A
+        disa:
+          disa_stig:
+            - N/A
+          srg:
+            - N/A
+          sfr:
+            - N/A
+        nist:
+          cce:
+            - CCE-91926-6
         cis:
           benchmark:
             - N/A
@@ -126,14 +134,16 @@ os_specifics:
   iOS:
     '16.0':
       references:
-        cce:
-          - N/A
-        disa_stig:
-          - AIOS-16-006600
-        srg:
-          - None
-        sfr:
-          - 'FMT_SMF_EXT.1.1 #1b'
+        disa:
+          disa_stig:
+            - AIOS-16-006600
+          srg:
+            - None
+          sfr:
+            - 'FMT_SMF_EXT.1.1 #1b'
+        nist:
+          cce:
+            - N/A
         cis:
           benchmark:
             - 2.4.1 (level 1 - End-User Owned Devices)
