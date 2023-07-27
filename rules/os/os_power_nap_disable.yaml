@@ -41,10 +41,13 @@ references:
     - N/A
   cis:
     benchmark:
-      - 2.9.1 (level 1)
+      - 2.9.2 (level 1)
     controls v8:
       - 4.1
       - 4.8
+  cmmc:
+    - CM.L2-3.4.6
+    - CM.L2-3.4.7
 macOS:
   - "13.0"
 tags:
@@ -52,5 +55,9 @@ tags:
   - cis_lvl2
   - cisv8
   - i386
+  - cnssi-1253_moderate
+  - cnssi-1253_low
+  - cnssi-1253_high
+  - cmmc_lvl2
 mobileconfig: false
 mobileconfig_info:

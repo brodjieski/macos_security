@@ -1,6 +1,6 @@
-title: "macOS 13: Security Configuration - NIST 800-171 Rev 2"
+title: "macOS 13.0: Security Configuration - NIST 800-171 Rev 2"
 description: |
-  This guide describes the actions to take when securing a macOS 13 system against the 800-171 Rev 2 baseline.
+  This guide describes the actions to take when securing a macOS 13.0 system against the NIST 800-171 Rev 2 security baseline.
 
   Information System Security Officers and benchmark creators can use this catalog of settings in order to assist them in security benchmark creation. This list is a catalog, not a checklist or benchmark, and satisfaction of every item is not likely to be possible or sensible in many operational scenarios.
 authors: |
@@ -59,6 +59,7 @@ profile:
       - os_appleid_prompt_disable
       - os_authenticated_root_enable
       - os_bonjour_disable
+      - os_calendar_app_disable
       - os_config_profile_ui_install_disable
       - os_filevault_autologin_disable
       - os_firewall_default_deny_require

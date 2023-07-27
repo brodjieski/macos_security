@@ -65,6 +65,7 @@ payloads_types:
   - com.apple.ironwood.support
   - com.apple.jabber.account
   - com.apple.ldap.account
+  - com.apple.locationmenu
   - com.apple.logic10
   - com.apple.loginitems.managed
   - com.apple.loginwindow
@@ -93,6 +94,7 @@ payloads_types:
   - com.apple.security.pkcs12
   - com.apple.security.scep
   - com.apple.security.smartcard
+  - com.apple.sharingd
   - com.apple.shareddeviceconfiguration
   - com.apple.sso
   - com.apple.subscribedcalendar.account
@@ -115,4 +117,3 @@ payloads_types:
   - .GlobalPreferences
   - com.apple.preferences.sharing.SharingPrefsExtension
   - com.apple.controlcenter
-  - com.apple.locationmenu
