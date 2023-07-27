@@ -14,6 +14,10 @@ jobs:
   build_baselines:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os_branch: ["ventura", "monterey", "big_sur"]
+
     env: 
       CI_COMMIT_MESSAGE: Automated baseline build
       CI_COMMIT_AUTHOR: MSCP robot
@@ -21,6 +25,8 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     - uses: actions/checkout@v3
+      with:
+        ref: ${{ matrix.os_branch }}
     - name: Build All The Baselines
       run: |
         for baseline in 800-53r5_low 800-53r5_moderate 800-53r5_high; do
