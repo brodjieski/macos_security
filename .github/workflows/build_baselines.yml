@@ -14,14 +14,26 @@ jobs:
   build_baselines:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    env: 
+      CI_COMMIT_MESSAGE: Automated baseline build
+      CI_COMMIT_AUTHOR: MSCP robot
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     strategy:
       matrix:
-        os-branches: ["ventura", "monterey", "big_sur"]
         baseline: ["800-53r5_low", "800-53r5_moderate", "800-53r5_high"]
     steps:
     - uses: actions/checkout@v3
     - name: Build ${{ matrix.baseline }}
       run: |
         ./scripts/generate_baseline.py -k ${{ matrix.baseline }}
+        mv ./build/baselines/${{ matrix.baseline }}.yaml ./baselines/
+    
+    - name: GIT Commit created baselines
+      # Only run on main branch push (e.g. after pull request merge).
+      run: |
+        git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
+        git config --global user.email "brodjieski@gmail.com"
+        git add baselines
+        git commit -a -m "${{ env.CI_COMMIT_MESSAGE }}"
+        git push
