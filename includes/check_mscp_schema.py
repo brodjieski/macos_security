@@ -63,7 +63,6 @@ for file in sys.argv[1:]:
         if not baselines_v.validate(configuration):
             print(f"ERROR: {file}")
             print(baselines_v.errors)
-        else:
             error_files.append(file)
     elif file.startswith("rules"):
         if "supplemental" in file:
@@ -71,10 +70,9 @@ for file in sys.argv[1:]:
         if not rules_v.validate(configuration):
             print(f"ERROR: {file}")
             print(rules_v.errors)
-        else:
             error_files.append(file)
 
-if error_files:
+if len(error_files) > 0:
     sys.exit(1)
 else:
     sys.exit(0)
