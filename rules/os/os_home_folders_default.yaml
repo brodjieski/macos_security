@@ -24,7 +24,7 @@ check: |-
   0: group:everyone deny delete
   
   If the permissions returned by either of these checks differ from what is shown, this is a finding.
-result: ""
+result: {}
 fix: |-
   Configure the macOS system to set the appropriate permissions for each user on the system with the following command:
 
