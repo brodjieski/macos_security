@@ -7,13 +7,13 @@ jobs:
       - name: Collect Github Variables
         run: echo "${{ toJson(github) }}"
       - uses: actions/checkout@v3
-      # - name: lint the yams
-      #   uses: ibiqlik/action-yamllint@v3
-      #   with:
-      #     config_file: .github/workflows/.yamllint
+      - name: lint the yams
+        uses: ibiqlik/action-yamllint@v3
+        with:
+          config_file: .github/workflows/.yamllint
       - name: verify yams schema
         run: |
-          pip install cerberus
+          pip install -q cerberus
           ./includes/check_mscp_schema.py $(git ls-files "*.yaml")
       - name: Report Status
         if: always()
