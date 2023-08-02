@@ -50,6 +50,7 @@ baselines_schema = {
 rules_v = Validator(rules_schema)
 baselines_v = Validator(baselines_schema)
 
+error_files = []
 for file in sys.argv[1:]:
     with open(file, "r", encoding='UTF-8') as conf_yaml:
         try:
@@ -62,9 +63,18 @@ for file in sys.argv[1:]:
         if not baselines_v.validate(configuration):
             print(f"ERROR: {file}")
             print(baselines_v.errors)
+        else:
+            error_files.append(file)
     elif file.startswith("rules"):
         if "supplemental" in file:
             break
         if not rules_v.validate(configuration):
             print(f"ERROR: {file}")
             print(rules_v.errors)
+        else:
+            error_files.append(file)
+
+if error_files:
+    sys.exit(1)
+else:
+    sys.exit(0)
