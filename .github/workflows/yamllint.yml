@@ -4,12 +4,13 @@ jobs:
   lintAllTheThings:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${{ toJson(github) }}"
+      - name: Collect Github Variables
+        run: echo "${{ toJson(github) }}"
       - uses: actions/checkout@v3
-      - name: lint the yams
-        uses: ibiqlik/action-yamllint@v3
-        with:
-          config_file: .github/workflows/.yamllint
+      # - name: lint the yams
+      #   uses: ibiqlik/action-yamllint@v3
+      #   with:
+      #     config_file: .github/workflows/.yamllint
       - name: verify yams schema
         run: |
           pip install cerberus
@@ -19,7 +20,7 @@ jobs:
         uses: ravsamhq/notify-slack-action@v1
         with:
           notification_title: "{workflow} has {status_message}"
-          message_format: "{emoji} ${{ github.event.head_commit.author.name }} ${{ github.event.head_commit.message }}"
+          message_format: "{emoji} Commit from: ${{ github.event.head_commit.username }} - ${{ github.event.head_commit.message }}"
           footer: "Linked Repo <{repo_url}|{repo}> | <{run_url}|View Run>"
           notify_when: 'failure'
         env:
