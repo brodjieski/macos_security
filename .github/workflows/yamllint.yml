@@ -10,7 +10,7 @@ jobs:
         with:
           config_file: .github/workflows/.yamllint
       - name: verify yams schema
-        run:
+        run: |
           pip install cerberus
           ./includes/check_mscp_schema.py $(git ls-files "*.yaml")
       - name: Report Status
