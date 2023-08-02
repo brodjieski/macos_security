@@ -60,14 +60,19 @@ for file in sys.argv[1:]:
             print(err)
 
     if file.startswith("baselines"):
-        if not baselines_v.validate(configuration):
+        if baselines_v.validate(configuration):
+            print(f"PASS: {file} meet the schema requriements")
+        else:
             print(f"ERROR: {file}")
             print(baselines_v.errors)
             error_files.append(file)
     elif file.startswith("rules"):
         if "supplemental" in file:
-            break
-        if not rules_v.validate(configuration):
+            print(f"SKIPPED: {file}")
+            continue
+        if rules_v.validate(configuration):
+            print(f"PASS: {file} meet the schema requriements")
+        else:
             print(f"ERROR: {file}")
             print(rules_v.errors)
             error_files.append(file)
