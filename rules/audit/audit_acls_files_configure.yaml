@@ -14,8 +14,6 @@ fix: |
   /bin/chmod -RN /var/audit
   ----
 references:
-  cce:
-    - CCE-91701-3
   cci:
     - CCI-000162
     - CCI-001314
