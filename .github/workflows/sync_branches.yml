@@ -1,0 +1,21 @@
+name: Sync MSCP Branches
+on:
+    push:
+        - ventura
+       
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: jitterbit/get-changed-files@v1
+        id: abc
+        with:
+          format: space-delimited
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Printing
+        run: |
+          echo "Modified:"
+          for changedFile in "${{ steps.abc.outputs.modified }}"; do
+             echo "file: $changedFile"
+          done
