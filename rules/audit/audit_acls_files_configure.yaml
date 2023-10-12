@@ -2,7 +2,8 @@ id: audit_acls_files_configure
 title: "Configure Audit Log Files to Not Contain Access Control Lists"
 discussion: |
   This shouldn't make it on to other branches
-  
+  This should not be anywhere but here.
+
   The audit log files _MUST_ not contain access control lists (ACLs).
 
   This rule ensures that audit information and audit files are configured to be readable and writable only by system administrators, thereby preventing unauthorized access, modification, and deletion of files.
