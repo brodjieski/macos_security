@@ -23,12 +23,14 @@ jobs:
       - name: Sync Modified Files
         run: |
           echo "Modified:"
-          git checkout ${{ matrix.version }}
+          git checkout ${{ matrix.os_version }}
           for changed in ${{ steps.abc.outputs.modified }}; do
-            echo "checking out and syncing $changed"
+            if [[ $changed == *"scripts/"* ]];then
+                git checkout ventura $changed
+            fi
           done
-        #   git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
-        #   git config --global user.email "${{ env.CI_COMMIT_EMAIL }}"
-        #   git add .
-        #   git commit -a -m "${{ env.CI_COMMIT_MESSAGE }}"
-        #   git push
+          git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
+          git config --global user.email "${{ env.CI_COMMIT_EMAIL }}"
+          git add .
+          git commit -a -m "${{ env.CI_COMMIT_MESSAGE }}"
+          git push
