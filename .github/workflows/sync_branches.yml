@@ -1,8 +1,7 @@
 name: Sync MSCP Branches
 on:
     push:
-        branches:
-            - ventura 
+       
 jobs:
   test:
     runs-on: ubuntu-latest
