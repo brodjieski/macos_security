@@ -16,6 +16,8 @@ jobs:
             os_version: ["monterey", "big_sur"]
     steps:
       - uses: actions/checkout@v3
+        with:
+            fetch-depth: 0
       - uses: jitterbit/get-changed-files@v1
         id: abc
         with:
