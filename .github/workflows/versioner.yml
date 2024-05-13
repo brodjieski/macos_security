@@ -23,13 +23,15 @@ jobs:
         run: |
             CURRENT_BUILD=$(awk '/^build/ { print $NF }' VERSION.yaml)
             if [[ -z $CURRENT_BUILD ]];then
-                CURRENT_BUILD=0
-            fi
-            NEW_BUILD=$((CURRENT_BUILD+1))
+                echo "build: 1" >> VERSION.yaml
+                echo "::set-output name=NEWBUILD::1"
+            else
+              NEW_BUILD=$((CURRENT_BUILD+1))
 
-            echo "$NEW_BUILD"
-            echo "::set-output name=NEWBUILD::$NEW_BUILD"
-            sed -i 's/^build.*/build: $NEW_BUILD/' VERSION.yaml
+              echo "$NEW_BUILD"
+              echo "::set-output name=NEWBUILD::$NEW_BUILD"
+              sed -i 's/^build.*/build: $NEW_BUILD/' VERSION.yaml VERSION.yaml
+            fi
       - name: Push commit
         run: |
           git config --global user.name 'github-actions[bot]'
