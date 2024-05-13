@@ -5,7 +5,7 @@ discussion: |
 
   This rule prevents malicious users from making use of unused accounts to gain access to the system while avoiding detection. 
 check: | 
-  /usr/bin/pwpolicy getaccountpolicies | /usr/bin/grep -v "Getting global account policies" | /usr/bin/xmllint --xpath '/plist/dict/array/dict/dict[key="policyAttributeInactiveDays"]/integer' - | /usr/bin/awk -F '[<>]' '{print $3}'
+  /usr/bin/pwpolicy -getaccountpolicies 2> /dev/null | /usr/bin/tail +2 | /usr/bin/xmllint --xpath '//dict/key[text()="policyAttributeInactiveDays"]/following-sibling::integer[1]/text()' -
 result:
   integer: $ODV
 fix: |
@@ -36,9 +36,9 @@ fix: |
   NOTE: See the password policy supplemental on more information on how to implement password policies on macOS.
 references:
   cce:
-    - CCE-91028-1
+    - CCE-91914-2
   cci: 
-    - CCI-000795
+    - N/A
   800-53r5:
     - AC-2(3)
   800-53r4:
@@ -55,19 +55,23 @@ references:
       - N/A
     controls v8:
       - 5.3
+  cmmc:
+    - IA.L2-3.5.6
 macOS:
-  - "12.0"
+  - "13.0"
 odv:
   hint: "Number of days."
   recommended: 35
 tags:
   - 800-171
-  - cnssi-1253
   - 800-53r4_low
   - 800-53r4_moderate
   - 800-53r4_high
   - 800-53r5_moderate
   - 800-53r5_high
   - cisv8
+  - cnssi-1253_moderate
+  - cnssi-1253_high
+  - cmmc_lvl2
 mobileconfig: false
 mobileconfig_info:

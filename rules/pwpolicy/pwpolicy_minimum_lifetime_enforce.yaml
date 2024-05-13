@@ -7,9 +7,9 @@ discussion: |
 
   NOTE: The guidance for password based authentication in NIST 800-53 (Rev 5) and NIST 800-63B state that complexity rules should be organizationally defined. The values defined are based off of common complexity values. But your organization may define its own password complexity rules.
 check: | 
-  /usr/bin/pwpolicy getaccountpolicies | /usr/bin/grep -v "Getting global account policies" | /usr/bin/xmllint --xpath '/plist/dict/array/dict/dict[key="policyAttributeMinimumLifetimeHours"]/integer' - | /usr/bin/awk -F '[<>]' '{print $3}'
+  /usr/bin/pwpolicy -getaccountpolicies 2> /dev/null | /usr/bin/tail +2 | /usr/bin/xmllint --xpath '//dict/key[text()="policyAttributeMinimumLifetimeHours"]/following-sibling::integer[1]/text()' - | /usr/bin/awk '{ if ($1 >= $ODV ) {print "yes"} else {print "no"}}'
 result:
-  integer: $ODV
+  string: "yes"
 fix: |
   This setting may be enforced using local policy or by a directory service.
   
@@ -38,7 +38,7 @@ fix: |
   NOTE: See the password policy supplemental on more information on how to implement password policies on macOS.
 references:
   cce:
-    - CCE-91037-2
+    - CCE-91924-1
   cci: 
     - N/A
   800-53r5: 
@@ -59,14 +59,16 @@ references:
       - N/A
     controls v8:
       - 4.7
+  cmmc:
+    - IA.L2-3.5.8
+    - IA.L2-3.5.9
 macOS:
-  - "12.0"
+  - "13.0"
 odv:
   hint: "Number of hours."
   recommended: 24
 tags:
   - 800-171
-  - cnssi-1253
   - 800-53r4_low
   - 800-53r4_moderate
   - 800-53r4_high
@@ -74,5 +76,9 @@ tags:
   - 800-53r5_moderate
   - 800-53r5_high
   - cisv8
+  - cnssi-1253_moderate
+  - cnssi-1253_low
+  - cnssi-1253_high
+  - cmmc_lvl2
 mobileconfig: false
 mobileconfig_info:

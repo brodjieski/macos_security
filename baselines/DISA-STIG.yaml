@@ -1,21 +1,16 @@
-title: "macOS 12.0: Security Configuration - DISA STIG"
+title: "macOS 13.0: Security Configuration - Apple macOS 13 (Ventura) DISA STIG - Ver 1, Rel 1"
 description: |
-  This guide describes the actions to take when securing a macOS system against the Apple macOS 12 (Monterey) STIG - Ver 1, Rel 1.
+  This guide describes the actions to take when securing a macOS 13.0 system against the Apple macOS 13 (Ventura) STIG - Ver 1, Rel 1 security baseline.
 authors: |
+  *macOS Security Compliance Project*
+
   |===
   |Dan Brodjieski|National Aeronautics and Space Administration
   |Allen Golbig|Jamf
   |Bob Gendler|National Institute of Standards and Technology
   |===
-parent_values: stig
+parent_values: "stig"
 profile:
-  - section: "authentication"
-    rules:
-      - auth_pam_login_smartcard_enforce
-      - auth_pam_su_smartcard_enforce
-      - auth_pam_sudo_smartcard_enforce
-      - auth_smartcard_certificate_trust_enforce_moderate
-      - auth_smartcard_enforce
   - section: "auditing"
     rules:
       - audit_acls_files_configure
@@ -36,8 +31,27 @@ profile:
       - audit_folder_group_configure
       - audit_folder_owner_configure
       - audit_folders_mode_configure
-      - audit_retention_configure
       - audit_settings_failure_notify
+  - section: "authentication"
+    rules:
+      - auth_pam_login_smartcard_enforce
+      - auth_pam_su_smartcard_enforce
+      - auth_pam_sudo_smartcard_enforce
+      - auth_smartcard_allow
+      - auth_smartcard_certificate_trust_enforce_moderate
+      - auth_smartcard_enforce
+  - section: "icloud"
+    rules:
+      - icloud_addressbook_disable
+      - icloud_appleid_preference_pane_disable
+      - icloud_bookmarks_disable
+      - icloud_calendar_disable
+      - icloud_drive_disable
+      - icloud_keychain_disable
+      - icloud_mail_disable
+      - icloud_notes_disable
+      - icloud_photos_disable
+      - icloud_reminders_disable
   - section: "macos"
     rules:
       - os_airdrop_disable
@@ -59,13 +73,12 @@ profile:
       - os_disk_image_disable
       - os_dvdram_disable
       - os_erase_content_and_settings_disable
-      - os_ess_installed
       - os_filevault_authorized_users
       - os_filevault_autologin_disable
       - os_firmware_password_require
       - os_gatekeeper_enable
       - os_handoff_disable
-      - os_home_folders_secure
+      - os_home_folders_default
       - os_httpd_disable
       - os_icloud_storage_prompt_disable
       - os_newsyslog_files_owner_group_configure
@@ -78,6 +91,7 @@ profile:
       - os_privacy_setup_prompt_disable
       - os_removable_media_disable
       - os_screensaver_loginwindow_enforce
+      - os_screensaver_timeout_loginwindow_enforce
       - os_sip_enable
       - os_siri_prompt_disable
       - os_skip_screen_time_prompt_enable
@@ -89,7 +103,7 @@ profile:
       - os_sshd_key_exchange_algorithm_configure
       - os_sshd_login_grace_time_configure
       - os_sshd_permit_root_login_configure
-      - os_sudoers_tty_configure
+      - os_sudo_timeout_configure
       - os_tftpd_disable
       - os_time_server_enabled
       - os_touchid_prompt_disable
@@ -102,58 +116,45 @@ profile:
       - pwpolicy_history_enforce
       - pwpolicy_max_lifetime_enforce
       - pwpolicy_minimum_length_enforce
+      - pwpolicy_simple_sequence_disable
       - pwpolicy_special_character_enforce
       - pwpolicy_temporary_or_emergency_accounts_disable
-  - section: "icloud"
+  - section: "systemsettings"
     rules:
-      - icloud_addressbook_disable
-      - icloud_appleid_prefpane_disable
-      - icloud_bookmarks_disable
-      - icloud_calendar_disable
-      - icloud_drive_disable
-      - icloud_keychain_disable
-      - icloud_mail_disable
-      - icloud_notes_disable
-      - icloud_photos_disable
-      - icloud_reminders_disable
-  - section: "systempreferences"
-    rules:
-      - sysprefs_apple_watch_unlock_disable
-      - sysprefs_automatic_login_disable
-      - sysprefs_bluetooth_disable
-      - sysprefs_bluetooth_prefpane_disable
-      - sysprefs_bluetooth_prefpane_hide
-      - sysprefs_diagnostics_reports_disable
-      - sysprefs_filevault_enforce
-      - sysprefs_firewall_enable
-      - sysprefs_firewall_stealth_mode_enable
-      - sysprefs_gatekeeper_identified_developers_allowed
-      - sysprefs_guest_account_disable
-      - sysprefs_hot_corners_disable
-      - sysprefs_internet_accounts_prefpane_disable
-      - sysprefs_internet_accounts_prefpane_hide
-      - sysprefs_internet_sharing_disable
-      - sysprefs_location_services_disable
-      - sysprefs_loginwindow_prompt_username_password_enforce
-      - sysprefs_password_hints_disable
-      - sysprefs_rae_disable
-      - sysprefs_screen_sharing_disable
-      - sysprefs_screensaver_ask_for_password_delay_enforce
-      - sysprefs_screensaver_password_enforce
-      - sysprefs_screensaver_timeout_enforce
-      - sysprefs_siri_disable
-      - sysprefs_siri_prefpane_disable
-      - sysprefs_siri_prefpane_hide
-      - sysprefs_smbd_disable
-      - sysprefs_ssh_disable
-      - sysprefs_system_wide_preferences_configure
-      - sysprefs_time_server_configure
-      - sysprefs_time_server_enforce
-      - sysprefs_token_removal_enforce
-      - sysprefs_touchid_prefpane_disable
-      - sysprefs_touchid_prefpane_hide
-      - sysprefs_wallet_applepay_prefpane_disable
-      - sysprefs_wallet_applepay_prefpane_hide
+      - system_settings_apple_watch_unlock_disable
+      - system_settings_assistant_disable
+      - system_settings_automatic_login_disable
+      - system_settings_bluetooth_disable
+      - system_settings_bluetooth_prefpane_disable
+      - system_settings_diagnostics_reports_disable
+      - system_settings_filevault_enforce
+      - system_settings_firewall_enable
+      - system_settings_firewall_stealth_mode_enable
+      - system_settings_gatekeeper_identified_developers_allowed
+      - system_settings_guest_account_disable
+      - system_settings_hot_corners_disable
+      - system_settings_improve_siri_dictation_disable
+      - system_settings_internet_accounts_preference_pane_disable
+      - system_settings_internet_sharing_disable
+      - system_settings_location_services_disable
+      - system_settings_loginwindow_prompt_username_password_enforce
+      - system_settings_password_hints_disable
+      - system_settings_rae_disable
+      - system_settings_screen_sharing_disable
+      - system_settings_screensaver_ask_for_password_delay_enforce
+      - system_settings_screensaver_password_enforce
+      - system_settings_screensaver_timeout_enforce
+      - system_settings_siri_disable
+      - system_settings_siri_prefpane_disable
+      - system_settings_smbd_disable
+      - system_settings_ssh_disable
+      - system_settings_system_wide_preferences_configure
+      - system_settings_time_server_configure
+      - system_settings_time_server_enforce
+      - system_settings_token_removal_enforce
+      - system_settings_touch_id_pane_disable
+      - system_settings_wallet_applepay_prefpane_disable
+      - system_settings_wallet_applepay_prefpane_hide
   - section: "Supplemental"
     rules:
       - supplemental_controls
@@ -161,3 +162,4 @@ profile:
       - supplemental_firewall_pf
       - supplemental_password_policy
       - supplemental_smartcard
+      - supplemental_stig

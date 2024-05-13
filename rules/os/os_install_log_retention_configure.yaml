@@ -15,7 +15,7 @@ fix: |
   NOTE: If there are multiple configuration files in /etc/asl that are set to process the file /var/log/install.log, these files will have to be manually removed.
 references:
   cce:
-    - CCE-91107-3
+    - CCE-91807-8
   cci:
     - N/A
   800-53r5:
@@ -36,8 +36,10 @@ references:
     controls v8:
       - 8.1
       - 8.3
+  cmmc:
+    - AU.L2-3.3.1
 macOS:
-  - "12.0"
+  - "13.0"
 odv:
   hint: "Number of days."
   recommended: 365
@@ -47,5 +49,9 @@ tags:
   - cis_lvl1
   - cis_lvl2
   - cisv8
+  - cnssi-1253_moderate
+  - cnssi-1253_low
+  - cnssi-1253_high
+  - cmmc_lvl2
 mobileconfig: false
 mobileconfig_info:

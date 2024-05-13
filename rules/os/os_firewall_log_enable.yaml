@@ -26,7 +26,7 @@ fix: |
   This is implemented by a Configuration Profile.
 references:
   cce:
-    - CCE-90924-2
+    - CCE-91791-4
   cci: 
     - N/A
   800-53r5:
@@ -52,8 +52,11 @@ references:
       - 4.5
       - 8.2
       - 8.5
+  cmmc:
+    - AU.L2-3.3.6
+    - SC.L1-3.13.1
 macOS:
-  - "12.0"
+  - "13.0"
 tags:
   - 800-53r5_low
   - 800-53r5_moderate
@@ -62,10 +65,14 @@ tags:
   - 800-53r4_moderate
   - 800-53r4_high
   - 800-171
-  - cnssi-1253
   - cis_lvl1
   - cis_lvl2
   - cisv8
+  - cnssi-1253_moderate
+  - cnssi-1253_low
+  - cnssi-1253_high
+  - cmmc_lvl2
+  - cmmc_lvl1
 mobileconfig: true
 mobileconfig_info:
   com.apple.security.firewall:

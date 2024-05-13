@@ -29,7 +29,7 @@ fix: |
   ----
 references:
   cce:
-    - CCE-91005-9
+    - CCE-91884-7
   cci: 
     - N/A
   800-53r5:
@@ -42,8 +42,10 @@ references:
     - N/A
   800-171r2:
     - 3.13.9
+  cmmc:
+    - SC.L2-3.13.9
 macOS:
-  - "12.0"
+  - "13.0"
 odv:
   hint: "Number of seconds."
   recommended: 0 
@@ -53,6 +55,9 @@ tags:
   - 800-53r4_moderate
   - 800-53r4_high
   - 800-171
-  - cnssi-1253
+  - cnssi-1253_moderate
+  - cnssi-1253_low
+  - cnssi-1253_high
+  - cmmc_lvl2
 mobileconfig: false
 mobileconfig_info:
