@@ -29,7 +29,7 @@ jobs:
 
             echo "$NEW_BUILD"
             echo "::set-output name=NEWBUILD::$NEW_BUILD"
-            sed 's/^build.*/build: $NEW_BUILD/' VERSION.yaml
+            sed -i 's/^build.*/build: $NEW_BUILD/' VERSION.yaml
       - name: Push commit
         run: |
           git config --global user.name 'github-actions[bot]'
