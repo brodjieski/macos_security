@@ -1,0 +1,39 @@
+#############################################################################
+# GitHub Action to bump build number
+#
+#############################################################################
+name: "Bump build number on OS branch push"
+on:
+  push:
+    branches:
+    - '*'
+    - '!dev*'
+    - '!main'
+jobs:
+  bump:
+    name: Bump build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the latest code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+      - name: Update VERSION.yaml with newest build number  
+        id: new_build
+        run: |
+            CURRENT_BUILD=$(awk '/^build/ { print $NF }' VERSION.yaml)
+            if [[ -z $CURRENT_BUILD ]];then
+                CURRENT_BUILD=0
+            fi
+            NEW_BUILD=$((CURRENT_BUILD+1))
+
+            echo "$NEW_BUILD"
+            echo "::set-output name=NEWBUILD::$NEW_BUILD"
+            sed 's/^build.*/build: $NEW_BUILD/' VERSION.yaml
+      - name: Push commit
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add VERSION.yaml
+          git commit -am "minor: Bump build to ${{ steps.new_build.outputs.NEWBUILD }}"
+          git push
