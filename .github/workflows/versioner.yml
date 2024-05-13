@@ -30,7 +30,7 @@ jobs:
 
               echo "$NEW_BUILD"
               echo "::set-output name=NEWBUILD::$NEW_BUILD"
-              sed -i 's/^build.*/build: $NEW_BUILD/' VERSION.yaml VERSION.yaml
+              sed -i "s/^build.*/build: $NEW_BUILD/" VERSION.yaml
             fi
       - name: Push commit
         run: |
