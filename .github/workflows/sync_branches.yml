@@ -1,6 +1,7 @@
 name: Sync MSCP Branches
 on:
     push:
+        - ventura
        
 jobs:
   test:
