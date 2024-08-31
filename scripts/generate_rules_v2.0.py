@@ -191,7 +191,7 @@ def main():
         # switch to the scripts directory
         os.chdir(file_dir)
     
-        all_rules, rule_ids = collect_rules("../build/staging/**/*.yaml")
+        all_rules, rule_ids = collect_rules("../_work/**/*.yaml")
         
         build_path = os.path.join(parent_dir, 'build', 'rules', 'v2.0')
         if not (os.path.isdir(build_path)):

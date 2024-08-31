@@ -1,4 +1,7 @@
 .DS_Store
 .vscode
 *.lock
-*.pyc
+.bundle
+bin
+mscp_gems
+_work
