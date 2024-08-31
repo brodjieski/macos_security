@@ -75,13 +75,32 @@ def collect_rules(path):
 
     return all_rules, rule_ids
 
+def approach1Fn(d):
+    val = []
+ 
+    for v in d.values():
+        if isinstance(v, dict):
+            val.extend(approach1Fn(v))
+ 
+        elif isinstance(v, list):
+            for i in v:
+                if isinstance(i, dict):
+                    val.extend(approach1Fn(i))
+                else:
+                    val.append(i)
+        else:
+            val.append(v)
+    return val
+
 def create_os_specifics(rule, fields):
     new_rule_yaml = {}
     
-    try:
+    if "macOS" in rule.keys():
         version=rule['macOS'][0]
-    except:
+    elif "iOS" in rule.keys():
         version=rule['iOS'][0]
+    else:
+        return 
     new_rule_yaml = {}
     new_rule_yaml[version] = {}
     
@@ -104,21 +123,32 @@ def create_os_specifics(rule, fields):
     # process fields
     for field in fields:
         new_rule_yaml[version][field] = rule[field]
-    #print(new_rule_yaml)
+    
+    found_valid = False
+    for _f in approach1Fn(new_rule_yaml[version]['references']):
+        if not _f == 'None' and not _f == "N/A":
+             found_valid = True
+    
+    if not found_valid:
+        print(f'removing {version} specifics from {rule["title"]}')
+        del(new_rule_yaml[version])
     return new_rule_yaml
 
 def check_for_unique_fields(all_rules, rule_id):
     fields_to_compare=["discussion", "title", "check", "fix"]
     os_specific_fields = []
-    bs_dict = {item['id']:item for item in all_rules['big_sur']}
-    mont_dict = {item['id']:item for item in all_rules['monterey']}
-    vent_dict = {item['id']:item for item in all_rules['ventura']}
+    bs_dict = {item['id']:item for item in all_rules['5big_sur']}
+    mont_dict = {item['id']:item for item in all_rules['4monterey']}
+    vent_dict = {item['id']:item for item in all_rules['3ventura']}
+    sonoma_dict = {item['id']:item for item in all_rules['2sonoma']}
+    seq_dict = {item['id']:item for item in all_rules['1sequoia']}
 
     
     print(f'Comparing values for {rule_id}')
     for field in fields_to_compare:
         try:
-            if bs_dict[rule_id][field] == mont_dict[rule_id][field] == vent_dict[rule_id][field]:
+            if bs_dict[rule_id][field] == mont_dict[rule_id][field] == vent_dict[rule_id][field] == sonoma_dict[rule_id][field] == seq_dict[rule_id][field]:
+                print(f'{field} is THE SAME across OS versions')
                 continue
             else:
                 os_specific_fields.append(field)
