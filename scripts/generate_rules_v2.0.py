@@ -51,7 +51,19 @@ def collect_rules(path):
                   'srg']
 
     # '../rules/**/*.yaml'
-    for rule in sorted(glob.glob(path,recursive=True)):
+    os_order = ['sonoma', 'ventura', 'monterey', 'big_sur', 'catalina']
+    working_rules = glob.glob(path,recursive=True)
+    working_rules.sort(key=lambda x: x.split("/")[2])
+    new_os_order = []
+    for _os in os_order:
+        for _r in working_rules:
+            if _os in _r:
+                new_os_order.append(_r)
+    # pprint.pprint(new_os_order)
+
+    
+    # pprint.pprint(working_rules)
+    for rule in new_os_order:
         with open(rule) as r:
             rule_yaml = yaml.load(r, Loader=yaml.SafeLoader)
         for key in keys:
@@ -62,8 +74,7 @@ def collect_rules(path):
                     except:
                         rule_yaml[key].update({reference: ["None"]})
 
-        os_ver=rule.split("/")[3]
-
+        os_ver=rule.split("/")[2]
         if os_ver not in all_rules:
             all_rules[os_ver] = []
         
@@ -74,6 +85,20 @@ def collect_rules(path):
     
 
     return all_rules, rule_ids
+
+def versionMap(version):
+    versionDict={
+        "13.0" : "Ventura",
+        "12.0" : "Monterey",
+        "11.0" : "Big_Sur",
+        "10.15" : "Catalina",
+        "14.0" : "Sonoma",
+        "15.0" : "Sequoia"
+    }
+    if version in versionDict.keys():
+        return versionDict[version]
+    else:
+        return version
 
 def approach1Fn(d):
     val = []
@@ -99,8 +124,15 @@ def create_os_specifics(rule, fields):
         version=rule['macOS'][0]
     elif "iOS" in rule.keys():
         version=rule['iOS'][0]
+    elif "ios" in rule.keys():
+        version=rule['ios'][0]
+    elif "macos" in rule.keys():
+        version=rule['macos'][0]
     else:
         return 
+    
+    version=versionMap(version)
+
     new_rule_yaml = {}
     new_rule_yaml[version] = {}
     
@@ -122,6 +154,8 @@ def create_os_specifics(rule, fields):
     
     # process fields
     for field in fields:
+        if field == "discussion":
+            pprint.pprint(rule)
         new_rule_yaml[version][field] = rule[field]
     
     found_valid = False
@@ -130,32 +164,33 @@ def create_os_specifics(rule, fields):
              found_valid = True
     
     if not found_valid:
-        print(f'removing {version} specifics from {rule["title"]}')
+        # print(f'removing {version} specifics from {rule["title"]}')
         del(new_rule_yaml[version])
     return new_rule_yaml
 
 def check_for_unique_fields(all_rules, rule_id):
     fields_to_compare=["discussion", "title", "check", "fix"]
     os_specific_fields = []
-    bs_dict = {item['id']:item for item in all_rules['5big_sur']}
-    mont_dict = {item['id']:item for item in all_rules['4monterey']}
-    vent_dict = {item['id']:item for item in all_rules['3ventura']}
-    sonoma_dict = {item['id']:item for item in all_rules['2sonoma']}
-    seq_dict = {item['id']:item for item in all_rules['1sequoia']}
+    bs_dict = {item['id']:item for item in all_rules['big_sur']}
+    mont_dict = {item['id']:item for item in all_rules['monterey']}
+    vent_dict = {item['id']:item for item in all_rules['ventura']}
+    sonoma_dict = {item['id']:item for item in all_rules['sonoma']}
+    # seq_dict = {item['id']:item for item in all_rules['sequoia']}
 
     
-    print(f'Comparing values for {rule_id}')
+    # print(f'Comparing values for {rule_id}')
     for field in fields_to_compare:
         try:
-            if bs_dict[rule_id][field] == mont_dict[rule_id][field] == vent_dict[rule_id][field] == sonoma_dict[rule_id][field] == seq_dict[rule_id][field]:
-                print(f'{field} is THE SAME across OS versions')
+            if bs_dict[rule_id][field] == mont_dict[rule_id][field] == vent_dict[rule_id][field] == sonoma_dict[rule_id][field]:
+                # print(f'{field} is THE SAME across OS versions')
                 continue
             else:
                 os_specific_fields.append(field)
                 #print(f'{field} is DIFFERENT across OS versions')
         except KeyError as e:
-            print("rule not found in one of the OSs")
-            print(e)
+            # print("rule not found in one of the OSs")
+            #print(e)
+            pass
     
 
 
@@ -267,7 +302,7 @@ def main():
         if not os.path.exists(nr_build_path):
             os.makedirs(nr_build_path)
         nr_path = os.path.join(nr_build_path, nr_filename)
- 
+
         with open(nr_path, 'w') as file:
             yaml.dump(rule, file, Dumper=MyDumper, sort_keys=False, width=float("inf")) 
       
