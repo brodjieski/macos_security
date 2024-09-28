@@ -22,38 +22,43 @@ check: |
     }
   }
   EOS
-result: 'true'
+result:
+  string: 'true'
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  disa:
-    cci:
-      - N/A
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-    sfr:
-      - $OS_VALUE
-  nist:
-    cce:
-      - $OS_VALUE
-    800-53r5:
-      - AC-20
-      - CM-7
-      - CM-7(1)
-    800-53r4:
-      - CM-7
-      - CM-7(1)
-      - AC-20
-    800-171r2:
-      - 3.1.20
-      - 3.4.6
+  cce:
+    - CCE-94361-3
+  cci:
+    - CCI-000381
+  800-53r5:
+    - AC-20
+    - CM-7
+    - CM-7(1)
+  800-53r4:
+    - CM-7
+    - CM-7(1)
+    - AC-20
+  srg:
+    - SRG-OS-000095-GPOS-00049
+  disa_stig:
+    - N/A
+  800-171r3:
+    - 03.01.20
+    - 03.04.06
   cis:
     benchmark:
-      - $OS_VALUE
+      - N/A
     controls v8:
-      - $OS_VALUE
+      - 4.1
+      - 4.8
+      - 15.3
+  cmmc:
+    - AC.L1-3.1.20
+    - CM.L2-3.4.6
+    - CM.L2-3.4.7
+macOS:
+  - '15.0'
 tags:
   - 800-53r5_low
   - 800-53r5_moderate
@@ -63,6 +68,13 @@ tags:
   - 800-53r4_high
   - 800-171
   - cisv8
+  - cnssi-1253_moderate
+  - cnssi-1253_low
+  - cnssi-1253_high
+  - cmmc_lvl2
+  - cmmc_lvl1
+  - stig
+severity: medium
 mobileconfig: true
 mobileconfig_info:
   com.apple.applicationaccess:
@@ -70,24 +82,3 @@ mobileconfig_info:
     allowFindMyFriends: false
   com.apple.icloud.managed:
     DisableFMMiCloudSetting: true
-os_specifics:
-  macOS:
-    '13.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91947-2
-        cis:
-          benchmark:
-            - N/A
-          controls v8:
-            - 4.1
-            - 4.8
-            - 15.3

@@ -1,30 +1,37 @@
 id: os_separate_functionality
 title: Configure the System to Separate User and System Functionality
-discussion: "The information system _IS_ configured to separate user and system functionality. \n\nOperating system management functionality includes functions necessary for administration and requires privileged user access. Allowing non-privileged users to access operating system management functionality capabilities increases the risk that non-privileged users may obtain elevated privileges. Operating system management functionality includes functions necessary to administer console, network components, workstations, or servers and typically requires privileged user access. \n\nThe inherent configuration of the macOS allows only privileged users to access operating system management functionalities. \n\nlink:https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/DesigningDaemons.html[]\n"
+discussion: |
+  The information system _IS_ configured to separate user and system functionality.
+
+  Operating system management functionality includes functions necessary for administration and requires privileged user access. Allowing non-privileged users to access operating system management functionality capabilities increases the risk that non-privileged users may obtain elevated privileges. Operating system management functionality includes functions necessary to administer console, network components, workstations, or servers and typically requires privileged user access.
+
+  The inherent configuration of the macOS allows only privileged users to access operating system management functionalities.
+
+  link:https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/DesigningDaemons.html[]
 check: |
   The technology supports this requirement and cannot be configured to be out of compliance. The technology inherently meets this requirement.
 fix: |
   The technology inherently meets this requirement. No fix is required.
 references:
-  disa:
-    cci:
-      - CCI-001082
-    disa_stig:
-      - $OS_VALUE
-    srg:
-      - $OS_VALUE
-    sfr:
-      - $OS_VALUE
-  nist:
-    cce:
-      - $OS_VALUE
-    800-53r5:
-      - SC-2
-      - MA-4(1)
-    800-53r4:
-      - SC-2
-    800-171r2:
-      - 3.13.3
+  cce:
+    - CCE-94291-2
+  cci:
+    - N/A
+  800-53r5:
+    - SC-2
+    - MA-4(1)
+  800-53r4:
+    - SC-2
+  disa_stig:
+    - N/A
+  srg:
+    - SRG-OS-000132-GPOS-00067
+  800-171r3:
+    - 3.13.3
+  cmmc:
+    - SC.L2-3.13.3
+macOS:
+  - '15.0'
 tags:
   - 800-53r5_moderate
   - 800-53r5_high
@@ -32,56 +39,10 @@ tags:
   - 800-53r4_high
   - 800-171
   - inherent
-  - cnssi-1253
+  - cnssi-1253_moderate
+  - cnssi-1253_low
+  - cnssi-1253_high
+  - cmmc_lvl2
+  - srg
 mobileconfig: false
-mobileconfig_info: null
-os_specifics:
-  macOS:
-    '11.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - SRG-OS-000132-GPOS-00067
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-85377-0
-    '10.15':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - SRG-OS-000132-GPOS-00067
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-84888-7
-    '12.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-90999-4
-    '13.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91876-3
+mobileconfig_info:

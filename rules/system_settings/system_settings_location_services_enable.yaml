@@ -1,63 +1,46 @@
 id: system_settings_location_services_enable
 title: Enable Location Services
-discussion: "Location Services _MUST_ be enabled.   \n"
+discussion: |
+  Location Services _MUST_ be enabled.
 check: |
   /usr/bin/sudo -u _locationd /usr/bin/osascript -l JavaScript << EOS
   $.NSUserDefaults.alloc.initWithSuiteName('com.apple.locationd')\
   .objectForKey('LocationServicesEnabled').js
   EOS
-result: 'true'
+result:
+  string: 'true'
 fix: |
   [source,bash]
   ----
-  /usr/bin/defaults write /var/db/locationd/Library/Preferences/ByHost/com.apple.locationd LocationServicesEnabled -bool true; /bin/launchctl kickstart -k system/com.apple.locationd
+  /usr/bin/defaults write /var/db/locationd/Library/Preferences/ByHost/com.apple.locationd LocationServicesEnabled -bool true; 
+  pid=$(/bin/launchctl list | /usr/bin/awk '/com.apple.locationd/ { print $1 }')
+  kill -9 $pid
   ----
 references:
-  disa:
-    cci:
-      - N/A
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-    sfr:
-      - $OS_VALUE
-  nist:
-    cce:
-      - $OS_VALUE
-    800-53r5:
-      - N/A
-    800-53r4:
-      - N/A
-    800-171r2:
-      - N/A
+  cce:
+    - CCE-94377-9
+  cci:
+    - N/A
+  800-53r5:
+    - N/A
+  800-53r4:
+    - N/A
+  srg:
+    - N/A
+  disa_stig:
+    - N/A
+  800-171r3:
+    - N/A
   cis:
     benchmark:
-      - $OS_VALUE
+      - 2.6.1.1 (level 2)
     controls v8:
-      - $OS_VALUE
+      - 4.1
+      - 4.8
+macOS:
+  - '15.0'
 tags:
   - cis_lvl2
   - cisv8
 mobileconfig: false
-mobileconfig_info: null
-os_specifics:
-  macOS:
-    '13.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91963-9
-        cis:
-          benchmark:
-            - 2.6.1.1 (level 2)
-          controls v8:
-            - 4.1
-            - 4.8
+mobileconfig_info:

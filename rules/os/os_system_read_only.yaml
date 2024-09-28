@@ -6,82 +6,35 @@ discussion: |
   NOTE: The system volume is read only by default in macOS.
 check: |
   /usr/sbin/system_profiler SPStorageDataType | /usr/bin/awk '/Mount Point: \/$/{x=NR+2}(NR==x){print $2}'
-result: 'No'
-fix: "NOTE: To remount the System volume as Read Only, rebooting the computer will mount it as Read Only. \n"
+result:
+  string: 'No'
+fix: |
+  NOTE: To remount the System volume as Read Only, rebooting the computer will mount it as Read Only.
 references:
-  disa:
-    cci:
-      - N/A
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-    sfr:
-      - $OS_VALUE
-  nist:
-    cce:
-      - $OS_VALUE
-    800-53r5:
-      - SC-34
-      - MA-4(1)
-      - SI-7
-    800-53r4:
-      - SC-34
-      - SI-7
+  cce:
+    - CCE-94313-4
+  cci:
+    - N/A
+  800-53r5:
+    - SC-34
+    - MA-4(1)
+    - SI-7
+  800-53r4:
+    - SC-34
+    - SI-7
+  srg:
+    - N/A
+  disa_stig:
+    - N/A
+macOS:
+  - '15.0'
 tags:
   - 800-53r5_moderate
   - 800-53r5_high
   - 800-53r4_moderate
   - 800-53r4_high
+  - cnssi-1253_moderate
+  - cnssi-1253_low
+  - cnssi-1253_high
 mobileconfig: false
-mobileconfig_info: null
-os_specifics:
-  macOS:
-    '11.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-85388-7
-    '10.15':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-84851-5
-    '12.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91016-6
-    '13.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91898-7
+mobileconfig_info:

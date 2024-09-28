@@ -1,228 +1,74 @@
 id: pwpolicy_lower_case_character_enforce
 title: Require Passwords Contain a Minimum of One Lowercase Character
-discussion: "The macOS _MUST_ be configured to require at least one lower-case character be used when a password is created.\n\nThis rule enforces password complexity by requiring users to set passwords that are less vulnerable to malicious users. \n\nNOTE: The guidance for password based authentication in NIST 800-53 (Rev 5) and NIST 800-63B state that complexity rules should be organizationally defined. The values defined are based off of common complexity values. But your organization may define its own password complexity rules.\n"
-check: "/usr/bin/pwpolicy -getaccountpolicies 2> /dev/null | /usr/bin/tail +2 | /usr/bin/xmllint --xpath '//dict/key[text()=\"minimumAlphaCharactersLowerCase\"]/following-sibling::integer[1]/text()' - | /usr/bin/awk '{ if ($1 >= $ODV ) {print \"yes\"} else {print \"no\"}}' \n"
-result: 'yes'
-fix: $OS_VALUE
+discussion: |
+  The macOS _MUST_ be configured to require at least one lower-case character be used when a password is created.
+
+  This rule enforces password complexity by requiring users to set passwords that are less vulnerable to malicious users.
+
+  NOTE: The guidance for password based authentication in NIST 800-53 (Rev 5) and NIST 800-63B state that complexity rules should be organizationally defined. The values defined are based off of common complexity values. But your organization may define its own password complexity rules.
+
+  NOTE: macOS 14 supports password policy complexity with custom regex deployed with a mobileconfig file. To use a mobileconfig file use *pwpolicy_custom_regex_enforce*.
+check: |
+  /usr/bin/pwpolicy -getaccountpolicies 2> /dev/null | /usr/bin/tail +2 | /usr/bin/xmllint --xpath '//dict/key[text()="minimumAlphaCharactersLowerCase"]/following-sibling::integer[1]/text()' - | /usr/bin/awk '{ if ($1 >= $ODV ) {print "yes"} else {print "no"}}'
+result:
+  string: 'yes'
+fix: |
+  This setting may be enforced using local policy or by a directory service.
+
+  To set local policy to require at least $ODV lowercase letter, edit the current password policy to contain the following <dict> within the "policyCategoryPasswordContent":
+
+  [source,xml]
+  ----
+  <dict>
+  <key>policyContent</key>
+  <string>policyAttributePassword matches &apos;(.*[a-z].*){$ODV,}+&apos;</string>
+  <key>policyIdentifier</key>
+  <string>Must have at least $ODV lowercase letter</string>
+  <key>policyParameters</key>
+  <dict>
+  <key>minimumAlphaCharactersLowerCase</key>
+  <integer>1</integer>
+  </dict>
+  </dict>
+  ----
+  After saving the file and exiting to the command prompt, run the following command to load the new policy file, substituting the path to the file in place of "$pwpolicy_file".
+
+  [source,bash]
+  ----
+  /usr/bin/pwpolicy setaccountpolicies $pwpolicy_file
+  ----
+  NOTE: See the password policy supplemental on more information on how to implement password policies on macOS.
 references:
-  disa:
-    cci:
-      - CCI-000193
-    disa_stig:
-      - $OS_VALUE
-    srg:
-      - $OS_VALUE
-    sfr:
-      - $OS_VALUE
-  nist:
-    cce:
-      - $OS_VALUE
-    800-53r5:
-      - IA-5(1)
-    800-53r4:
-      - IA-5
-      - IA-5(1)
-    800-171r2:
-      - 3.5.1
-      - 3.5.2
-      - 3.5.7
-      - 3.5.8
-      - 3.5.9
-      - 3.5.10
+  cce:
+    - CCE-94338-1
+  cci:
+    - N/A
+  800-53r5:
+    - IA-5(1)
+  800-53r4:
+    - IA-5
+    - IA-5(1)
+  disa_stig:
+    - N/A
+  srg:
+    - N/A
+  800-171r3:
+    - 03.05.07
   cis:
     benchmark:
-      - $OS_VALUE
+      - N/A
     controls v8:
-      - $OS_VALUE
+      - 5.2
+  cmmc:
+    - IA.L2-3.5.7
+    - IA.L2-3.5.8
+    - IA.L2-3.5.9
+macOS:
+  - '15.0'
 odv:
   hint: Number of lowercase characters.
   recommended: 1
-  cis_lvl1: 1
-  cis_lvl2: 1
 tags:
-  - 800-171
-  - 800-53r4_low
-  - 800-53r4_moderate
-  - 800-53r4_high
-  - 800-53r5_low
-  - 800-53r5_moderate
-  - 800-53r5_high
-  - cis_lvl2
-  - cisv8
-  - cnssi-1253
+  - none
 mobileconfig: false
-mobileconfig_info: null
-os_specifics:
-  macOS:
-    '11.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - SRG-OS-000070-GPOS-00038
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-85408-3
-        cis:
-          benchmark:
-            - 5.2.6 (level 2)
-          controls v8:
-            - 5.2
-      fix: |
-        This setting may be enforced using local policy or by a directory service.
-
-        To set local policy to require at least $ODV lowercase letter, edit the current password policy to contain the following <dict> within the "policyCategoryPasswordContent":
-
-        [source,xml]
-        ----
-        <dict>
-        <key>policyContent</key>
-        <string>policyAttributePassword matches &apos;(.*[a-z].*){$ODV,}+&apos;</string>
-        <key>policyIdentifier</key>
-        <string>Must have at least $ODV lowercase letter</string>
-        <key>policyParameters</key>
-        <dict>
-        <key>minimumAlphaCharactersLowerCase</key>
-        <integer>$ODV</integer>
-        </dict>
-        </dict>
-        ----
-        After saving the file and exiting to the command prompt, run the following command to load the new policy file, substituting the path to the file in place of "$pwpolicy_file".
-
-        [source,bash]
-        ----
-        /usr/bin/pwpolicy setaccountpolicies $pwpolicy_file
-        ----
-        NOTE: See the password policy supplemental on more information on how to implement password policies on macOS.
-    '10.15':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - SRG-OS-000070-GPOS-00038
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-84815-0
-        cis:
-          benchmark:
-            - N/A
-          controls v8:
-            - 5.2
-      fix: |
-        This setting may be enforced using local policy or by a directory service.
-
-        To set local policy to require at least $ODV lowercase letter, edit the current password policy to contain the following <dict> within the "policyCategoryPasswordContent":
-
-        [source,xml]
-        ----
-        <dict>
-        <key>policyContent</key>
-        <string>policyAttributePassword matches &apos;(.*[a-z].*){$ODV,}+&apos;</string>
-        <key>policyIdentifier</key>
-        <string>Must have at least $ODV lowercase letter</string>
-        <key>policyParameters</key>
-        <dict>
-        <key>minimumAlphaCharactersLowerCase</key>
-        <integer>1</integer>
-        </dict>
-        </dict>
-        ----
-        After saving the file and exiting to the command prompt, run the following command to load the new policy file, substituting the path to the file in place of "$pwpolicy_file".
-
-        [source,bash]
-        ----
-        /usr/bin/pwpolicy setaccountpolicies $pwpolicy_file
-        ----
-        NOTE: See the password policy supplemental on more information on how to implement password policies on macOS.
-    '12.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91035-6
-        cis:
-          benchmark:
-            - 5.2.6 (level 2)
-          controls v8:
-            - 5.2
-      fix: |
-        This setting may be enforced using local policy or by a directory service.
-
-        To set local policy to require at least $ODV lowercase letter, edit the current password policy to contain the following <dict> within the "policyCategoryPasswordContent":
-
-        [source,xml]
-        ----
-        <dict>
-        <key>policyContent</key>
-        <string>policyAttributePassword matches &apos;(.*[a-z].*){$ODV,}+&apos;</string>
-        <key>policyIdentifier</key>
-        <string>Must have at least $ODV lowercase letter</string>
-        <key>policyParameters</key>
-        <dict>
-        <key>minimumAlphaCharactersLowerCase</key>
-        <integer>1</integer>
-        </dict>
-        </dict>
-        ----
-        After saving the file and exiting to the command prompt, run the following command to load the new policy file, substituting the path to the file in place of "$pwpolicy_file".
-
-        [source,bash]
-        ----
-        /usr/bin/pwpolicy setaccountpolicies $pwpolicy_file
-        ----
-        NOTE: See the password policy supplemental on more information on how to implement password policies on macOS.
-    '13.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91921-7
-        cis:
-          benchmark:
-            - 5.2.6 (level 2)
-          controls v8:
-            - 5.2
-      fix: |
-        This setting may be enforced using local policy or by a directory service.
-
-        To set local policy to require at least $ODV lowercase letter, edit the current password policy to contain the following <dict> within the "policyCategoryPasswordContent":
-
-        [source,xml]
-        ----
-        <dict>
-        <key>policyContent</key>
-        <string>policyAttributePassword matches &apos;(.*[a-z].*){$ODV,}+&apos;</string>
-        <key>policyIdentifier</key>
-        <string>Must have at least $ODV lowercase letter</string>
-        <key>policyParameters</key>
-        <dict>
-        <key>minimumAlphaCharactersLowerCase</key>
-        <integer>1</integer>
-        </dict>
-        </dict>
-        ----
-        After saving the file and exiting to the command prompt, run the following command to load the new policy file, substituting the path to the file in place of "$pwpolicy_file".
-
-        [source,bash]
-        ----
-        /usr/bin/pwpolicy setaccountpolicies $pwpolicy_file
-        ----
-        NOTE: See the password policy supplemental on more information on how to implement password policies on macOS.
+mobileconfig_info:

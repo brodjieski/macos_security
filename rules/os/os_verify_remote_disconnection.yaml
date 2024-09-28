@@ -1,79 +1,31 @@
 id: os_verify_remote_disconnection
 title: Verify remote disconnection of sessions
 discussion: |
-  The information system implements remote disconnect verification at the termination of nonlocal maintenance and diagnostic sessions.
+  The information system implements remote disconnect verification at the termination of non-local maintenance and diagnostic sessions.
 check: |
   The technology supports this requirement and cannot be configured to be out of compliance. The technology inherently meets this requirement.
 fix: |
   The technology inherently meets this requirement. No fix is required.
 references:
-  disa:
-    cci:
-      - CCI-002891
-    disa_stig:
-      - $OS_VALUE
-    srg:
-      - $OS_VALUE
-    sfr:
-      - $OS_VALUE
-  nist:
-    cce:
-      - $OS_VALUE
-    800-53r5:
-      - MA-4(7)
-    800-53r4:
-      - MA-4(7)
+  cce:
+    - CCE-94325-8
+  cci:
+    - N/A
+  800-53r5:
+    - MA-4(7)
+  800-53r4:
+    - MA-4(7)
+  disa_stig:
+    - N/A
+  srg:
+    - SRG-OS-000395-GPOS-00175
+macOS:
+  - '15.0'
 tags:
   - inherent
+  - cnssi-1253_moderate
+  - cnssi-1253_low
+  - cnssi-1253_high
+  - srg
 mobileconfig: false
-mobileconfig_info: null
-os_specifics:
-  macOS:
-    '11.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - SRG-OS-000395-GPOS-00175
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-85398-6
-    '10.15':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - SRG-OS-000395-GPOS-00175
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-84858-0
-    '12.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91025-7
-    '13.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91910-0
+mobileconfig_info:

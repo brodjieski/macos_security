@@ -1,41 +1,56 @@
 id: os_gatekeeper_enable
 title: Enable Gatekeeper
-discussion: "Gatekeeper _MUST_ be enabled. \n\nGatekeeper is a security feature that ensures that applications are digitally signed by an Apple-issued certificate before they are permitted to run. Digital signatures allow the macOS host to verify that the application has not been modified by a malicious third party.\n\nAdministrator users will still have the option to override these settings on a case-by-case basis.\n"
+discussion: |
+  Gatekeeper _MUST_ be enabled.
+
+  Gatekeeper is a security feature that ensures that applications are digitally signed by an Apple-issued certificate before they are permitted to run. Digital signatures allow the macOS host to verify that the application has not been modified by a malicious third party.
+
+  Administrator users will still have the option to override these settings on a case-by-case basis.
 check: |
-  /usr/sbin/spctl --status | /usr/bin/grep -c "assessments enabled"
-result: 1
-fix: $OS_VALUE
+  /usr/bin/osascript -l JavaScript << EOS
+  $.NSUserDefaults.alloc.initWithSuiteName('com.apple.systempolicy.control')\
+  .objectForKey('EnableAssessment').js
+  EOS
+result:
+  string: 'true'
+fix: |
+  This is implemented by a Configuration Profile.
 references:
-  disa:
-    cci:
-      - CCI-001749
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-    sfr:
-      - $OS_VALUE
-  nist:
-    cce:
-      - $OS_VALUE
-    800-53r5:
-      - CM-14
-      - CM-5
-      - SI-7(1)
-      - SI-7(15)
-      - SI-3
-    800-53r4:
-      - CM-5(3)
-      - CM-5
-      - SI-3
-      - SI-7(15)
-    800-171r2:
-      - 3.4.5
+  cce:
+    - CCE-94195-5
+  cci:
+    - CCI-001749
+  800-53r5:
+    - CM-14
+    - CM-5
+    - SI-7(1)
+    - SI-7(15)
+    - SI-3
+  800-53r4:
+    - CM-5(3)
+    - CM-5
+    - SI-3
+    - SI-7(15)
+  srg:
+    - SRG-OS-000366-GPOS-00153
+  disa_stig:
+    - N/A
+  800-171r3:
+    - 03.14.02
   cis:
     benchmark:
-      - $OS_VALUE
+      - 2.6.5 (level 1)
     controls v8:
-      - $OS_VALUE
+      - 10.1
+      - 10.2
+      - 10.5
+  cmmc:
+    - CM.L2-3.4.5
+    - SI.L1-3.14.1
+    - SI.L1-3.14.2
+    - SI.L1-3.14.4
+macOS:
+  - '15.0'
 tags:
   - 800-53r5_low
   - 800-53r5_moderate
@@ -46,108 +61,14 @@ tags:
   - cis_lvl1
   - cis_lvl2
   - cisv8
+  - cnssi-1253_moderate
+  - cnssi-1253_low
+  - cnssi-1253_high
+  - cmmc_lvl2
+  - cmmc_lvl1
   - stig
-  - cnssi-1253
 severity: high
 mobileconfig: true
 mobileconfig_info:
   com.apple.systempolicy.control:
     EnableAssessment: true
-os_specifics:
-  macOS:
-    '11.0':
-      references:
-        disa:
-          disa_stig:
-            - APPL-11-002064
-          srg:
-            - SRG-OS-000366-GPOS-00153
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-85315-0
-        cis:
-          benchmark:
-            - 2.5.7 (level 1)
-          controls v8:
-            - 10.1
-            - 10.2
-            - 10.5
-      fix: |
-        [source,bash]
-        ----
-        /usr/sbin/spctl --master-enable
-        ----
-    '10.15':
-      references:
-        disa:
-          disa_stig:
-            - AOSX-15-002064
-          srg:
-            - SRG-OS-000366-GPOS-00153
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-84759-0
-        cis:
-          benchmark:
-            - N/A
-          controls v8:
-            - 10.1
-            - 10.2
-            - 10.5
-      fix: |
-        [source,bash]
-        ----
-        /usr/sbin/spctl --master-enable
-        ----
-    '12.0':
-      references:
-        disa:
-          disa_stig:
-            - APPL-12-002064
-          srg:
-            - SRG-OS-000366-GPOS-00153
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-90926-7
-        cis:
-          benchmark:
-            - 2.5.7 (level 1)
-          controls v8:
-            - 10.1
-            - 10.2
-            - 10.5
-      fix: |
-        [source,bash]
-        ----
-        /usr/sbin/spctl --global-enable
-        ----
-    '13.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91793-0
-        cis:
-          benchmark:
-            - 2.6.4 (level 1)
-          controls v8:
-            - 10.1
-            - 10.2
-            - 10.5
-      fix: |
-        [source,bash]
-        ----
-        /usr/sbin/spctl --global-enable
-        ----

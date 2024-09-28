@@ -1,95 +1,41 @@
 id: os_hibernate_mode_destroyfvkeyonstandby_enable
 title: Enable DestroyFVKeyOnStandby on Hibernate
-discussion: "DestroyFVKeyOnStandby on hibernate _MUST_ be enabled. \n"
+discussion: |
+  DestroyFVKeyOnStandby on hibernate _MUST_ be enabled.
 check: |
   /usr/bin/osascript -l JavaScript << EOS
   $.NSUserDefaults.alloc.initWithSuiteName('com.apple.MCX')\
   .objectForKey('DestroyFVKeyOnStandby').js
   EOS
-result: 'true'
+result:
+  string: 'true'
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  disa:
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-    cci:
-      - None
-    sfr:
-      - $OS_VALUE
-  nist:
-    cce:
-      - $OS_VALUE
-    800-53r5:
-      - N/A
-    800-53r4:
-      - N/A
-    800-171r2:
-      - N/A
+  cce:
+    - CCE-94201-1
+  cci:
+    - N/A
+  800-53r5:
+    - N/A
+  800-53r4:
+    - N/A
+  srg:
+    - N/A
+  disa_stig:
+    - N/A
+  800-171r3:
+    - N/A
   cis:
     benchmark:
-      - $OS_VALUE
+      - N/A
     controls v8:
-      - $OS_VALUE
+      - N/A
+macOS:
+  - '15.0'
 tags:
-  - cis_lvl2
-  - cisv8
+  - none
 mobileconfig: true
 mobileconfig_info:
   com.apple.MCX:
     DestroyFVKeyOnStandby: true
-os_specifics:
-  macOS:
-    '11.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-85504-9
-        cis:
-          benchmark:
-            - 2.8.3  (level 2)
-          controls v8:
-            - 4.1
-    '12.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91105-7
-        cis:
-          benchmark:
-            - 2.8.3 (level 2)
-          controls v8:
-            - 4.1
-    '13.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91798-9
-        cis:
-          benchmark:
-            - 2.9.3 (level 2)
-          controls v8:
-            - 4.1

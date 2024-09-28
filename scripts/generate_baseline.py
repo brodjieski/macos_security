@@ -51,7 +51,7 @@ def get_rule_yaml(rule_file, custom=False):
     """ Takes a rule file, checks for a custom version, and returns the yaml for the rule
     """
     resulting_yaml = {}
-    names = [os.path.basename(x) for x in glob.glob('../custom/rules/**/*.yaml', recursive=True)]
+    names = [os.path.basename(x) for x in glob.glob('../custom/rules/**/*.y*ml', recursive=True)]
     file_name = os.path.basename(rule_file)
 
     if custom:
@@ -65,13 +65,13 @@ def get_rule_yaml(rule_file, custom=False):
     else:
         with open(rule_file) as r:
             rule_yaml = yaml.load(r, Loader=yaml.SafeLoader)
-    
+
     try:
         og_rule_path = glob.glob('../rules/**/{}'.format(file_name), recursive=True)[0]
     except IndexError:
         #assume this is a completely new rule
         og_rule_path = glob.glob('../custom/rules/**/{}'.format(file_name), recursive=True)[0]
-    
+
     # get original/default rule yaml for comparison
     with open(og_rule_path) as og:
         og_rule_yaml = yaml.load(og, Loader=yaml.SafeLoader)
@@ -116,7 +116,7 @@ def collect_rules():
                   'srg']
 
 
-    for rule in glob.glob('../rules/**/*.yaml',recursive=True) + glob.glob('../custom/rules/**/*.yaml',recursive=True):
+    for rule in sorted(glob.glob('../rules/**/*.y*ml',recursive=True)) + sorted(glob.glob('../custom/rules/**/*.y*ml',recursive=True)):
         rule_yaml = get_rule_yaml(rule, custom=False)
         for key in keys:
             try:
@@ -131,12 +131,13 @@ def collect_rules():
                     except:
                         #print("expected reference '{}' is missing in key '{}' for rule{}".format(reference, key, rule))
                         rule_yaml[key].update({reference: ["None"]})
-        all_rules.append(MacSecurityRule(rule_yaml['title'].replace('|', '\|'),
-                                    rule_yaml['id'].replace('|', '\|'),
-                                    rule_yaml['severity'].replace('|', '\|'),
-                                    rule_yaml['discussion'].replace('|', '\|'),
-                                    rule_yaml['check'].replace('|', '\|'),
-                                    rule_yaml['fix'].replace('|', '\|'),
+
+        all_rules.append(MacSecurityRule(rule_yaml['title'].replace('|', '\\|'),
+                                    rule_yaml['id'].replace('|', '\\|'),
+                                    rule_yaml['severity'].replace('|', '\\|'),
+                                    rule_yaml['discussion'].replace('|', '\\|'),
+                                    rule_yaml['check'].replace('|', '\\|'),
+                                    rule_yaml['fix'].replace('|', '\\|'),
                                     rule_yaml['references']['cci'],
                                     rule_yaml['references']['cce'],
                                     rule_yaml['references']['800-53r4'],
@@ -164,19 +165,23 @@ def create_args():
                         help="List the available keyword tags to search for.", action="store_true")
     parser.add_argument("-t", "--tailor", default=None,
                         help="Customize the baseline to your organizations values.", action="store_true")
-    
+
     return parser.parse_args()
 
-def section_title(section_name):
+def section_title(section_name, platform):
+    os = platform.split(':')[2]
     titles = {
         "auth": "authentication",
         "audit": "auditing",
-        "os": "macos",
+        "os": os,
         "pwpolicy": "passwordpolicy",
         "icloud": "icloud",
         "sysprefs": "systempreferences",
+        "system_settings": "systemsettings",
+        "sys_prefs": "systempreferences",
         "srg": "srg"
     }
+
     if section_name in titles:
         return titles[section_name]
     else:
@@ -188,12 +193,31 @@ def get_controls(all_rules):
         for control in rule.rule_80053r4:
             if control not in all_controls:
                 all_controls.append(control)
-    
+
     all_controls.sort()
-    
+
     return all_controls
 
-    
+def append_authors(authors, name, org):
+    author_block = "*Security configuration tailored by:*\n  "
+    author_block += "|===\n  "
+    author_block += f"|{name}|{org}\n  "
+    author_block += "|===\n  "
+    author_block += authors
+    return author_block
+
+def parse_authors(authors_from_yaml):
+    author_block = "*macOS Security Compliance Project*\n\n  "
+    #  |\n  |===\n  |Name|Organization\n  |===\n
+    if "preamble" in authors_from_yaml.keys():
+        preamble = authors_from_yaml['preamble']
+        author_block += f'{preamble}\n  '
+
+    author_block += "|===\n  "
+    for name in authors_from_yaml['names']:
+        author_block += f'|{name}\n  '
+    author_block += "|===\n"
+    return author_block
 
 def available_tags(all_rules):
     all_tags = []
@@ -212,7 +236,7 @@ def available_tags(all_rules):
         print(tag)
     return
 
-def output_baseline(rules, os, keyword, benchmark="recommended"):
+def output_baseline(rules, version, baseline_tailored_string, benchmark, authors, full_title):
     inherent_rules = []
     permanent_rules = []
     na_rules = []
@@ -233,16 +257,28 @@ def output_baseline(rules, os, keyword, benchmark="recommended"):
         else:
             if rule.rule_id not in other_rules:
                 other_rules.append(rule.rule_id)
-            section_name = rule.rule_id.split("_")[0]
+            if rule.rule_id.startswith("system_settings"):
+                 section_name = rule.rule_id.split("_")[0]+"_"+rule.rule_id.split("_")[1]
+            else:
+                 section_name = rule.rule_id.split("_")[0]
             if section_name not in sections:
                 sections.append(section_name)
+    if baseline_tailored_string:
+        output_text = f'title: "{version["platform"]} {version["os"]}: Security Configuration -{full_title} {baseline_tailored_string}"\n'
+        output_text += f'description: |\n  This guide describes the actions to take when securing a {version["platform"]} {version["os"]} system against the{full_title} {baseline_tailored_string} security baseline.\n'
+    else:
+        output_text = f'title: "{version["platform"]} {version["os"]}: Security Configuration -{full_title}"\n'
+        output_text += f'description: |\n  This guide describes the actions to take when securing a {version["platform"]} {version["os"]} system against the{full_title} security baseline.\n'
 
-    output_text = f'title: "macOS {os}: Security Configuration - {keyword}"\n'
-    output_text += f'description: |\n  This guide describes the actions to take when securing a macOS {os} system against the {keyword} baseline.\n'
-    output_text += f'authors: |\n  |===\n  |Name|Organization\n  |===\n'
+    if benchmark == "recommended":
+        output_text += "\n  Information System Security Officers and benchmark creators can use this catalog of settings in order to assist them in security benchmark creation. This list is a catalog, not a checklist or benchmark, and satisfaction of every item is not likely to be possible or sensible in many operational scenarios.\n"
+
+    # # process authors
+    output_text += f'authors: |\n  {authors}'
+
     output_text += f'parent_values: "{benchmark}"\n'
     output_text += 'profile:\n'
-    
+
     # sort the rules
     other_rules.sort()
     inherent_rules.sort()
@@ -252,12 +288,12 @@ def output_baseline(rules, os, keyword, benchmark="recommended"):
 
     if len(other_rules) > 0:
         for section in sections:
-            output_text += ('  - section: "{}"\n'.format(section_title(section)))
+            output_text += ('  - section: "{}"\n'.format(section_title(section, version["cpe"])))
             output_text += ("    rules:\n")
             for rule in other_rules:
                 if rule.startswith(section):
                     output_text += ("      - {}\n".format(rule))
-    
+
     if len(inherent_rules) > 0:
         output_text += ('  - section: "Inherent"\n')
         output_text += ("    rules:\n")
@@ -281,22 +317,47 @@ def output_baseline(rules, os, keyword, benchmark="recommended"):
         output_text += ("    rules:\n")
         for rule in supplemental_rules:
             output_text += ("      - {}\n".format(rule))
-    
+
     return output_text
 
 def write_odv_custom_rule(rule, odv):
     print(f"Writing custom rule for {rule.rule_id} to include value {odv}")
+
+    if not os.path.exists("../custom/rules"):
+        os.makedirs("../custom/rules")
     if os.path.exists(f"../custom/rules/{rule.rule_id}.yaml"):
         with open(f"../custom/rules/{rule.rule_id}.yaml") as f:
             rule_yaml = yaml.load(f, Loader=yaml.SafeLoader)
     else:
         rule_yaml = {}
 
-    # add odv to rule_yaml    
+    # add odv to rule_yaml
     rule_yaml['odv'] = {"custom" : odv}
     with open(f"../custom/rules/{rule.rule_id}.yaml", 'w') as f:
-      yaml.dump(rule_yaml, f, explicit_start=True)    
-    
+      yaml.dump(rule_yaml, f, explicit_start=True)
+
+    return
+
+def write_custom_rule(rule, **kwargs):
+    print(f"Writing custom rule for {rule.rule_id} to include tag {kwargs['custom_tags']}")
+
+    if not os.path.exists("../custom/rules"):
+        os.makedirs("../custom/rules")
+    if os.path.exists(f"../custom/rules/{rule.rule_id}.yaml"):
+        with open(f"../custom/rules/{rule.rule_id}.yaml") as f:
+            rule_yaml = yaml.load(f, Loader=yaml.SafeLoader)
+    else:
+        rule_yaml = {}
+    # add reference placeholder to rule_yaml
+    if kwargs['custom_refs'] == "y":
+        rule_yaml.setdefault("references", {})
+        rule_yaml['references'].setdefault(kwargs['custom_tags'],[])
+
+    # add tag to rule_yaml
+    rule_yaml.setdefault("tags", []).append(kwargs['custom_tags'])
+    with open(f"../custom/rules/{rule.rule_id}.yaml", 'w') as f:
+      yaml.dump(rule_yaml, f, explicit_start=True)
+
     return
 
 def remove_odv_custom_rule(rule):
@@ -314,7 +375,7 @@ def remove_odv_custom_rule(rule):
     else:
         if os.path.exists(f"../custom/rules/{rule.rule_id}.yaml"):
             os.remove(f"../custom/rules/{rule.rule_id}.yaml")
-    
+
 def sanitised_input(prompt, type_=None, range_=None, default_=None):
     while True:
         ui = input(prompt) or default_
@@ -346,21 +407,21 @@ def sanitised_input(prompt, type_=None, range_=None, default_=None):
         else:
             return ui
 
-def odv_query(rules, benchmark):
+def odv_query(rules, benchmark, **kwargs):
     print("The inclusion of any given rule is a risk-based-decision (RBD).  While each rule is mapped to an 800-53 control, deploying it in your organization should be part of the decision-making process. \nYou will be prompted to include each rule, and for those with specific organizational defined values (ODV), you will be prompted for those as well.\n")
-    
+
     if not benchmark == "recommended":
         print(f"WARNING: You are attempting to tailor an already established benchmark.  Excluding rules or modifying ODVs may not meet the compliance of the established benchmark.\n")
-        
+
     included_rules = []
     queried_rule_ids = []
-    
+
     include_all = False
 
     for rule in rules:
         get_odv = False
-       
-        _always_include = ['supplemental', 'inherent']
+
+        _always_include = ['inherent']
         if any(tag in rule.rule_tags for tag in _always_include):
             #print(f"Including rule {rule.rule_id} by default")
             include = "Y"
@@ -372,7 +433,10 @@ def odv_query(rules, benchmark):
                 remove_odv_custom_rule(rule)
         else:
             if rule.rule_id not in queried_rule_ids:
-                include = sanitised_input(f"Would you like to include the rule for \"{rule.rule_id}\" in your benchmark? [Y/n/all]: ", str.lower, range_=('y', 'n', 'all'), default_="y")
+                include = sanitised_input(f"Would you like to include the rule for \"{rule.rule_id}\" in your benchmark? [Y/n/all/?]: ", str.lower, range_=('y', 'n', 'all', '?'), default_="y")
+                if include == "?":
+                    print(f'Rule Details: \n{rule.rule_discussion}')
+                    include = sanitised_input(f"Would you like to include the rule for \"{rule.rule_id}\" in your benchmark? [Y/n/all]: ", str.lower, range_=('y', 'n', 'all'), default_="y")
                 queried_rule_ids.append(rule.rule_id)
                 get_odv = True
                 # remove custom ODVs if there, they will be re-written if needed
@@ -382,6 +446,8 @@ def odv_query(rules, benchmark):
                     include = "y"
         if include.upper() == "Y":
             included_rules.append(rule)
+            if kwargs["custom_tags"]:
+                write_custom_rule(rule, **kwargs)
             if rule.rule_odv == "missing":
                 continue
             elif get_odv:
@@ -410,84 +476,112 @@ def odv_query(rules, benchmark):
 def main():
 
     args = create_args()
-    try:
-        file_dir = os.path.dirname(os.path.abspath(__file__))
-        parent_dir = os.path.dirname(file_dir)
-
-        # stash current working directory
-        original_working_directory = os.getcwd()
-
-        # switch to the scripts directory
-        os.chdir(file_dir)
     
-        all_rules = collect_rules()
+    file_dir = os.path.dirname(os.path.abspath(__file__))
+    parent_dir = os.path.dirname(file_dir)
 
-        if args.list_tags:
-            available_tags(all_rules)
-            return
+    # stash current working directory
+    original_working_directory = os.getcwd()
 
-        if args.controls:
-            baselines_file = os.path.join(
-            parent_dir, 'includes', '800-53_baselines.yaml')
+    # switch to the scripts directory
+    os.chdir(file_dir)
+
+    all_rules = collect_rules()
+
+    if args.list_tags:
+        available_tags(all_rules)
+        return
+
+    if args.controls:
+        baselines_file = os.path.join(
+        parent_dir, 'includes', '800-53_baselines.yaml')
 
 
-            with open(baselines_file) as r:
-                baselines = yaml.load(r, Loader=yaml.SafeLoader)
-            
-            included_controls = get_controls(all_rules)
-            needed_controls = []
-        
-            for control in baselines['low']:
-                if control not in needed_controls:
-                    needed_controls.append(control)
-            
-            for n_control in needed_controls:
-                if n_control not in included_controls:
-                    print(f'{n_control} missing from any rule, needs a rule, or included in supplemental')
+        with open(baselines_file) as r:
+            baselines = yaml.load(r, Loader=yaml.SafeLoader)
 
-            return
+        included_controls = get_controls(all_rules)
+        needed_controls = []
 
-        build_path = os.path.join(parent_dir, 'build', 'baselines')
-        if not (os.path.isdir(build_path)):
-            try:
-                os.makedirs(build_path)
-            except OSError:
-                print(f"Creation of the directory {build_path} failed")
+        for control in baselines['low']:
+            if control not in needed_controls:
+                needed_controls.append(control)
 
-    except IOError as msg:
-        parser.error(str(msg))
+        for n_control in needed_controls:
+            if n_control not in included_controls:
+                print(f'{n_control} missing from any rule, needs a rule, or included in supplemental')
+
+        return
+
+    build_path = os.path.join(parent_dir, 'build', 'baselines')
+    if not (os.path.isdir(build_path)):
+        try:
+            os.makedirs(build_path)
+        except OSError:
+            print(f"Creation of the directory {build_path} failed")
+
+    # import mscp-data
+    mscp_data_file = os.path.join(
+            parent_dir, 'includes', 'mscp-data.yaml')
+    with open(mscp_data_file) as r:
+        mscp_data_yaml = yaml.load(r, Loader=yaml.SafeLoader)
 
     version_file = os.path.join(parent_dir, "VERSION.yaml")
     with open(version_file) as r:
-        version_yaml = yaml.load(r, Loader=yaml.SafeLoader)   
+        version_yaml = yaml.load(r, Loader=yaml.SafeLoader)
 
     found_rules = []
     for rule in all_rules:
         if args.keyword in rule.rule_tags or args.keyword == "all_rules":
             found_rules.append(rule)
-        # assume all baselines will contain the supplemental rules
-        if "supplemental" in rule.rule_tags:
-            if rule not in found_rules:
-                found_rules.append(rule)
-    
+
     if args.keyword == None:
         print("No rules found for the keyword provided, please verify from the following list:")
         available_tags(all_rules)
-    elif args.tailor:
+    else:
         _established_benchmarks = ['stig', 'cis_lvl1', 'cis_lvl2']
         if any(bm in args.keyword for bm in _established_benchmarks):
             benchmark = args.keyword
         else:
             benchmark = "recommended"
-        # prompt for name of benchmark to be used for filename
-        tailored_filename = sanitised_input(f'Enter a name for your tailored benchmark or press Enter for the default value ({args.keyword}): ', str, default_=args.keyword)
-        # prompt for inclusion, add ODV
-        odv_baseline_rules = odv_query(found_rules, benchmark)
-        baseline_output_file = open(f"{build_path}/{tailored_filename}.yaml", 'w')
-        baseline_output_file.write(output_baseline(odv_baseline_rules, version_yaml["os"], args.keyword, benchmark))
-    else:
-        baseline_output_file = open(f"{build_path}/{args.keyword}.yaml", 'w')
-        baseline_output_file.write(output_baseline(found_rules, version_yaml["os"], args.keyword))
+
+        if args.keyword in mscp_data_yaml['authors']:
+            authors = parse_authors(mscp_data_yaml['authors'][args.keyword])
+        else:
+            authors = "|===\n  |Name|Organization\n  |===\n"
+
+        if args.keyword in mscp_data_yaml['titles'] and not args.tailor:
+            full_title = f" {mscp_data_yaml['titles'][args.keyword]}"
+        elif args.tailor:
+            full_title = ""
+        else:
+            full_title = f" {args.keyword}"
+
+        baseline_tailored_string = ""
+        if args.tailor:
+            # prompt for name of benchmark to be used for filename
+            tailored_filename = sanitised_input(f'Enter a name for your tailored benchmark or press Enter for the default value ({args.keyword}): ', str, default_=args.keyword)
+            if not args.keyword == tailored_filename:
+                custom_tags = sanitised_input(f'Would you like to include ({tailored_filename}) as a custom tag in your rules? (y/N) ', str, default_="N").lower()
+            custom_author_name = sanitised_input('Enter your name: ')
+            custom_author_org = sanitised_input('Enter your organization: ')
+            authors = append_authors(authors, custom_author_name, custom_author_org)
+            if tailored_filename == args.keyword:
+                baseline_tailored_string = f"{args.keyword.upper()} (Tailored)"
+            else:
+                baseline_tailored_string = f"{tailored_filename.upper()} (Tailored from {args.keyword.upper()})"
+            # prompt for inclusion, add ODV
+            if custom_tags == "y":
+                custom_refs = sanitised_input(f'Would you like to include ({tailored_filename}) as a custom reference placeholder in your rules? (y/N) ', str, default_="N").lower()
+                odv_baseline_rules = odv_query(found_rules, benchmark, custom_tags=tailored_filename, custom_refs=custom_refs)
+            else:
+                odv_baseline_rules = odv_query(found_rules, benchmark)
+            baseline_output_file = open(f"{build_path}/{tailored_filename}.yaml", 'w')
+            baseline_output_file.write(output_baseline(odv_baseline_rules, version_yaml, baseline_tailored_string, benchmark, authors, full_title))
+        else:
+            baseline_output_file = open(f"{build_path}/{args.keyword}.yaml", 'w')
+            baseline_output_file.write(output_baseline(found_rules, version_yaml, baseline_tailored_string, benchmark, authors, full_title))
+
     # finally revert back to the prior directory
     os.chdir(original_working_directory)
 

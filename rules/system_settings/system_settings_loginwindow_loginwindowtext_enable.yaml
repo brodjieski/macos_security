@@ -1,38 +1,38 @@
 id: system_settings_loginwindow_loginwindowtext_enable
 title: Configure Login Window to Show A Custom Message
-discussion: "The login window _MUST_ be configured to show a custom access warning message. \n"
+discussion: |
+  The login window _MUST_ be configured to show a custom access warning message.
 check: |
-  /usr/bin/osascript -l JavaScript << EOS
+  /usr/bin/osascript -l JavaScript << EOS | /usr/bin/base64
   $.NSUserDefaults.alloc.initWithSuiteName('com.apple.loginwindow')\
   .objectForKey('LoginwindowText').js
   EOS
-result: $ODV
+result:
+  base64: $ODV
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  disa:
-    cci:
-      - N/A
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-    sfr:
-      - $OS_VALUE
-  nist:
-    cce:
-      - $OS_VALUE
-    800-53r5:
-      - N/A
-    800-53r4:
-      - N/A
-    800-171r2:
-      - N/A
+  cce:
+    - CCE-94379-5
+  cci:
+    - N/A
+  800-53r5:
+    - N/A
+  800-53r4:
+    - N/A
+  srg:
+    - N/A
+  disa_stig:
+    - N/A
+  800-171r3:
+    - N/A
   cis:
     benchmark:
-      - $OS_VALUE
+      - 2.10.3 (level 1)
     controls v8:
-      - $OS_VALUE
+      - 4.1
+macOS:
+  - '15.0'
 odv:
   hint: Organization's approved message.
   recommended: Center for Internet Security Test Message
@@ -46,22 +46,3 @@ mobileconfig: true
 mobileconfig_info:
   com.apple.loginwindow:
     LoginwindowText: $ODV
-os_specifics:
-  macOS:
-    '13.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91964-7
-        cis:
-          benchmark:
-            - 2.10.3 (level 1)
-          controls v8:
-            - 4.1

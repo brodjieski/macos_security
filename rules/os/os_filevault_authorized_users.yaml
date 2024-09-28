@@ -4,7 +4,8 @@ discussion: |
   macOS _MUST_ be configured to only allow authorized users to unlock FileVault upon startup.
 check: |
   /usr/bin/fdesetup list | /usr/bin/awk -F',' '{print $1}'
-result: a list containing authorized users that can unlock FileVault
+result:
+  string: a list containing authorized users that can unlock FileVault
 fix: |
   Remove the user that is not authorized to unlock FileVault using the fdesetup command.
 
@@ -13,76 +14,24 @@ fix: |
   /usr/bin/fdesetup remove -user NOT_AUTHORIZED_USERNAME
   ----
 references:
-  disa:
-    cci:
-      - CCI-002143
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-    sfr:
-      - $OS_VALUE
-  nist:
-    cce:
-      - $OS_VALUE
-    800-53r5:
-      - AC-2(11)
-    800-53r4:
-      - N/A
+  cce:
+    - CCE-94191-4
+  cci:
+    - N/A
+  800-53r5:
+    - AC-2(11)
+  800-53r4:
+    - N/A
+  srg:
+    - N/A
+  disa_stig:
+    - N/A
+macOS:
+  - '15.0'
 tags:
   - 800-53r5_high
   - manual
-  - stig
+  - cnssi-1253_high
 severity: medium
 mobileconfig: false
-mobileconfig_info: null
-os_specifics:
-  macOS:
-    '11.0':
-      references:
-        disa:
-          disa_stig:
-            - APPL-11-000032
-          srg:
-            - SRG-OS-000480-GPOS-00227
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-85311-9
-    '10.15':
-      references:
-        disa:
-          disa_stig:
-            - AOSX-15-000032
-          srg:
-            - SRG-OS-000480-GPOS-00227
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-84932-3
-    '12.0':
-      references:
-        disa:
-          disa_stig:
-            - APPL-12-000032
-          srg:
-            - SRG-OS-000480-GPOS-00227
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-90921-8
-    '13.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91788-0
+mobileconfig_info:

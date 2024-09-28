@@ -1,29 +1,36 @@
 id: os_prevent_priv_functions
 title: Configure the System to Block Non-Privileged Users from Executing Privileged Functions
-discussion: "The information system _IS_ configured to block standard users from executing privileged functions. \n\nPrivileged functions include disabling, circumventing, or altering implemented security safeguards and countermeasures. \n\nThe inherent configuration of the macOS does not allow for non-privileged users to be able to execute functions requiring privilege. \n\nlink:https://developer.apple.com/library/archive/documentation/Security/Conceptual/AuthenticationAndAuthorizationGuide/Introduction/Introduction.html[]\n"
+discussion: |
+  The information system _IS_ configured to block standard users from executing privileged functions.
+
+  Privileged functions include disabling, circumventing, or altering implemented security safeguards and countermeasures.
+
+  The inherent configuration of the macOS does not allow for non-privileged users to be able to execute functions requiring privilege.
+
+  link:https://developer.apple.com/library/archive/documentation/Security/Conceptual/AuthenticationAndAuthorizationGuide/Introduction/Introduction.html[]
 check: |
   The technology supports this requirement and cannot be configured to be out of compliance. The technology inherently meets this requirement.
 fix: |
   The technology inherently meets this requirement. No fix is required.
 references:
-  disa:
-    cci:
-      - CCI-002235
-    disa_stig:
-      - $OS_VALUE
-    srg:
-      - $OS_VALUE
-    sfr:
-      - $OS_VALUE
-  nist:
-    cce:
-      - $OS_VALUE
-    800-53r5:
-      - AC-6(10)
-    800-53r4:
-      - AC-6(10)
-    800-171r2:
-      - 3.1.7
+  cce:
+    - CCE-94261-5
+  cci:
+    - N/A
+  800-53r5:
+    - AC-6(10)
+  800-53r4:
+    - AC-6(10)
+  disa_stig:
+    - N/A
+  srg:
+    - SRG-OS-000324-GPOS-00125
+  800-171r3:
+    - 03.01.07
+  cmmc:
+    - AC.L2-3.1.7
+macOS:
+  - '15.0'
 tags:
   - 800-53r5_moderate
   - 800-53r5_high
@@ -31,56 +38,10 @@ tags:
   - 800-53r4_high
   - 800-171
   - inherent
-  - cnssi-1253
+  - cnssi-1253_moderate
+  - cnssi-1253_low
+  - cnssi-1253_high
+  - cmmc_lvl2
+  - srg
 mobileconfig: false
-mobileconfig_info: null
-os_specifics:
-  macOS:
-    '11.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - SRG-OS-000324-GPOS-00125
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-85360-6
-    '10.15':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - SRG-OS-000324-GPOS-00125
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-84856-4
-    '12.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-90978-8
-    '13.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91852-4
+mobileconfig_info:

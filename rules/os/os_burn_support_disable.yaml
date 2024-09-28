@@ -9,29 +9,36 @@ discussion: |
   ====
 check: |
   /usr/bin/profiles -P -o stdout | /usr/bin/grep -Ec '(BurnSupport = off;|ProhibitBurn = 1;)'
-result: 2
+result:
+  integer: 2
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  disa:
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-    cci:
-      - None
-    sfr:
-      - $OS_VALUE
-  nist:
-    cce:
-      - $OS_VALUE
-    800-53r5:
-      - MP-7
-    800-53r4:
-      - MP-7(1)
+  cce:
+    - CCE-94170-8
+  cci:
+    - N/A
+  800-53r5:
+    - MP-7
+  800-53r4:
+    - MP-7(1)
+  srg:
+    - N/A
+  disa_stig:
+    - N/A
+  cmmc:
+    - MP.L2-3.8.7
+    - MP.L2-3.8.8
+  800-171r3:
+    - 03.08.07
+macOS:
+  - '15.0'
 tags:
-  - none
-  - stig
+  - 800-171
+  - cnssi-1253_moderate
+  - cnssi-1253_low
+  - cnssi-1253_high
+  - cmmc_lvl2
 severity: low
 mobileconfig: true
 mobileconfig_info:
@@ -39,41 +46,3 @@ mobileconfig_info:
     ProhibitBurn: true
   com.apple.DiscRecording:
     BurnSupport: 'off'
-os_specifics:
-  macOS:
-    '11.0':
-      references:
-        disa:
-          disa_stig:
-            - APPL-12-005053
-          srg:
-            - SRG-OS-000480-GPOS-00227
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-85544-5
-    '12.0':
-      references:
-        disa:
-          disa_stig:
-            - APPL-12-005053
-          srg:
-            - SRG-OS-000480-GPOS-00227
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91098-4
-    '13.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91768-2

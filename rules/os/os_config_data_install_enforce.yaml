@@ -1,39 +1,51 @@
 id: os_config_data_install_enforce
-title: $OS_VALUE
-discussion: $OS_VALUE
+title: Enforce Installation of XProtect Remediator and Gatekeeper Updates Automatically
+discussion: |
+  Software Update _MUST_ be configured to update XProtect Remediator and Gatekeeper automatically.
+
+  This setting enforces definition updates for XProtect Remediator and Gatekeeper; with this setting in place, new malware and adware that Apple has added to the list of malware or untrusted software will not execute. These updates do not require the computer to be restarted.
+
+  link:https://support.apple.com/en-us/HT207005[]
+
+  NOTE: Software update will automatically update XProtect Remediator and Gatekeeper by default in the macOS.
 check: |
   /usr/bin/osascript -l JavaScript << EOS
   $.NSUserDefaults.alloc.initWithSuiteName('com.apple.SoftwareUpdate')\
   .objectForKey('ConfigDataInstall').js
   EOS
-result: 'true'
+result:
+  string: 'true'
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  disa:
-    cci:
-      - N/A
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-    sfr:
-      - $OS_VALUE
-  nist:
-    cce:
-      - $OS_VALUE
-    800-53r5:
-      - SI-3
-      - SI-2(5)
-    800-53r4:
-      - N/A
-    800-171r2:
-      - N/A
+  cce:
+    - CCE-94176-5
+  cci:
+    - CCI-000366
+  800-53r5:
+    - SI-3
+    - SI-2(5)
+  800-53r4:
+    - N/A
+  srg:
+    - SRG-OS-000480-GPOS-00227
+  disa_stig:
+    - N/A
+  800-171r3:
+    - 03.14.02
   cis:
     benchmark:
-      - $OS_VALUE
+      - 1.6 (level 1)
     controls v8:
-      - $OS_VALUE
+      - 7.3
+      - 7.4
+      - 7.7
+  cmmc:
+    - SI.L1-3.14.1
+    - SI.L1-3.14.2
+    - SI.L1-3.14.4
+macOS:
+  - '15.0'
 tags:
   - 800-53r5_low
   - 800-53r5_moderate
@@ -41,122 +53,14 @@ tags:
   - cis_lvl1
   - cis_lvl2
   - cisv8
+  - cnssi-1253_moderate
+  - cnssi-1253_low
+  - cnssi-1253_high
+  - cmmc_lvl2
+  - cmmc_lvl1
   - stig
+severity: medium
 mobileconfig: true
 mobileconfig_info:
   com.apple.SoftwareUpdate:
     ConfigDataInstall: true
-os_specifics:
-  macOS:
-    '11.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-85466-1
-        cis:
-          benchmark:
-            - 1.5 (level 1)
-          controls v8:
-            - 10.1
-            - 10.2
-            - 10.4
-      discussion: |
-        Software Update _MUST_ be configured to update XProtect, MRT, and Gatekeepr automatically.
-
-        This setting enforces definition updates for XProtect, MRT, and Gatekeeper; with this setting in place, new malware and adware that Apple has added to the list of malware or untrusted software will not execute. These updates do not require the computer to be restarted.
-
-        link:https://support.apple.com/en-us/HT207005[]
-
-        NOTE: Software update will automatically update XProtect, MRT, and Gatekeeper by default in the macOS.
-      title: Enforce Installation of XProtect, MRT, and Gatekeeper Updates Automatically
-    '10.15':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-84929-9
-        cis:
-          benchmark:
-            - N/A
-          controls v8:
-            - 10.1
-            - 10.2
-            - 10.4
-      discussion: |
-        Software Update _MUST_ be configured to update XProtect, MRT, and Gatekeepr automatically.
-
-        This setting enforces definition updates for XProtect, MRT, and Gatekeeper; with this setting in place, new malware and adware that Apple has added to the list of malware or untrusted software will not execute. These updates do not require the computer to be restarted.
-
-        link:https://support.apple.com/en-us/HT207005[]
-
-        NOTE: Software update will automatically update XProtect, MRT, and Gatekeeper by default in the macOS.
-      title: Enforce Installation of XProtect, MRT, and Gatekeeper Updates Automatically
-    '12.0':
-      references:
-        disa:
-          disa_stig:
-            - APPL-12-002070
-          srg:
-            - SRG-OS-000480-GPOS-00227
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-90913-5
-        cis:
-          benchmark:
-            - 1.5 (level 1)
-          controls v8:
-            - 10.1
-            - 10.2
-            - 10.4
-      discussion: |
-        Software Update _MUST_ be configured to update XProtect, MRT, and Gatekeepr automatically.
-
-        This setting enforces definition updates for XProtect and Gatekeeper; with this setting in place, new malware and adware that Apple has added to the list of malware or untrusted software will not execute. These updates do not require the computer to be restarted.
-
-        link:https://support.apple.com/en-us/HT207005[]
-
-        NOTE: Software update will automatically update XProtect and Gatekeeper by default in the macOS.
-      title: Enforce Installation of XProtect and Gatekeeper Updates Automatically
-    '13.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91774-0
-        cis:
-          benchmark:
-            - 1.6 (level 1)
-          controls v8:
-            - 7.3
-            - 7.4
-            - 7.7
-      discussion: |
-        Software Update _MUST_ be configured to update XProtect Remediator and Gatekeepr automatically.
-
-        This setting enforces definition updates for XProtect Remediator and Gatekeeper; with this setting in place, new malware and adware that Apple has added to the list of malware or untrusted software will not execute. These updates do not require the computer to be restarted.
-
-        link:https://support.apple.com/en-us/HT207005[]
-
-        NOTE: Software update will automatically update XProtect Remediator and Gatekeeper by default in the macOS.
-      title: Enforce Installation of XProtect Remediator and Gatekeeper Updates Automatically

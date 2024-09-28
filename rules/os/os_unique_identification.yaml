@@ -7,106 +7,40 @@ check: |
 fix: |
   The technology inherently meets this requirement. No fix is required.
 references:
-  disa:
-    cci:
-      - CCI-000764
-    disa_stig:
-      - $OS_VALUE
-    srg:
-      - $OS_VALUE
-    sfr:
-      - $OS_VALUE
-  nist:
-    cce:
-      - $OS_VALUE
-    800-53r5:
-      - IA-4
-    800-53r4:
-      - N/A
+  cce:
+    - CCE-94321-7
+  cci:
+    - N/A
+  800-53r5:
+    - IA-4
+  800-53r4:
+    - N/A
+  disa_stig:
+    - N/A
+  srg:
+    - N/A
   cis:
     benchmark:
-      - $OS_VALUE
+      - N/A
     controls v8:
-      - $OS_VALUE
+      - 5.1
+      - 6.1
+  cmmc:
+    - IA.L2-3.5.5
+  800-171r3:
+    - 03.05.05
+macOS:
+  - '15.0'
 tags:
+  - 800-171
   - 800-53r5_low
   - 800-53r5_moderate
   - 800-53r5_high
   - inherent
   - cisv8
+  - cnssi-1253_moderate
+  - cnssi-1253_low
+  - cnssi-1253_high
+  - cmmc_lvl2
 mobileconfig: false
-mobileconfig_info: null
-os_specifics:
-  macOS:
-    '11.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - SRG-OS-000104-GPOS-00051
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-85394-5
-        cis:
-          benchmark:
-            - N/A
-          controls v8:
-            - 5.1
-            - 6.1
-    '10.15':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - SRG-OS-000104-GPOS-00051
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-84874-7
-        cis:
-          benchmark:
-            - N/A
-          controls v8:
-            - 5.1
-            - 6.1
-    '12.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91021-6
-        cis:
-          benchmark:
-            - N/A
-          controls v8:
-            - 5.1
-            - 6.1
-    '13.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91906-8
-        cis:
-          benchmark:
-            - N/A
-          controls v8:
-            - 5.1
-            - 6.1
+mobileconfig_info:

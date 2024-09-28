@@ -1,124 +1,74 @@
 id: os_ssh_server_alive_interval_configure
 title: Configure SSH ServerAliveInterval option set to $ODV
-discussion: "SSH _MUST_ be configured with an Active Server Alive Maximum Count set to $ODV. \n\nSetting the Active Server Alive Maximum Count to $ODV will log users out after a $ODV seconds interval of inactivity.\n\nNOTE: /etc/ssh/ssh_config will be automatically modified to its original state following any update or major upgrade to the operating system.\n"
-check: $OS_VALUE
-result: $ODV
-fix: $OS_VALUE
+discussion: |
+  SSH _MUST_ be configured with an Active Server Alive Maximum Count set to $ODV.
+
+  Setting the Active Server Alive Maximum Count to $ODV will log users out after a $ODV seconds interval of inactivity.
+
+  NOTE: /etc/ssh/ssh_config will be automatically modified to its original state following any update or major upgrade to the operating system.
+check: |
+  ret="pass"
+  for u in $(/usr/bin/dscl . -list /Users UniqueID | /usr/bin/awk '$2 > 500 {print $1}'); do
+    sshCheck=$(/usr/bin/sudo -u $u /usr/bin/ssh -G . | /usr/bin/grep -c "^serveraliveinterval $ODV")
+    if [[ "$sshCheck" == "0" ]]; then
+      ret="fail"
+      break
+    fi
+  done
+  /bin/echo $ret
+result:
+  string: pass
+fix: |
+  [source,bash]
+  ----
+  for u in $(/usr/bin/dscl . -list /Users UniqueID | /usr/bin/awk '$2 > 500 {print $1}'); do
+    config=$(/usr/bin/sudo -u $u /usr/bin/ssh -Gv . 2>&1 | /usr/bin/awk '/Reading configuration data/ {print $NF}'| /usr/bin/tr -d '\r')
+    configarray=( ${(f)config} )
+    for c in $configarray; do
+      if [[ "$c" == "/etc/ssh/crypto.conf" ]]; then
+        continue
+      fi
+      /usr/bin/sudo -u $u /usr/bin/grep -q '^ServerAliveInterval' "$c" && /usr/bin/sed -i '' 's/.*ServerAliveInterval.*/ServerAliveInterval $ODV/' "$c" || /bin/echo 'ServerAliveInterval $ODV' >> "$c"
+    done
+  done
+  ----
 references:
-  disa:
-    cci:
-      - N/A
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-    sfr:
-      - $OS_VALUE
-  nist:
-    cce:
-      - $OS_VALUE
-    800-53r5:
-      - SC-10
-      - AC-12
-    800-53r4:
-      - SC-10
-    800-171r2:
-      - 3.13.9
+  cce:
+    - CCE-94301-9
+  cci:
+    - CCI-001133
+  800-53r5:
+    - SC-10
+    - AC-12
+  800-53r4:
+    - SC-10
+  srg:
+    - SRG-OS-000163-GPOS-00072
+  disa_stig:
+    - N/A
+  800-171r3:
+    - 03.01.11
+    - 03.13.09
+  cmmc:
+    - AC.L2-3.1.11
+    - SC.L2-3.13.9
+macOS:
+  - '15.0'
 odv:
   hint: Number of seconds.
   recommended: 900
+  stig: 900
 tags:
   - 800-53r5_moderate
   - 800-53r5_high
   - 800-53r4_moderate
   - 800-53r4_high
   - 800-171
-  - cnssi-1253
+  - cnssi-1253_moderate
+  - cnssi-1253_low
+  - cnssi-1253_high
+  - cmmc_lvl2
+  - stig
+severity: medium
 mobileconfig: false
-mobileconfig_info: null
-os_specifics:
-  macOS:
-    '11.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-85381-2
-      check: |
-        /usr/bin/awk '/^ServerAliveInterval/{print $2}' /etc/ssh/ssh_config
-      fix: |
-        [source,bash]
-        ----
-        /usr/bin/grep -q '^ServerAliveInterval' /etc/ssh/ssh_config && /usr/bin/sed -i.bak  's/.*ServerAliveInterval.*/ServerAliveInterval $ODV/' /etc/ssh/ssh_config || /bin/echo 'ServerAliveInterval $ODV' >> /etc/ssh/ssh_config
-        ----
-    '10.15':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-84919-0
-      check: |
-        /usr/bin/awk '/^ServerAliveInterval/{print $2}' /etc/ssh/ssh_config
-      fix: |
-        [source,bash]
-        ----
-        /usr/bin/grep -q '^ServerAliveInterval' /etc/ssh/ssh_config && /usr/bin/sed -i.bak  's/.*ServerAliveInterval.*/ServerAliveInterval $ODV/' /etc/ssh/ssh_config || /bin/echo 'ServerAliveInterval $ODV' >> /etc/ssh/ssh_config
-        ----
-    '12.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91006-7
-      check: |
-        ret="pass"
-        for u in $(/usr/bin/dscl . -list /Users UniqueID | /usr/bin/awk '$2 > 500 {print $1}'); do
-          sshCheck=$(/usr/bin/sudo -u $u /usr/bin/ssh -G . | /usr/bin/grep -c "^serveraliveinterval $ODV")
-          if [[ "$sshCheck" == "0" ]]; then
-            ret="fail"
-            break
-          fi
-        done
-        /bin/echo $ret
-      fix: "[source,bash]\n----\nfor u in $(/usr/bin/dscl . -list /Users UniqueID | /usr/bin/awk '$2 > 500 {print $1}'); do \n  config=$(/usr/bin/sudo -u $u /usr/bin/ssh -Gv . 2>&1 | /usr/bin/awk '/Reading configuration data/ {print $NF}'| /usr/bin/tr -d '\\r')\n  configarray=( ${(f)config} )\n  for c in $configarray; do\n    /usr/bin/sudo -u $u /usr/bin/grep -q '^ServerAliveInterval' \"$c\" && /usr/bin/sed -i '' 's/.*ServerAliveInterval.*/ServerAliveInterval $ODV/' \"$c\" || /bin/echo 'ServerAliveInterval $ODV' >> \"$c\"\n  done\ndone\n----\n"
-    '13.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91885-4
-      check: |
-        ret="pass"
-        for u in $(/usr/bin/dscl . -list /Users UniqueID | /usr/bin/awk '$2 > 500 {print $1}'); do
-          sshCheck=$(/usr/bin/sudo -u $u /usr/bin/ssh -G . | /usr/bin/grep -c "^serveraliveinterval $ODV")
-          if [[ "$sshCheck" == "0" ]]; then
-            ret="fail"
-            break
-          fi
-        done
-        /bin/echo $ret
-      fix: "[source,bash]\n----\nfor u in $(/usr/bin/dscl . -list /Users UniqueID | /usr/bin/awk '$2 > 500 {print $1}'); do \n  config=$(/usr/bin/sudo -u $u /usr/bin/ssh -Gv . 2>&1 | /usr/bin/awk '/Reading configuration data/ {print $NF}'| /usr/bin/tr -d '\\r')\n  configarray=( ${(f)config} )\n  for c in $configarray; do\n    /usr/bin/sudo -u $u /usr/bin/grep -q '^ServerAliveInterval' \"$c\" && /usr/bin/sed -i '' 's/.*ServerAliveInterval.*/ServerAliveInterval $ODV/' \"$c\" || /bin/echo 'ServerAliveInterval $ODV' >> \"$c\"\n  done\ndone\n----\n"
+mobileconfig_info:

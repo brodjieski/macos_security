@@ -1,48 +1,67 @@
 id: audit_flags_lo_configure
 title: Configure System to Audit All Log In and Log Out Events
-discussion: $OS_VALUE
+discussion: |
+  The audit system _MUST_ be configured to record all attempts to log in and out of the system (lo).
+
+  Frequently, an attacker that successfully gains access to a system has only gained access to an account with limited privileges, such as a guest account or a service account. The attacker must attempt to change to another user account with normal or elevated privileges in order to proceed. Auditing both successful and unsuccessful attempts to switch to another user account (by way of monitoring login and logout events) mitigates this risk.
+
+  The information system monitors login and logout events.
 check: |
   /usr/bin/awk -F':' '/^flags/ { print $NF }' /etc/security/audit_control | /usr/bin/tr ',' '\n' | /usr/bin/grep -Ec '^lo'
-result: 1
+result:
+  integer: 1
 fix: |
   [source,bash]
   ----
   /usr/bin/grep -qE "^flags.*[^-]lo" /etc/security/audit_control || /usr/bin/sed -i.bak '/^flags/ s/$/,lo/' /etc/security/audit_control; /usr/sbin/audit -s
   ----
 references:
-  disa:
-    cci:
-      - CCI-000067
-      - CCI-000172
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-    sfr:
-      - $OS_VALUE
-  nist:
-    cce:
-      - $OS_VALUE
-    800-53r5:
-      - AC-2(12)
-      - AU-12
-      - AC-17(1)
-      - AU-2
-      - MA-4(1)
-    800-53r4:
-      - AU-2
-      - AC-17(1)
-      - AU-12
-      - MA-4(1)
-    800-171r2:
-      - 3.1.12
-      - 3.3.1
-      - 3.3.2
+  cce:
+    - CCE-94123-7
+  cci:
+    - CCI-000067
+    - CCI-000172
+    - CCI-002884
+  800-53r5:
+    - AC-2(12)
+    - AU-12
+    - AC-17(1)
+    - AU-2
+    - MA-4(1)
+  800-53r4:
+    - AU-2
+    - AC-17(1)
+    - AU-12
+    - MA-4(1)
+  srg:
+    - SRG-OS-000032-GPOS-00013
+    - SRG-OS-000392-GPOS-00172
+    - SRG-OS-000064-GPOS-00033
+    - SRG-OS-000473-GPOS-00218
+    - SRG-OS-000470-GPOS-00214
+    - SRG-OS-000471-GPOS-00216
+    - SRG-OS-000472-GPOS-00217
+    - SRG-OS-000471-GPOS-00215
+    - SRG-OS-000458-GPOS-00203
+  disa_stig:
+    - N/A
+  800-171r3:
+    - 03.03.01
+    - 03.03.03
   cis:
     benchmark:
-      - $OS_VALUE
+      - 3.2 (level 2)
     controls v8:
-      - $OS_VALUE
+      - 3.14
+      - 8.2
+      - 8.5
+  cmmc:
+    - AC.L2-3.1.12
+    - AU.L2-3.3.3
+    - AU.L2-3.3.6
+    - SI.L2-3.14.3
+macOS:
+  - '15.0'
 tags:
   - 800-53r5_privacy
   - 800-53r4_low
@@ -52,101 +71,13 @@ tags:
   - 800-53r5_moderate
   - 800-53r5_high
   - 800-171
-  - cnssi-1253
   - cis_lvl2
   - cisv8
+  - cnssi-1253_moderate
+  - cnssi-1253_low
+  - cnssi-1253_high
+  - cmmc_lvl2
   - stig
 severity: medium
 mobileconfig: false
-mobileconfig_info: null
-os_specifics:
-  macOS:
-    '11.0':
-      references:
-        disa:
-          disa_stig:
-            - APPL-11-001002
-          srg:
-            - SRG-OS-000032-GPOS-00013
-            - SRG-OS-000462-GPOS-00206
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-85267-3
-        cis:
-          benchmark:
-            - 3.2 (level 2)
-          controls v8:
-            - 3.14
-            - 8.2
-            - 8.5
-      discussion: "The audit system _MUST_ be configured to record all attempts to log in and out of the system (lo). \n\nFrequently, an attacker that successfully gains access to a system has only gained access to an account with limited privileges, such as a guest account or a service account. The attacker must attempt to change to another user account with normal or elevated privileges in order to proceed. Auditing both successful and unsuccessful attempts to switch to another user account (by way of monitoring login and logout events) mitigates this risk.\n\nThe information system monitors login and logout events.\n"
-    '10.15':
-      references:
-        disa:
-          disa_stig:
-            - AOSX-15-001002
-          srg:
-            - SRG-OS-000032-GPOS-00013
-            - SRG-OS-000462-GPOS-00206
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-84716-0
-        cis:
-          benchmark:
-            - N/A
-          controls v8:
-            - 3.14
-            - 8.2
-            - 8.5
-      discussion: "The audit system _MUST_ be configured to record all attempts to log in and out of the system (lo). \n\nFrequently, an attacker that successfully gains access to a system has only gained access to an account with limited privileges, such as a guest account or a service account. The attacker must attempt to change to another user account with normal or elevated privileges in order to proceed. Auditing both successful and unsuccessful attempts to switch to another user account (by way of monitoring login and logout events) mitigates this risk.\n\nThe information system monitors login and logout events.\n"
-    '12.0':
-      references:
-        disa:
-          disa_stig:
-            - APPL-12-001002
-          srg:
-            - SRG-OS-000032-GPOS-00013
-            - SRG-OS-000462-GPOS-00206
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-90868-1
-        cis:
-          benchmark:
-            - 3.2 (level 2)
-          controls v8:
-            - 3.14
-            - 8.2
-            - 8.5
-      discussion: "The audit system _MUST_ be configured to record all attempts to log in and out of the system (lo). \n\nFrequently, an attacker that successfully gains access to a system has only gained access to an account with limited privileges, such as a guest account or a service account. The attacker must attempt to change to another user account with normal or elevated privileges in order to proceed. Auditing both successful and unsuccessful attempts to switch to another user account (by way of monitoring login and logout events) mitigates this risk.\n\nThe information system monitors login and logout events.\n"
-    '13.0':
-      references:
-        disa:
-          disa_stig:
-            - APPL-13-001002
-          srg:
-            - SRG-OS-000032-GPOS-00013
-            - SRG-OS-000462-GPOS-00206
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91724-5
-        cis:
-          benchmark:
-            - 3.2 (level 2)
-          controls v8:
-            - 3.14
-            - 8.2
-            - 8.5
-      discussion: |
-        The audit system _MUST_ be configured to record all attempts to log in and out of the system (lo).
-
-        Frequently, an attacker that successfully gains access to a system has only gained access to an account with limited privileges, such as a guest account or a service account. The attacker must attempt to change to another user account with normal or elevated privileges in order to proceed. Auditing both successful and unsuccessful attempts to switch to another user account (by way of monitoring login and logout events) mitigates this risk.
-
-        The information system monitors login and logout events.
+mobileconfig_info:

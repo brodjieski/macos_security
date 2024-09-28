@@ -4,105 +4,66 @@ discussion: |
   If SSHD is enabled then it _MUST_ be configured to wait only $ODV seconds before timing out logon attempts.
 
   NOTE: /etc/ssh/sshd_config will be automatically modified to its original state following any update or major upgrade to the operating system.
-check: $OS_VALUE
-result: 1
-fix: $OS_VALUE
+check: |
+  /usr/sbin/sshd -G | /usr/bin/awk '/logingracetime/{print $2}'
+result:
+  integer: $ODV
+fix: |
+  [source,bash]
+  ----
+  include_dir=$(/usr/bin/awk '/^Include/ {print $2}' /etc/ssh/sshd_config | /usr/bin/tr -d '*')
+
+  if [[ -z $include_dir ]]; then
+    /usr/bin/sed -i.bk "1s/.*/Include \/etc\/ssh\/sshd_config.d\/\*/" /etc/ssh/sshd_config
+  fi
+
+  /usr/bin/grep -qxF 'logingracetime $ODV' "${include_dir}01-mscp-sshd.conf" 2>/dev/null || echo "logingracetime $ODV" >> "${include_dir}01-mscp-sshd.conf"
+
+  for file in $(ls ${include_dir}); do
+    if [[ "$file" == "100-macos.conf" ]]; then
+        continue
+    fi
+    if [[ "$file" == "01-mscp-sshd.conf" ]]; then
+        break
+    fi
+    /bin/mv ${include_dir}${file} ${include_dir}20-${file}
+  done
+  ----
 references:
-  disa:
-    cci:
-      - CCI-001133
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-    sfr:
-      - $OS_VALUE
-  nist:
-    cce:
-      - $OS_VALUE
-    800-53r5:
-      - SC-10
-    800-53r4:
-      - SC-10
-    800-171r2:
-      - 3.13.9
+  cce:
+    - CCE-94306-8
+  cci:
+    - CCI-001133
+  800-53r5:
+    - SC-10
+  800-53r4:
+    - SC-10
+  srg:
+    - SRG-OS-000163-GPOS-00072
+  disa_stig:
+    - N/A
+  800-171r3:
+    - 03.13.09
+  cmmc:
+    - SC.L2-3.13.9
+macOS:
+  - '15.0'
 odv:
   hint: Number of seconds.
   recommended: 30
   stig: 30
 tags:
-  - none
+  - cnssi-1253_moderate
+  - cnssi-1253_low
+  - cnssi-1253_high
+  - cmmc_lvl2
   - stig
 severity: medium
 mobileconfig: false
-mobileconfig_info: null
-os_specifics:
-  macOS:
-    '11.0':
-      references:
-        disa:
-          disa_stig:
-            - APPL-11-000053
-          srg:
-            - SRG-OS-000163-GPOS-00072
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-85384-6
-      check: |
-        /usr/bin/grep -c "^LoginGraceTime $ODV" /etc/ssh/sshd_config
-      fix: |
-        [source,bash]
-        ----
-        /usr/bin/sed -i.bak 's/.*LoginGraceTime.*/LoginGraceTime $ODV/' /etc/ssh/sshd_config; /bin/launchctl kickstart -k system/com.openssh.sshd
-        ----
-    '10.15':
-      references:
-        disa:
-          disa_stig:
-            - AOSX-15-000053
-          srg:
-            - SRG-OS-000163-GPOS-00072
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-84796-2
-      check: |
-        /usr/bin/grep -c "^LoginGraceTime 30" /etc/ssh/sshd_config
-      fix: |
-        [source,bash]
-        ----
-        /usr/bin/sed -i.bak 's/.*LoginGraceTime.*/LoginGraceTime 30/' /etc/ssh/sshd_config; /bin/launchctl kickstart -k system/com.openssh.sshd
-        ----
-    '12.0':
-      references:
-        disa:
-          disa_stig:
-            - APPL-12-000053
-          srg:
-            - SRG-OS-000163-GPOS-00072
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91012-5
-      check: |
-        /usr/sbin/sshd -T | /usr/bin/awk '/logingracetime/{print $2}'
-      fix: "[source,bash]\n----\ninclude_dir=$(/usr/bin/awk '/^Include/ {print $2}' /etc/ssh/sshd_config | /usr/bin/tr -d '*')\n\nif [[ -z $include_dir ]]; then\n  /usr/bin/sed -i.bk \"1s/.*/Include \\/etc\\/ssh\\/sshd_config.d\\/\\*/\" /etc/ssh/sshd_config\nfi\n\necho \"logingracetime $ODV\" >> \"${include_dir}01-mscp-sshd.conf\"\n\nfor file in $(ls ${include_dir}); do\n  if [[ \"$file\" == \"100-macos.conf\" ]]; then\n      continue\n  fi\n  if [[ \"$file\" == \"01-mscp-sshd.conf\" ]]; then\n      break\n  fi\n  /bin/mv ${include_dir}${file} ${include_dir}20-${file}\ndone\n----  \n"
-    '13.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91892-0
-      check: |
-        /usr/sbin/sshd -T | /usr/bin/awk '/logingracetime/{print $2}'
-      fix: "[source,bash]\n----\ninclude_dir=$(/usr/bin/awk '/^Include/ {print $2}' /etc/ssh/sshd_config | /usr/bin/tr -d '*')\n\nif [[ -z $include_dir ]]; then\n  /usr/bin/sed -i.bk \"1s/.*/Include \\/etc\\/ssh\\/sshd_config.d\\/\\*/\" /etc/ssh/sshd_config\nfi\n\necho \"logingracetime $ODV\" >> \"${include_dir}01-mscp-sshd.conf\"\n\nfor file in $(ls ${include_dir}); do\n  if [[ \"$file\" == \"100-macos.conf\" ]]; then\n      continue\n  fi\n  if [[ \"$file\" == \"01-mscp-sshd.conf\" ]]; then\n      break\n  fi\n  /bin/mv ${include_dir}${file} ${include_dir}20-${file}\ndone\n----  \n"
+mobileconfig_info:
+ddm_info:
+  declarationtype: com.apple.configuration.services.configuration-files
+  service: com.apple.sshd
+  config_file: sshd_config
+  configuration_key: LoginGraceTime
+  configuration_value: $ODV

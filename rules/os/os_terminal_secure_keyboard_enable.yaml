@@ -1,38 +1,38 @@
 id: os_terminal_secure_keyboard_enable
 title: Ensure Secure Keyboard Entry Terminal.app is Enabled
-discussion: "Secure keyboard entry _MUST_ be enabled in Terminal.app. \n"
+discussion: |
+  Secure keyboard entry _MUST_ be enabled in Terminal.app.
 check: |
   /usr/bin/osascript -l JavaScript << EOS
   $.NSUserDefaults.alloc.initWithSuiteName('com.apple.Terminal')\
   .objectForKey('SecureKeyboardEntry').js
   EOS
-result: 'true'
+result:
+  string: 'true'
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  disa:
-    disa_stig:
-      - $OS_VALUE
-    srg:
-      - $OS_VALUE
-    cci:
-      - N/A
-    sfr:
-      - $OS_VALUE
-  nist:
-    cce:
-      - $OS_VALUE
-    800-53r5:
-      - N/A
-    800-53r4:
-      - N/A
-    800-171r2:
-      - N/A
+  cce:
+    - CCE-94315-9
+  cci:
+    - N/A
+  800-53r5:
+    - N/A
+  800-53r4:
+    - N/A
+  disa_stig:
+    - N/A
+  srg:
+    - N/A
+  800-171r3:
+    - N/A
   cis:
     benchmark:
-      - $OS_VALUE
+      - 6.4.1 (level 1)
     controls v8:
-      - $OS_VALUE
+      - 4.8
+macOS:
+  - '15.0'
 tags:
   - cis_lvl1
   - cis_lvl2
@@ -41,56 +41,3 @@ mobileconfig: true
 mobileconfig_info:
   com.apple.Terminal:
     SecureKeyboardEntry: true
-os_specifics:
-  macOS:
-    '11.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-85515-5
-        cis:
-          benchmark:
-            - 5.11 (level 1)
-          controls v8:
-            - 4.8
-    '12.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91118-0
-        cis:
-          benchmark:
-            - 5.11 (level 1)
-          controls v8:
-            - 4.8
-    '13.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91900-1
-        cis:
-          benchmark:
-            - 6.4.1 (level 1)
-          controls v8:
-            - 4.8

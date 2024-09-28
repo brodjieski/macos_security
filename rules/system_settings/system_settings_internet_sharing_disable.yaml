@@ -9,36 +9,39 @@ check: |
   $.NSUserDefaults.alloc.initWithSuiteName('com.apple.MCX')\
   .objectForKey('forceInternetSharingOff').js
   EOS
-result: 'true'
+result:
+  string: 'true'
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  disa:
-    cci:
-      - N/A
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-    sfr:
-      - $OS_VALUE
-  nist:
-    cce:
-      - $OS_VALUE
-    800-53r5:
-      - AC-4
-      - AC-20
-    800-53r4:
-      - AC-4
-      - AC-20
-    800-171r2:
-      - 3.1.3
-      - 3.1.20
+  cce:
+    - CCE-94375-3
+  cci:
+    - CCI-000381
+  800-53r5:
+    - AC-4
+    - AC-20
+  800-53r4:
+    - AC-4
+    - AC-20
+  srg:
+    - SRG-OS-000095-GPOS-00049
+  disa_stig:
+    - N/A
+  800-171r3:
+    - 03.01.03
+    - 03.01.20
   cis:
     benchmark:
-      - $OS_VALUE
+      - 2.3.3.8 (level 1)
     controls v8:
-      - $OS_VALUE
+      - 4.1
+      - 4.8
+  cmmc:
+    - AC.L1-3.1.20
+    - AC.L2-3.1.3
+macOS:
+  - '15.0'
 tags:
   - 800-53r5_low
   - 800-53r4_low
@@ -50,28 +53,14 @@ tags:
   - cis_lvl1
   - cis_lvl2
   - cisv8
+  - cnssi-1253_moderate
+  - cnssi-1253_low
+  - cnssi-1253_high
+  - cmmc_lvl2
+  - cmmc_lvl1
+  - stig
 severity: medium
 mobileconfig: true
 mobileconfig_info:
   com.apple.MCX:
     forceInternetSharingOff: true
-os_specifics:
-  macOS:
-    '13.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91960-5
-        cis:
-          benchmark:
-            - 2.3.3.8 (level 1)
-          controls v8:
-            - 4.1
-            - 4.8

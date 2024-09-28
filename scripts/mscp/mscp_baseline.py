@@ -86,11 +86,6 @@ def build_baseline(rules, platform, os, keyword, benchmark="recommended"):
         for section in sections:
             section_yaml = build_section(section, other_rules, sub_section=True)
             baseline_yaml['profile'].update(section_yaml)
-            # baseline_yaml['profile'][section_title(section)] = {}
-            # baseline_yaml['profile'][section_title(section)]['rules'] = []
-            # for rule in other_rules:
-            #     if rule.startswith(section):
-            #         baseline_yaml['profile'][section_title(section)]['rules'].append(rule)
     
     if len(inherent_rules) > 0:
         baseline_yaml['profile']['Inherent'] = {}

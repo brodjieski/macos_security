@@ -12,61 +12,41 @@ check: |
   else
     /bin/echo "1"
   fi
-result: 1
+result:
+  integer: 1
 fix: |
   [source,bash]
   ----
-  /usr/sbin/softwareupdate -i -a -R
+  /usr/sbin/softwareupdate -i -a
   ----
   NOTE - This will apply to the whole system
 references:
-  disa:
-    cci:
-      - N/A
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-    sfr:
-      - $OS_VALUE
-  nist:
-    cce:
-      - $OS_VALUE
-    800-53r5:
-      - N/A
-    800-53r4:
-      - N/A
-    800-171r2:
-      - N/A
+  cce:
+    - CCE-94398-5
+  cci:
+    - N/A
+  800-53r5:
+    - N/A
+  800-53r4:
+    - N/A
+  srg:
+    - N/A
+  disa_stig:
+    - N/A
+  800-171r3:
+    - N/A
   cis:
     benchmark:
-      - $OS_VALUE
+      - 1.1 (level 1)
     controls v8:
-      - $OS_VALUE
+      - 7.3
+      - 7.4
+macOS:
+  - '15.0'
 tags:
   - cis_lvl1
   - cis_lvl2
   - cisv8
 severity: medium
 mobileconfig: false
-mobileconfig_info: null
-os_specifics:
-  macOS:
-    '13.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91983-7
-        cis:
-          benchmark:
-            - 1.1 (level 1)
-          controls v8:
-            - 7.3
-            - 7.4
+mobileconfig_info:

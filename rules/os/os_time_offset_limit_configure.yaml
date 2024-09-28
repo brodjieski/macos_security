@@ -4,92 +4,36 @@ discussion: |
   The macOS system time  _MUST_ be monitored to not drift more than four minutes and thirty seconds.
 check: |
   /usr/bin/sntp $(/usr/sbin/systemsetup -getnetworktimeserver | /usr/bin/awk '{print $4}') | /usr/bin/awk -F'.' '/\+\/\-/{if (substr($1,2) >= 270) {print "No"} else {print "Yes"}}'
-result: 'Yes'
+result:
+  string: 'Yes'
 fix: |
   [source,bash]
   ----
   /usr/bin/sntp -Ss $(/usr/sbin/systemsetup -getnetworktimeserver | /usr/bin/awk '{print $4}')
   ----
 references:
-  disa:
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-    cci:
-      - None
-    sfr:
-      - $OS_VALUE
-  nist:
-    cce:
-      - $OS_VALUE
-    800-53r5:
-      - N/A
-    800-53r4:
-      - N/A
-    800-171r2:
-      - N/A
+  cce:
+    - CCE-94318-3
+  cci:
+    - N/A
+  800-53r5:
+    - N/A
+  800-53r4:
+    - N/A
+  srg:
+    - N/A
+  disa_stig:
+    - N/A
+  800-171r3:
+    - N/A
   cis:
     benchmark:
-      - $OS_VALUE
+      - N/A
     controls v8:
-      - $OS_VALUE
+      - N/A
+macOS:
+  - '15.0'
 tags:
-  - cis_lvl1
-  - cis_lvl2
-  - cisv8
+  - none
 mobileconfig: false
-mobileconfig_info: null
-os_specifics:
-  macOS:
-    '11.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-85516-3
-        cis:
-          benchmark:
-            - 2.2.2 (level 1)
-          controls v8:
-            - 8.4
-    '12.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91119-8
-        cis:
-          benchmark:
-            - 2.2.2 (level 1)
-          controls v8:
-            - 8.4
-    '13.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91903-5
-        cis:
-          benchmark:
-            - 2.3.2.2 (level 1)
-          controls v8:
-            - 8.4
+mobileconfig_info:

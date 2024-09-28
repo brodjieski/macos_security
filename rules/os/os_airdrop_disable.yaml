@@ -8,43 +8,51 @@ check: |
   $.NSUserDefaults.alloc.initWithSuiteName('com.apple.applicationaccess')\
   .objectForKey('allowAirDrop').js
   EOS
-result: 'false'
+result:
+  string: 'false'
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  disa:
-    cci:
-      - CCI-000381
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-    sfr:
-      - $OS_VALUE
-  nist:
-    cce:
-      - $OS_VALUE
-    800-53r5:
-      - AC-3
-      - AC-20
-      - CM-7
-      - CM-7(1)
-    800-53r4:
-      - CM-7
-      - CM-7(1)
-      - AC-3
-      - AC-20
-    800-171r2:
-      - 3.1.1
-      - 3.1.2
-      - 3.1.16
-      - 3.1.20
-      - 3.4.6
+  cce:
+    - CCE-94156-7
+  cci:
+    - CCI-000213
+    - CCI-000381
+    - CCI-001443
+  800-53r5:
+    - AC-3
+    - AC-20
+    - CM-7
+    - CM-7(1)
+  800-53r4:
+    - CM-7
+    - CM-7(1)
+    - AC-3
+    - AC-20
+  srg:
+    - SRG-OS-000300-GPOS-00118
+    - SRG-OS-000080-GPOS-00048
+    - SRG-OS-000095-GPOS-00049
+  disa_stig:
+    - N/A
+  800-171r3:
+    - 03.01.02
+    - 03.01.20
+    - 03.04.06
   cis:
     benchmark:
-      - $OS_VALUE
+      - 2.3.1.1 (level 1)
     controls v8:
-      - $OS_VALUE
+      - 4.1
+      - 4.8
+      - 6.7
+  cmmc:
+    - AC.L1-3.1.1
+    - AC.L1-3.1.20
+    - CM.L2-3.4.6
+    - CM.L2-3.4.7
+macOS:
+  - '15.0'
 tags:
   - 800-53r5_low
   - 800-53r5_moderate
@@ -56,88 +64,14 @@ tags:
   - cis_lvl1
   - cis_lvl2
   - cisv8
+  - cnssi-1253_moderate
+  - cnssi-1253_low
+  - cnssi-1253_high
+  - cmmc_lvl2
+  - cmmc_lvl1
   - stig
-  - cnssi-1253
 severity: medium
 mobileconfig: true
 mobileconfig_info:
   com.apple.applicationaccess:
     allowAirDrop: false
-os_specifics:
-  macOS:
-    '11.0':
-      references:
-        disa:
-          disa_stig:
-            - APPL-11-002009
-          srg:
-            - SRG-OS-000095-GPOS-00049
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-85293-9
-        cis:
-          benchmark:
-            - 2.4.11 (level 1)
-          controls v8:
-            - 4.1
-            - 4.8
-            - 6.7
-    '10.15':
-      references:
-        disa:
-          disa_stig:
-            - AOSX-15-002009
-          srg:
-            - SRG-OS-000095-GPOS-00049
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-84747-5
-        cis:
-          benchmark:
-            - N/A
-          controls v8:
-            - 4.1
-            - 4.8
-            - 6.7
-    '12.0':
-      references:
-        disa:
-          disa_stig:
-            - APPL-12-002009
-          srg:
-            - SRG-OS-000095-GPOS-00049
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-90898-8
-        cis:
-          benchmark:
-            - 2.4.11 (level 1)
-          controls v8:
-            - 4.1
-            - 4.8
-            - 6.7
-    '13.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91754-2
-        cis:
-          benchmark:
-            - 2.3.1.1 (level 1)
-          controls v8:
-            - 4.1
-            - 4.8
-            - 6.7

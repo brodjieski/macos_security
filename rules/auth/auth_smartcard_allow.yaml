@@ -1,40 +1,65 @@
 id: auth_smartcard_allow
 title: Allow Smartcard Authentication
-discussion: "Smartcard authentication _MUST_ be allowed. \n\nThe use of smartcard credentials facilitates standardization and reduces the risk of unauthorized access.\n\nWhen enabled, the smartcard can be used for login, authorization, and screen saver unlocking.\n"
+discussion: |
+  Smartcard authentication _MUST_ be allowed.
+
+  The use of smartcard credentials facilitates standardization and reduces the risk of unauthorized access.
+
+  When enabled, the smartcard can be used for login, authorization, and screen saver unlocking.
 check: |
   /usr/bin/osascript -l JavaScript << EOS
   $.NSUserDefaults.alloc.initWithSuiteName('com.apple.security.smartcard')\
   .objectForKey('allowSmartCard').js
   EOS
-result: 'true'
+result:
+  string: 'true'
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  disa:
-    cci:
-      - N/A
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-    sfr:
-      - $OS_VALUE
-  nist:
-    cce:
-      - $OS_VALUE
-    800-53r5:
-      - IA-2(1)
-      - IA-2(2)
-      - IA-2(12)
-    800-53r4:
-      - IA-2(12)
-      - IA-5(11)
+  cce:
+    - CCE-94135-1
+  cci:
+    - CCI-000187
+    - CCI-000765
+    - CCI-000766
+    - CCI-000767
+    - CCI-000768
+    - CCI-001941
+    - CCI-001953
+  800-53r5:
+    - IA-2(1)
+    - IA-2(2)
+    - IA-2(12)
+  800-53r4:
+    - IA-2(12)
+    - IA-5(11)
+  srg:
+    - SRG-OS-000107-GPOS-00054
+    - SRG-OS-000112-GPOS-00057
+    - SRG-OS-000108-GPOS-00055
+    - SRG-OS-000106-GPOS-00053
+    - SRG-OS-000376-GPOS-00161
+    - SRG-OS-000105-GPOS-00052
+    - SRG-OS-000068-GPOS-00036
+  disa_stig:
+    - N/A
   cis:
     benchmark:
-      - $OS_VALUE
+      - N/A
     controls v8:
-      - $OS_VALUE
+      - 6.3
+      - 6.4
+      - 6.5
+  cmmc:
+    - IA.L1-3.5.1
+    - IA.L1-3.5.2
+    - IA.L2-3.5.3
+  800-171r3:
+    - 03.05.03
+macOS:
+  - '15.0'
 tags:
+  - 800-171
   - 800-53r5_low
   - 800-53r5_moderate
   - 800-53r5_high
@@ -42,86 +67,14 @@ tags:
   - 800-53r4_moderate
   - 800-53r4_high
   - cisv8
-  - cnssi-1253
+  - cnssi-1253_moderate
+  - cnssi-1253_low
+  - cnssi-1253_high
+  - cmmc_lvl2
+  - cmmc_lvl1
+  - stig
+severity: medium
 mobileconfig: true
 mobileconfig_info:
   com.apple.security.smartcard:
     allowSmartCard: true
-os_specifics:
-  macOS:
-    '11.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - SRG-OS-000376-GPOS-00161
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-85277-2
-        cis:
-          benchmark:
-            - N/A
-          controls v8:
-            - 6.3
-            - 6.4
-            - 6.5
-    '10.15':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - SRG-OS-000376-GPOS-00161
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-84724-4
-        cis:
-          benchmark:
-            - N/A
-          controls v8:
-            - 6.3
-            - 6.4
-            - 6.5
-    '12.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-90880-6
-        cis:
-          benchmark:
-            - N/A
-          controls v8:
-            - 6.3
-            - 6.4
-            - 6.5
-    '13.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91736-9
-        cis:
-          benchmark:
-            - N/A
-          controls v8:
-            - 6.3
-            - 6.4
-            - 6.5

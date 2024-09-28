@@ -1,6 +1,7 @@
 id: system_settings_time_machine_encrypted_configure
 title: Ensure Time Machine Volumes are Encrypted
-discussion: "Time Machine volumes _MUST_ be encrypted. \n"
+discussion: |
+  Time Machine volumes _MUST_ be encrypted.
 check: |
   error_count=0
   for tm in $(/usr/bin/tmutil destinationinfo 2>/dev/null| /usr/bin/awk -F': ' '/Name/{print $2}'); do
@@ -11,7 +12,8 @@ check: |
     fi
   done
   echo "$error_count"
-result: 0
+result:
+  integer: 0
 fix: |
   . Go to System Settings -> Time Machine
   . Click *Select Disk*
@@ -19,53 +21,32 @@ fix: |
   . Click *Encrypt Backups*
   . Click *Use Disk*
 references:
-  disa:
-    cci:
-      - N/A
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-    sfr:
-      - $OS_VALUE
-  nist:
-    cce:
-      - $OS_VALUE
-    800-53r5:
-      - N/A
-    800-53r4:
-      - N/A
-    800-171r2:
-      - N/A
+  cce:
+    - CCE-94403-3
+  cci:
+    - N/A
+  800-53r5:
+    - N/A
+  800-53r4:
+    - N/A
+  srg:
+    - N/A
+  disa_stig:
+    - N/A
+  800-171r3:
+    - N/A
   cis:
     benchmark:
-      - $OS_VALUE
+      - 2.3.4.2 (level 1)
     controls v8:
-      - $OS_VALUE
+      - 3.6
+      - 3.11
+      - 11.3
+macOS:
+  - '15.0'
 tags:
   - cis_lvl1
   - cis_lvl2
   - cisv8
 mobileconfig: false
-mobileconfig_info: null
-os_specifics:
-  macOS:
-    '13.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91988-6
-        cis:
-          benchmark:
-            - 2.3.4.2 (level 1)
-          controls v8:
-            - 3.6
-            - 3.11
-            - 11.3
+mobileconfig_info:

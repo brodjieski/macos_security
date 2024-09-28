@@ -1,74 +1,60 @@
 id: os_home_folders_default
 title: Configure User's Home Folders to Apple's Default
-discussion: "The system _MUST_ be configured to prevent access to other user's home folders.\n\nThe default behavior of macOS is to allow all valid users access to the the top level of every other user's home folder while restricting access only to the Apple default folders within. \n\nNOTE: This control includes an undocumented use of the `diskutil` command. In testing, this did not produce the expected results.\n"
-check: |
-  To verify that permissions are set correctly on user home directories, use the following commands:
+discussion: |
+  The system _MUST_ be configured to prevent access to other user's home folders.
 
-  ls -le /Users
+  Configuring the operating system to use the most restrictive permissions possible for user home directories helps to protect against inadvertent disclosures.
+check: |-
+  Verify the macOS system is configured so that permissions are set correctly on user home directories with the following commands:
+  /bin/ls -le /Users
 
-  Should return a listing of the permissions of the root of every user account configured on the system. For each of the users, the permissions should be:
-  "drwxr-xr-x+" with the user listed as the owner and the group listed as "staff". The plus(+) sign indicates an associated Access Control List, which should be:
+  This command will return a listing of the permissions of the root of every user account configured on the system. For each of the users, the permissions must be "drwxr-xr-x+", with the user listed as the owner and the group listed as \"staff\". The plus(+) sign indicates an associated Access Control List, which must be:
   0: group:everyone deny delete
 
   For every authorized user account, also run the following command:
-  /usr/bin/sudo ls -le /Users/userid, where userid is an existing user.
+  /usr/bin/sudo /bin/ls -le /Users/userid, where userid is an existing user.
 
-  This command will return the permissions of all of the objects under the users' home directory. The permissions for each of the subdirectories should be:
+  This command will return the permissions of all the objects under the users' home directory. The permissions for each of the subdirectories must be:
   drwx------+
   0: group:everyone deny delete
 
-  With the exception of the "Public" directory, whose permissions should match the following:
+  The exception is the \"Public\" directory, whose permissions must match the following:
+
   drwxr-xr-x+
   0: group:everyone deny delete
 
   If the permissions returned by either of these checks differ from what is shown, this is a finding.
-fix: "[source,bash]\n----\ndiskutil resetUserPermissions / userid, where userid is the user name for the user whose home directory permissions need to be repaired. \n----\n"
+result: ''
+fix: |-
+  Configure the macOS system to set the appropriate permissions for each user on the system with the following command:
+
+  `/usr/sbin/diskutil resetUserPermissions / DeviceNode UID`, where "DeviceNode UID" is the ID number for the user whose home directory permissions need to be repaired.
+
+  NOTE: Using the `/usr/sbin/diskutil resetUserPermissions` command will only reset the permissions on the default folder set. Other folders in the home directory will not be affected.
 references:
-  disa:
-    cci:
-      - CCI-000366
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-    sfr:
-      - $OS_VALUE
-  nist:
-    cce:
-      - $OS_VALUE
-    800-53r5:
-      - AC-6
-    800-53r4:
-      - AC-6
-    800-171r2:
-      - N/A
+  cce:
+    - CCE-94203-7
+  cci:
+    - N/A
+  800-53r5:
+    - AC-6
+  800-53r4:
+    - AC-6
+  srg:
+    - N/A
+  disa_stig:
+    - N/A
+  800-171r3:
+    - 03.01.05
   cis:
     benchmark:
-      - $OS_VALUE
+      - N/A
     controls v8:
-      - $OS_VALUE
+      - N/A
+macOS:
+  - '15.0'
 tags:
   - manual
-  - stig
 severity: medium
 mobileconfig: false
-mobileconfig_info: null
-os_specifics:
-  macOS:
-    '13.0':
-      references:
-        disa:
-          disa_stig:
-            - APPL-13-002068
-          srg:
-            - SRG-OS-000480-GPOS-00228
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - ''
-        cis:
-          benchmark:
-            - N/A
-          controls v8:
-            - N/A
+mobileconfig_info:

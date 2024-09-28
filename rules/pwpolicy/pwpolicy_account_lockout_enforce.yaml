@@ -1,41 +1,47 @@
 id: pwpolicy_account_lockout_enforce
 title: Limit Consecutive Failed Login Attempts to $ODV
-discussion: "The macOS _MUST_ be configured to limit the number of failed login attempts to a maximum of $ODV. When the maximum number of failed attempts is reached, the account _MUST_ be locked for a period of time after.\n\nThis rule protects against malicious users attempting to gain access to the system via brute-force hacking methods. \n"
+discussion: |
+  The macOS _MUST_ be configured to limit the number of failed login attempts to a maximum of $ODV. When the maximum number of failed attempts is reached, the account _MUST_ be locked for a period of time after.
+
+  This rule protects against malicious users attempting to gain access to the system via brute-force hacking methods.
 check: |
   /usr/bin/pwpolicy -getaccountpolicies 2> /dev/null | /usr/bin/tail +2 | /usr/bin/xmllint --xpath '//dict/key[text()="policyAttributeMaximumFailedAuthentications"]/following-sibling::integer[1]/text()' - | /usr/bin/awk '{ if ($1 <= $ODV) {print "yes"} else {print "no"}}'
-result: 'yes'
+result:
+  string: 'yes'
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  disa:
-    cci:
-      - CCI-002238
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-    sfr:
-      - $OS_VALUE
-  nist:
-    cce:
-      - $OS_VALUE
-    800-53r5:
-      - AC-7
-    800-53r4:
-      - AC-7
-    800-171r2:
-      - 3.1.8
+  cce:
+    - CCE-94331-6
+  cci:
+    - CCI-000044
+    - CCI-002238
+  800-53r5:
+    - AC-7
+  800-53r4:
+    - AC-7
+  srg:
+    - SRG-OS-000329-GPOS-00128
+    - SRG-OS-000021-GPOS-00005
+  disa_stig:
+    - N/A
+  800-171r3:
+    - 03.01.08
   cis:
     benchmark:
-      - $OS_VALUE
+      - 5.2.1 (level 1)
     controls v8:
-      - $OS_VALUE
+      - 6.2
+  cmmc:
+    - AC.L2-3.1.8
+macOS:
+  - '15.0'
 odv:
   hint: Number of failed attempts.
   recommended: 3
-  stig: 3
   cis_lvl1: 5
   cis_lvl2: 5
+  stig: 3
 tags:
   - 800-171
   - 800-53r4_low
@@ -47,107 +53,17 @@ tags:
   - cis_lvl1
   - cis_lvl2
   - cisv8
-  - cis_lvl1_byod
-  - cis_lvl2_byod
+  - cnssi-1253_moderate
+  - cnssi-1253_low
+  - cnssi-1253_high
+  - cmmc_lvl2
   - stig
-  - ios
-  - cis_lvl1_enterprise
-  - cis_lvl2_enterprise
-  - cnssi-1253
 severity: medium
 mobileconfig: true
 mobileconfig_info:
   com.apple.mobiledevice.passwordpolicy:
     maxFailedAttempts: $ODV
-os_specifics:
-  macOS:
-    '11.0':
-      references:
-        disa:
-          disa_stig:
-            - APPL-11-000022
-          srg:
-            - SRG-OS-000329-GPOS-00128
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-85402-6
-        cis:
-          benchmark:
-            - 5.2.1 (level 1)
-          controls v8:
-            - 6.2
-    '10.15':
-      references:
-        disa:
-          disa_stig:
-            - AOSX-15-000020
-            - AOSX-15-000022
-          srg:
-            - SRG-OS-000021-GPOS-00005
-            - SRG-OS-000329-GPOS-00128
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-84809-3
-        cis:
-          benchmark:
-            - N/A
-          controls v8:
-            - 4.1
-    '12.0':
-      references:
-        disa:
-          disa_stig:
-            - APPL-12-000022
-          srg:
-            - SRG-OS-000329-GPOS-00128
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91029-9
-        cis:
-          benchmark:
-            - 5.2.1 (level 1)
-          controls v8:
-            - 6.2
-    '13.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91915-9
-        cis:
-          benchmark:
-            - 5.2.1 (level 1)
-          controls v8:
-            - 6.2
-  iOS:
-    '16.0':
-      references:
-        disa:
-          disa_stig:
-            - AIOS-16-006900
-          srg:
-            - None
-          sfr:
-            - 'FMT_SMF_EXT.1.1 #2c'
-            - FIA_AFL_EXT.1.5
-        nist:
-          cce:
-            - N/A
-        cis:
-          benchmark:
-            - 2.4.6 (level 1 - End-User Owned Devices)
-            - 3.4.6 (level 1 - Institutionally-Owned Devices)
-          controls v8:
-            - 4.3
+ddm_info:
+  declarationtype: com.apple.configuration.passcode.settings
+  ddm_key: MaximumFailedAttempts
+  ddm_value: $ODV

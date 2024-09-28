@@ -6,7 +6,8 @@ discussion: |
   NOTE: Some vendors are known to create world-writable folders to the System Library folder. You may need to add more exclusions to this check and fix to match your environment.
 check: |
   /usr/bin/find /System/Volumes/Data/Library -type d -perm -2 -ls | /usr/bin/grep -v Caches | /usr/bin/grep -v /Preferences/Audio/Data | /usr/bin/wc -l | /usr/bin/xargs
-result: 0
+result:
+  integer: 0
 fix: |
   [source,bash]
   ----
@@ -16,84 +17,29 @@ fix: |
   done
   ----
 references:
-  disa:
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-    cci:
-      - None
-    sfr:
-      - $OS_VALUE
-  nist:
-    cce:
-      - $OS_VALUE
-    800-53r5:
-      - N/A
-    800-53r4:
-      - N/A
-    800-171r2:
-      - N/A
+  cce:
+    - CCE-94326-6
+  cci:
+    - N/A
+  800-53r5:
+    - N/A
+  800-53r4:
+    - N/A
+  srg:
+    - N/A
+  disa_stig:
+    - N/A
+  800-171r3:
+    - N/A
   cis:
     benchmark:
-      - $OS_VALUE
+      - 5.1.7 (level 2)
     controls v8:
-      - $OS_VALUE
+      - 3.3
+macOS:
+  - '15.0'
 tags:
   - cis_lvl2
   - cisv8
 mobileconfig: false
-mobileconfig_info: null
-os_specifics:
-  macOS:
-    '11.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-85517-1
-        cis:
-          benchmark:
-            - 5.1.7 (level 2)
-          controls v8:
-            - 3.3
-    '12.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91120-6
-        cis:
-          benchmark:
-            - 5.1.7 (level 2)
-          controls v8:
-            - 3.3
-    '13.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91911-8
-        cis:
-          benchmark:
-            - 5.1.7 (level 2)
-          controls v8:
-            - 3.3
+mobileconfig_info:

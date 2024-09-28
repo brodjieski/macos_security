@@ -1,33 +1,33 @@
 id: os_safari_advertising_privacy_protection_enable
 title: Ensure Advertising Privacy Protection in Safari Is Enabled
-discussion: "Allow privacy-preserving measurement of ad effectiveness _MUST_ be enabled in Safari. \n"
+discussion: |
+  Allow privacy-preserving measurement of ad effectiveness _MUST_ be enabled in Safari.
 check: |
   /usr/bin/profiles -P -o stdout | /usr/bin/grep -c '"WebKitPreferences.privateClickMeasurementEnabled" = 1' | /usr/bin/awk '{ if ($1 >= 1) {print "1"} else {print "0"}}'
-result: 1
+result:
+  integer: 1
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  disa:
-    cci:
-      - N/A
-    disa_stig:
-      - $OS_VALUE
-    srg:
-      - $OS_VALUE
-    sfr:
-      - $OS_VALUE
-  nist:
-    cce:
-      - $OS_VALUE
-    800-53r5:
-      - N/A
-    800-53r4:
-      - N/A
+  cce:
+    - CCE-94280-5
+  cci:
+    - N/A
+  800-53r5:
+    - N/A
+  800-53r4:
+    - N/A
+  disa_stig:
+    - N/A
+  srg:
+    - N/A
   cis:
     benchmark:
-      - $OS_VALUE
+      - 6.3.6 (level 1)
     controls v8:
-      - $OS_VALUE
+      - 9.1
+macOS:
+  - '15.0'
 tags:
   - cis_lvl1
   - cis_lvl2
@@ -36,39 +36,3 @@ mobileconfig: true
 mobileconfig_info:
   com.apple.Safari:
     WebKitPreferences.privateClickMeasurementEnabled: true
-os_specifics:
-  macOS:
-    '12.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - N/A
-        cis:
-          benchmark:
-            - 7.2.7 (level 1)
-          controls v8:
-            - 9.1
-    '13.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-92002-5
-        cis:
-          benchmark:
-            - 6.3.6 (level 1)
-          controls v8:
-            - 9.1

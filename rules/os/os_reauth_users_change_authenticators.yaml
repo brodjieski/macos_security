@@ -7,76 +7,31 @@ check: |
 fix: |
   The technology inherently meets this requirement. No fix is required.
 references:
-  disa:
-    cci:
-      - CCI-002038
-    disa_stig:
-      - $OS_VALUE
-    srg:
-      - $OS_VALUE
-    sfr:
-      - $OS_VALUE
-  nist:
-    cce:
-      - $OS_VALUE
-    800-53r5:
-      - IA-11
-    800-53r4:
-      - IA-11
+  cce:
+    - CCE-94273-0
+  cci:
+    - N/A
+  800-53r5:
+    - IA-11
+  800-53r4:
+    - IA-11
+  disa_stig:
+    - N/A
+  srg:
+    - SRG-OS-000373-GPOS-00158
+  800-171r3:
+    - 03.05.01
+macOS:
+  - '15.0'
 tags:
+  - 800-171
   - inherent
   - 800-53r5_low
   - 800-53r5_moderate
   - 800-53r5_high
+  - cnssi-1253_moderate
+  - cnssi-1253_low
+  - cnssi-1253_high
+  - srg
 mobileconfig: false
-mobileconfig_info: null
-os_specifics:
-  macOS:
-    '11.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - SRG-OS-000373-GPOS-00158
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-85368-9
-    '10.15':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - SRG-OS-000373-GPOS-00158
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-84872-1
-    '12.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-90988-7
-    '13.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91864-9
+mobileconfig_info:

@@ -6,82 +6,39 @@ discussion: |
   System logs contain sensitive data about the system and users. If log files are set to only be readable and writable by system administrators, the risk is mitigated.
 check: |
   /usr/bin/stat -f '%Su:%Sg:%N' $(/usr/bin/grep -v '^#' /etc/newsyslog.conf | /usr/bin/awk '{ print $1 }') 2> /dev/null | /usr/bin/awk '!/^root:wheel:/{print $1}' | /usr/bin/wc -l | /usr/bin/tr -d ' '
-result: 0
-fix: "[source,bash]\n----\n/usr/sbin/chown root:wheel $(/usr/bin/stat -f '%Su:%Sg:%N' $(/usr/bin/grep -v '^#' /etc/newsyslog.conf | /usr/bin/awk '{ print $1 }') 2> /dev/null | /usr/bin/awk -F\":\" '!/^root:wheel:/{print $3}')\n----  \n"
+result:
+  integer: 0
+fix: |
+  [source,bash]
+  ----
+  /usr/sbin/chown root:wheel $(/usr/bin/stat -f '%Su:%Sg:%N' $(/usr/bin/grep -v '^#' /etc/newsyslog.conf | /usr/bin/awk '{ print $1 }') 2> /dev/null | /usr/bin/awk -F":" '!/^root:wheel:/{print $3}')
+  ----
 references:
-  disa:
-    cci:
-      - CCI-001314
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-    sfr:
-      - $OS_VALUE
-  nist:
-    cce:
-      - $OS_VALUE
-    800-53r5:
-      - SI-11
-    800-53r4:
-      - SI-11
-    800-171r2:
-      - N/A
+  cce:
+    - CCE-94233-4
+  cci:
+    - CCI-001312
+    - CCI-001314
+  800-53r5:
+    - SI-11
+  800-53r4:
+    - SI-11
+  srg:
+    - SRG-OS-000206-GPOS-00084
+    - SRG-OS-000205-GPOS-00083
+  disa_stig:
+    - N/A
+  800-171r3:
+    - N/A
+macOS:
+  - '15.0'
 tags:
   - 800-53r5_moderate
   - 800-53r5_high
+  - cnssi-1253_moderate
+  - cnssi-1253_low
+  - cnssi-1253_high
   - stig
-  - manual
 severity: medium
 mobileconfig: false
-mobileconfig_info: null
-os_specifics:
-  macOS:
-    '11.0':
-      references:
-        disa:
-          disa_stig:
-            - APPL-11-004001
-          srg:
-            - SRG-OS-000206-GPOS-00084
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-85469-5
-    '10.15':
-      references:
-        disa:
-          disa_stig:
-            - AOSX-15-004001
-          srg:
-            - SRG-OS-000206-GPOS-00084
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-84942-2
-    '12.0':
-      references:
-        disa:
-          disa_stig:
-            - APPL-12-004001
-          srg:
-            - SRG-OS-000206-GPOS-00084
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-90954-9
-    '13.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91825-0
+mobileconfig_info:

@@ -7,33 +7,33 @@ check: |
   $.NSUserDefaults.alloc.initWithSuiteName('com.apple.SoftwareUpdate')\
   .objectForKey('AutomaticallyInstallAppUpdates').js
   EOS
-result: 'true'
+result:
+  string: 'true'
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  disa:
-    cci:
-      - N/A
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-    sfr:
-      - $OS_VALUE
-  nist:
-    cce:
-      - $OS_VALUE
-    800-53r5:
-      - N/A
-    800-53r4:
-      - N/A
-    800-171r2:
-      - N/A
+  cce:
+    - CCE-94395-1
+  cci:
+    - N/A
+  800-53r5:
+    - N/A
+  800-53r4:
+    - N/A
+  srg:
+    - N/A
+  disa_stig:
+    - N/A
+  800-171r3:
+    - N/A
   cis:
     benchmark:
-      - $OS_VALUE
+      - 1.5 (level 1)
     controls v8:
-      - $OS_VALUE
+      - 7.3
+      - 7.4
+macOS:
+  - '15.0'
 tags:
   - cis_lvl1
   - cis_lvl2
@@ -42,23 +42,3 @@ mobileconfig: true
 mobileconfig_info:
   com.apple.SoftwareUpdate:
     AutomaticallyInstallAppUpdates: true
-os_specifics:
-  macOS:
-    '13.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91980-3
-        cis:
-          benchmark:
-            - 1.5 (level 1)
-          controls v8:
-            - 7.3
-            - 7.4

@@ -9,34 +9,37 @@ check: |
   $.NSUserDefaults.alloc.initWithSuiteName('com.apple.timed')\
   .objectForKey('TMAutomaticTimeOnlyEnabled').js
   EOS
-result: 'true'
+result:
+  string: 'true'
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  disa:
-    cci:
-      - N/A
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-    sfr:
-      - $OS_VALUE
-  nist:
-    cce:
-      - $OS_VALUE
-    800-53r5:
-      - AU-12(1)
-      - SC-45(1)
-    800-53r4:
-      - AU-8(1)
-    800-171r2:
-      - 3.3.7
+  cce:
+    - CCE-94405-8
+  cci:
+    - CCI-001891
+    - CCI-002046
+  800-53r5:
+    - AU-12(1)
+    - SC-45(1)
+  800-53r4:
+    - AU-8(1)
+  srg:
+    - SRG-OS-000355-GPOS-00143
+    - SRG-OS-000356-GPOS-00144
+  disa_stig:
+    - N/A
+  800-171r3:
+    - 3.3.7
   cis:
     benchmark:
-      - $OS_VALUE
+      - 2.3.2.1 (level 1)
     controls v8:
-      - $OS_VALUE
+      - 8.4
+  cmmc:
+    - AU.L2-3.3.7
+macOS:
+  - '15.0'
 tags:
   - 800-171
   - 800-53r5_low
@@ -47,28 +50,14 @@ tags:
   - cis_lvl1
   - cis_lvl2
   - cisv8
+  - cnssi-1253_moderate
+  - cnssi-1253_low
+  - cnssi-1253_high
+  - cmmc_lvl2
+  - stig
 severity: medium
 mobileconfig: true
 mobileconfig_info:
   com.apple.ManagedClient.preferences:
     com.apple.timed:
       TMAutomaticTimeOnlyEnabled: true
-os_specifics:
-  macOS:
-    '13.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91990-2
-        cis:
-          benchmark:
-            - 2.3.2.1 (level 1)
-          controls v8:
-            - 8.4

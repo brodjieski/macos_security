@@ -1,35 +1,46 @@
 id: os_software_update_deferral
-title: $OS_VALUE
+title: Ensure Software Update Deferment Is Less Than or Equal to $ODV Days
 discussion: |
   Software updates _MUST_ be deferred for $ODV days or less.
-check: $OS_VALUE
-result: 'true'
+check: |
+  /usr/bin/osascript -l JavaScript << EOS
+  function run() {
+    let timeout = ObjC.unwrap($.NSUserDefaults.alloc.initWithSuiteName('com.apple.applicationaccess')\
+  .objectForKey('enforcedSoftwareUpdateDelay')) || 0
+    if ( timeout <= $ODV ) {
+      return("true")
+    } else {
+      return("false")
+    }
+  }
+  EOS
+result:
+  string: 'true'
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  disa:
-    cci:
-      - N/A
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-    sfr:
-      - $OS_VALUE
-  nist:
-    cce:
-      - $OS_VALUE
-    800-53r5:
-      - N/A
-    800-53r4:
-      - N/A
-    800-171r2:
-      - N/A
+  cce:
+    - CCE-94298-7
+  cci:
+    - N/A
+  800-53r5:
+    - N/A
+  800-53r4:
+    - N/A
+  srg:
+    - N/A
+  disa_stig:
+    - N/A
+  800-171r3:
+    - N/A
   cis:
     benchmark:
-      - $OS_VALUE
+      - 1.7 (level 1)
     controls v8:
-      - $OS_VALUE
+      - 7.3
+      - 7.4
+macOS:
+  - '15.0'
 odv:
   hint: Number of days.
   recommended: 30
@@ -42,96 +53,3 @@ mobileconfig: true
 mobileconfig_info:
   com.apple.applicationaccess:
     enforcedSoftwareUpdateDelay: $ODV
-os_specifics:
-  macOS:
-    '11.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-85548-6
-        cis:
-          benchmark:
-            - 1.7 (level 1)
-          controls v8:
-            - N/A
-      title: Ensure Software Update Deferment Is Less Than or Equal to 30 Days
-      check: |
-        /usr/bin/osascript -l JavaScript << EOS
-        function run() {
-          let timeout = ObjC.unwrap($.NSUserDefaults.alloc.initWithSuiteName('com.apple.applicationaccess')\
-        .objectForKey('enforcedSoftwareUpdateDelay'))
-          if ( timeout <= $ODV ) {
-            return("true")
-          } else {
-            return("false")
-          }
-        }
-        EOS
-    '12.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-85140-2
-        cis:
-          benchmark:
-            - 1.7 (level 1)
-          controls v8:
-            - N/A
-      title: Ensure Software Update Deferment Is Less Than or Equal to 30 Days
-      check: |
-        /usr/bin/osascript -l JavaScript << EOS
-        function run() {
-          let timeout = ObjC.unwrap($.NSUserDefaults.alloc.initWithSuiteName('com.apple.applicationaccess')\
-        .objectForKey('enforcedSoftwareUpdateDelay')) || 0
-          if ( timeout <= $ODV ) {
-            return("true")
-          } else {
-            return("false")
-          }
-        }
-        EOS
-    '13.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91882-1
-        cis:
-          benchmark:
-            - 1.7 (level 1)
-          controls v8:
-            - 7.3
-            - 7.4
-      title: Ensure Software Update Deferment Is Less Than or Equal to $ODV Days
-      check: |
-        /usr/bin/osascript -l JavaScript << EOS
-        function run() {
-          let timeout = ObjC.unwrap($.NSUserDefaults.alloc.initWithSuiteName('com.apple.applicationaccess')\
-        .objectForKey('enforcedSoftwareUpdateDelay')) || 0
-          if ( timeout <= $ODV ) {
-            return("true")
-          } else {
-            return("false")
-          }
-        }
-        EOS

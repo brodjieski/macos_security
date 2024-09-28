@@ -9,42 +9,47 @@ check: |
   $.NSUserDefaults.alloc.initWithSuiteName('com.apple.applicationaccess')\
   .objectForKey('allowCloudBookmarks').js
   EOS
-result: 'false'
+result:
+  string: 'false'
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  disa:
-    cci:
-      - CCI-000381
-      - CCI-001774
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-    sfr:
-      - $OS_VALUE
-  nist:
-    cce:
-      - $OS_VALUE
-    800-53r5:
-      - AC-20
-      - AC-20(1)
-      - CM-7
-      - CM-7(1)
-      - SC-7(10)
-    800-53r4:
-      - CM-7
-      - CM-7(1)
-      - AC-20
-      - AC-20(1)
-    800-171r2:
-      - 3.1.20
-      - 3.4.6
+  cce:
+    - CCE-94142-7
+  cci:
+    - CCI-000381
+    - CCI-001774
+  800-53r5:
+    - AC-20
+    - AC-20(1)
+    - CM-7
+    - CM-7(1)
+    - SC-7(10)
+  800-53r4:
+    - CM-7
+    - CM-7(1)
+    - AC-20
+    - AC-20(1)
+  srg:
+    - SRG-OS-000095-GPOS-00049
+  disa_stig:
+    - N/A
+  800-171r3:
+    - 03.01.20
+    - 03.04.06
   cis:
     benchmark:
-      - $OS_VALUE
+      - N/A
     controls v8:
-      - $OS_VALUE
+      - 4.1
+      - 4.8
+      - 15.3
+  cmmc:
+    - AC.L1-3.1.20
+    - CM.L2-3.4.6
+    - CM.L2-3.4.7
+macOS:
+  - '15.0'
 tags:
   - 800-53r5_low
   - 800-53r5_moderate
@@ -54,91 +59,14 @@ tags:
   - 800-53r4_high
   - 800-171
   - cisv8
+  - cnssi-1253_moderate
+  - cnssi-1253_low
+  - cnssi-1253_high
+  - cmmc_lvl2
+  - cmmc_lvl1
   - stig
-  - cnssi-1253
 severity: medium
 mobileconfig: true
 mobileconfig_info:
   com.apple.applicationaccess:
     allowCloudBookmarks: false
-os_specifics:
-  macOS:
-    '11.0':
-      references:
-        disa:
-          disa_stig:
-            - APPL-11-002042
-          srg:
-            - SRG-OS-000095-GPOS-00049
-            - SRG-OS-000370-GPOS-00155
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-85284-8
-        cis:
-          benchmark:
-            - N/A
-          controls v8:
-            - 4.1
-            - 4.8
-            - 15.3
-    '10.15':
-      references:
-        disa:
-          disa_stig:
-            - AOSX-15-002042
-          srg:
-            - SRG-OS-000095-GPOS-00049
-            - SRG-OS-000370-GPOS-00155
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-84732-7
-        cis:
-          benchmark:
-            - N/A
-          controls v8:
-            - 4.1
-            - 4.8
-            - 15.3
-    '12.0':
-      references:
-        disa:
-          disa_stig:
-            - APPL-12-002042
-          srg:
-            - SRG-OS-000095-GPOS-00049
-            - SRG-OS-000370-GPOS-00155
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-90887-1
-        cis:
-          benchmark:
-            - N/A
-          controls v8:
-            - 4.1
-            - 4.8
-            - 15.3
-    '13.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91743-5
-        cis:
-          benchmark:
-            - N/A
-          controls v8:
-            - 4.1
-            - 4.8
-            - 15.3

@@ -36,8 +36,8 @@ def main():
             baseline_rules.append(rule)
 
     # create the baseline and output to yaml
-    baseline=mscp.build_baseline(baseline_rules, options.os_platform, options.os_version, options.keyword, benchmark="recommended")
-    _yaml.dumpToYaml(f"{options.os_platform}-{options.os_version}-{options.keyword}", baseline, build_path)
+    baseline=mscp.build_baseline(baseline_rules, options.os_platform, os_version, options.keyword, benchmark="recommended")
+    _yaml.dumpToYaml(f"{options.os_platform}-{os_version}-{options.keyword}", baseline, build_path)
     
 if __name__ == "__main__":
     # Configure command line arguments
@@ -57,7 +57,7 @@ if __name__ == "__main__":
     parser.add_option("-p", action="store", dest='os_platform', default="macOS", help="Build the compliance info for the specified platform, defaults to macOS")
 
     # Supplied OS version
-    parser.add_option("-o", action="store", dest='os_version', default="13.0", help="Build the compliance info for the specified OS version, defaults to currently running OS")
+    parser.add_option("-o", action="store", dest='os_version', default="", help="Build the compliance info for the specified OS version, defaults to currently running OS")
       
     # Process command line
     (options, args) = parser.parse_args()
@@ -84,17 +84,21 @@ if __name__ == "__main__":
         _level = logging.CRITICAL
     logging.basicConfig(level=_level)
 
+    # Default to currently running OS
+    if options.os_version == "":
+        os_version = mscp.get_running_macos()
+
     # build rules
     ruleset = _yaml.loadRules(_rules_path)
     custom_ruleset = _yaml.loadRules(_custom_rules_path)
 
-    platform_rules = _yaml.getPlatformRules(ruleset, options.os_platform, options.os_version)
+    platform_rules = _yaml.getPlatformRules(ruleset, options.os_platform, os_version)
 
     logging.debug("\n".join(["**** RULESET ****", pprint.pformat(ruleset, indent=1, sort_dicts=False), "**** RULESET ****"]))
     logging.debug("\n".join(["**** CUSTOM RULESET ****", pprint.pformat(custom_ruleset, indent=1, sort_dicts=False), "**** CUSTOM RULESET ****"]))
 
     # merge original and custom rules for entire list in db
-    rule_list = _yaml.compileRules(platform_rules, custom_ruleset, options.benchmark, options.os_platform, options.os_version)
+    rule_list = _yaml.compileRules(platform_rules, custom_ruleset, options.benchmark, options.os_platform, os_version)
 
     ### rule_list now contains the full library of rules including custom rule files found
     ### ODV values are included

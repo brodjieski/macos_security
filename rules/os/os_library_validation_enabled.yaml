@@ -6,99 +6,36 @@ check: |
   $.NSUserDefaults.alloc.initWithSuiteName('com.apple.security.libraryvalidation')\
   .objectForKey('DisableLibraryValidation').js
   EOS
-result: 'false'
-fix: $OS_VALUE
+result:
+  string: 'false'
+fix: |
+  This is implemented by a Configuration Profile.
 references:
-  disa:
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-    cci:
-      - None
-    sfr:
-      - $OS_VALUE
-  nist:
-    cce:
-      - $OS_VALUE
-    800-53r5:
-      - N/A
-    800-53r4:
-      - N/A
-    800-171r2:
-      - N/A
+  cce:
+    - CCE-94216-9
+  cci:
+    - N/A
+  800-53r5:
+    - N/A
+  800-53r4:
+    - N/A
+  srg:
+    - N/A
+  disa_stig:
+    - N/A
+  800-171r3:
+    - N/A
   cis:
     benchmark:
-      - $OS_VALUE
+      - N/A
     controls v8:
-      - $OS_VALUE
+      - 2.3
+      - 2.6
+macOS:
+  - '15.0'
 tags:
   - cisv8
-  - none
 mobileconfig: true
 mobileconfig_info:
   com.apple.security.libraryvalidation:
     DisableLibraryValidation: false
-os_specifics:
-  macOS:
-    '11.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-85507-2
-        cis:
-          benchmark:
-            - N/A
-          controls v8:
-            - N/A
-      fix: |
-        [source,bash]
-        ----
-        This is implemented by a Configuration Profile.
-        ----
-    '12.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91108-1
-        cis:
-          benchmark:
-            - N/A
-          controls v8:
-            - N/A
-      fix: |
-        This is implemented by a Configuration Profile.
-    '13.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91810-2
-        cis:
-          benchmark:
-            - N/A
-          controls v8:
-            - 2.3
-            - 2.6
-      fix: |
-        This is implemented by a Configuration Profile.

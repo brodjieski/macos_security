@@ -17,31 +17,35 @@ check: |
   ObjC.unwrap($.NSUserDefaults.alloc.initWithSuiteName('com.apple.systemuiserver')\
   .objectForKey('mount-controls'))["cd"]
   EOS
-result: read-only
+result:
+  string: read-only
 fix: |
   This is implemented by a Configuration Profile.
 references:
-  disa:
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-    cci:
-      - None
-    sfr:
-      - $OS_VALUE
-  nist:
-    cce:
-      - $OS_VALUE
-    800-53r5:
-      - MP-7
-    800-53r4:
-      - MP-7(1)
-    800-171r2:
-      - 3.8.8
+  cce:
+    - CCE-94173-2
+  cci:
+    - N/A
+  800-53r5:
+    - MP-7
+  800-53r4:
+    - MP-7(1)
+  srg:
+    - N/A
+  disa_stig:
+    - N/A
+  800-171r3:
+    - 03.08.07
+  cmmc:
+    - MP.L2-3.8.7
+    - MP.L2-3.8.8
+macOS:
+  - '15.0'
 tags:
-  - none
-  - stig
+  - cnssi-1253_moderate
+  - cnssi-1253_low
+  - cnssi-1253_high
+  - cmmc_lvl2
 severity: medium
 mobileconfig: true
 mobileconfig_info:
@@ -49,43 +53,3 @@ mobileconfig_info:
     mount-controls:
       cd:
         - read-only
-os_specifics:
-  macOS:
-    '11.0':
-      references:
-        disa:
-          disa_stig:
-            - APPL-12-005051
-          srg:
-            - SRG-OS-000480-GPOS-00227
-            - SRG-OS-000319-GPOS-00164
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-85545-2
-    '12.0':
-      references:
-        disa:
-          disa_stig:
-            - APPL-12-005051
-          srg:
-            - SRG-OS-000480-GPOS-00227
-            - SRG-OS-000319-GPOS-00164
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91099-2
-    '13.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91771-6

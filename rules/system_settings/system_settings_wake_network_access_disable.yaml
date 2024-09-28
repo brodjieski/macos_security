@@ -4,58 +4,38 @@ discussion: |
   Wake for network access _MUST_ be disabled.
 check: |
   /usr/bin/pmset -g custom | /usr/bin/awk '/womp/ { sum+=$2 } END {print sum}'
-result: 0
+result:
+  integer: 0
 fix: |
   [source,bash]
   ----
   /usr/bin/pmset -a womp 0
   ----
 references:
-  disa:
-    cci:
-      - N/A
-    disa_stig:
-      - $OS_VALUE
-    srg:
-      - $OS_VALUE
-    sfr:
-      - $OS_VALUE
-  nist:
-    cce:
-      - $OS_VALUE
-    800-53r5:
-      - N/A
-    800-53r4:
-      - N/A
-    800-171r2:
-      - N/A
+  cce:
+    - CCE-94410-8
+  cci:
+    - N/A
+  800-53r5:
+    - N/A
+  800-53r4:
+    - N/A
+  disa_stig:
+    - N/A
+  srg:
+    - N/A
+  800-171r3:
+    - N/A
   cis:
     benchmark:
-      - $OS_VALUE
+      - 2.9.3 (level 1)
     controls v8:
-      - $OS_VALUE
+      - 4.8
+macOS:
+  - '15.0'
 tags:
   - cis_lvl1
   - cis_lvl2
   - cisv8
 mobileconfig: false
-mobileconfig_info: null
-os_specifics:
-  macOS:
-    '13.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91995-1
-        cis:
-          benchmark:
-            - 2.9.2 (level 1)
-          controls v8:
-            - 4.8
+mobileconfig_info:

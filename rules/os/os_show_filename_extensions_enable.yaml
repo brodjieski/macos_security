@@ -1,94 +1,50 @@
 id: os_show_filename_extensions_enable
 title: Enable Show All Filename Extensions
-discussion: "Show all filename extensions _MUST_ be enabled in the Finder.\n\n[NOTE] \n====\nThe check and fix are for the currently logged in user. To get the currently logged in user, run the following.\n[source,bash]\n----\nCURRENT_USER=$( /usr/sbin/scutil <<< \"show State:/Users/ConsoleUser\" | /usr/bin/awk '/Name :/ && ! /loginwindow/ { print $3 }' )\n----\n====\n"
+discussion: |
+  Show all filename extensions _MUST_ be enabled in the Finder.
+
+  [NOTE]
+  ====
+  The check and fix are for the currently logged in user. To get the currently logged in user, run the following.
+  [source,bash]
+  ----
+  CURRENT_USER=$( /usr/sbin/scutil <<< "show State:/Users/ConsoleUser" | /usr/bin/awk '/Name :/ && ! /loginwindow/ { print $3 }' )
+  ----
+  ====
 check: |
   /usr/bin/sudo -u "$CURRENT_USER" /usr/bin/defaults read .GlobalPreferences AppleShowAllExtensions 2>/dev/null
-result: 1
+result:
+  boolean: 1
 fix: |
   [source,bash]
   ----
   /usr/bin/sudo -u "$CURRENT_USER" /usr/bin/defaults write /Users/"$CURRENT_USER"/Library/Preferences/.GlobalPreferences AppleShowAllExtensions -bool true
   ----
 references:
-  disa:
-    srg:
-      - $OS_VALUE
-    disa_stig:
-      - $OS_VALUE
-    cci:
-      - None
-    sfr:
-      - $OS_VALUE
-  nist:
-    cce:
-      - $OS_VALUE
-    800-53r5:
-      - N/A
-    800-53r4:
-      - N/A
-    800-171r2:
-      - N/A
+  cce:
+    - CCE-94293-8
+  cci:
+    - N/A
+  800-53r5:
+    - N/A
+  800-53r4:
+    - N/A
+  srg:
+    - N/A
+  disa_stig:
+    - N/A
+  800-171r3:
+    - N/A
   cis:
     benchmark:
-      - $OS_VALUE
+      - 6.1.1 (level 1)
     controls v8:
-      - $OS_VALUE
+      - 2.3
+macOS:
+  - '15.0'
 tags:
   - cis_lvl1
   - cis_lvl2
   - cisv8
 mobileconfig: false
-mobileconfig_info: null
-os_specifics:
-  macOS:
-    '11.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-85511-4
-        cis:
-          benchmark:
-            - 6.2 (level 1)
-          controls v8:
-            - 2.3
-    '12.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91112-3
-        cis:
-          benchmark:
-            - 6.2 (level 1)
-          controls v8:
-            - 2.3
-    '13.0':
-      references:
-        disa:
-          disa_stig:
-            - N/A
-          srg:
-            - N/A
-          sfr:
-            - N/A
-        nist:
-          cce:
-            - CCE-91877-1
-        cis:
-          benchmark:
-            - 6.1.1 (level 1)
-          controls v8:
-            - 2.3
+mobileconfig_info:
