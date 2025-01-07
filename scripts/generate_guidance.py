@@ -1988,6 +1988,13 @@ def create_args():
         action="store",
     )
     parser.add_argument(
+        "-L",
+        "--language",
+        default=None,
+        help="Generate guidance for the specified language. Currently supports German (de)",
+        action="store",
+    )
+    parser.add_argument(
         "-p",
         "--profiles",
         default=None,
@@ -2167,6 +2174,17 @@ def main():
             )
     else:
         signing = False
+
+    if args.language:
+        # try to load the language file
+        lanugage_file_path = os.path.join(parent_dir, "localize", f"{args.language}.yaml")
+        if os.path.exists(lanugage_file_path):
+            use_custom_language = True
+            with open(lanugage_file_path) as l:
+                language_yaml = yaml.load(l, Loader=yaml.SafeLoader)
+        else:
+            print("Specificed language does not exist, defaulting to US English.")
+            use_custom_language = False
 
     if args.reference:
         use_custom_reference = True
@@ -2391,6 +2409,11 @@ def main():
                 custom = False
 
             rule_yaml = get_rule_yaml(rule_location, baseline_yaml, custom)
+
+            if use_custom_language:
+                if rule in language_yaml.keys():
+                    for key in language_yaml[rule].keys():
+                        rule_yaml[key] = language_yaml[rule][key]
 
             # Determine if the references exist and set accordingly
             try:

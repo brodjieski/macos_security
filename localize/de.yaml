@@ -1,0 +1,6 @@
+audit_acls_files_configure:
+  discussion: |
+    This would be the german translated version of the discussion for audit_acls_files_configure.
+os_password_hint_remove:
+  discussion: |
+    This would be the german translated version of the discussion for os_password_hint_remove.
