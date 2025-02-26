@@ -22,84 +22,27 @@ from itertools import groupby
 from uuid import uuid4
 from zipfile import ZipFile
 
-
-class MacSecurityRule:
-    def __init__(
-        self,
-        title,
-        rule_id,
-        severity,
-        discussion,
-        check,
-        fix,
-        cci,
-        cce,
-        nist_controls,
-        nist_171,
-        disa_stig,
-        srg,
-        sfr,
-        cis,
-        cmmc,
-        indigo,
-        custom_refs,
-        odv,
-        tags,
-        result_value,
-        mobileconfig,
-        mobileconfig_info,
-        customized,
-    ):
-        self.rule_title = title
-        self.rule_id = rule_id
-        self.rule_severity = severity
-        self.rule_discussion = discussion
-        self.rule_check = check
-        self.rule_fix = fix
-        self.rule_cci = cci
-        self.rule_cce = cce
-        self.rule_80053r5 = nist_controls
-        self.rule_800171 = nist_171
-        self.rule_disa_stig = disa_stig
-        self.rule_srg = srg
-        self.rule_sfr = sfr
-        self.rule_cis = cis
-        self.rule_cmmc = cmmc
-        self.rule_indigo = indigo
-        self.rule_custom_refs = custom_refs
-        self.rule_odv = odv
-        self.rule_result_value = result_value
-        self.rule_tags = tags
-        self.rule_mobileconfig = mobileconfig
-        self.rule_mobileconfig_info = mobileconfig_info
-        self.rule_customized = customized
-
-    def create_asciidoc(self, adoc_rule_template):
-        """Pass an AsciiDoc template as file object to return formatted AsciiDOC"""
-        rule_adoc = ""
-        rule_adoc = adoc_rule_template.substitute(
-            rule_title=self.rule_title,
-            rule_id=self.rule_id,
-            rule_severity=self.rule_severity,
-            rule_discussion=self.rule_discussion,
-            rule_check=self.rule_check,
-            rule_fix=self.rule_fix,
-            rule_cci=self.rule_cci,
-            rule_80053r5=self.rule_80053r5,
-            rule_disa_stig=self.rule_disa_stig,
-            rule_cis=self.rule_cis,
-            rule_cmmc=self.rule_cmmc,
-            rule_indigo=self.rule_indigo,
-            rule_srg=self.rule_srg,
-            rule_result=self.rule_result_value,
-        )
-        return rule_adoc
-
-    def create_mobileconfig(self):
-        pass
+# Add the util directory to the path to import our utilities
+sys.path.append(os.path.join(os.path.dirname(__file__), 'util'))
+try:
+    from mscp_utils import (
+        MacSecurityRule, get_rule_yaml, load_yaml_file,
+        section_title
+    )
+except ImportError:
+    print("Error importing mscp_utils. Make sure the file exists in the util directory.")
+    sys.exit(1)
 
 
 def ulify(elements):
+    """Convert a list of elements to an unordered list string format
+    
+    Args:
+        elements: List of elements to format
+        
+    Returns:
+        Formatted string with newlines and asterisks
+    """
     string = "\n"
     for s in elements:
         string += "* " + str(s) + "\n"
@@ -107,6 +50,14 @@ def ulify(elements):
 
 
 def group_ulify(elements):
+    """Convert a list of elements to a comma-separated string with bullet prefix
+    
+    Args:
+        elements: List of elements to format
+        
+    Returns:
+        Formatted string with a bullet point and comma-separated values
+    """
     string = "\n * "
     for s in elements:
         string += str(s) + ", "
@@ -114,6 +65,15 @@ def group_ulify(elements):
 
 
 def group_ulify_comment(elements):
+    """Convert a list of elements to a comma-separated string with bullet prefix,
+    formatted for comments
+    
+    Args:
+        elements: List of elements to format
+        
+    Returns:
+        Formatted string with a bullet point and comma-separated values
+    """
     string = "\n * "
     for s in elements:
         string += str(s) + ", "
@@ -121,24 +81,46 @@ def group_ulify_comment(elements):
 
 
 def get_check_code(check_yaml):
+    """Extract code block from check_yaml
+    
+    Args:
+        check_yaml: YAML string containing check code
+        
+    Returns:
+        Extracted code as string
+    """
     try:
         check_string = check_yaml.split("[source,bash]")[1]
     except:
         return check_yaml
-    # print check_string
+    
     check_code = re.search("(?:----((?:.*?\r?\n?)*)----)+", check_string)
-    # print(check_code.group(1).rstrip())
     return check_code.group(1).strip()
 
 
 def quotify(fix_code):
+    """Escape single quotes and percent signs in fix code
+    
+    Args:
+        fix_code: Code string to escape
+        
+    Returns:
+        Escaped string
+    """
     string = fix_code.replace("'", "'\"'\"'")
     string = string.replace("%", "%%")
-
     return string
 
 
 def get_fix_code(fix_yaml):
+    """Extract code block from fix_yaml
+    
+    Args:
+        fix_yaml: YAML string containing fix code
+        
+    Returns:
+        Extracted code as string
+    """
     fix_string = fix_yaml.split("[source,bash]")[1]
     fix_code = re.search("(?:----((?:.*?\r?\n?)*)----)+", fix_string)
     return fix_code.group(1)
@@ -460,7 +442,7 @@ def generate_profiles(
                 logging.debug(f"{rule}")
 
             #for rule in glob.glob('../rules/*/{}.y*ml'.format(profile_rule)) + glob.glob('../custom/rules/**/{}.y*ml'.format(profile_rule),recursive=True):
-            rule_yaml = get_rule_yaml(rule, baseline_yaml, custom)
+            rule_yaml = get_guidance_rule_yaml(rule, baseline_yaml, custom)
 
             if rule_yaml["mobileconfig"]:
                 for payload_type, info in rule_yaml["mobileconfig_info"].items():
@@ -709,7 +691,7 @@ def generate_ddm(baseline_name, build_path, parent_dir, baseline_yaml):
                 custom = False
                 logging.debug(f"{rule}")
 
-            rule_yaml = get_rule_yaml(rule, baseline_yaml, custom)
+            rule_yaml = get_guidance_rule_yaml(rule, baseline_yaml, custom)
             if "ddm_info" in rule_yaml.keys():
                 if rule_yaml["ddm_info"]:
                     logging.debug(f'adding {rule_yaml["id"]}')
@@ -1159,7 +1141,7 @@ fi
                 custom=False
                 logging.debug(f"{rule}")
 
-            rule_yaml = get_rule_yaml(rule, baseline_yaml, custom)
+            rule_yaml = get_guidance_rule_yaml(rule, baseline_yaml, custom)
 
             if rule_yaml["id"].startswith("supplemental"):
                 continue
@@ -1552,122 +1534,32 @@ def fill_in_odv(resulting_yaml, parent_values):
                     resulting_yaml["ddm_info"][ddm_type] = odv
 
 
-def get_rule_yaml(
-    rule_file,
-    baseline_yaml,
-    custom=False,
-):
-    """Takes a rule file, checks for a custom version, and returns the yaml for the rule"""
-    global resulting_yaml
-    resulting_yaml = {}
-    names = [os.path.basename(x) for x in glob.glob('../custom/rules/**/*.y*ml', recursive=True)]
-    file_name = os.path.basename(rule_file)
-
-    # get parent values
+def get_guidance_rule_yaml(rule_file, baseline_yaml, custom=False):
+    """Takes a rule file, checks for a custom version, and returns the yaml for the rule
+    
+    This function extends the utility module's get_rule_yaml function with
+    guidance-specific processing like ODV handling.
+    
+    Args:
+        rule_file: Path to the rule file
+        baseline_yaml: The baseline YAML data
+        custom: Whether to use custom rules
+        
+    Returns:
+        A dictionary containing the processed rule YAML data
+    """
+    # Get rule YAML using the utility function
+    resulting_yaml = get_rule_yaml(rule_file, custom=custom)
+    
+    # Get parent values for ODV handling
     try:
         parent_values = baseline_yaml["parent_values"]
     except KeyError:
         parent_values = "recommended"
-
-    if custom:
-        print(f"Custom settings found for rule: {rule_file}")
-        try:
-            override_path = glob.glob(
-                "../custom/rules/**/{}".format(file_name), recursive=True
-            )[0]
-        except IndexError:
-            override_path = glob.glob(
-                "../custom/rules/{}".format(file_name), recursive=True
-            )[0]
-        with open(override_path) as r:
-            rule_yaml = yaml.load(r, Loader=yaml.SafeLoader)
-    else:
-        with open(rule_file) as r:
-            rule_yaml = yaml.load(r, Loader=yaml.SafeLoader)
-
-    try:
-        og_rule_path = glob.glob("../rules/**/{}".format(file_name), recursive=True)[0]
-    except IndexError:
-        # assume this is a completely new rule
-        og_rule_path = glob.glob(
-            "../custom/rules/**/{}".format(file_name), recursive=True
-        )[0]
-        resulting_yaml["customized"] = ["customized rule"]
-
-    # get original/default rule yaml for comparison
-    with open(og_rule_path) as og:
-        og_rule_yaml = yaml.load(og, Loader=yaml.SafeLoader)
-
-    for yaml_field in og_rule_yaml:
-        # print('processing field {} for rule {}'.format(yaml_field, file_name))
-        if yaml_field == "references":
-            if not "references" in resulting_yaml:
-                resulting_yaml["references"] = {}
-            for ref in og_rule_yaml["references"]:
-                try:
-                    if og_rule_yaml["references"][ref] == rule_yaml["references"][ref]:
-                        resulting_yaml["references"][ref] = og_rule_yaml["references"][
-                            ref
-                        ]
-                    else:
-                        resulting_yaml["references"][ref] = rule_yaml["references"][ref]
-                except KeyError:
-                    #  reference not found in original rule yaml, trying to use reference from custom rule
-                    try:
-                        resulting_yaml["references"][ref] = rule_yaml["references"][ref]
-                    except KeyError:
-                        resulting_yaml["references"][ref] = og_rule_yaml["references"][
-                            ref
-                        ]
-                try:
-                    if "custom" in rule_yaml["references"]:
-                        resulting_yaml["references"]["custom"] = rule_yaml[
-                            "references"
-                        ]["custom"]
-                        if "customized" in resulting_yaml:
-                            if (
-                                "customized references"
-                                not in resulting_yaml["customized"]
-                            ):
-                                resulting_yaml["customized"].append(
-                                    "customized references"
-                                )
-                        else:
-                            resulting_yaml["customized"] = ["customized references"]
-                except:
-                    pass
-        elif yaml_field == "tags":
-            # try to concatenate tags from both original yaml and custom yaml
-            try:
-                if og_rule_yaml["tags"] == rule_yaml["tags"]:
-                    # print("using default data in yaml field {}".format("tags"))
-                    resulting_yaml["tags"] = og_rule_yaml["tags"]
-                else:
-                    # print("Found custom tags... concatenating them")
-                    resulting_yaml["tags"] = og_rule_yaml["tags"] + rule_yaml["tags"]
-            except KeyError:
-                resulting_yaml["tags"] = og_rule_yaml["tags"]
-        else:
-            try:
-                if og_rule_yaml[yaml_field] == rule_yaml[yaml_field]:
-                    # print("using default data in yaml field {}".format(yaml_field))
-                    resulting_yaml[yaml_field] = og_rule_yaml[yaml_field]
-                else:
-                    # print('using CUSTOM value for yaml field {} in rule {}'.format(yaml_field, file_name))
-                    resulting_yaml[yaml_field] = rule_yaml[yaml_field]
-                    if "customized" in resulting_yaml:
-                        resulting_yaml["customized"].append(
-                            "customized {}".format(yaml_field)
-                        )
-                    else:
-                        resulting_yaml["customized"] = [
-                            "customized {}".format(yaml_field)
-                        ]
-            except KeyError:
-                resulting_yaml[yaml_field] = og_rule_yaml[yaml_field]
-
+    
+    # Apply ODV replacements
     fill_in_odv(resulting_yaml, parent_values)
-
+    
     return resulting_yaml
 
 
@@ -1912,7 +1804,7 @@ def create_rules(baseline_yaml):
                 custom = False
 
             # for rule in glob.glob('../rules/*/{}.y*ml'.format(profile_rule)) + glob.glob('../custom/rules/**/{}.y*ml'.format(profile_rule),recursive=True):
-            rule_yaml = get_rule_yaml(rule, baseline_yaml, custom)
+            rule_yaml = get_guidance_rule_yaml(rule, baseline_yaml, custom)
 
             for key in keys:
                 try:
@@ -2390,7 +2282,7 @@ def main():
                 rule_location = rule_path[0]
                 custom = False
 
-            rule_yaml = get_rule_yaml(rule_location, baseline_yaml, custom)
+            rule_yaml = get_guidance_rule_yaml(rule_location, baseline_yaml, custom)
 
             # Determine if the references exist and set accordingly
             try:

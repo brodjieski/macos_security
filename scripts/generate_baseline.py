@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# filename: generate_guidance.py
+# filename: generate_baseline.py
 # description: Process a given keyword, and output a baseline file
 
 import os.path
@@ -7,153 +7,19 @@ import glob
 import os
 import yaml
 import argparse
+import sys
 
+# Add the util directory to the path to import our utilities
+sys.path.append(os.path.join(os.path.dirname(__file__), 'util'))
+from mscp_utils import (
+    MacSecurityRule, get_rule_yaml, collect_rules, 
+    get_controls, section_title, available_tags as get_available_tags,
+    load_yaml_file
+)
 
-class MacSecurityRule():
-    def __init__(self, title, rule_id, severity, discussion, check, fix, cci, cce, nist_controls, disa_stig, srg, odv, tags, result_value, mobileconfig, mobileconfig_info):
-        self.rule_title = title
-        self.rule_id = rule_id
-        self.rule_severity = severity
-        self.rule_discussion = discussion
-        self.rule_check = check
-        self.rule_fix = fix
-        self.rule_cci = cci
-        self.rule_cce = cce
-        self.rule_80053r4 = nist_controls
-        self.rule_disa_stig = disa_stig
-        self.rule_srg = srg
-        self.rule_odv = odv
-        self.rule_result_value = result_value
-        self.rule_tags = tags
-        self.rule_mobileconfig = mobileconfig
-        self.rule_mobileconfig_info = mobileconfig_info
-
-    def create_asciidoc(self, adoc_rule_template):
-        """Pass an AsciiDoc template as file object to return formatted AsciiDOC"""
-        rule_adoc = ""
-        rule_adoc = adoc_rule_template.substitute(
-            rule_title=self.rule_title,
-            rule_id=self.rule_id,
-            rule_severity=self.rule_severity,
-            rule_discussion=self.rule_discussion,
-            rule_check=self.rule_check,
-            rule_fix=self.rule_fix,
-            rule_cci=self.rule_cci,
-            rule_80053r4=self.rule_80053r4,
-            rule_disa_stig=self.rule_disa_stig,
-            rule_srg=self.rule_srg,
-            rule_result=self.rule_result_value
-        )
-        return rule_adoc
-
-
-def get_rule_yaml(rule_file, custom=False):
-    """ Takes a rule file, checks for a custom version, and returns the yaml for the rule
-    """
-    resulting_yaml = {}
-    names = [os.path.basename(x) for x in glob.glob('../custom/rules/**/*.y*ml', recursive=True)]
-    file_name = os.path.basename(rule_file)
-
-    if custom:
-        print(f"Custom settings found for rule: {rule_file}")
-        try:
-            override_path = glob.glob('../custom/rules/**/{}'.format(file_name), recursive=True)[0]
-        except IndexError:
-            override_path = glob.glob('../custom/rules/{}'.format(file_name), recursive=True)[0]
-        with open(override_path) as r:
-            rule_yaml = yaml.load(r, Loader=yaml.SafeLoader)
-    else:
-        with open(rule_file) as r:
-            rule_yaml = yaml.load(r, Loader=yaml.SafeLoader)
-
-    try:
-        og_rule_path = glob.glob('../rules/**/{}'.format(file_name), recursive=True)[0]
-    except IndexError:
-        #assume this is a completely new rule
-        og_rule_path = glob.glob('../custom/rules/**/{}'.format(file_name), recursive=True)[0]
-
-    # get original/default rule yaml for comparison
-    with open(og_rule_path) as og:
-        og_rule_yaml = yaml.load(og, Loader=yaml.SafeLoader)
-    og.close()
-
-    for yaml_field in og_rule_yaml:
-        try:
-            if og_rule_yaml[yaml_field] == rule_yaml[yaml_field]:
-                resulting_yaml[yaml_field] = og_rule_yaml[yaml_field]
-            else:
-                resulting_yaml[yaml_field] = rule_yaml[yaml_field]
-                if 'customized' in resulting_yaml:
-                    resulting_yaml['customized'].append("customized {}".format(yaml_field))
-                else:
-                    resulting_yaml['customized'] = ["customized {}".format(yaml_field)]
-        except KeyError:
-            resulting_yaml[yaml_field] = og_rule_yaml[yaml_field]
-
-    return resulting_yaml
-
-def collect_rules():
-    """Takes a baseline yaml file and parses the rules, returns a list of containing rules
-    """
-    all_rules = []
-    #expected keys and references
-    keys = ['mobileconfig',
-            'macOS',
-            'severity',
-            'title',
-            'check',
-            'fix',
-            'odv',
-            'tags',
-            'id',
-            'references',
-            'result',
-            'discussion']
-    references = ['disa_stig',
-                  'cci',
-                  'cce',
-                  '800-53r4',
-                  'srg']
-
-
-    for rule in sorted(glob.glob('../rules/**/*.y*ml',recursive=True)) + sorted(glob.glob('../custom/rules/**/*.y*ml',recursive=True)):
-        rule_yaml = get_rule_yaml(rule, custom=False)
-        for key in keys:
-            try:
-                rule_yaml[key]
-            except:
-                #print "{} key missing ..for {}".format(key, rule)
-                rule_yaml.update({key: "missing"})
-            if key == "references":
-                for reference in references:
-                    try:
-                        rule_yaml[key][reference]
-                    except:
-                        #print("expected reference '{}' is missing in key '{}' for rule{}".format(reference, key, rule))
-                        rule_yaml[key].update({reference: ["None"]})
-
-        all_rules.append(MacSecurityRule(rule_yaml['title'].replace('|', '\\|'),
-                                    rule_yaml['id'].replace('|', '\\|'),
-                                    rule_yaml['severity'].replace('|', '\\|'),
-                                    rule_yaml['discussion'].replace('|', '\\|'),
-                                    rule_yaml['check'].replace('|', '\\|'),
-                                    rule_yaml['fix'].replace('|', '\\|'),
-                                    rule_yaml['references']['cci'],
-                                    rule_yaml['references']['cce'],
-                                    rule_yaml['references']['800-53r4'],
-                                    rule_yaml['references']['disa_stig'],
-                                    rule_yaml['references']['srg'],
-                                    rule_yaml['odv'],
-                                    rule_yaml['tags'],
-                                    rule_yaml['result'],
-                                    rule_yaml['mobileconfig'],
-                                    rule_yaml['mobileconfig_info']
-                                    ))
-
-    return all_rules
 
 def create_args():
-    """configure the arguments used in the script, returns the parsed arguments
+    """Configure the arguments used in the script, returns the parsed arguments
     """
     parser = argparse.ArgumentParser(
         description='Given a keyword tag, generate a generic baseline.yaml file containing rules with the tag.')
@@ -167,36 +33,6 @@ def create_args():
                         help="Customize the baseline to your organizations values.", action="store_true")
 
     return parser.parse_args()
-
-def section_title(section_name, platform):
-    os = platform.split(':')[2]
-    titles = {
-        "auth": "authentication",
-        "audit": "auditing",
-        "os": os,
-        "pwpolicy": "passwordpolicy",
-        "icloud": "icloud",
-        "sysprefs": "systempreferences",
-        "system_settings": "systemsettings",
-        "sys_prefs": "systempreferences",
-        "srg": "srg"
-    }
-
-    if section_name in titles:
-        return titles[section_name]
-    else:
-        return section_name
-
-def get_controls(all_rules):
-    all_controls = []
-    for rule in all_rules:
-        for control in rule.rule_80053r4:
-            if control not in all_controls:
-                all_controls.append(control)
-
-    all_controls.sort()
-
-    return all_controls
 
 def append_authors(authors, name, org):
     author_block = "*Security configuration tailored by:*\n  "
@@ -219,20 +55,14 @@ def parse_authors(authors_from_yaml):
     author_block += "|===\n"
     return author_block
 
-def available_tags(all_rules):
-    all_tags = []
-    for rule in all_rules:
-        for tag in rule.rule_tags:
-            all_tags.append(tag)
-
-    available_tags = []
-    for tag in all_tags:
-        if tag not in available_tags:
-            available_tags.append(tag)
-    available_tags.append("all_rules")
-    available_tags.sort()
-
-    for tag in available_tags:
+def print_available_tags(all_rules):
+    """Print all available tags from the rules
+    
+    Args:
+        all_rules: List of MacSecurityRule objects
+    """
+    tags = get_available_tags(all_rules)
+    for tag in tags:
         print(tag)
     return
 
@@ -450,7 +280,7 @@ def odv_query(rules, benchmark):
     return included_rules
 
 def main():
-
+    """Main entry point for the script"""
     args = create_args()
     
     file_dir = os.path.dirname(os.path.abspath(__file__))
@@ -465,16 +295,12 @@ def main():
     all_rules = collect_rules()
 
     if args.list_tags:
-        available_tags(all_rules)
+        print_available_tags(all_rules)
         return
 
     if args.controls:
-        baselines_file = os.path.join(
-        parent_dir, 'includes', '800-53_baselines.yaml')
-
-
-        with open(baselines_file) as r:
-            baselines = yaml.load(r, Loader=yaml.SafeLoader)
+        baselines_file = os.path.join(parent_dir, 'includes', '800-53_baselines.yaml')
+        baselines = load_yaml_file(baselines_file)
 
         included_controls = get_controls(all_rules)
         needed_controls = []
@@ -489,6 +315,7 @@ def main():
 
         return
 
+    # Create build directory if it doesn't exist
     build_path = os.path.join(parent_dir, 'build', 'baselines')
     if not (os.path.isdir(build_path)):
         try:
@@ -496,36 +323,37 @@ def main():
         except OSError:
             print(f"Creation of the directory {build_path} failed")
 
-    # import mscp-data
-    mscp_data_file = os.path.join(
-            parent_dir, 'includes', 'mscp-data.yaml')
-    with open(mscp_data_file) as r:
-        mscp_data_yaml = yaml.load(r, Loader=yaml.SafeLoader)
+    # Load configuration data
+    mscp_data_file = os.path.join(parent_dir, 'includes', 'mscp-data.yaml')
+    mscp_data_yaml = load_yaml_file(mscp_data_file)
 
     version_file = os.path.join(parent_dir, "VERSION.yaml")
-    with open(version_file) as r:
-        version_yaml = yaml.load(r, Loader=yaml.SafeLoader)
+    version_yaml = load_yaml_file(version_file)
 
+    # Find rules based on keyword
     found_rules = []
     for rule in all_rules:
         if args.keyword in rule.rule_tags or args.keyword == "all_rules":
             found_rules.append(rule)
 
-    if args.keyword == None:
+    if args.keyword is None:
         print("No rules found for the keyword provided, please verify from the following list:")
-        available_tags(all_rules)
+        print_available_tags(all_rules)
     else:
+        # Determine benchmark type
         _established_benchmarks = ['stig', 'cis_lvl1', 'cis_lvl2']
         if any(bm in args.keyword for bm in _established_benchmarks):
             benchmark = args.keyword
         else:
             benchmark = "recommended"
 
+        # Set authors
         if args.keyword in mscp_data_yaml['authors']:
             authors = parse_authors(mscp_data_yaml['authors'][args.keyword])
         else:
             authors = "|===\n  |Name|Organization\n  |===\n"
 
+        # Set title
         if args.keyword in mscp_data_yaml['titles'] and not args.tailor:
             full_title = f" {mscp_data_yaml['titles'][args.keyword]}"
         elif args.tailor:
@@ -535,24 +363,49 @@ def main():
 
         baseline_tailored_string = ""
         if args.tailor:
-            # prompt for name of benchmark to be used for filename
-            tailored_filename = sanitised_input(f'Enter a name for your tailored benchmark or press Enter for the default value ({args.keyword}): ', str, default_=args.keyword)
+            # Tailor the baseline
+            tailored_filename = sanitised_input(
+                f'Enter a name for your tailored benchmark or press Enter for the default value ({args.keyword}): ', 
+                str, 
+                default_=args.keyword
+            )
             custom_author_name = sanitised_input('Enter your name: ')
             custom_author_org = sanitised_input('Enter your organization: ')
             authors = append_authors(authors, custom_author_name, custom_author_org)
+            
             if tailored_filename == args.keyword:
                 baseline_tailored_string = f"{args.keyword.upper()} (Tailored)"
             else:
                 baseline_tailored_string = f"{tailored_filename.upper()} (Tailored from {args.keyword.upper()})"
-            # prompt for inclusion, add ODV
+            
+            # Prompt for inclusion, add ODV
             odv_baseline_rules = odv_query(found_rules, benchmark)
-            baseline_output_file = open(f"{build_path}/{tailored_filename}.yaml", 'w')
-            baseline_output_file.write(output_baseline(odv_baseline_rules, version_yaml, baseline_tailored_string, benchmark, authors, full_title))
+            
+            # Write the baseline file
+            output_file_path = f"{build_path}/{tailored_filename}.yaml"
+            with open(output_file_path, 'w') as baseline_output_file:
+                baseline_output_file.write(output_baseline(
+                    odv_baseline_rules, 
+                    version_yaml, 
+                    baseline_tailored_string, 
+                    benchmark, 
+                    authors, 
+                    full_title
+                ))
         else:
-            baseline_output_file = open(f"{build_path}/{args.keyword}.yaml", 'w')
-            baseline_output_file.write(output_baseline(found_rules, version_yaml, baseline_tailored_string, benchmark, authors, full_title))
+            # Write the standard baseline file
+            output_file_path = f"{build_path}/{args.keyword}.yaml"
+            with open(output_file_path, 'w') as baseline_output_file:
+                baseline_output_file.write(output_baseline(
+                    found_rules, 
+                    version_yaml, 
+                    baseline_tailored_string, 
+                    benchmark, 
+                    authors, 
+                    full_title
+                ))
 
-    # finally revert back to the prior directory
+    # Revert back to the original directory
     os.chdir(original_working_directory)
 
 if __name__ == "__main__":
