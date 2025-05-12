@@ -1,8 +1,21 @@
+#Trash
 .DS_Store
-.vscode
-*.lock
-.bundle
+Thumbs.db
+
+# Ruby
 bin
 mscp_gems
-_work
-**/__pycache__/
+.bundle
+Gemfile.lock
+
+# Python
+.venv*
+
+# misc
+.private
+.vscode
+*.lock
+
+logs
+*.log
+__pycache__
