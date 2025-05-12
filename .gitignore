@@ -5,3 +5,4 @@
 bin
 mscp_gems
 _work
+**/__pycache__/
