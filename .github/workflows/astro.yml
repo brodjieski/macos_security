@@ -16,6 +16,8 @@ concurrency:
 
 env:
   BUILD_PATH: "."
+  SITE_PATH: "https://brodjieski.github.io/"
+  BASE_PATH: "/macos_security"
 
 jobs:
   build:
@@ -60,17 +62,14 @@ jobs:
           node-version: "20"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
           cache-dependency-path: ${{ env.BUILD_PATH }}/${{ steps.detect-package-manager.outputs.lockfile }}
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v5
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
         working-directory: ${{ env.BUILD_PATH }}/docs
       - name: Build with Astro
         run: |
           ${{ steps.detect-package-manager.outputs.runner }} astro build \
-            --site "${{ steps.pages.outputs.origin }}" \
-            --base "${{ steps.pages.outputs.base_path }}"
+            --site "${{ env.SITE_PATH }}" \
+            --base "${{ env.BASE_PATH }}"
         working-directory: ${{ env.BUILD_PATH }}/docs
       - name: Upload to nist-pages
         uses: peaceiris/actions-gh-pages@v3
