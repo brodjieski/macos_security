@@ -6,6 +6,7 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'macOS Security Compliance Project',
+			favicon: '/favicon.png',
 			logo: {
 				src: './src/assets/logo.png',
 			},
