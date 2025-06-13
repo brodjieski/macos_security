@@ -1,5 +1,5 @@
 id: system_settings_token_removal_enforce
-title: "Configure User Session Lock When a Smart Token is Removed"
+title: Configure User Session Lock When a Smart Token is Removed
 discussion: |
   The screen lock _MUST_ be configured to initiate automatically when the smart token is removed from the system.
 
@@ -16,11 +16,10 @@ check: |
   EOS
 result:
   integer: 1
-fix:
-  This is implemented by a Configuration Profile.
+fix: This is implemented by a Configuration Profile.
 references:
   cce:
-    - CCE-91991-0
+    - CCE-94406-6
   cci:
     - CCI-000058
   800-53r5:
@@ -30,25 +29,25 @@ references:
   srg:
     - SRG-OS-000030-GPOS-00011
   disa_stig:
-    - APPL-13-000005
-  800-171r2:
-    - 3.1.10
+    - APPL-15-000005
+  800-171r3:
+    - 03.01.10
   cmmc:
     - AC.L2-3.1.10
 macOS:
-  - "13.0"
+  - '15.0'
 tags:
-  - 800-53r5_moderate 
-  - 800-53r5_high 
-  - 800-53r4_moderate 
-  - 800-53r4_high 
-  - 800-171 
-  - cnssi-1253_moderate
+  - 800-53r5_moderate
+  - 800-53r5_high
+  - 800-53r4_moderate
+  - 800-53r4_high
+  - 800-171
   - cnssi-1253_low
   - cnssi-1253_high
   - cmmc_lvl2
   - stig
-severity: "medium"
+  - cnssi-1253_moderate
+severity: medium
 mobileconfig: true
 mobileconfig_info:
   com.apple.security.smartcard:

@@ -1,6 +1,6 @@
-title: "macOS 13.0: Security Configuration - Committee on National Security Systems Instruction No. 1253 (Moderate)"
+title: "macOS 15.0: Security Configuration - Committee on National Security Systems Instruction No. 1253 (Moderate)"
 description: |
-  This guide describes the actions to take when securing a macOS 13.0 system against the Committee on National Security Systems Instruction No. 1253 (Moderate) security baseline.
+  This guide describes the actions to take when securing a macOS 15.0 system against the Committee on National Security Systems Instruction No. 1253 (Moderate) security baseline.
 
   Information System Security Officers and benchmark creators can use this catalog of settings in order to assist them in security benchmark creation. This list is a catalog, not a checklist or benchmark, and satisfaction of every item is not likely to be possible or sensible in many operational scenarios.
 authors: |
@@ -47,6 +47,7 @@ profile:
       - auth_pam_su_smartcard_enforce
       - auth_pam_sudo_smartcard_enforce
       - auth_smartcard_allow
+      - auth_smartcard_certificate_trust_enforce_high
       - auth_smartcard_certificate_trust_enforce_moderate
       - auth_smartcard_enforce
       - auth_ssh_password_authentication_disable
@@ -57,6 +58,7 @@ profile:
       - icloud_bookmarks_disable
       - icloud_calendar_disable
       - icloud_drive_disable
+      - icloud_freeform_disable
       - icloud_game_center_disable
       - icloud_keychain_disable
       - icloud_mail_disable
@@ -67,6 +69,7 @@ profile:
       - icloud_sync_disable
   - section: "macos"
     rules:
+      - os_account_modification_disable
       - os_airdrop_disable
       - os_appleid_prompt_disable
       - os_asl_log_files_owner_group_configure
@@ -78,32 +81,38 @@ profile:
       - os_bluray_read_only_enforce
       - os_bonjour_disable
       - os_burn_support_disable
+      - os_calendar_app_disable
       - os_cd_read_only_enforce
       - os_certificate_authority_trust
       - os_config_data_install_enforce
       - os_config_profile_ui_install_disable
+      - os_dictation_disable
       - os_disk_image_disable
       - os_dvdram_disable
       - os_erase_content_and_settings_disable
+      - os_external_storage_access_defined
       - os_facetime_app_disable
       - os_filevault_autologin_disable
       - os_firewall_default_deny_require
-      - os_firewall_log_enable
       - os_firmware_password_require
       - os_gatekeeper_enable
-      - os_gatekeeper_rearm
+      - os_genmoji_disable
       - os_handoff_disable
+      - os_home_folders_default
       - os_home_folders_secure
       - os_httpd_disable
       - os_icloud_storage_prompt_disable
+      - os_image_generation_disable
       - os_install_log_retention_configure
       - os_ir_support_disable
+      - os_loginwindow_adminhostinfo_undefined
       - os_mail_app_disable
       - os_mdm_require
       - os_messages_app_disable
       - os_newsyslog_files_owner_group_configure
       - os_newsyslog_files_permissions_configure
       - os_nfsd_disable
+      - os_on_device_dictation_enforce
       - os_parental_controls_enable
       - os_password_autofill_disable
       - os_password_hint_remove
@@ -121,6 +130,7 @@ profile:
       - os_root_disable
       - os_screensaver_loginwindow_enforce
       - os_secure_boot_verify
+      - os_setup_assistant_filevault_enforce
       - os_sip_enable
       - os_siri_prompt_disable
       - os_skip_screen_time_prompt_enable
@@ -128,12 +138,14 @@ profile:
       - os_ssh_fips_compliant
       - os_ssh_server_alive_count_max_configure
       - os_ssh_server_alive_interval_configure
+      - os_sshd_channel_timeout_configure
       - os_sshd_client_alive_count_max_configure
       - os_sshd_client_alive_interval_configure
       - os_sshd_fips_compliant
-      - os_sshd_key_exchange_algorithm_configure
       - os_sshd_login_grace_time_configure
       - os_sshd_permit_root_login_configure
+      - os_sshd_unused_connection_timeout_configure
+      - os_sudo_log_enforce
       - os_sudoers_timestamp_type_configure
       - os_system_read_only
       - os_tftpd_disable
@@ -142,12 +154,14 @@ profile:
       - os_unlock_active_user_session_disable
       - os_user_app_installation_prohibit
       - os_uucp_disable
+      - os_writing_tools_disable
   - section: "passwordpolicy"
     rules:
       - pwpolicy_account_inactivity_enforce
       - pwpolicy_account_lockout_enforce
       - pwpolicy_account_lockout_timeout_enforce
       - pwpolicy_alpha_numeric_enforce
+      - pwpolicy_custom_regex_enforce
       - pwpolicy_history_enforce
       - pwpolicy_lower_case_character_enforce
       - pwpolicy_max_lifetime_enforce
@@ -164,21 +178,24 @@ profile:
       - system_settings_automatic_login_disable
       - system_settings_automatic_logout_enforce
       - system_settings_bluetooth_disable
+      - system_settings_bluetooth_settings_disable
       - system_settings_bluetooth_sharing_disable
-      - system_settings_cd_dvd_sharing_disable
       - system_settings_content_caching_disable
       - system_settings_critical_update_install_enforce
       - system_settings_diagnostics_reports_disable
+      - system_settings_external_intelligence_disable
+      - system_settings_external_intelligence_sign_in_disable
       - system_settings_filevault_enforce
       - system_settings_find_my_disable
       - system_settings_firewall_enable
       - system_settings_firewall_stealth_mode_enable
       - system_settings_gatekeeper_identified_developers_allowed
       - system_settings_gatekeeper_override_disallow
-      - system_settings_guest_access_smb_disable
       - system_settings_guest_account_disable
       - system_settings_hot_corners_disable
       - system_settings_hot_corners_secure
+      - system_settings_improve_assistive_voice_disable
+      - system_settings_improve_search_disable
       - system_settings_improve_siri_dictation_disable
       - system_settings_internet_accounts_disable
       - system_settings_internet_sharing_disable
@@ -195,6 +212,7 @@ profile:
       - system_settings_screensaver_password_enforce
       - system_settings_screensaver_timeout_enforce
       - system_settings_siri_disable
+      - system_settings_siri_settings_disable
       - system_settings_smbd_disable
       - system_settings_ssh_disable
       - system_settings_ssh_enable
@@ -202,8 +220,10 @@ profile:
       - system_settings_time_server_configure
       - system_settings_time_server_enforce
       - system_settings_token_removal_enforce
+      - system_settings_touch_id_settings_disable
       - system_settings_touchid_unlock_disable
       - system_settings_usb_restricted_mode
+      - system_settings_wallet_applepay_settings_disable
       - system_settings_wifi_disable
   - section: "Inherent"
     rules:
@@ -258,10 +278,3 @@ profile:
       - os_managed_access_control_points
       - os_non_repudiation
       - os_nonlocal_maintenance
-  - section: "Supplemental"
-    rules:
-      - supplemental_controls
-      - supplemental_filevault
-      - supplemental_firewall_pf
-      - supplemental_password_policy
-      - supplemental_smartcard

@@ -1,9 +1,9 @@
 id: os_power_nap_enable
-title: "Enable Power Nap"
+title: Enable Power Nap
 discussion: |
   Power Nap _MUST_ be enabled.
 
-  NOTE: Power nap can interfere with USB power and may cause devices such as smartcards to stop functioning until a reboot. 
+  NOTE: Power nap can interfere with USB power and may cause devices such as smartcards to stop functioning until a reboot.
 
   The following Macs support Power Nap:
 
@@ -24,7 +24,7 @@ fix: |
   ----
 references:
   cce:
-    - CCE-91849-0
+    - CCE-94258-1
   cci:
     - N/A
   800-53r5:
@@ -34,8 +34,8 @@ references:
   disa_stig:
     - N/A
   srg:
-    - N/A    
-  800-171r2:
+    - N/A
+  800-171r3:
     - N/A
   cis:
     benchmark:
@@ -43,7 +43,7 @@ references:
     controls v8:
       - N/A
 macOS:
-  - "13.0"
+  - '15.0'
 tags:
   - none
 mobileconfig: false

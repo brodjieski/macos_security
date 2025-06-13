@@ -1,5 +1,5 @@
 id: os_pii_deidentification
-title: "Remove Elements of Personally Identifiable Information from Datasets"
+title: Remove Elements of Personally Identifiable Information from Datasets
 discussion: |
   Remove the following elements of personally identifiable information from datasets: organization-defined elements of personally identifiable information and evaluate organization-defined frequency for effectiveness of de-identification.
 
@@ -10,21 +10,21 @@ fix: |
   The requirement is NA. No fix is required.
 references:
   cce:
-    - CCE-91843-3
+    - CCE-94252-4
   cci:
     - N/A
   800-53r5:
     - SI-19
   800-53r4:
     - N/A
-  800-171r2:
+  800-171r3:
     - N/A
   disa_stig:
     - N/A
   srg:
     - N/A
 macOS:
-  - "13.0"
+  - '15.0'
 tags:
   - 800-53r5_privacy
   - n_a

@@ -1,4 +1,4 @@
-payloads_types: 
+payloads_types:
   - com.apple.ADCertificate.managed
   - com.apple.AIM.account
   - com.apple.AssetCache.managed
@@ -116,3 +116,4 @@ payloads_types:
   - .GlobalPreferences
   - com.apple.preferences.sharing.SharingPrefsExtension
   - com.apple.controlcenter
+  - com.apple.Accessibility

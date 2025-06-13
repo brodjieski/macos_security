@@ -1,5 +1,5 @@
 id: os_gatekeeper_enable
-title: "Enable Gatekeeper"
+title: Enable Gatekeeper
 discussion: |
   Gatekeeper _MUST_ be enabled.
 
@@ -7,19 +7,20 @@ discussion: |
 
   Administrator users will still have the option to override these settings on a case-by-case basis.
 check: |
-  /usr/sbin/spctl --status | /usr/bin/grep -c "assessments enabled"
+  /usr/bin/osascript -l JavaScript << EOS
+  $.NSUserDefaults.alloc.initWithSuiteName('com.apple.systempolicy.control')\
+  .objectForKey('EnableAssessment').js
+  EOS
 result:
-  integer: 1
+  string: 'true'
 fix: |
-  [source,bash]
-  ----
-  /usr/sbin/spctl --global-enable
-  ----
+  This is implemented by a Configuration Profile.
 references:
   cce:
-    - CCE-91793-0
+    - CCE-94195-5
   cci:
     - CCI-001749
+    - CCI-003992
   800-53r5:
     - CM-14
     - CM-5
@@ -33,13 +34,14 @@ references:
     - SI-7(15)
   srg:
     - SRG-OS-000366-GPOS-00153
+    - SRG-OS-000480-GPOS-00228
   disa_stig:
-    - APPL-13-002064
-  800-171r2:
-    - 3.4.5
+    - APPL-15-002064
+  800-171r3:
+    - 03.14.02
   cis:
     benchmark:
-      - 2.6.4 (level 1)
+      - 2.6.5 (level 1)
     controls v8:
       - 10.1
       - 10.2
@@ -50,7 +52,7 @@ references:
     - SI.L1-3.14.2
     - SI.L1-3.14.4
 macOS:
-  - "13.0"
+  - '15.0'
 tags:
   - 800-53r5_low
   - 800-53r5_moderate
@@ -61,13 +63,13 @@ tags:
   - cis_lvl1
   - cis_lvl2
   - cisv8
-  - cnssi-1253_moderate
   - cnssi-1253_low
   - cnssi-1253_high
   - cmmc_lvl2
   - cmmc_lvl1
   - stig
-severity: "high"
+  - cnssi-1253_moderate
+severity: high
 mobileconfig: true
 mobileconfig_info:
   com.apple.systempolicy.control:

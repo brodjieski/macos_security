@@ -1,5 +1,5 @@
 id: system_settings_automatic_login_disable
-title: "Disable Unattended or Automatic Logon to the System"
+title: Disable Unattended or Automatic Logon to the System
 discussion: |
   Automatic logon _MUST_ be disabled.
 
@@ -10,12 +10,12 @@ check: |
   .objectForKey('com.apple.login.mcx.DisableAutoLoginClient').js
   EOS
 result:
-  string: "true"
+  string: 'true'
 fix: |
   This is implemented by a Configuration Profile.
 references:
   cce:
-    - CCE-91934-0
+    - CCE-94350-6
   cci:
     - CCI-000366
   800-53r5:
@@ -26,11 +26,12 @@ references:
     - IA-5(13)
   srg:
     - SRG-OS-000480-GPOS-00229
+    - SRG-OS-000104-GPOS-00051
+    - SRG-OS-000480-GPOS-00228
   disa_stig:
-    - APPL-13-002066
-  800-171r2:
-    - 3.5.1
-    - 3.5.2
+    - APPL-15-002066
+  800-171r3:
+    - 03.05.01
   cis:
     benchmark:
       - 2.12.3 (level 1)
@@ -40,7 +41,7 @@ references:
     - IA.L1-3.5.1
     - IA.L1-3.5.2
 macOS:
-  - "13.0"
+  - '15.0'
 tags:
   - 800-53r5_low
   - 800-53r5_moderate
@@ -52,13 +53,13 @@ tags:
   - cis_lvl1
   - cis_lvl2
   - cisv8
-  - cnssi-1253_moderate
   - cnssi-1253_low
   - cnssi-1253_high
   - cmmc_lvl2
   - cmmc_lvl1
   - stig
-severity: "medium"
+  - cnssi-1253_moderate
+severity: medium
 mobileconfig: true
 mobileconfig_info:
   com.apple.loginwindow:

@@ -1,11 +1,11 @@
 id: audit_flags_fm_failed_configure
-title: "Configure System to Audit All Failed Change of Object Attributes"
+title: Configure System to Audit All Failed Change of Object Attributes
 discussion: |
-  The audit system _MUST_ be configured to record enforcement actions of failed attempts to modify file attributes (-fm). 
+  The audit system _MUST_ be configured to record enforcement actions of failed attempts to modify file attributes (-fm).
 
-  Enforcement actions are the methods or mechanisms used to prevent unauthorized changes to configuration settings. One common and effective enforcement action method is using access restrictions (i.e., denying modifications to a file by applying file permissions). 
-  
-  This configuration ensures that audit lists include events in which enforcement actions prevent attempts to modify a file. 
+  Enforcement actions are the methods or mechanisms used to prevent unauthorized changes to configuration settings. One common and effective enforcement action method is using access restrictions (i.e., denying modifications to a file by applying file permissions).
+
+  This configuration ensures that audit lists include events in which enforcement actions prevent attempts to modify a file.
 
   Without auditing the enforcement of access restrictions, it is difficult to identify attempted attacks, as there is no audit trail available for forensic investigation.
 check: |
@@ -19,7 +19,7 @@ fix: |
   ----
 references:
   cce:
-    - CCE-91721-1
+    - CCE-94120-3
   cci:
     - N/A
   800-53r5:
@@ -29,20 +29,20 @@ references:
     - AU-9
     - CM-5(1)
     - MA-4(1)
-  800-53r4: 
-    - AU-2  
+  800-53r4:
+    - AU-2
     - AU-12
     - AU-9
     - CM-5(1)
     - MA-4(1)
-  srg: 
+  srg:
     - N/A
   disa_stig:
     - N/A
-  800-171r2:
-    - 3.3.1
-    - 3.3.2
-    - 3.3.8
+  800-171r3:
+    - 03.03.01
+    - 03.03.03
+    - 03.03.08
   cis:
     benchmark:
       - 3.2 (level 2)
@@ -56,7 +56,7 @@ references:
     - AU.L2-3.3.8
     - SI.L2-3.14.3
 macOS:
-  - "13.0"
+  - '15.0'
 tags:
   - 800-53r5_privacy
   - 800-53r5_low
@@ -68,10 +68,10 @@ tags:
   - 800-53r4_high
   - cis_lvl2
   - cisv8
-  - cnssi-1253_moderate
   - cnssi-1253_low
   - cnssi-1253_high
   - cmmc_lvl2
-severity: "medium"
+  - cnssi-1253_moderate
+severity: medium
 mobileconfig: false
 mobileconfig_info:

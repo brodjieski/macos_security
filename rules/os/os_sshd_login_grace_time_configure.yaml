@@ -1,11 +1,11 @@
 id: os_sshd_login_grace_time_configure
-title: "Set Login Grace Time to $ODV"
+title: Set Login Grace Time to $ODV
 discussion: |
   If SSHD is enabled then it _MUST_ be configured to wait only $ODV seconds before timing out logon attempts.
 
-  NOTE: /etc/ssh/sshd_config will be automatically modified to its original state following any update or major upgrade to the operating system.
+  NOTE: On macOS 15.2 and higher the SSH configuration can be reset to the macOS default by running /usr/libexec/reset-ssh-configuration.
 check: |
-  /usr/sbin/sshd -T | /usr/bin/awk '/logingracetime/{print $2}'
+  /usr/sbin/sshd -G | /usr/bin/awk '/logingracetime/{print $2}'
 result:
   integer: $ODV
 fix: |
@@ -31,7 +31,7 @@ fix: |
   ----
 references:
   cce:
-    - CCE-91892-0
+    - CCE-94306-8
   cci:
     - CCI-001133
   800-53r5:
@@ -41,23 +41,29 @@ references:
   srg:
     - SRG-OS-000163-GPOS-00072
   disa_stig:
-    - APPL-13-000053
-  800-171r2:
-    - 3.13.9
+    - APPL-15-000053
+  800-171r3:
+    - 03.13.09
   cmmc:
     - SC.L2-3.13.9
 macOS:
-  - "13.0"
+  - '15.0'
 odv:
-  hint: "Number of seconds."
+  hint: Number of seconds.
   recommended: 30
   stig: 30
 tags:
-  - cnssi-1253_moderate
   - cnssi-1253_low
   - cnssi-1253_high
   - cmmc_lvl2
   - stig
-severity: "medium"
+  - cnssi-1253_moderate
+severity: medium
 mobileconfig: false
 mobileconfig_info:
+ddm_info:
+  declarationtype: com.apple.configuration.services.configuration-files
+  service: com.apple.sshd
+  config_file: sshd_config
+  configuration_key: LoginGraceTime
+  configuration_value: $ODV

@@ -1,5 +1,5 @@
 id: auth_smartcard_enforce
-title: "Enforce Smartcard Authentication"
+title: Enforce Smartcard Authentication
 discussion: |
   Smartcard authentication _MUST_ be enforced.
 
@@ -16,16 +16,22 @@ check: |
   .objectForKey('enforceSmartCard').js
   EOS
 result:
-  string: "true"
+  string: 'true'
 fix: |
   This is implemented by a Configuration Profile.
 references:
   cce:
-    - CCE-91739-3
+    - CCE-94138-5
   cci:
-    - CCI-000187
+    - CCI-000186
+    - CCI-000765
+    - CCI-000766
     - CCI-000767
     - CCI-000768
+    - CCI-001941
+    - CCI-001948
+    - CCI-001953
+    - CCI-004046
   800-53r5:
     - IA-2(1)
     - IA-2(2)
@@ -45,15 +51,21 @@ references:
     - IA-5(2)
     - IA-5(11)
   srg:
-    - SRG-OS-000068-GPOS-00036
     - SRG-OS-000107-GPOS-00054
+    - SRG-OS-000112-GPOS-00057
+    - SRG-OS-000067-GPOS-00035
     - SRG-OS-000108-GPOS-00055
+    - SRG-OS-000106-GPOS-00053
+    - SRG-OS-000375-GPOS-00160
+    - SRG-OS-000376-GPOS-00161
+    - SRG-OS-000105-GPOS-00052
+    - SRG-OS-000705-GPOS-00150
   disa_stig:
-    - APPL-13-003020
-  800-171r2:
-    - 3.5.1
-    - 3.5.2
-    - 3.5.3
+    - APPL-15-003020
+  800-171r3:
+    - 03.05.01
+    - 03.05.03
+    - 03.05.04
   cis:
     benchmark:
       - N/A
@@ -67,7 +79,7 @@ references:
     - IA.L2-3.5.3
     - IA.L2-3.5.4
 macOS:
-  - "13.0"
+  - '15.0'
 tags:
   - 800-53r5_low
   - 800-53r5_moderate
@@ -77,13 +89,13 @@ tags:
   - 800-53r4_high
   - 800-171
   - cisv8
-  - cnssi-1253_moderate
   - cnssi-1253_low
   - cnssi-1253_high
   - cmmc_lvl2
   - cmmc_lvl1
   - stig
-severity: "high"
+  - cnssi-1253_moderate
+severity: medium
 mobileconfig: true
 mobileconfig_info:
   com.apple.security.smartcard:

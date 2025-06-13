@@ -1,5 +1,5 @@
 id: os_secure_name_resolution
-title: "Secure Name Address Resolution Service"
+title: Secure Name Address Resolution Service
 discussion: |
   The information system requests and performs data origin authentication and data integrity verification on the name/address resolution responses the system receives from authoritative sources.
 
@@ -10,7 +10,7 @@ fix: |
   This requirement is a permanent finding and cannot be fixed. An appropriate mitigation for the system must be implemented, but this finding cannot be considered fixed.
 references:
   cce:
-    - CCE-91875-5
+    - CCE-94290-4
   cci:
     - N/A
   800-53r5:
@@ -27,7 +27,7 @@ references:
     controls v8:
       - 4.9
 macOS:
-  - "13.0"
+  - '15.0'
 tags:
   - 800-53r5_low
   - 800-53r5_moderate
@@ -37,8 +37,8 @@ tags:
   - 800-53r4_high
   - permanent
   - cisv8
-  - cnssi-1253_moderate
   - cnssi-1253_low
   - cnssi-1253_high
+  - cnssi-1253_moderate
 mobileconfig: false
 mobileconfig_info:

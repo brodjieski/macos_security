@@ -1,5 +1,5 @@
 id: system_settings_softwareupdate_current
-title: "Ensure Software Update is Updated and Current"
+title: Ensure Software Update is Updated and Current
 discussion: |
   Make sure Software Update is updated and current.
 
@@ -17,13 +17,13 @@ result:
 fix: |
   [source,bash]
   ----
-  /usr/sbin/softwareupdate -i -a -R
+  /usr/sbin/softwareupdate -i -a
   ----
   NOTE - This will apply to the whole system
 references:
   cce:
-    - CCE-91983-7
-  cci: 
+    - CCE-94398-5
+  cci:
     - N/A
   800-53r5:
     - N/A
@@ -31,9 +31,9 @@ references:
     - N/A
   srg:
     - N/A
-  disa_stig: 
+  disa_stig:
     - N/A
-  800-171r2:
+  800-171r3:
     - N/A
   cis:
     benchmark:
@@ -42,11 +42,11 @@ references:
       - 7.3
       - 7.4
 macOS:
-  - "13.0"
+  - '15.0'
 tags:
   - cis_lvl1
   - cis_lvl2
   - cisv8
-severity: "medium"
+severity: medium
 mobileconfig: false
 mobileconfig_info:

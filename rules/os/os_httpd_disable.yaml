@@ -1,5 +1,5 @@
 id: os_httpd_disable
-title: "Disable the Built-in Web Server"
+title: Disable the Built-in Web Server
 discussion: |
   The built-in web server is a non-essential service built into macOS and _MUST_ be disabled.
 
@@ -15,21 +15,21 @@ fix: |
   ----
 references:
   cce:
-    - CCE-91801-1
+    - CCE-94205-2
   cci:
-    - CCI-000381
+    - CCI-000213
   800-53r5:
     - AC-3
     - AC-17
   800-53r4:
     - AC-3
   srg:
-    - SRG-OS-000095-GPOS-00049
+    - SRG-OS-000080-GPOS-00048
   disa_stig:
-    - APPL-13-002008
-  800-171r2:
-    - 3.1.1
-    - 3.1.2
+    - APPL-15-002008
+  800-171r3:
+    - 03.01.02
+    - 03.04.06
   cis:
     benchmark:
       - 4.2 (level 1)
@@ -39,7 +39,7 @@ references:
   cmmc:
     - AC.L1-3.1.1
 macOS:
-  - "13.0"
+  - '15.0'
 tags:
   - 800-53r5_low
   - 800-53r5_moderate
@@ -51,12 +51,12 @@ tags:
   - cis_lvl1
   - cis_lvl2
   - cisv8
-  - cnssi-1253_moderate
   - cnssi-1253_low
   - cnssi-1253_high
   - cmmc_lvl2
   - cmmc_lvl1
   - stig
-severity: "medium"
+  - cnssi-1253_moderate
+severity: medium
 mobileconfig: false
 mobileconfig_info:

@@ -1,5 +1,5 @@
 id: system_settings_smbd_disable
-title: "Disable Server Message Block Sharing"
+title: Disable Server Message Block Sharing
 discussion: |
   Support for Server Message Block (SMB) file sharing is non-essential and _MUST_ be disabled.
 
@@ -16,21 +16,21 @@ fix: |
   The system may need to be restarted for the update to take effect.
 references:
   cce:
-    - CCE-91979-5
+    - CCE-94394-4
   cci:
-    - CCI-000381
+    - CCI-000213
   800-53r5:
     - AC-3
     - AC-17
   800-53r4:
     - AC-3
   srg:
-    - SRG-OS-000095-GPOS-00049
+    - SRG-OS-000080-GPOS-00048
   disa_stig:
-    - APPL-13-002001
-  800-171r2:
-    - 3.1.1
-    - 3.1.2
+    - APPL-15-002001
+  800-171r3:
+    - 03.01.02
+    - 03.04.06
   cis:
     benchmark:
       - 2.3.3.3 (level 1)
@@ -41,7 +41,7 @@ references:
   cmmc:
     - AC.L1-3.1.1
 macOS:
-  - "13.0"
+  - '15.0'
 tags:
   - 800-53r5_low
   - 800-53r5_moderate
@@ -53,12 +53,12 @@ tags:
   - cis_lvl1
   - cis_lvl2
   - cisv8
-  - cnssi-1253_moderate
   - cnssi-1253_low
   - cnssi-1253_high
   - cmmc_lvl2
   - cmmc_lvl1
   - stig
-severity: "medium"
+  - cnssi-1253_moderate
+severity: medium
 mobileconfig: false
 mobileconfig_info:
