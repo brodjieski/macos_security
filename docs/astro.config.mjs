@@ -10,6 +10,24 @@ export default defineConfig({
 			logo: {
 				src: './src/assets/logo.png',
 			},
+			head: [
+				{
+					tag: 'link',
+					attrs: {
+						rel: 'stylesheet',
+						href: 'https://pages.nist.gov/nist-header-footer/css/nist-combined.css',
+					},
+
+				},
+				{
+					tag: 'script',
+					attrs: {
+						src: 'https://pages.nist.gov/nist-header-footer/js/nist-header-footer-v-2.0.js',
+						type: 'text/javascript',
+						defer: 'defer',
+					},
+				},
+			],
 			customCss: [
 				// Path to your custom CSS file
 				'./src/styles/custom.css',
