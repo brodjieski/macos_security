@@ -1,5 +1,5 @@
 ---
-title: Generate-SCAP
+title: Generate SCAP
 description: A generate-scap reference.
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Generate-Mapping
+title: Generate Mapping
 description: A generate-mapping reference.
 ---
 

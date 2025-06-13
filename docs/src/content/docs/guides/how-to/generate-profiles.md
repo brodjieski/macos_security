@@ -1,5 +1,5 @@
 ---
-title: Generate-Configuration-Profiles
+title: Generate Configuration Profiles
 description: A generate-configuration-profiles reference.
 ---
 
