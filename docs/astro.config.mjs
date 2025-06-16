@@ -52,6 +52,7 @@ head: [
 						{ label: 'Tailoring', link: '/guides/how-to/tailoring/' },
 						{ label: 'Generate Guidance', link: '/guides/how-to/generate-guidance/' },
 						{ label: 'Generate Configuration Profiles', link: '/guides/how-to/generate-profiles/' },
+						{ label: 'Generate DDM Components', link: '/guides/how-to/generate-declarative/' },
 						{ label: 'Compliance Script', link: '/guides/how-to/compliance-script/' },
 						{ label: 'Exemptions', link: '/guides/how-to/exemptions/' },
 						{ label: 'Customization', link: '/guides/how-to/customization/' },
