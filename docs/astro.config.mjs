@@ -19,13 +19,13 @@ head: [
 			    tag: 'link',
     			    attrs: {
 				rel: 'stylesheet',
-			        href: '/nist-combined.css',
+			        href: 'macos_security/nist-combined.css',
 				},
 			},
 			{
                             tag: 'script',
                             attrs: {
-                                src: '/nist-header-footer.js',
+                                src: 'macos_security/nist-header-footer.js',
                                 type: 'text/javascript',
                                 defer: 'defer',
 				 },
