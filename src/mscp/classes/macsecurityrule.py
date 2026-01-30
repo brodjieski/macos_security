@@ -235,7 +235,6 @@ class Macsecurityrule(BaseModelWithAccessors):
     Attributes:
         title (str): The title of the security rule.
         rule_id (str): Unique identifier for the rule.
-        severity (str): Severity level of the rule.
         discussion (str): Detailed discussion or rationale for the rule.
         references (References): Reference information (e.g., NIST, CIS) associated with the rule.
         odv (dict[str, Any] | None): Organizational Defined Values for the rule, if applicable.
@@ -255,7 +254,7 @@ class Macsecurityrule(BaseModelWithAccessors):
         os_version: float = Field(default_factory=float)
         check (str): The commands to evaluate the state of a rule.
         fix: (str): The commands to remediate and set the configuration for a rule.
-        severity: (dict[str, Any]): The category for impact assigned to a rule for associated benchmarks.
+        severity: (str): The category for impact assigned to a rule for associated benchmarks.
         default_state: (str): The command to restore the system to the default configuration for a rule.
 
     Class Methods:
@@ -300,7 +299,7 @@ class Macsecurityrule(BaseModelWithAccessors):
     os_version: float = Field(default_factory=float)
     check: str | None = None
     fix: str | None = None
-    severity: dict[str, Any] | None = None
+    severity: str | None = None
     default_state: str | None = None
 
     @classmethod
@@ -361,7 +360,7 @@ class Macsecurityrule(BaseModelWithAccessors):
             default_state_value: str | None = None
             mechanism: str = "Manual"
             payloads: list[Mobileconfigpayload] | None = []
-            severity: dict[str, Any] | None = {}
+            severity: str | None = None
             tags: list[str] = []
 
             rule_file = next(
@@ -502,8 +501,8 @@ class Macsecurityrule(BaseModelWithAccessors):
             if benchmarks:
                 for benchmark in benchmarks:
                     name = benchmark.get("name")
-                    if "severity" in benchmark:
-                        severity[name] = benchmark["severity"]
+                    if "severity" in benchmark and name == parent_values:
+                        severity = benchmark.get("severity", "")
 
             match tags:
                 case "inherent":
