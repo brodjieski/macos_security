@@ -28,6 +28,7 @@ from ..common_utils.logger_instance import logger
 
 _SENTINEL = object()
 
+
 class Sectionmap(StrEnum):
     AUDIT = "auditing"
     AUTH = "authentication"
@@ -157,7 +158,6 @@ class References(BaseModelWithAccessors):
     bsi: bsiReferences | None = None
     custom_refs: customReferences | None = None
 
-
     def get_ref(
         self,
         key: str,
@@ -221,8 +221,9 @@ class References(BaseModelWithAccessors):
         # Not found
         if default is not _SENTINEL:
             return default
-        raise KeyError(f"Field '{key}' not found in any namespace ({', '.join(search_order)})")
-
+        raise KeyError(
+            f"Field '{key}' not found in any namespace ({', '.join(search_order)})"
+        )
 
 
 class Macsecurityrule(BaseModelWithAccessors):
@@ -536,6 +537,11 @@ class Macsecurityrule(BaseModelWithAccessors):
                     cis: dict[str, Any] = rule_yaml["references"].get("cis", {})
                 elif ref_key == "bsi":
                     bsi: dict[str, Any] = rule_yaml["references"].get("bsi", {})
+                elif ref_key == "custom":  # support for 1.0 custom refs format
+                    for custom_ref_key in rule_yaml["references"]["custom"]:
+                        custom_refs[custom_ref_key] = rule_yaml["references"][
+                            "custom"
+                        ].get(custom_ref_key, {})
                 else:
                     custom_refs[ref_key] = rule_yaml["references"].get(ref_key, {})
 
@@ -588,16 +594,8 @@ class Macsecurityrule(BaseModelWithAccessors):
                         bsi["indigo"] = [bsi["indigo"]]
             # Map custom references
             if custom_refs:
-                if "custom_refs" in custom_refs and isinstance(
-                    custom_refs["custom_refs"], dict
-                ):
-                    if custom_refs["custom_refs"] is not None and not isinstance(
-                        custom_refs["custom_refs"], list
-                    ):
-                        rule_yaml["references"]["custom_refs"] = {}
-                        rule_yaml["references"]["custom_refs"]["references"] = [
-                            custom_refs
-                        ]
+                rule_yaml["references"]["custom_refs"] = {}
+                rule_yaml["references"]["custom_refs"]["references"] = [custom_refs]
 
             rule = cls(
                 **rule_yaml,
