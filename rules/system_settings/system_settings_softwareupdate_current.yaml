@@ -24,15 +24,15 @@ references:
   cce:
     - CCE-94398-5
   cci:
-    - N/A
+    - CCI-002605
   800-53r5:
     - N/A
   800-53r4:
     - N/A
   srg:
-    - N/A
+    - SRG-OS-000439-GPOS-00195
   disa_stig:
-    - N/A
+    - APPL-15-999999
   800-171r3:
     - N/A
   cis:
@@ -41,12 +41,17 @@ references:
     controls v8:
       - 7.3
       - 7.4
+  bio:
+    - 8.08.01
 macOS:
   - '15.0'
 tags:
   - cis_lvl1
   - cis_lvl2
   - cisv8
+  - nlmapgov_base
+  - nlmapgov_plus
+  - stig
 severity: medium
 mobileconfig: false
 mobileconfig_info:

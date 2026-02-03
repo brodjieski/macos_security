@@ -29,7 +29,7 @@ ASSOCIATED DOCUMENTS
 |===
 |Document Number or Descriptor
 |Document Title
-|link:https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_Apple_macOS_15_V1R4_STIG.zip[STIG Ver 1, Rel 4]|_Apple macOS 15 (Sequoia) STIG_
+|link:https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_Apple_macOS_15_V1R5_STIG.zip[STIG Ver 1, Rel 5]|_Apple macOS 15 (Sequoia) STIG_
 |===
 
 [%header, cols=2*a]
@@ -46,6 +46,15 @@ ASSOCIATED DOCUMENTS
 |Document Number or Descriptor
 |Document Title
 |link:https://www.cnss.gov/CNSS/issuances/Instructions.cfm[CNSSI No. 1253]|_Security Categorization and Control Selection for National Security Systems_
+|===
+
+[%header, cols=2*a]
+.Baseline Informatiebeveiliging Overheid (BIO)
+|===
+|Document Number or Descriptor
+|Document Title 
+|link:https://www.bio-overheid.nl/category/producten/bio[BIO]|_Baseline Informatiebeveiliging Overheid (BIO)_
+|link:https://github.com/MinBZK/Baseline-Informatiebeveiliging-Overheid[BIO2 GitHub Repository]|_BIO2 GitHub Repository_
 |===
 
 === Non-Government Documents
