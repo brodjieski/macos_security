@@ -63,6 +63,8 @@ jobs:
         env:
           DIGEST: ${{ steps.build-push.outputs.digest }}
           TAGS: ${{ steps.meta.outputs.tags }}
+          COSIGN_REGISTRY_USERNAME: ${{ github.actor }}
+          COSIGN_REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
         run: |
           images=""
           for tag in ${TAGS}; do
