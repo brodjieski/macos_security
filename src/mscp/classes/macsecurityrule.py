@@ -332,8 +332,9 @@ class Macsecurityrule(BaseModelWithAccessors):
             os_version (int): Operating system version.
             parent_values (str): Parent values to apply when filling in ODV.
             section (str): Section name for the rules.
+            tailoring (bool): Set if tailoring a benchmark
             language (str): Language used for rule text.
-            custom (bool): Whether to include custom rules.
+            #custom (bool): Whether to include custom rules.
 
         Returns:
             list[Macsecurityrule]: A list of loaded Macsecurityrule objects.

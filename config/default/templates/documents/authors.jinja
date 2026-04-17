@@ -2,7 +2,7 @@
 
 *macOS Security Compliance Project*
 
-{{ "CIS Critical Security Controls® (CIS Controls®) are referenced with the permission and support of the Center for Internet Security® (CIS®)" if "cis" in baseline.title else "" }}
+{{ "CIS Critical Security Controls® (CIS Controls®) are referenced with the permission and support of the Center for Internet Security® (CIS®)" if "cis" in baseline.title.lower() else "" }}
 
 {% if format == "adoc" %}
 [width="100%",cols="1,3"]

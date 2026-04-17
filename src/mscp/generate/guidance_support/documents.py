@@ -20,6 +20,7 @@ from ...classes import Baseline, Macsecurityrule
 from ...common_utils import (
     config,
     logger,
+    mscp_data,
     open_file,
     run_command,
     NIX_OS,
@@ -418,6 +419,16 @@ def render_template(
         html_subtitle: str = html_subtitle.split("(")[0]
         html_subtitle2: str = extract_from_title(baseline.title)
         document_subtitle2: str = f"{document_subtitle2} {html_subtitle2}"
+        baseline_dict["tailored"] = True
+    else:
+        benchmark = baseline.title.split()[-1]
+        benchmarks = mscp_data.get("benchmarks", "")
+        benchmark_description = next(
+            (d["description"] for d in benchmarks if d.get("keyword") == benchmark),
+            benchmark,
+        )
+        baseline_dict["tailored"] = False
+        baseline_dict["benchmark_description"] = benchmark_description
 
     rendered_output = template.render(
         baseline=baseline_dict,

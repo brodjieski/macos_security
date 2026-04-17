@@ -117,7 +117,9 @@ def rule_has_benchmark_for_version(
 @logger.catch
 def generate_baseline(args: argparse.Namespace, admin=False) -> None:
     if admin:
-        build_path: Path = Path(config["defaults"].get("baseline_dir", ""))
+        build_path: Path = (
+            Path(config["defaults"].get("baseline_dir", "")) / args.os_name
+        )
     else:
         build_path: Path = Path(config["custom"].get("baseline_dir", ""))
     baseline_output_file: Path = (
@@ -128,13 +130,6 @@ def generate_baseline(args: argparse.Namespace, admin=False) -> None:
         Path(config.get("includes_dir", ""), "800-53_baselines.yaml")
     )
 
-    # removing misc_tags, unsure we need it.
-    # misc_tags: tuple[str, str, str, str] = (
-    #     "permanent",
-    #     "inherent",
-    #     "n_a",
-    #     "not_applicable",
-    # )
     benchmark: str = "recommended"
     full_title: str = args.keyword
     authors: list[Author] = []
@@ -263,7 +258,6 @@ def generate_baseline(args: argparse.Namespace, admin=False) -> None:
         odv_baseline_rules: list[Macsecurityrule] = Macsecurityrule.odv_query(
             found_rules, benchmark
         )
-
     if found_rules:
         Baseline.create_new(
             output_file=baseline_output_file,
