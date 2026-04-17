@@ -10,12 +10,13 @@
 {{ rule.discussion }}
 {% endif %}
 
+{% if not "supplemental" in rule.tags %}
+
 {% if rule.mechanism == "manual" %}
 :grey_exclamation: {% trans %} This rule is marked as manual and may not be able to be automated. It is also excluded in the compliance scan and will not report any results. {% endtrans %}
 {% endif -%}
 
 {% if not rule.tags | select('in', check_tags) | list %}
-{# {% if not "supplemental" in rule.tags %} #}
 {% if rule.tags is not defined or rule.tags is none or "supplemental" not in rule.tags %}
 {% if rule.os_type.lower() in NIX_OS %}
 {% trans %}To check the state of the system, run the following command(s){% endtrans %}:
@@ -165,3 +166,9 @@ endif::[]
 
 |
 |===
+
+{% else %}
+
+<<<
+
+{% endif %}
