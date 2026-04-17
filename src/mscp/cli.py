@@ -115,7 +115,7 @@ def parse_cli() -> None:
 
     parser.add_argument(
         "--os_name",
-        choices=["macos", "ios", "visionos", "ubuntu"],
+        choices=["macos", "ios", "visionos"],
         default="macos",
         help="operating system to be referenced when generating guidance",
         type=str,
