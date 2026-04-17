@@ -8,7 +8,7 @@ discussion: |
   |Section 5.8
   |Restrictions - App-Installation
 
-  | 
+  |
   |os_application_allow_list +
   os_application_deny_list
   |===
@@ -18,7 +18,7 @@ discussion: |
   |Section 6.1.6
   |Manual configuration - operational requirements
 
-  | 
+  |
   |os_live_text_disable
   |===
 
@@ -27,7 +27,7 @@ discussion: |
   |Section 6.3
   |Manual configuration - Update management
 
-  | 
+  |
   |os_update_auto_RSR_allow
   |===
 
@@ -41,3 +41,4 @@ platforms:
         - name: indigo_high
 tags:
   - supplemental
+  

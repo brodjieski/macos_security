@@ -2,7 +2,7 @@ id: supplemental_stig_ios
 title: "DISA STIG Supplemental"
 discussion: |
   These are controls that require additional considerations for your environment.
-  
+
   [cols="20%h, 80%a"]
   |===
   |STIG ID
@@ -50,6 +50,6 @@ platforms:
   iOS:
     '26.0':
       benchmarks:
-          - name: ios_stig
+        - name: ios_stig
 tags:
   - supplemental
