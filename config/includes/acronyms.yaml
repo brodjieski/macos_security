@@ -17,6 +17,8 @@ acronyms:
     definition: Apple School Manager
   - term: BSD
     definition: Berkeley Software Distribution
+  - term: BSI
+    definition: Bundesamt für Sicherheit in der Informationstechnik (German Federal Office for Information Security)
   - term: BSM
     definition: Basic Security Module
   - term: CCE
@@ -56,15 +58,13 @@ acronyms:
   - term: ISSO
     definition: Information System Security Officer
   - term: MCX
-    definition: Managed Client for X
+    definition: Managed Client for Mac OS X
   - term: MDM
     definition: Mobile Device Management
   - term: NFS
     definition: Network File System
   - term: NIST
     definition: National Institute of Standards and Technology
-  - term: NX
-    definition: No eXecute
   - term: OCSP
     definition: Online Certificate Status Protocol
   - term: OMB
