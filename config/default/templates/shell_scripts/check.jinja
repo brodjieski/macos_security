@@ -21,7 +21,7 @@
   exemption_output=""
 
   if [[ "$arch" == "$rule_arch" ]] || [[ -z "$rule_arch" ]]; then
-    local result_value=$(eval {{ rule.check }}
+    local result_value=$({{ rule.check }}
     )
     local exempt=$(/usr/bin/osascript -l JavaScript -e "ObjC.unwrap($.NSUserDefaults.alloc.initWithSuiteName('org.$baseline_name.audit').objectForKey('$rule_id'))['exempt']")
     local exempt_reason=$(/usr/bin/osascript -l JavaScript -e "ObjC.unwrap($.NSUserDefaults.alloc.initWithSuiteName('org.$baseline_name.audit').objectForKey('$rule_id'))['exempt_reason']")
