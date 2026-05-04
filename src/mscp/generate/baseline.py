@@ -271,8 +271,10 @@ def generate_baseline(args: argparse.Namespace, admin=False) -> None:
             baseline_dict=baseline_dict,
         )
 
-        print(f"Generated new baseline file: {baseline_output_file}")
+        print(
+            f"Generated new baseline file containing {len(found_rules)} rules: {baseline_output_file}"
+        )
     else:
-        logger.warning(
+        logger.error(
             f"No rules found for {args.keyword} on {args.os_name} version {args.os_version}, skipping baseline generation."
         )
