@@ -81,7 +81,8 @@ def generate_guidance(sp: Yaspin, args: argparse.Namespace) -> None:
         pdf_theme: str = "mscp_theme.yml"
         html_css: str = "asciidoctor.css"
 
-    custom: bool = not any(Path(config["custom"]["root_dir"]).iterdir())
+    _custom_root = Path(config["custom"]["root_dir"])
+    custom: bool = not (_custom_root.exists() and any(_custom_root.iterdir()))
     show_all_tags: bool = False
 
     output_basename: str = args.baseline.name

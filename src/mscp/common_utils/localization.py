@@ -103,7 +103,7 @@ def configure_localization_for_yaml(
     Args:
         language (str, optional): Language code for localization (e.g., "de", "fr"). If None, uses current gettext config.
         domain (str): localization domain name. Defaults to "messages".
-        localedir (str): Path to the locales directory. Defaults to "config/locales".
+        localedir (str): Path to the locales directory. Defaults to the bundled data/locales.
     """
     logger.debug(f"configure_localization_for_yaml called with language: {language}")
     # Register YAML constructors if not already done

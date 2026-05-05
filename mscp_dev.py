@@ -1,9 +1,10 @@
-# src/mscp/__main__.py
+#! /usr/bin/env python
+# filename: mscp_dev.py
 
 import sys
 
-from .cli import parse_cli
-from .common_utils import logger
+from src.mscp.cli import parse_cli
+from src.mscp.common_utils import logger
 
 
 def main() -> None:

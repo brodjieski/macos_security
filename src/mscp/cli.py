@@ -582,12 +582,3 @@ compliance script (e.g. disa_stig, cis.benchmark)
             sys.exit()
 
     args.func(args)
-
-
-if __name__ == "__main__":
-    logger.enable("mscp")
-    logger = set_logger()
-    logger.info("=== Logging Initialized ===")
-    logger.info("LOGGING LEVEL: WARNING")
-
-    sys.exit(parse_cli())
