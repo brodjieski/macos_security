@@ -135,10 +135,11 @@ def get_supported_languages() -> list[str]:
         f"Enumerating available languages from the localization path: {localization_path}"
     )
 
-    for item in localization_path.iterdir():
-        if item.is_dir():
-            logger.debug(f"Found possible supported language file: {item}")
-            languages.append(item.stem)
+    if localization_path.exists():
+        for item in localization_path.iterdir():
+            if item.is_dir():
+                logger.debug(f"Found possible supported language file: {item}")
+                languages.append(item.stem)
 
     return languages
 
@@ -164,6 +165,3 @@ def get_language_data(
     except Exception as e:
         logger.error("Error parsing language file: {}", e)
         return {}
-
-
-supported_languages = get_supported_languages()

@@ -21,7 +21,7 @@ from .file_handling import (
     remove_dir_contents,
     remove_file,
 )
-from .localization import supported_languages
+from .localization import get_supported_languages
 from .logger_instance import logger
 from .logging_config import set_logger
 from .mscp_data import get_mscp_data, mscp_data
@@ -65,7 +65,7 @@ __all__ = [
     "NIX_OS",
     "validate_yaml_file",
     "logger",
-    "supported_languages",
+    "get_supported_languages",
     "collect_overrides",
     "validate_rule_folder_structure",
     "conditional_inject_spinner",
