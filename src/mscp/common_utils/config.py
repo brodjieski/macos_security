@@ -30,19 +30,44 @@ except Exception as e:
     logger.error("An error occurred while loading the config file: {}", e)
     raise
 
-# Resolve top-level package-relative paths
-for _key in ("includes_dir", "mscp_data", "shell_template_dir"):
+# Keys resolved against the bundled package data directory.
+_pkg_dir_keys = frozenset({
+    "baseline_dir", "documents_templates_dir", "images_dir",
+    "locales_dir", "rules_dir", "sections_dir",
+    "shell_template_dir", "templates_dir", "themes_dir",
+})
+
+for _key in ("includes_dir", "mscp_data", *_pkg_dir_keys):
     if _key in config:
         config[_key] = str(_pkg_data / config[_key])
 
-# Resolve defaults (all package-relative)
-for _key in config.get("defaults", {}):
-    config["defaults"][_key] = str(_pkg_data / config["defaults"][_key])
+# Resolve user-configurable paths against CWD when relative, expand ~ when absolute-ish.
+for _key in ("output_dir", "custom_dir"):
+    _val = Path(config.get(_key, "build/" if _key == "output_dir" else "~/.mscp")).expanduser()
+    config[_key] = str(_val if _val.is_absolute() else _cwd / _val)
 
-# Resolve custom (CWD/custom/ relative; empty string means the custom root itself)
-_custom_base = _cwd / "custom"
-for _key, _val in list(config.get("custom", {}).items()):
-    config["custom"][_key] = str(_custom_base if not _val else _custom_base / _val)
+# Custom base: now guaranteed absolute.
+_custom_base: Path = Path(config["custom_dir"])
+_defaults_only = frozenset({"locales_dir", "shell_template_dir"})
 
-# Resolve output path (CWD-relative)
-config["output_dir"] = str(_cwd / config.get("output_dir", "build/"))
+config["custom"] = {
+    "root_dir": str(_custom_base),
+    "misc_dir": str(_custom_base / "misc"),
+}
+for _key in _pkg_dir_keys - _defaults_only:
+    config["custom"][_key] = str(_custom_base / Path(config[_key]).relative_to(_pkg_data))
+
+def ensure_custom_dirs() -> None:
+    """Create the custom directory structure under custom_dir if it doesn't exist."""
+    for path in config["custom"].values():
+        Path(path).mkdir(parents=True, exist_ok=True)
+
+
+def set_custom_dir(path: Path) -> None:
+    """Re-resolve all custom config paths against a new base directory."""
+    global _custom_base
+    for key in config.get("custom", {}):
+        rel = Path(config["custom"][key]).relative_to(_custom_base)
+        config["custom"][key] = str(path / rel)
+    _custom_base = path
+    config["custom_dir"] = str(path)

@@ -211,7 +211,7 @@ def generate_checklist_v2(
     stig_description: str,
 ) -> None:
     env: Environment = Environment(
-        loader=FileSystemLoader(f"{config['defaults']['templates_dir']}/checklist")
+        loader=FileSystemLoader(f"{config['templates_dir']}/checklist")
     )
     template = env.get_template("checklist.xml.jinja")
     stig_data["filename"] = stig_filename
@@ -233,7 +233,7 @@ def generate_checklist(args: argparse.Namespace) -> None:
         f"Apple_{args.os_name}_{args.os_version}-STIG-Checklist-{create_date}.chlk",
     )
     default_baseline: Path = Path(
-        config["defaults"]["baseline_dir"],
+        config["baseline_dir"],
         args.os_name,
         str(args.os_version),
         "DISA-STIG.yaml",

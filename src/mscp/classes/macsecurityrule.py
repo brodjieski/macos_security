@@ -353,7 +353,7 @@ class Macsecurityrule(BaseModelWithAccessors):
         os_type = os_type.replace("os", "OS")
 
         rules_dirs: list[Path] = [
-            Path(config["defaults"]["rules_dir"]),
+            Path(config["rules_dir"]),
         ]
 
         # collect custom rules if they exist
@@ -672,11 +672,11 @@ class Macsecurityrule(BaseModelWithAccessors):
 
         section_dirs: list[Path] = [
             Path(config["custom"]["sections_dir"]),
-            Path(config["defaults"]["sections_dir"]),
+            Path(config["sections_dir"]),
         ]
 
         rules_dirs: list[Path] = [
-            Path(config["defaults"]["rules_dir"]),
+            Path(config["rules_dir"]),
         ]
 
         section_data: dict[str, str] = {

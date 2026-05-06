@@ -374,7 +374,7 @@ def render_template(
     """
     translations = gettext.translation(
         domain="messages",
-        localedir=config["defaults"]["locales_dir"],
+        localedir=config["locales_dir"],
         languages=[language],
         fallback=True,
     )
@@ -471,9 +471,9 @@ def generate_documents(
     output_format: str = "adoc",
     language: str = "en",
 ) -> None:
-    template_dir: str = config["defaults"]["documents_templates_dir"]
-    themes_dir: str = config["defaults"]["themes_dir"]
-    logo_dir: str = config["defaults"]["images_dir"]
+    template_dir: str = config["documents_templates_dir"]
+    themes_dir: str = config["themes_dir"]
+    logo_dir: str = config["images_dir"]
 
     if custom:
         template_dir = config["custom"]["documents_templates_dir"]

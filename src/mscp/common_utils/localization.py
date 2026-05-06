@@ -28,7 +28,7 @@ def setup_gettext_localization(language: str = "en") -> None:
     global _localization_function
 
     domain: str = "messages"
-    localedir: str = config["defaults"]["locales_dir"]
+    localedir: str = config["locales_dir"]
 
     try:
         # Set up the localization
@@ -128,7 +128,7 @@ def get_supported_languages() -> list[str]:
         list[str]: A list containing the available supported languages for localization.
     """
 
-    localization_path = Path(config["defaults"]["locales_dir"])
+    localization_path = Path(config["locales_dir"])
 
     languages: list[str] = ["en"]
     logger.debug(
@@ -148,7 +148,7 @@ def get_language_data(
     category: str,
 ) -> dict[str, Any]:
     language_file = Path(
-        config["defaults"]["locales_dir"], language, category
+        config["locales_dir"], language, category
     ).with_suffix(".yaml")
 
     try:

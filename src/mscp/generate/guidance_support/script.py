@@ -126,7 +126,7 @@ def generate_script(
 
     output_file: Path = Path(build_path, f"{baseline_name}_compliance.sh")
     env: Environment = Environment(
-        loader=FileSystemLoader(config["defaults"]["shell_template_dir"]),
+        loader=FileSystemLoader(config["shell_template_dir"]),
         trim_blocks=True,
         lstrip_blocks=True,
     )
@@ -169,7 +169,7 @@ def generate_restore_script(
 
     output_file: Path = Path(build_path, f"{baseline_name}_restore.sh")
     env: Environment = Environment(
-        loader=FileSystemLoader(config["defaults"]["shell_template_dir"]),
+        loader=FileSystemLoader(config["shell_template_dir"]),
         trim_blocks=True,
         lstrip_blocks=True,
     )

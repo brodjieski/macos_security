@@ -131,9 +131,18 @@ def parse_cli() -> None:
     parser.add_argument(
         "-R",
         "--rules_dir",
-        default=config["defaults"]["rules_dir"],
+        default=config["rules_dir"],
         type=validate_rule_folder_structure,
         help="Path to directory containing the library of rule files.",
+    )
+
+    parser.add_argument(
+        "-o",
+        "--output_dir",
+        default=config["output_dir"],
+        type=Path,
+        metavar="PATH",
+        help="Path to output directory.",
     )
 
     # Sub Parsers for individual commands
@@ -532,6 +541,9 @@ compliance script (e.g. disa_stig, cis.benchmark)
         args = parser.parse_args()
 
         logger = set_logger(verbosity=args.verbose)
+
+        if args.output_dir:
+            config["output_dir"] = str(args.output_dir.expanduser().resolve())
     except argparse.ArgumentError as e:
         logger.error("Argument Error: {}", e)
         parser.print_help()
@@ -562,8 +574,8 @@ compliance script (e.g. disa_stig, cis.benchmark)
         )
         sys.exit()
 
-    if not args.rules_dir == config["defaults"]["rules_dir"]:
-        config["defaults"]["rules_dir"] = args.rules_dir
+    if not args.rules_dir == config["rules_dir"]:
+        config["rules_dir"] = args.rules_dir
 
     if args.subcommand == "guidance":
         if args.os_name != "macos" and args.script:

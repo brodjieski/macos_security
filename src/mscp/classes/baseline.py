@@ -91,14 +91,14 @@ class Baseline(BaseModelWithAccessors):
 
         section_dirs: list[Path] = []
 
-        # section_dir: Path = Path(config["defaults"]["sections_dir"])
+        # section_dir: Path = Path(config["sections_dir"])
         if custom:
             section_dirs = [
                 Path(config["custom"]["sections_dir"]),
-                Path(config["defaults"]["sections_dir"]),
+                Path(config["sections_dir"]),
             ]
         else:
-            section_dirs = [Path(config["defaults"]["sections_dir"])]
+            section_dirs = [Path(config["sections_dir"])]
 
         baseline_data: dict[str, Any] = open_file(file_path, language)
         authors = [Author(**author) for author in baseline_data.get("authors", [])]
@@ -228,7 +228,7 @@ class Baseline(BaseModelWithAccessors):
         grouped_rules = defaultdict(list)
         section_descriptions = {}
 
-        for yaml_file in Path(config["defaults"]["sections_dir"]).glob("*.y*ml"):
+        for yaml_file in Path(config["sections_dir"]).glob("*.y*ml"):
             section_data: dict = open_file(yaml_file, language)
 
             section_descriptions[section_data.get("name")] = section_data.get(

@@ -29,7 +29,7 @@ def validate_yaml_file(args: argparse.Namespace) -> None:
     if args.rules_dir:
         yaml_files: list = list(Path(args.rules_dir).rglob("*.y*ml"))
     else:
-        yaml_files: list = list(Path(config["defaults"]["rules_dir"]).rglob("*.y*ml"))
+        yaml_files: list = list(Path(config["rules_dir"]).rglob("*.y*ml"))
         _custom_rules = Path(config["custom"]["rules_dir"])
         if _custom_rules.exists():
             yaml_files += list(_custom_rules.rglob("*.y*ml"))
@@ -39,7 +39,7 @@ def validate_yaml_file(args: argparse.Namespace) -> None:
         return
 
     logger.info(
-        f"Validating {len(yaml_files)} YAML files in '{config['defaults']['rules_dir']}'...\n"
+        f"Validating {len(yaml_files)} YAML files in '{config['rules_dir']}'...\n"
     )
 
     discovered_rules = []

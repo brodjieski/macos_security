@@ -65,7 +65,7 @@ def generate_localize_template(args: argparse.Namespace) -> None:
     )
 
     # collect name and description from all section files
-    for yaml_file in Path(config["defaults"]["sections_dir"]).glob("*.y*ml"):
+    for yaml_file in Path(config["sections_dir"]).glob("*.y*ml"):
         section_data: dict = open_file(yaml_file)
         catalog.add(
             id=section_data["name"],
@@ -81,7 +81,7 @@ def generate_localize_template(args: argparse.Namespace) -> None:
         )
 
     # collect name and description from all template files
-    for template_file in Path(config["defaults"]["templates_dir"]).rglob("*.jinja"):
+    for template_file in Path(config["templates_dir"]).rglob("*.jinja"):
         template_data: str = open_file(template_file)
         strings_to_include = extract_trans_text(template_data)
         ctr = 0

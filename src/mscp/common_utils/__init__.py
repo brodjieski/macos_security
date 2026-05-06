@@ -1,6 +1,6 @@
 # common_utils/__init__.py
 
-from .config import config
+from .config import config, set_custom_dir, ensure_custom_dirs
 from .constants import SCHEMA_PATH, APPLE_OS, NIX_OS
 from .customization import collect_overrides
 from .file_handling import (
@@ -57,6 +57,8 @@ __all__ = [
     "get_mscp_data",
     "set_logger",
     "config",
+    "set_custom_dir",
+    "ensure_custom_dirs",
     "CONFIG_PATH",
     "SCHEMA_PATH",
     "APPLE_OS",

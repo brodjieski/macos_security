@@ -113,13 +113,13 @@ def generate_guidance(sp: Yaspin, args: argparse.Namespace) -> None:
         logo_path = args.logo
     else:
         logo_path = Path(
-            config["defaults"]["images_dir"],
+            config["images_dir"],
             f"mscp_banner-{baseline.platform['os']}.png",
         ).absolute()
 
     if not logo_path.exists():
         logger.warning(f"Logo not found at {logo_path}, using default instead.")
-        logo_path = Path(config["defaults"]["images_dir"], "mscp_banner.png").absolute()
+        logo_path = Path(config["images_dir"], "mscp_banner.png").absolute()
 
     if args.hash:
         if sys.platform.startswith("darwin"):
@@ -317,6 +317,9 @@ def generate_guidance(sp: Yaspin, args: argparse.Namespace) -> None:
         custom,
         language=args.language,
     )
-
-    sp.text = f"MSCP DOCUMENT GENERATION COMPLETE! All of the documents can be found in this folder: {build_path}/"
+    try:
+        display_path = Path(build_path).relative_to(Path.cwd())
+    except ValueError:
+        display_path = build_path
+    sp.text = f"MSCP DOCUMENT GENERATION COMPLETE! All of the documents can be found in this folder: {display_path}/"
     sp.ok("✔")

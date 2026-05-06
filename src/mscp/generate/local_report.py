@@ -78,7 +78,7 @@ def generate_local_report(args: argparse.Namespace) -> None:
             sys.exit(1)
 
     env: Environment = Environment(
-        loader=FileSystemLoader(f"{config['defaults']['templates_dir']}/local_report"),
+        loader=FileSystemLoader(f"{config['templates_dir']}/local_report"),
         trim_blocks=True,
         lstrip_blocks=True,
     )
