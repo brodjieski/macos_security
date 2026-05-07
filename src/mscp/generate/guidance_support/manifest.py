@@ -1,4 +1,4 @@
-# mscp/generate/scap.py
+# mscp/generate/guidance_support/manifest.py
 
 # Standard python modules
 import datetime
@@ -11,8 +11,12 @@ from typing import Any
 # Local python modules
 from ...common_utils import get_version_data, mscp_data, create_json
 
+# TODO: add proper logging to module
+
 
 def generate_manifest(build_path, baseline_name, baseline) -> None:
+    # TODO: generate docstring
+
     audit_name: str = str(baseline_name)
     current_version_data: dict[str, Any] = get_version_data(
         baseline.platform["os"], baseline.platform["version"], mscp_data
@@ -45,6 +49,7 @@ def generate_manifest(build_path, baseline_name, baseline) -> None:
             rule_manifest["title"] = rule.title
             rule_manifest["discussion"] = rule.discussion
             ref_parts = []
+            # TODO: visit this to properly handle the exception
             for _org, refs in rule.references:
                 if refs:
                     for item in refs:
@@ -58,7 +63,7 @@ def generate_manifest(build_path, baseline_name, baseline) -> None:
                                     k = "cis_controls_v8"
                                 ref_parts.append(f"{k}|{vals}")
                         except ValueError:
-                            raise
+                            continue
             rule_manifest["references"] = ";".join(str(x) for x in ref_parts)
             rule_manifest["tags"] = ",".join(str(x) for x in rule.tags)
             if rule.check:
