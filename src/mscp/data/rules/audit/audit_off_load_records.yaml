@@ -23,6 +23,9 @@ references:
     srg:
       - SRG-OS-000479-GPOS-00224
       - SRG-OS-000342-GPOS-00133
+  nlmapgov:
+    bio:
+      - 8.18.02
   cis:
     controls_v8:
       - 8.9

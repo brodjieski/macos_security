@@ -33,11 +33,16 @@ references:
         - AIOS-17-707400
     sfr:
       - 'FMT_SMF_EXT.1.1 #8b'
+    cmmc:
+      - CM.L2-3.4.6
+      - CM.L2-3.4.8
   bsi:
     indigo:
-      ios_17:
-        - ANNEX D (Section 5.8 - App-Installation)
       ios_26:
+        - ANNEX D (Section 5.8 - App-Installation)
+      ios_18:
+        - ANNEX D (Section 5.8 - App-Installation)
+      ios_17:
         - ANNEX D (Section 5.8 - App-Installation)
 platforms:
   iOS:
@@ -73,6 +78,8 @@ tags:
   - 800-53r5_moderate
   - 800-53r5_high
   - manual
+  - cmmc_lvl2
+  - cmmc_lvl3
   - cnssi-1253_moderate
   - cnssi-1253_low
   - cnssi-1253_high

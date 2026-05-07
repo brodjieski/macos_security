@@ -17,8 +17,6 @@ references:
     cce:
       ios_26:
         - CCE-95669-8
-      ios_18:
-        - CCE-94525-3
     800-53r5:
       - CM-7
   disa:
@@ -27,21 +25,27 @@ references:
     disa_stig:
       ios_26:
         - AIOS-26-017000
-      ios_18:
-        - AIOS-18-017000
     sfr:
       - 'FMT_MOF_EXT.1.2 #47'
+    cmmc:
+      - CM.L2-3.4.6
 platforms:
   iOS:
     '26.0':
       supervised: false
       benchmarks:
         - name: ios_stig
-    '18.0':
-      supervised: false
-      benchmarks:
-        - name: ios_stig
     introduced: '4.0'
+tags:
+  - 800-53r5_low
+  - 800-53r5_moderate
+  - 800-53r5_high
+  - cmmc_lvl2
+  - cmmc_lvl3
+mobileconfig_info:
+  - PayloadType: com.apple.applicationaccess
+    PayloadContent:
+      - ratingMovies: $ODV
 odv:
   hint:
     datatype: number
@@ -51,11 +55,3 @@ odv:
       max: 1000
   recommended: 0
   ios_stig: 0
-tags:
-  - 800-53r5_low
-  - 800-53r5_moderate
-  - 800-53r5_high
-mobileconfig_info:
-  - PayloadType: com.apple.applicationaccess
-    PayloadContent:
-      - ratingMovies: $ODV

@@ -1,6 +1,7 @@
 id: os_ssl_for_exchange_activesync_enable
 title: Ensure SSL for Exchange ActiveSync
-discussion: Exchange email messages are a form of data in transit and thus are vulnerable to eavesdropping and man-in-the-middle attacks. Secure Sockets Layer (SSL), also referred to as Transport Layer Security (TLS), provides encryption and authentication services that mitigate the risk of breach.
+discussion: |
+  Exchange email messages are a form of data in transit and thus are vulnerable to eavesdropping and man-in-the-middle attacks. Secure Sockets Layer (SSL), also referred to as Transport Layer Security (TLS), provides encryption and authentication services that mitigate the risk of breach.
 references:
   nist:
     cce:
@@ -24,15 +25,20 @@ references:
         - AIOS-17-011300
         - AIOS-17-711300
       visionos_26:
-        - AVOS-02-011300
+        - AVOS-26-011300
     sfr:
       - 'FMT_SMF_EXT.1.1 #47'
   bsi:
     indigo:
-      ios_17:
-        - ANNEX D (Section 5.6.1 - Mail)
       ios_26:
         - ANNEX D (Section 5.6.1 - Mail)
+      ios_18:
+        - ANNEX D (Section 5.6.1 - Mail)
+      ios_17:
+        - ANNEX D (Section 5.6.1 - Mail)
+  nlmapgov:
+    bio:
+      - 8.12
 platforms:
   iOS:
     '26.0':
@@ -69,6 +75,8 @@ platforms:
     '26.0':
       supervised: false
     introduced: '-1'
+tags:
+  - nlmapgov_plus
 mobileconfig_info:
   - PayloadType: com.apple.eas.account
     PayloadContent:

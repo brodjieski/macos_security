@@ -11,6 +11,9 @@ references:
         - CCE-94284-7
       macos_14:
         - CCE-93015-6
+  nlmapgov:
+    bio:
+      - 8.27.01
   cis:
     benchmark:
       macos_26:

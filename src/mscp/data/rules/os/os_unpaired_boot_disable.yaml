@@ -1,5 +1,5 @@
 id: os_unpaired_boot_disable
-title: Disable the option to recover the device via an unpaired host
+title: Disable the Option to Recover the Device via an Unpaired Host
 discussion: |
   The iOS device _MUST_ be configured to disable unpaired devices to boot devices into recovery.
 references:
@@ -13,10 +13,15 @@ references:
         - CCE-93505-6
   bsi:
     indigo:
-      ios_17:
-        - ANNEX K
       ios_26:
         - ANNEX K
+      ios_18:
+        - ANNEX K
+      ios_17:
+        - ANNEX K
+  nlmapgov:
+    bio:
+      - 8.27
 platforms:
   iOS:
     '26.0':
@@ -35,6 +40,8 @@ platforms:
         - name: indigo_base
         - name: indigo_high
     introduced: '14.5'
+tags:
+  - nlmapgov_plus
 mobileconfig_info:
   - PayloadType: com.apple.applicationaccess
     PayloadContent:

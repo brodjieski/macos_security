@@ -31,6 +31,9 @@ references:
         - APPL-14-002003
     cmmc:
       - AC.L1-3.1.1
+  nlmapgov:
+    bio:
+      - 8.27.01
   cis:
     benchmark:
       macos_26:

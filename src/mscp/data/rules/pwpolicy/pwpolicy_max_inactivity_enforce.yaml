@@ -1,5 +1,5 @@
 id: pwpolicy_max_inactivity_enforce
-title: Ensure Maximum Auto-Lock is set to $ODV minutes or less
+title: Ensure Maximum Auto-Lock is Set to $ODV Minutes or Less
 discussion: |
   The iOS _MUST_ be configured to auto-lock after $ODV minutes.
 references:
@@ -28,9 +28,22 @@ references:
         - AIOS-17-006800
         - AIOS-17-706800
       visionos_26:
-        - AVOS-02-006800
+        - AVOS-26-006800
     sfr:
       - 'FMT_SMF_EXT.1.1 #2b'
+    cmmc:
+      - AC.L2-3.1.10
+  bsi:
+    indigo:
+      ios_26:
+        - ANNEX D (Section 5.9.1 - Device-Code)
+        - ANNEX K
+      ios_18:
+        - ANNEX D (Section 5.9.1 - Device-Code)
+        - ANNEX K
+      ios_17:
+        - ANNEX D (Section 5.9.1 - Device-Code)
+        - ANNEX K
   cis:
     benchmark:
       ios_26:
@@ -44,14 +57,6 @@ references:
         - 3.4.4 (level 1 - Institutionally-Owned Devices)
     controls_v8:
       - 4.3
-  bsi:
-    indigo:
-      ios_17:
-        - ANNEX D (Section 5.9.1 - Device-Code)
-        - ANNEX K
-      ios_26:
-        - ANNEX D (Section 5.9.1 - Device-Code)
-        - ANNEX K
 platforms:
   iOS:
     '26.0':
@@ -112,15 +117,17 @@ odv:
   cis_lvl1_enterprise: 2
   cis_lvl2_enterprise: 2
   ios_stig: 5
+  ios_stig_byoad: 5
   indigo_base: 2
   indigo_high: 2
-  ios_stig_byoad: 5
   visionos_stig: 5
 tags:
   - 800-53r5_low
   - 800-53r5_moderate
   - 800-53r5_high
   - cisv8
+  - cmmc_lvl2
+  - cmmc_lvl3
   - cnssi-1253_moderate
   - cnssi-1253_low
   - cnssi-1253_high

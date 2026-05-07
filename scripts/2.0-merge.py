@@ -557,8 +557,8 @@ def main():
                     )
                 else:
                     new_yaml["references"].update({"bsi": {}})
-                    new_yaml["references"]["bis"].update({"indigo": {}})
-                    new_yaml["references"]["bis"]["indigo"].update(
+                    new_yaml["references"]["bsi"].update({"indigo": {}})
+                    new_yaml["references"]["bsi"]["indigo"].update(
                         {os_: rule_yaml["references"]["indigo"]}
                     )
             if "cis" in rule_yaml["references"]:

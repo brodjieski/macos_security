@@ -47,7 +47,7 @@ references:
         - AIOS-17-006900
         - AIOS-17-706900
       visionos_26:
-        - AVOS-02-006900
+        - AVOS-26-006900
     cmmc:
       - AC.L2-3.1.8
   cis:
@@ -71,13 +71,13 @@ references:
       - 6.2
   bsi:
     indigo:
+      ios_26:
+        - ANNEX D (Section 5.9.1 - Device-Code)
+        - ANNEX K
       ios_18:
         - ANNEX D (Section 5.9.1 - Device-Code)
         - ANNEX K
       ios_17:
-        - ANNEX D (Section 5.9.1 - Device-Code)
-        - ANNEX K
-      ios_26:
         - ANNEX D (Section 5.9.1 - Device-Code)
         - ANNEX K
 platforms:
@@ -167,9 +167,9 @@ odv:
   cis_lvl1_enterprise: 6
   cis_lvl2_enterprise: 6
   ios_stig: 10
+  ios_stig_byoad: 10
   indigo_base: 10
   indigo_high: 10
-  ios_stig_byoad: 10
   visionos_stig: 10
   disa_stig: 3
 tags:
@@ -182,6 +182,8 @@ tags:
   - cnssi-1253_high
   - cmmc_lvl2
   - cnssi-1253_moderate
+  - cmmc_lvl1
+  - cmmc_lvl3
 mobileconfig_info:
   - PayloadType: com.apple.mobiledevice.passwordpolicy
     PayloadContent:

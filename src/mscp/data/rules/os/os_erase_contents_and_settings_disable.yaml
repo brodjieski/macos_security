@@ -23,12 +23,16 @@ references:
     disa_stig:
       ios_26:
         - AIOS-26-016000
-      ios_18:
-        - AIOS-18-016000
       visionos_26:
-        - AVOS-02-016000
+        - AVOS-26-016000
     sfr:
       - 'FMT_SMF.1.1 #47'
+    cmmc:
+      - AU.L2-3.3.3
+      - CM.L2-3.4.1
+      - CM.L2-3.4.2
+      - CM.L2-3.4.6
+      - CM.L2-3.4.7
   cis:
     benchmark:
       ios_26:
@@ -52,7 +56,6 @@ platforms:
       benchmarks:
         - name: cis_lvl1_enterprise
         - name: cis_lvl2_enterprise
-        - name: ios_stig
     '17.0':
       supervised: true
       benchmarks:
@@ -68,6 +71,8 @@ tags:
   - 800-53r5_moderate
   - 800-53r5_high
   - cisv8
+  - cmmc_lvl2
+  - cmmc_lvl3
   - cnssi-1253_moderate
   - cnssi-1253_low
   - cnssi-1253_high

@@ -1,5 +1,5 @@
 id: os_modify_cellular_data_app_settings_disable
-title: Ensure Allow modifying cellular data app settings is set to Disabled
+title: Ensure Allow Modifying Cellular Data App Settings is Set to Disabled
 discussion: |
   The ability to modify cellular data app settings _MUST_ be disabled.
 references:
@@ -14,6 +14,10 @@ references:
     800-53r5:
       - CM-7
       - CM-7(1)
+  disa:
+    cmmc:
+      - CM.L2-3.4.6
+      - CM.L2-3.4.7
   cis:
     benchmark:
       ios_26:
@@ -44,6 +48,8 @@ tags:
   - 800-53r5_moderate
   - 800-53r5_high
   - cisv8
+  - cmmc_lvl2
+  - cmmc_lvl3
   - cnssi-1253_moderate
   - cnssi-1253_low
   - cnssi-1253_high

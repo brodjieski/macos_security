@@ -38,6 +38,9 @@ references:
     cmmc:
       - IA.L1-3.5.1
       - IA.L1-3.5.2
+  nlmapgov:
+    bio:
+      - 5.16.02
   cis:
     benchmark:
       macos_26:

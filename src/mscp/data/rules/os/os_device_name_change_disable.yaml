@@ -1,5 +1,5 @@
 id: os_device_name_change_disable
-title: Disable device name changes
+title: Disable Device Name Changes
 discussion: |
   The iOS device _MUST_ be configured to disable device name changes.
 references:
@@ -13,9 +13,11 @@ references:
         - CCE-93475-2
   bsi:
     indigo:
-      ios_17:
-        - ANNEX K
       ios_26:
+        - ANNEX K
+      ios_18:
+        - ANNEX K
+      ios_17:
         - ANNEX K
 platforms:
   iOS:

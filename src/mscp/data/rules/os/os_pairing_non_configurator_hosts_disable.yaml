@@ -1,5 +1,5 @@
 id: os_pairing_non_configurator_hosts_disable
-title: Ensure Allow pairing with non-Configurator hosts is set to Disabled
+title: Ensure Allow Pairing with Non-Configurator Hosts is Set to Disabled
 discussion: |
   Host pairing with a non-Configurator host _MUST_ be disabled.
 references:
@@ -21,10 +21,22 @@ references:
     disa_stig:
       ios_26:
         - AIOS-26-016500
-      ios_18:
-        - AIOS-18-016500
     sfr:
       - 'FMT_MOF_EXT.1.2 #47'
+    cmmc:
+      - AU.L2-3.3.3
+      - CM.L2-3.4.1
+      - CM.L2-3.4.2
+      - CM.L2-3.4.6
+      - CM.L2-3.4.7
+  bsi:
+    indigo:
+      ios_26:
+        - ANNEX K
+      ios_18:
+        - ANNEX K
+      ios_17:
+        - ANNEX K
   cis:
     benchmark:
       ios_26:
@@ -35,12 +47,6 @@ references:
         - 3.2.1.20 (level 2 - Institutionally-Owned Devices)
     controls_v8:
       - 4.8
-  bsi:
-    indigo:
-      ios_17:
-        - ANNEX K
-      ios_26:
-        - ANNEX K
 platforms:
   iOS:
     '26.0':
@@ -54,7 +60,6 @@ platforms:
       supervised: true
       benchmarks:
         - name: cis_lvl2_enterprise
-        - name: ios_stig
         - name: indigo_base
         - name: indigo_high
     '17.0':
@@ -69,6 +74,8 @@ tags:
   - 800-53r5_moderate
   - 800-53r5_high
   - cisv8
+  - cmmc_lvl2
+  - cmmc_lvl3
   - cnssi-1253_moderate
   - cnssi-1253_low
   - cnssi-1253_high

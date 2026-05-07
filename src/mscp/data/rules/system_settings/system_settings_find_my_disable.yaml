@@ -38,6 +38,9 @@ references:
       - AC.L1-3.1.20
       - CM.L2-3.4.6
       - CM.L2-3.4.7
+  nlmapgov:
+    bio:
+      - 7.10.02
   cis:
     controls_v8:
       - 4.1

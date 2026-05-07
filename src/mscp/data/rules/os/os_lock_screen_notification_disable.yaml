@@ -15,7 +15,7 @@ references:
       - CCI-000060
     disa_stig:
       visionos_26:
-        - AVOS-02-007500
+        - AVOS-26-007500
     sfr:
       - 'FMT_SMF.1.1 #18'
 platforms:

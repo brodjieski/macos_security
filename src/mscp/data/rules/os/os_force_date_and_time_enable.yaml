@@ -1,5 +1,5 @@
 id: os_force_date_and_time_enable
-title: Ensure Force automatic date and time is set to Enabled
+title: Ensure Force Automatic Date and Time is Set to Enabled
 discussion: |
   Automatic date and time _MUST_ be enabled.
 references:
@@ -16,6 +16,20 @@ references:
     800-53r5:
       - AU-12(1)
       - SC-45(1)
+  disa:
+    cmmc:
+      - AU.L2-3.3.7
+  bsi:
+    indigo:
+      ios_26:
+        - ANNEX K
+      ios_18:
+        - ANNEX K
+      ios_17:
+        - ANNEX K
+  nlmapgov:
+    bio:
+      - 8.17 - 8.4
   cis:
     benchmark:
       ios_26:
@@ -29,12 +43,6 @@ references:
         - 3.2.1.17 (level 1 - Institutionally-Owned Devices)
     controls_v8:
       - 8.4
-  bsi:
-    indigo:
-      ios_17:
-        - ANNEX K
-      ios_26:
-        - ANNEX K
 platforms:
   iOS:
     '26.0':
@@ -74,9 +82,13 @@ tags:
   - 800-53r5_moderate
   - 800-53r5_high
   - cisv8
+  - cmmc_lvl2
+  - cmmc_lvl3
   - cnssi-1253_moderate
   - cnssi-1253_low
   - cnssi-1253_high
+  - nlmapgov_base
+  - nlmapgov_plus
 mobileconfig_info:
   - PayloadType: com.apple.applicationaccess
     PayloadContent:

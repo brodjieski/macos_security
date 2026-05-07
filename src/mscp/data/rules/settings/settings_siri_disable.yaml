@@ -19,7 +19,7 @@ references:
       - CCI-000366
     disa_stig:
       visionos_26:
-        - AVOS-02-016100
+        - AVOS-26-016100
     sfr:
       - 'FMT_MOF_EXT.1.2 #47'
 platforms:

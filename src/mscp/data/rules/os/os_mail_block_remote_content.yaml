@@ -1,5 +1,5 @@
 id: os_mail_block_remote_content
-title: Block remote content
+title: Block Remote Content
 discussion: |
   The user _MUST_ manually block remote content in Settings/Mail/Privacy/Block Remote Content.
 references:
@@ -13,9 +13,11 @@ references:
         - CCE-93488-5
   bsi:
     indigo:
-      ios_17:
-        - ANNEX K
       ios_26:
+        - ANNEX K
+      ios_18:
+        - ANNEX K
+      ios_17:
         - ANNEX K
 platforms:
   iOS:

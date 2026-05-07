@@ -15,6 +15,9 @@ references:
       - 03.14.01
       - 03.14.02
       - 03.13.03
+  nlmapgov:
+    bio:
+      - 8.08.01
   cis:
     benchmark:
       macos_15:

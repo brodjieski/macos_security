@@ -19,6 +19,9 @@ references:
     cmmc:
       - MP.L2-3.8.7
       - MP.L2-3.8.8
+  nlmapgov:
+    bio:
+      - 8.12.01
 platforms:
   macOS:
     '26.0':

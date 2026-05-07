@@ -1,5 +1,5 @@
 id: os_new_device_proximity_disable
-title: Ensure Allow setting up new nearby devices is set to Disabled
+title: Ensure Allow Setting Up New Nearby Devices is Set to Disabled
 discussion: |
   The setting up of new nearby devices _MUST_ be disabled.
 references:
@@ -29,6 +29,20 @@ references:
         - AIOS-17-012800
     sfr:
       - 'FMT_SMF_EXT.1.1 #47'
+    cmmc:
+      - AU.L2-3.3.3
+      - CM.L2-3.4.1
+      - CM.L2-3.4.2
+      - CM.L2-3.4.6
+      - CM.L2-3.4.7
+  bsi:
+    indigo:
+      ios_26:
+        - ANNEX K
+      ios_18:
+        - ANNEX K
+      ios_17:
+        - ANNEX K
   cis:
     benchmark:
       ios_26:
@@ -39,12 +53,6 @@ references:
         - 3.2.1.28 (level 1 - Institutionally-Owned Devices)
     controls_v8:
       - 3.13
-  bsi:
-    indigo:
-      ios_17:
-        - ANNEX K
-      ios_26:
-        - ANNEX K
 platforms:
   iOS:
     '26.0':
@@ -86,6 +94,8 @@ tags:
   - 800-53r5_moderate
   - 800-53r5_high
   - cisv8
+  - cmmc_lvl2
+  - cmmc_lvl3
   - cnssi-1253_moderate
   - cnssi-1253_low
   - cnssi-1253_high

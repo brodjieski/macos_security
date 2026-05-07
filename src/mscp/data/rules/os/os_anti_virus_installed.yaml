@@ -16,6 +16,12 @@ references:
   disa:
     cci:
       - CCI-000366
+  nlmapgov:
+    bio:
+      - 8.07.01
+      - 8.07.03
+      - 8.07.04
+      - 8.19.01
   cis:
     benchmark:
       macos_26:

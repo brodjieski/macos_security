@@ -48,11 +48,14 @@ references:
         - AIOS-17-006500
         - AIOS-17-706500
       visionos_26:
-        - AVOS-02-006500
+        - AVOS-26-006500
     cmmc:
       - IA.L2-3.5.7
       - IA.L2-3.5.8
       - IA.L2-3.5.9
+  nlmapgov:
+    bio:
+      - 5.17.03
   cis:
     benchmark:
       macos_26:
@@ -74,13 +77,13 @@ references:
       - 5.2
   bsi:
     indigo:
+      ios_26:
+        - ANNEX D (Section 5.9 - Device authentication)
+        - ANNEX K
       ios_18:
         - ANNEX D (Section 5.9 - Device authentication)
         - ANNEX K
       ios_17:
-        - ANNEX D (Section 5.9 - Device authentication)
-        - ANNEX K
-      ios_26:
         - ANNEX D (Section 5.9 - Device authentication)
         - ANNEX K
 platforms:
@@ -170,15 +173,15 @@ odv:
   cis_lvl1: 15
   cis_lvl2: 15
   nlmapgov_base: 15
-  nlmapgov_plus: 15
+  nlmapgov_plus: 6
   cis_lvl1_byod: 6
   cis_lvl2_byod: 6
   cis_lvl1_enterprise: 6
   cis_lvl2_enterprise: 6
   ios_stig: 6
+  ios_stig_byoad: 6
   indigo_base: 8
   indigo_high: 8
-  ios_stig_byoad: 6
   visionos_stig: 6
   disa_stig: 14
 tags:
@@ -191,6 +194,7 @@ tags:
   - cnssi-1253_high
   - cmmc_lvl2
   - cnssi-1253_moderate
+  - cmmc_lvl3
 mobileconfig_info:
   - PayloadType: com.apple.mobiledevice.passwordpolicy
     PayloadContent:

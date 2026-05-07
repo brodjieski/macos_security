@@ -19,15 +19,17 @@ references:
     disa_stig:
       ios_26:
         - AIOS-26-016900
-      ios_18:
-        - AIOS-18-016900
     sfr:
       - 'FMT_MOF_EXT.1.2 #47'
+    cmmc:
+      - AC.L2-3.1.13
   bsi:
     indigo:
-      ios_17:
-        - ANNEX K
       ios_26:
+        - ANNEX K
+      ios_18:
+        - ANNEX K
+      ios_17:
         - ANNEX K
 platforms:
   iOS:
@@ -39,7 +41,6 @@ platforms:
     '18.0':
       supervised: false
       benchmarks:
-        - name: ios_stig
         - name: indigo_high
     '17.0':
       supervised: false
@@ -47,6 +48,8 @@ platforms:
         - name: indigo_high
     introduced: '11.0'
 tags:
+  - cmmc_lvl2
+  - cmmc_lvl3
   - 800-53r5_moderate
   - 800-53r5_high
 mobileconfig_info:

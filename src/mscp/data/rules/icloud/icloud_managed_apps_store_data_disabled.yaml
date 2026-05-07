@@ -33,9 +33,28 @@ references:
         - AIOS-17-003600
         - AIOS-17-703600
       visionos_26:
-        - AVOS-02-003600
+        - AVOS-26-003600
     sfr:
       - 'FMT_MOF_EXT.1.2 #40'
+    cmmc:
+      - AC.L1-B.1.III
+      - AC.L2-3.1.20
+      - CM.L2-3.4.6
+      - CM.L2-3.4.7
+  bsi:
+    indigo:
+      ios_26:
+        - ANNEX D (Section 5.4 - iCloud restrictions)
+        - ANNEX K
+      ios_18:
+        - ANNEX D (Section 5.4 - iCloud restrictions)
+        - ANNEX K
+      ios_17:
+        - ANNEX D (Section 5.4 - iCloud restrictions)
+        - ANNEX K
+  nlmapgov:
+    bio:
+      - 8.12
   cis:
     benchmark:
       ios_26:
@@ -49,14 +68,6 @@ references:
         - 3.2.1.7 (level 1 - Institutionally-Owned Devices)
     controls_v8:
       - 2.3
-  bsi:
-    indigo:
-      ios_17:
-        - ANNEX D (Section 5.4 - iCloud restrictions)
-        - ANNEX K
-      ios_26:
-        - ANNEX D (Section 5.4 - iCloud restrictions)
-        - ANNEX K
 platforms:
   iOS:
     '26.0':
@@ -106,9 +117,13 @@ tags:
   - 800-53r5_moderate
   - 800-53r5_high
   - cisv8
+  - cmmc_lvl1
+  - cmmc_lvl2
+  - cmmc_lvl3
   - cnssi-1253_moderate
   - cnssi-1253_low
   - cnssi-1253_high
+  - nlmapgov_plus
 mobileconfig_info:
   - PayloadType: com.apple.applicationaccess
     PayloadContent:

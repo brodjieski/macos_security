@@ -13,10 +13,13 @@ references:
         - CCE-93471-1
   bsi:
     indigo:
-      ios_17:
+      ios_26:
         - ANNEX D (Section 5.8 - App-Installation)
         - ANNEX N
-      ios_26:
+      ios_18:
+        - ANNEX D (Section 5.8 - App-Installation)
+        - ANNEX N
+      ios_17:
         - ANNEX D (Section 5.8 - App-Installation)
         - ANNEX N
 platforms:

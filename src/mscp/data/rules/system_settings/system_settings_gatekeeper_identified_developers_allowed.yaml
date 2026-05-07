@@ -36,6 +36,9 @@ references:
         - APPL-14-002060
     cmmc:
       - CM.L2-3.4.5
+  nlmapgov:
+    bio:
+      - 8.19.01
 platforms:
   macOS:
     '26.0':

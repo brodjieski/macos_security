@@ -13,9 +13,11 @@ references:
         - CCE-93472-9
   bsi:
     indigo:
-      ios_17:
-        - ANNEX K
       ios_26:
+        - ANNEX K
+      ios_18:
+        - ANNEX K
+      ios_17:
         - ANNEX K
 platforms:
   iOS:

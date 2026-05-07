@@ -42,6 +42,10 @@ references:
       - SI.L1-3.14.1
       - SI.L1-3.14.2
       - SI.L1-3.14.4
+  nlmapgov:
+    bio:
+      - 8.07.01
+      - 8.19.01
   cis:
     benchmark:
       macos_26:

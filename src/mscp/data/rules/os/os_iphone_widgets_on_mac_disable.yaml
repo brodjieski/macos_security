@@ -1,5 +1,5 @@
 id: os_iphone_widgets_on_mac_disable
-title: Disable use of iPhone widgets on Mac
+title: Disable Use of iPhone Widgets on Mac
 discussion: |
   iPhone widgets on Mac _MUST_ be disabled.
 references:
@@ -26,6 +26,9 @@ references:
         - AIOS-17-010850
     sfr:
       - 'FMT_SMF_EXT.1.1 #8b'
+    cmmc:
+      - CM.L2-3.4.6
+      - CM.L2-3.4.7
 platforms:
   iOS:
     '26.0':
@@ -44,6 +47,8 @@ platforms:
         - name: ios_stig
     introduced: '17.0'
 tags:
+  - cmmc_lvl2
+  - cmmc_lvl3
   - cnssi-1253_moderate
   - cnssi-1253_low
   - cnssi-1253_high

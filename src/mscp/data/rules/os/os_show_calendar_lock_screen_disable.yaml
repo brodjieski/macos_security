@@ -1,6 +1,7 @@
 id: os_show_calendar_lock_screen_disable
-title: Ensure Calendar Notifications when the Device is Locked is set to Disabled
-discussion: Many mobile devices display notifications on the lock screen so users can obtain relevant information in a timely manner without having to frequently unlock the phone to determine if there are new notifications. However, in many cases, these notifications can contain sensitive information. When they are available on the lock screen, an adversary can see them merely by being in close physical proximity to the device. Configuring the MOS to not send notifications to the lock screen mitigates this risk.
+title: Ensure Calendar Notifications When the Device is Locked is Set to Disabled
+discussion: |
+  Many mobile devices display notifications on the lock screen so users can obtain relevant information in a timely manner without having to frequently unlock the phone to determine if there are new notifications. However, in many cases, these notifications can contain sensitive information. When they are available on the lock screen, an adversary can see them merely by being in close physical proximity to the device. Configuring the MOS to not send notifications to the lock screen mitigates this risk.
 references:
   nist:
     cce:
@@ -25,6 +26,8 @@ references:
         - AIOS-17-707600
     sfr:
       - 'FMT_SMF_EXT.1.1 #18'
+    cmmc:
+      - AC.L2-3.1.10
 platforms:
   iOS:
     '26.0':
@@ -48,6 +51,8 @@ platforms:
 tags:
   - 800-53r5_moderate
   - 800-53r5_high
+  - cmmc_lvl2
+  - cmmc_lvl3
   - cnssi-1253_moderate
   - cnssi-1253_low
   - cnssi-1253_high

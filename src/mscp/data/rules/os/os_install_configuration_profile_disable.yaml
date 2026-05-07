@@ -23,6 +23,23 @@ references:
         - AIOS-26-015500
       ios_18:
         - AIOS-18-015500
+    cmmc:
+      - AU.L2-3.3.3
+      - CM.L2-3.4.1
+      - CM.L2-3.4.2
+      - CM.L2-3.4.6
+      - CM.L2-3.4.7
+  bsi:
+    indigo:
+      ios_26:
+        - ANNEX K
+      ios_18:
+        - ANNEX D (Section 5.6.1 - Mail)
+      ios_17:
+        - ANNEX D (Section 5.6.1 - Mail)
+  nlmapgov:
+    bio:
+      - 8.27
   cis:
     benchmark:
       ios_26:
@@ -33,12 +50,6 @@ references:
         - 3.2.1.15 (level 1 - Institutionally-Owned Devices)
     controls_v8:
       - 4.1
-  bsi:
-    indigo:
-      ios_17:
-        - ANNEX D (Section 5.6.1 - Mail)
-      ios_26:
-        - ANNEX K
 platforms:
   iOS:
     '26.0':
@@ -77,9 +88,12 @@ platforms:
     introduced: '2.0'
 tags:
   - cisv8
+  - cmmc_lvl2
+  - cmmc_lvl3
   - cnssi-1253_moderate
   - cnssi-1253_low
   - cnssi-1253_high
+  - nlmapgov_plus
 mobileconfig_info:
   - PayloadType: com.apple.applicationaccess
     PayloadContent:

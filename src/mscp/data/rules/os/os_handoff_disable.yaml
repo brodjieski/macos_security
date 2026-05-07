@@ -53,7 +53,7 @@ references:
       ios_17:
         - AIOS-17-010800
       visionos_26:
-        - AVOS-02-010800
+        - AVOS-26-010800
     cmmc:
       - AC.L1-3.1.1
       - AC.L1-3.1.20
@@ -75,11 +75,11 @@ references:
       - 4.8
   bsi:
     indigo:
+      ios_26:
+        - ANNEX K
       ios_18:
         - ANNEX K
       ios_17:
-        - ANNEX K
-      ios_26:
         - ANNEX K
 platforms:
   macOS:
@@ -155,6 +155,7 @@ tags:
   - cmmc_lvl2
   - cmmc_lvl1
   - cnssi-1253_moderate
+  - cmmc_lvl3
 mobileconfig_info:
   - PayloadType: com.apple.applicationaccess
     PayloadContent:

@@ -22,6 +22,9 @@ references:
   disa:
     srg:
       - SRG-OS-000001-GPOS-00001
+  nlmapgov:
+    bio:
+      - 5.16.02
 platforms:
   macOS:
     '26.0':

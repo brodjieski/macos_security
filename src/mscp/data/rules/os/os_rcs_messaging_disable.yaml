@@ -19,10 +19,6 @@ platforms:
       supervised: false
       benchmarks:
         - name: indigo_high
-    '18.0':
-      supervised: false
-      benchmarks:
-        - name: indigo_high
     introduced: '18.1'
 mobileconfig_info:
   - PayloadType: com.apple.applicationaccess

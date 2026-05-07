@@ -50,9 +50,9 @@ references:
         - 3.10.4 (level 1 - Institutionally-Owned Devices)
   bsi:
     indigo:
-      ios_18:
-        - ANNEX K
       ios_26:
+        - ANNEX K
+      ios_18:
         - ANNEX K
 platforms:
   macOS:
@@ -107,7 +107,12 @@ tags:
   - cmmc_lvl1
   - cnssi-1253_moderate
   - cisv8
+  - cmmc_lvl3
 mobileconfig_info:
   - PayloadType: com.apple.applicationaccess
     PayloadContent:
       - allowWritingTools: false
+ddm_info:
+  declarationtype: com.apple.configuration.intelligence.settings
+  ddm_key: AllowWritingTools
+  ddm_value: false

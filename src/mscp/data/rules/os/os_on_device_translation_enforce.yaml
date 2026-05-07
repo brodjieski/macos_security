@@ -31,12 +31,20 @@ references:
         - AIOS-17-014500
     sfr:
       - 'FMT_SMF_EXT.1.1 #47'
+    cmmc:
+      - AC.L1-B.1.III
+      - AC.L2-3.1.20
   bsi:
     indigo:
-      ios_17:
-        - ANNEX K
       ios_26:
         - ANNEX K
+      ios_18:
+        - ANNEX K
+      ios_17:
+        - ANNEX K
+  nlmapgov:
+    bio:
+      - 8.12
 platforms:
   iOS:
     '26.0':
@@ -71,10 +79,18 @@ tags:
   - 800-53r5_low
   - 800-53r5_moderate
   - 800-53r5_high
+  - cmmc_lvl1
+  - cmmc_lvl2
+  - cmmc_lvl3
   - cnssi-1253_moderate
   - cnssi-1253_low
   - cnssi-1253_high
+  - nlmapgov_plus
 mobileconfig_info:
   - PayloadType: com.apple.applicationaccess
     PayloadContent:
       - forceOnDeviceOnlyTranslation: true
+ddm_info:
+  declarationtype: com.apple.configuration.intelligence.settings
+  ddm_key: ForceOnDeviceOnlyTranslation
+  ddm_value: false

@@ -36,6 +36,9 @@ references:
         - APPL-15-005100
       macos_14:
         - APPL-14-005100
+  nlmapgov:
+    bio:
+      - 8.27.01
 platforms:
   macOS:
     '26.0':

@@ -1,6 +1,9 @@
 id: os_require_managed_pasteboard_enforce
-title: Ensure copy/paste of data from Managed to Unmanaged Applications is Disabled
-discussion: "The device _MUST_ be configured to disable copy/paste of data from managed to unmanaged applications.\n\nIf 'true', copy and paste functionality respects the 'allowOpenFromManagedToUnmanaged' and 'allowOpenFromUnmanagedToManaged' restrictions. "
+title: Ensure Copy/Paste of Data from Managed to Unmanaged Applications is Disabled
+discussion: |
+  The device _MUST_ be configured to disable copy/paste of data from managed to unmanaged applications.
+
+  If 'true', copy and paste functionality respects the 'allowOpenFromManagedToUnmanaged' and 'allowOpenFromUnmanagedToManaged' restrictions.
 references:
   nist:
     cce:
@@ -29,15 +32,20 @@ references:
         - AIOS-17-014600
         - AIOS-17-714600
       visionos_26:
-        - AVOS-02-014600
+        - AVOS-26-014600
     sfr:
       - 'FMT_SMF_EXT.1.1 #47'
   bsi:
     indigo:
-      ios_17:
-        - ANNEX K
       ios_26:
         - ANNEX K
+      ios_18:
+        - ANNEX K
+      ios_17:
+        - ANNEX K
+  nlmapgov:
+    bio:
+      - 8.12
 platforms:
   iOS:
     '26.0':
@@ -78,6 +86,7 @@ tags:
   - cnssi-1253_moderate
   - cnssi-1253_low
   - cnssi-1253_high
+  - nlmapgov_plus
 mobileconfig_info:
   - PayloadType: com.apple.applicationaccess
     PayloadContent:
