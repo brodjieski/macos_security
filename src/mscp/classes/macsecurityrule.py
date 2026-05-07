@@ -343,7 +343,7 @@ class Macsecurityrule(BaseModelWithAccessors):
         logger.info("=== LOADING {} RULES ===", section.upper())
 
         rules: list[Macsecurityrule] = []
-        os_version_str: str = str(os_version)
+        os_version_str: str = str(float(os_version))
         os_version_int: int = int(os_version)
         current_version_data: dict[str, Any] = get_version_data(
             os_type, os_version, mscp_data

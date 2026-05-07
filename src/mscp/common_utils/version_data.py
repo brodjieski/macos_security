@@ -30,20 +30,30 @@ def get_version_data(
 
     # version_file: Path = Path(config["includes_dir"], "version.yaml")
     try:
-        # logger.info("Attempting to open version file: {}", version_file)
-        # version_data: dict = open_file(version_file)
+        platforms: dict = mscp_data.get("versions", {}).get("platforms", {})
+        valid_types = sorted(platforms.keys())
 
-        return next(
-            (
-                entry
-                for entry in mscp_data.get("versions", {})
-                .get("platforms", {})
-                .get(os_name.lower(), [])
-                if entry.get("os_version") == os_version
-            ),
-            {},
+        if os_name.lower() not in platforms:
+            raise ValueError(
+                f"Unknown os_type {os_name!r}. Valid options: {valid_types}"
+            )
+
+        valid_versions = [e.get("os_version") for e in platforms[os_name.lower()]]
+        match = next(
+            (e for e in platforms[os_name.lower()] if e.get("os_version") == os_version),
+            None,
         )
 
+        if match is None:
+            raise ValueError(
+                f"Unknown os_version {os_version!r} for {os_name!r}. "
+                f"Valid versions: {valid_versions}"
+            )
+
+        return match
+
+    except ValueError:
+        raise
     except Exception as e:
         logger.error("Error parsing mscp_data file: {}", e)
         return {}

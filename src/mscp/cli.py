@@ -99,7 +99,7 @@ def parse_cli() -> None:
 
     parser = Customparser(
         description="command-line interface for generating baseline and compliance documents for the macOS Security Compliance Project",
-        prog="mscp.py",
+        prog="mscp",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
         parents=[parent_parser],
         add_help=False,
