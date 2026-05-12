@@ -27,12 +27,10 @@ RUN apk add --no-cache --virtual .build-deps \
 WORKDIR /mscp
 
 # Copy MSCP code (remove mscp_dev.py)
-RUN git clone --single-branch -b dev_2.0 https://github.com/brodjieski/macos_security /mscp && \
-    rm /mscp/mscp.py
+RUN git clone --single-branch -b dev_2.0 https://github.com/brodjieski/macos_security /mscp
 
 # Install Python dependencies
-RUN pip install --break-system-packages --no-cache-dir -r requirements.txt && \
-    pip install --break-system-packages --no-cache-dir --no-deps .
+RUN pip install --break-system-packages --no-cache-dir -r requirements.txt
 
 # Install Ruby dependencies
 #COPY Gemfile ./
