@@ -72,6 +72,9 @@ profile:
       - os_predictive_keyboard_disable
       - os_rapid_security_responses_install_enable
       - os_require_managed_pasteboard_enforce
+      - os_safari_clear_history_disable
+      - os_safari_disable
+      - os_safari_private_browsing_disable
       - os_safari_reader_summary_disable
       - os_screen_observation_remote_disable
       - os_screen_observation_unprompted_disable
