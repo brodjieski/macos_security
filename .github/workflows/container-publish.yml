@@ -75,8 +75,10 @@ jobs:
           echo "branch=${branch}" >> "$GITHUB_OUTPUT"
           if [[ "${branch}" == "main" ]]; then
             echo "is_main=true" >> "$GITHUB_OUTPUT"
+            echo "image_tag=latest" >> "$GITHUB_OUTPUT"
           else
             echo "is_main=false" >> "$GITHUB_OUTPUT"
+            echo "image_tag=${branch}" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Extract Docker metadata
@@ -103,6 +105,7 @@ jobs:
           build-args: |
             BUILD_SHA=${{ github.event.workflow_run.head_sha || github.sha }}
             IMAGE_REPO=${{ github.repository }}
+            IMAGE_TAG=${{ steps.branch.outputs.image_tag }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
