@@ -156,7 +156,7 @@ def get_macos_version() -> float:
         major = int(version_str.split(".")[0])
         return float(major)
     else:
-        return 26.0
+        return 27.0
 
 
 def validate_file(arg: str) -> Path | None:
