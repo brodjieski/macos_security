@@ -689,7 +689,10 @@ class Macsecurityrule(BaseModelWithAccessors):
         else:
             odv_value: str | int | bool | None = odv_lookup.get(parent_values)
         if odv_value is None:
-            return
+            logger.warning(
+                f"ODV value cannot be determined for {self.rule_id}, defaulting to recommended value: {odv_lookup.get('recommended')}"
+            )
+            odv_value: str | int | bool | None = odv_lookup.get("recommended")
 
         fields_to_process: tuple[str, ...] = (
             "title",
