@@ -21,10 +21,13 @@ from ..common_utils import (
     SCHEMA_PATH,
     conditional_inject_spinner,
 )
+from ..common_utils.validate_rules import NON_VERSION_PLATFORM_KEYS, OS_CCE_PREFIXES
 
 from yaspin.core import Yaspin
 from yaspin.spinners import Spinners
 from ..classes import Macsecurityrule, Sectionmap
+
+CCE_PLACEHOLDER = "CCE-TBD"
 
 
 def choose_from_mapping(mapping):
@@ -220,6 +223,59 @@ def add_version_to_rules(
     logger.info(f"Updated {len(updated_rules)} rules for {platform}")
 
 
+def ensure_platform_cce_placeholders(platform: str) -> int:
+    """Backfill missing NIST CCE entries for every platform version already in the rules.
+
+    Scans all rule YAML files under `config["rules_dir"]` that target
+    `platform`. For each version key under that platform (skipping
+    `enforcement_info`/`introduced`), if `references.nist.cce.<prefix>_<major>`
+    is missing or empty, it is filled with a `CCE-TBD` placeholder. This
+    covers both a version just added by `add_version_to_rules` and any
+    version that already existed on the rule but never got a CCE. Rules
+    whose ``id`` starts with ``supplemental`` are skipped, matching
+    `validate_platform_cce_coverage`'s exemption for those files.
+
+    Args:
+        platform (str): Short platform key (e.g. `"macos"`); resolved
+            through `PLATFORM_MAP` to match rule files, and used directly
+            as the NIST CCE key prefix.
+
+    Returns:
+        int: Number of rule files that received at least one placeholder.
+    """
+    rules_dir = config["rules_dir"]
+    platform_key = PLATFORM_MAP[platform]
+    cce_prefix = OS_CCE_PREFIXES[platform_key]
+
+    updated_rules = []
+    for rule in rules_dir.rglob("*.y*ml"):
+        rule_yaml = open_file(rule)
+
+        if str(rule_yaml.get("id", rule.stem)).startswith("supplemental"):
+            continue
+
+        versions = rule_yaml.get("platforms", {}).get(platform_key)
+        if not versions:
+            continue
+
+        rule_changed = False
+        cce = rule_yaml.setdefault("references", {}).setdefault("nist", {}).setdefault("cce", {})
+        for version_key in versions:
+            if version_key in NON_VERSION_PLATFORM_KEYS:
+                continue
+            cce_key = f"{cce_prefix}_{str(version_key).split('.')[0]}"
+            if not cce.get(cce_key):
+                cce[cce_key] = [CCE_PLACEHOLDER]
+                rule_changed = True
+
+        if rule_changed:
+            create_file(rule, rule_yaml)
+            updated_rules.append(rule)
+
+    logger.info(f"Added CCE placeholders to {len(updated_rules)} rules for {platform_key}")
+    return len(updated_rules)
+
+
 def ensure_path(d, path):
     """Walk a nested dict, creating intermediate dicts as needed, and return the deepest node.
 
@@ -401,6 +457,11 @@ def update_mscp_apple_release(sp: Yaspin, args: argparse.Namespace) -> None:
     3. Calls `add_version_to_schema()` to register the version in the
        MSCP JSON schema.
 
+    Regardless of whether ``args.version`` is new or already registered,
+    `ensure_platform_cce_placeholders()` is run for every platform so any
+    version already present in a rule but missing a `references.nist.cce`
+    entry gets a `CCE-TBD` placeholder filled in.
+
     Progress is reported through the injected ``Yaspin`` spinner.
 
     Args:
@@ -461,6 +522,9 @@ def update_mscp_apple_release(sp: Yaspin, args: argparse.Namespace) -> None:
             logger.warning(
                 f"{args.version} already exists for {platform_name}, skipping"
             )
+
+        sp.text = f"Backfilling missing NIST CCE placeholders for {platform_name}"
+        ensure_platform_cce_placeholders(platform_name)
 
     if mscp_data_file_updated:
         create_file(mscp_data_file, mscp_data)

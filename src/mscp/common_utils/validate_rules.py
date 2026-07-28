@@ -23,6 +23,45 @@ from .logger_instance import logger
 
 # Additional python modules
 
+OS_CCE_PREFIXES = {
+    "macOS": "macos",
+    "iOS": "ios",
+    "visionOS": "visionos",
+}
+
+NON_VERSION_PLATFORM_KEYS = {"enforcement_info", "introduced"}
+
+
+def validate_platform_cce_coverage(rule_data: dict) -> list[str]:
+    """Ensure every platform/OS version on a rule has a matching NIST CCE.
+
+    For each version key under ``platforms.<OS>`` (e.g. ``platforms.macOS['27.0']``),
+    a corresponding ``references.nist.cce.<os>_<major>`` entry (e.g. ``macos_27``)
+    must exist and contain at least one CCE ID. The SCAP generator relies on this
+    mapping to emit a CCE for every platform version a rule supports.
+
+    Args:
+        rule_data (dict): Parsed rule YAML.
+
+    Returns:
+        list[str]: Human-readable error messages, one per missing/empty mapping.
+    """
+    errors: list[str] = []
+    platforms: dict = rule_data.get("platforms") or {}
+    cce: dict = ((rule_data.get("references") or {}).get("nist") or {}).get("cce") or {}
+
+    for os_name, prefix in OS_CCE_PREFIXES.items():
+        versions: dict = platforms.get(os_name) or {}
+        for version_key in versions:
+            if version_key in NON_VERSION_PLATFORM_KEYS:
+                continue
+            major = str(version_key).split(".")[0]
+            cce_key = f"{prefix}_{major}"
+            if not cce.get(cce_key):
+                errors.append(f"platforms.{os_name}.'{version_key}' has no references.nist.cce.{cce_key} entry")
+
+    return errors
+
 
 def get_rule_identifier(rule_file: Path) -> str:
     """Return the rule's canonical ID, preferring the YAML ``id`` field.
@@ -105,7 +144,9 @@ def validate_yaml_file(args: argparse.Namespace) -> None:
     line per file: ``✅ VALID``, ``❌ INVALID``, or ``⚠️ ERROR``. Files
     with duplicate rule identifiers are flagged with a warning. Also
     cross-checks ``odv`` keys against the benchmark names declared under
-    ``platforms`` (see `validate_odv_benchmarks`).
+    ``platforms`` (see `validate_odv_benchmarks`), and checks every file
+    with `validate_platform_cce_coverage` so every platform/OS version it
+    supports has a matching NIST CCE.
 
     Args:
         args (argparse.Namespace): Parsed CLI arguments. Reads
@@ -149,8 +190,9 @@ def validate_yaml_file(args: argparse.Namespace) -> None:
             continue
 
         odv_issues = validate_odv_benchmarks(data)
+        cce_errors = validate_platform_cce_coverage(data)
 
-        if errors or odv_issues:
+        if errors or odv_issues or cce_errors:
             error_found = True
             for e in errors:
                 path = " -> ".join(str(p) for p in e.path) if e.path else "root"
@@ -159,6 +201,9 @@ def validate_yaml_file(args: argparse.Namespace) -> None:
             for msg in odv_issues:
                 print(f"❌ INVALID: {yaml} → [odv] {msg}")
                 logger.warning(f"❌ INVALID: {yaml} → [odv] {msg}")
+            for msg in cce_errors:
+                print(f"❌ INVALID: {yaml} → {msg}")
+                logger.warning(f"❌ INVALID: {yaml} → {msg}")
         else:
             if args.all_validation:
                 print(f"✅ VALID:   {yaml}")
