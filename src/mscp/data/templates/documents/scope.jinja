@@ -11,6 +11,11 @@
 {% trans %}This guide describes the actions to take when securing a{% endtrans %} {{ baseline.platform.os }} {{ baseline.platform.version }} {% trans %}system against the configuration requirements outlined in the {% endtrans %} {{ baseline.benchmark_description }}.
 {% endif %}
 
+{% if baseline.pre_release %}
+
+{% trans %}This benchmark has not yet been formally published by its governing body for this platform version. Settings, rule mappings, and references in this baseline are preliminary and subject to change once the official benchmark is released.{% endtrans %}
+{% endif %}
+
 {% else %}
 {{ baseline.description }}
 {% endif %}
