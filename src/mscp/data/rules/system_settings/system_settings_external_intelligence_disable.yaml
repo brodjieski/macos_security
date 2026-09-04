@@ -1,7 +1,7 @@
 id: system_settings_external_intelligence_disable
 title: Disable External Intelligence Integrations
 discussion: |
-  The external intelligence integration feature of Apple Intelligence allows information to be downloaded from the device and processed by an external application in the cloud. 
+  The external intelligence integration feature of Apple Intelligence allows information to be downloaded from the device and processed by an external application in the cloud.
 
   Integration with external intelligence systems _MUST_ be disabled unless approved by the organization. Disabling external intelligence integration will mitigate the risk of data being sent to unapproved third party.
 
@@ -68,6 +68,8 @@ references:
         - 2.5.1.1 (level 1)
       macos_15:
         - 2.5.1.1 (level 1)
+      macos_27:
+        - 2.5.1.1 (level 1)
     controls_v8:
       - 4.1
       - 4.8
@@ -80,6 +82,8 @@ platforms:
   macOS:
     '27.0':
       benchmarks:
+        - name: cis_lvl1
+        - name: cis_lvl2
         - name: disa_stig
           severity: medium
     '26.0':
