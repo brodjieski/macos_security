@@ -1,5 +1,5 @@
 
-{{ "== " if format == "adoc" else "## " }}{% trans %}Scope{% endtrans %}
+## {% trans %}Scope{% endtrans %}
 
 {% if not baseline.tailored %}
 
@@ -13,7 +13,7 @@
 
 {% if baseline.pre_release %}
 
-{% trans %}This benchmark has not yet been formally published by its governing body for this platform version. Settings, rule mappings, and references in this baseline are preliminary and subject to change once the official benchmark is released.{% endtrans %}
+> **NOTE:** {% trans %}The {% endtrans %} {{ baseline.benchmark_description }} {% trans %}has not yet been formally published for {% endtrans %} {{ baseline.platform.os }} {{ baseline.platform.version }}.{% trans %} Settings, rule mappings, and references in this guide are preliminary and subject to change once the official benchmark is released.{% endtrans %}
 {% endif %}
 
 {% else %}
