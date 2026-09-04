@@ -11,7 +11,9 @@ RUN apk update && apk add --no-cache \
   freetype \
   libxml2 \
   libxslt \
-  yaml
+  yaml \
+  perl \
+  openssl
 
 RUN apk add --no-cache --virtual .build-deps \
     musl-dev \
@@ -29,7 +31,9 @@ RUN apk add --no-cache --virtual .build-deps \
     libxslt-dev \
     yaml-dev \
     rust \
-    cargo
+    cargo \
+    openssl-dev \
+    pkgconfig
 
 ARG BUILD_SHA=unknown
 ARG IMAGE_REPO=unknown
