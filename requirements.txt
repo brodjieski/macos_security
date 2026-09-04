@@ -63,6 +63,8 @@ typing-extensions==4.15.0
     #   typing-inspection
 typing-inspection==0.4.2
     # via pydantic
+typst==0.14.9
+    # via mscp (pyproject.toml)
 tzdata==2026.1
     # via pandas
 yaspin==3.4.0
