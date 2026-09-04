@@ -4,9 +4,7 @@ COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
 
 RUN apk update && apk add --no-cache \
   python3 \
-  ruby \
   git \
-  ruby-dev \
   build-base \
   libjpeg-turbo \
   libpng \
@@ -47,10 +45,6 @@ COPY requirements.txt ./
 RUN uv venv /opt/venv && \
     uv pip install --no-cache --python /opt/venv/bin/python -r requirements.txt
 ENV PATH="/opt/venv/bin:$PATH"
-
-# Install Ruby dependencies before copying source
-COPY Gemfile ./
-RUN gem install bundler && bundle install
 
 RUN apk del .build-deps
 
