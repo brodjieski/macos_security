@@ -20,6 +20,7 @@ from typing import Any
 
 # Additional python modules
 from ..common_utils import conditional_inject_spinner
+from PIL import Image
 from yaspin.core import Yaspin
 from yaspin.spinners import Spinners
 
@@ -141,6 +142,42 @@ def _auto_migrate_legacy(args: argparse.Namespace) -> Path:
     return output_path
 
 
+# Cover-page templates bound the rendered logo to a fixed box, so this only
+# needs to guard against (a) source images large enough to bloat the
+# base64-embedded HTML/typst output, and (b) aspect ratios far from the
+# default banner shape, which the user should know will be letterboxed.
+_LOGO_MAX_DIMENSION = 1600
+_LOGO_ASPECT_WARN_RANGE = (1.5, 8.0)
+
+
+def _normalize_custom_logo(logo_path: Path) -> None:
+    """Downscale an oversized custom logo and warn about unusual proportions.
+
+    Args:
+        logo_path (Path): Path to the custom logo, already copied into place.
+    """
+    try:
+        img = Image.open(logo_path)
+        width, height = img.size
+
+        aspect_ratio = width / height
+        if not (_LOGO_ASPECT_WARN_RANGE[0] <= aspect_ratio <= _LOGO_ASPECT_WARN_RANGE[1]):
+            logger.warning(
+                f"Custom logo {logo_path.name} ({width}x{height}) has an aspect ratio "
+                "far from the default banner shape; it will be letterboxed on the cover page."
+            )
+
+        if max(width, height) > _LOGO_MAX_DIMENSION:
+            logger.info(
+                f"Custom logo {logo_path.name} is {width}x{height}; downscaling to fit "
+                f"within {_LOGO_MAX_DIMENSION}px to keep the generated documents a reasonable size."
+            )
+            img.thumbnail((_LOGO_MAX_DIMENSION, _LOGO_MAX_DIMENSION), Image.LANCZOS)
+            img.save(logo_path)
+    except Exception as e:
+        logger.warning(f"Could not inspect/resize custom logo {logo_path}: {e}")
+
+
 @conditional_inject_spinner()
 def generate_guidance(sp: Yaspin, args: argparse.Namespace) -> None:
     """Orchestrate all guidance artifacts for a given baseline.
@@ -216,6 +253,7 @@ def generate_guidance(sp: Yaspin, args: argparse.Namespace) -> None:
     if args.logo:
         logger.info(f"Copying custom logo file {args.logo} to {str(custom_logo)}")
         shutil.copy(str(args.logo), str(custom_logo))
+        _normalize_custom_logo(custom_logo)
 
     logo_path = (
         custom_logo
