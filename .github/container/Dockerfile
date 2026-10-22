@@ -4,10 +4,10 @@
 # numpy / pandas / pydantic-core / lxml / pillow / typst. Nothing compiles
 # from source, so there is no build toolchain to install and later delete,
 # and each architecture is built natively in CI (no QEMU emulation).
-FROM python:3.13-slim-bookworm@sha256:ed86c82274b3c69b52fb5820f358f0bd7df0b603332063cb5c6e32bd220c3e6e
+FROM python:3.14-slim-trixie@sha256:0514bc76712d64f8bb48adcb95b1ab0d88c69fee95d62fe4c18ee948bee9b1e1
 
 # Pinned uv (never :latest) so this layer is reproducible and cache-stable.
-COPY --from=ghcr.io/astral-sh/uv:0.9.5@sha256:f459f6f73a8c4ef5d69f4e6fbbdb8af751d6fa40ec34b39a1ab469acd6e289b7 /uv /usr/local/bin/uv
+COPY --from=ghcr.io/astral-sh/uv:0.13.5@sha256:32a7bb39b496babbd997b0a39a4d66c126bdaf5661b302bf6f06abda8deca6ff /uv /usr/local/bin/uv
 
 # bash + bash-completion: Debian's /bin/sh is dash (no history, no tab
 # completion). This image is used interactively, so make bash the default shell.
